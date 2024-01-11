@@ -59,13 +59,13 @@ plugins:
   - search # 搜索
   - offline # 离线搜索
   - glightbox # 图片点击放大
-  # - git-revision-date-localized: # 最后修改页面日期
-  #     type: datetime
-  #     timezone: Asia/Shanghai
-  #     locale: zh
-  #     enable_creation_date: true
-  #     exclude:
-  #       - index.md
+  - git-revision-date-localized: # 最后修改页面日期
+      type: datetime
+      timezone: Asia/Shanghai
+      locale: zh
+      enable_creation_date: true
+      exclude:
+        - index.md
   - changelog # changelog 时间轴
   - heti # 优化中文排版
   - toc
