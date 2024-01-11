@@ -1,0 +1,131 @@
+site_name: 13m0n4de's notebook
+site_url: https://example.com/
+repo_name: 13m0n4de/notebook
+repo_url: https://github.com/13m0n4de/notebook
+copyright: Copyright &copy; 2024-2025 <a href="https://github.com/13m0n4de" target="_blank" rel="noopener">13m0n4de</a>
+
+theme:
+  name: material
+  language: zh
+  icon:
+    logo: material/notebook
+  custom_dir: overrides
+  font: false
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.indexes
+    - navigation.top
+    - navigation.tabs
+    - navigation.footer
+    - search.suggest
+    - content.code.annotate
+
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+      primary: custom
+      accent: custom
+
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+      primary: custom
+      accent: custom
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/13m0n4de/
+    - icon: fontawesome/solid/blog
+      link: https://example.com/
+    - icon: fontawesome/solid/house
+      link: https://example.com/
+
+extra_css:
+  - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
+  - https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
+  - https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css
+  
+  - stylesheets/custom.css
+
+plugins:
+  - search # 搜索
+  - offline # 离线搜索
+  - glightbox # 图片点击放大
+  # - git-revision-date-localized: # 最后修改页面日期
+  #     type: datetime
+  #     timezone: Asia/Shanghai
+  #     locale: zh
+  #     enable_creation_date: true
+  #     exclude:
+  #       - index.md
+  - changelog # changelog 时间轴
+  - heti # 优化中文排版
+  - toc
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 4
+  
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+not_in_nav: todo.md
+
+nav:
+  - Home:
+    - index.md
+    - 时间线: changelog.md
+  - Computer Science:
+    - cs/index.md
+    - Programming Language & ISA:
+      - cs/pl/index.md
+      - C: cs/pl/c/index.md
+      - Python: cs/pl/python/index.md
+      - Racket: cs/pl/racket/index.md
+      - RISC-V ISA: cs/pl/riscv/index.md
+      - Rust: cs/pl/rust/index.md
+    - Operating Systems:
+      - cs/os/index.md
+      - OSTEP: cs/os/ostep.md
+  - Security:
+    - sec/index.md
+  - CTF:
+    - ctf/index.md
+  - Writeups:
+    - writeups/index.md
+  - GameDev:
+    - gamedev/index.md
+    
