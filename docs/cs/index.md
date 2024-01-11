@@ -13,6 +13,6 @@
     - Rust: pl/rust/
 - 操作系统:
     - index: os/
-    - OSTEP: os/ostep/
+    - OSTEP[note]: os/ostep.html
 
 {{ END_TOC }}
