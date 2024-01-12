@@ -107,7 +107,7 @@ not_in_nav: todo.md
 nav:
   - Home:
     - index.md
-    - 时间线: changelog.md
+    - Timeline: changelog.md
   - Computer Science:
     - cs/index.md
     - Programming Language & ISA:

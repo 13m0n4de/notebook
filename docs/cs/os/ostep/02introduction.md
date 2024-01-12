@@ -2,7 +2,7 @@
 
 这章引入了课程的三个主题，也是操作系统的三个重要功能：
 
-1. 虚拟化内存
+1. 虚拟化
 2. 并发
 3. 持久性
 
@@ -161,6 +161,41 @@ Final value : 129215
     2. 硬件应该提供哪些机制？
     3. 我们如何利用它们来解决并发问题？
 
+## 2.4 持久性
+
+其实就是文件系统。
+
+```c title='io.c'
+#include <assert.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+int main(int argc, char *argv[]) {
+  int fd = open("/tmp/file", O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
+  assert(fd > -1);
+  int rc = write(fd, "hello world\n", 13);
+  assert(rc == 13);
+  close(fd);
+  return 0;
+}
+```
+
+!!! question "关键问题：如何持久地存储数据"
+    文件系统是操作系统的一部分，负责管理持久的数据。  
+
+    1. 持久性需要哪些技术才能正确地实现？
+    2. 需要哪些机制和策略才能高性能地实现？
+    3. 面对硬件和软件故障，可靠性如何实现？
+
 ## 2.6 简单历史
 
+操作系统发展历史：
 
+- 函数库
+- 批处理系统
+- 特权级和系统调用
+- 多道程序
+- 分时多任务
+- 内存保护
+- 并发
+- ...
