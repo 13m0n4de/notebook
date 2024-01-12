@@ -122,6 +122,8 @@ nav:
       - OSTEP: cs/os/ostep.md
       - MIT 6.1810: cs/os/mit6.1810.md
       - rCore: cs/os/rcore.md
+    - Compiler:
+      - cs/compiler/index.md
   - Security:
     - sec/index.md
   - CTF:
