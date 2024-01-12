@@ -21,6 +21,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://13m0n4de-notebook.vercel.app/cs/compiler/index.html</loc>
+         <lastmod>2024-01-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://13m0n4de-notebook.vercel.app/cs/os/index.html</loc>
          <lastmod>2024-01-12</lastmod>
          <changefreq>daily</changefreq>
