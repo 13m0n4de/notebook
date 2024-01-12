@@ -14,5 +14,7 @@
 - 操作系统:
     - index: os/
     - OSTEP[note]: os/ostep.html
+    - MIT 6.1810[note]: os/mit6.1810.html
+    - rCore[note]: os/rcore.html
 
 {{ END_TOC }}

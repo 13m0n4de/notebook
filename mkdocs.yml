@@ -1,5 +1,5 @@
 site_name: 13m0n4de's notebook
-site_url: https://example.com/
+site_url: https://13m0n4de-notebook.vercel.app
 repo_name: 13m0n4de/notebook
 repo_url: https://github.com/13m0n4de/notebook
 copyright: Copyright &copy; 2024-2025 <a href="https://github.com/13m0n4de" target="_blank" rel="noopener">13m0n4de</a>
@@ -120,6 +120,8 @@ nav:
     - Operating Systems:
       - cs/os/index.md
       - OSTEP: cs/os/ostep.md
+      - MIT 6.1810: cs/os/mit6.1810.md
+      - rCore: cs/os/rcore.md
   - Security:
     - sec/index.md
   - CTF:
