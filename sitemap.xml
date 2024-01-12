@@ -36,12 +36,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://13m0n4de-notebook.vercel.app/cs/os/ostep.html</loc>
+         <loc>https://13m0n4de-notebook.vercel.app/cs/os/rcore.html</loc>
          <lastmod>2024-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://13m0n4de-notebook.vercel.app/cs/os/rcore.html</loc>
+         <loc>https://13m0n4de-notebook.vercel.app/cs/os/ostep/index.html</loc>
+         <lastmod>2024-01-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://13m0n4de-notebook.vercel.app/cs/os/ostep/02introduction.html</loc>
          <lastmod>2024-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>

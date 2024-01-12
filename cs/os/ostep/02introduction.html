@@ -3,23 +3,24 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://13m0n4de-notebook.vercel.app/gamedev/index.html" rel="canonical"/>
-<link href="../writeups/index.html" rel="prev"/>
-<link href="../assets/images/favicon.png" rel="icon"/>
+<link href="https://13m0n4de-notebook.vercel.app/cs/os/ostep/02introduction.html" rel="canonical"/>
+<link href="index.html" rel="prev"/>
+<link href="../mit6.1810.html" rel="next"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-9.5.3" name="generator"/>
-<title>Game Development &amp; Game Design - 13m0n4de's notebook</title>
-<link href="../assets/stylesheets/main.50c56a3b.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<title>02.introduction - 13m0n4de's notebook</title>
+<link href="../../../assets/stylesheets/main.50c56a3b.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/iframe-worker/shim"></script>
-<link href="../css/toc_extra.css" rel="stylesheet"/>
-<link href="../css/heti.css" rel="stylesheet"/>
-<link href="../css/timeline.css" rel="stylesheet"/>
+<link href="../../../css/toc_extra.css" rel="stylesheet"/>
+<link href="../../../css/heti.css" rel="stylesheet"/>
+<link href="../../../css/timeline.css" rel="stylesheet"/>
 <link href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css" rel="stylesheet"/>
 <link href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css" rel="stylesheet"/>
-<link href="../stylesheets/custom.css" rel="stylesheet"/>
-<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+<link href="../../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -30,13 +31,13 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="custom" data-md-color-primary="custom" data-md-color-scheme="slate" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#game-development-game-design">
+<a class="md-skip" href="#2">
           跳转至
         </a>
 </div>
@@ -44,7 +45,7 @@
 </div>
 <header class="md-header" data-md-component="header">
 <nav aria-label="页眉" class="md-header__inner md-grid">
-<a aria-label="13m0n4de's notebook" class="md-header__button md-logo" data-md-component="logo" href=".." title="13m0n4de's notebook">
+<a aria-label="13m0n4de's notebook" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="13m0n4de's notebook">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m4 4H5v2h2v-2m0-4V5H5v2h2m0 12v-2H5v2h2Z"></path></svg>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -60,7 +61,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Game Development &amp; Game Design
+              02.introduction
             
           </span>
 </div>
@@ -125,7 +126,7 @@
 <div class="md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../index.html">
+<a class="md-tabs__link" href="../../../index.html">
           
   
     
@@ -134,8 +135,8 @@
 
         </a>
 </li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../cs/index.html">
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../index.html">
           
   
     
@@ -145,7 +146,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../sec/index.html">
+<a class="md-tabs__link" href="../../../sec/index.html">
           
   
     
@@ -155,7 +156,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../ctf/index.html">
+<a class="md-tabs__link" href="../../../ctf/index.html">
           
   
     
@@ -165,7 +166,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../writeups/index.html">
+<a class="md-tabs__link" href="../../../writeups/index.html">
           
   
     
@@ -174,8 +175,8 @@
 
         </a>
 </li>
-<li class="md-tabs__item md-tabs__item--active">
-<a class="md-tabs__link" href="index.html">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../gamedev/index.html">
           
   
     
@@ -194,7 +195,7 @@
 <div class="md-sidebar__inner">
 <nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="13m0n4de's notebook" class="md-nav__button md-logo" data-md-component="logo" href=".." title="13m0n4de's notebook">
+<a aria-label="13m0n4de's notebook" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="13m0n4de's notebook">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m4 4H5v2h2v-2m0-4V5H5v2h2m0 12v-2H5v2h2Z"></path></svg>
 </a>
     13m0n4de's notebook
@@ -213,7 +214,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../index.html">
+<a class="md-nav__link" href="../../../index.html">
 <span class="md-ellipsis">
     Home
   </span>
@@ -229,7 +230,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../changelog.html">
+<a class="md-nav__link" href="../../../changelog.html">
 <span class="md-ellipsis">
     时间线
   </span>
@@ -238,10 +239,10 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/index.html">
+<a class="md-nav__link" href="../../index.html">
 <span class="md-ellipsis">
     Computer Science
   </span>
@@ -250,7 +251,7 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_2">
 <span class="md-nav__icon md-icon"></span>
             Computer Science
@@ -259,7 +260,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/pl/index.html">
+<a class="md-nav__link" href="../../pl/index.html">
 <span class="md-ellipsis">
     Programming Language &amp; ISA
   </span>
@@ -275,35 +276,35 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/c/index.html">
+<a class="md-nav__link" href="../../pl/c/index.html">
 <span class="md-ellipsis">
     C
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/python/index.html">
+<a class="md-nav__link" href="../../pl/python/index.html">
 <span class="md-ellipsis">
     Python
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/racket/index.html">
+<a class="md-nav__link" href="../../pl/racket/index.html">
 <span class="md-ellipsis">
     Racket
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/riscv/index.html">
+<a class="md-nav__link" href="../../pl/riscv/index.html">
 <span class="md-ellipsis">
     RISC-V ISA
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/rust/index.html">
+<a class="md-nav__link" href="../../pl/rust/index.html">
 <span class="md-ellipsis">
     Rust
   </span>
@@ -312,10 +313,10 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/os/index.html">
+<a class="md-nav__link" href="../index.html">
 <span class="md-ellipsis">
     Operating System
   </span>
@@ -324,16 +325,16 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_2_3">
 <span class="md-nav__icon md-icon"></span>
             Operating System
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/os/ostep/index.html">
+<a class="md-nav__link" href="index.html">
 <span class="md-ellipsis">
     OSTEP
   </span>
@@ -342,14 +343,15 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_3_2_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="true" aria-labelledby="__nav_2_3_2_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_2_3_2">
 <span class="md-nav__icon md-icon"></span>
             OSTEP
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/02introduction.html">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<a class="md-nav__link md-nav__link--active" href="02introduction.html">
 <span class="md-ellipsis">
     02.introduction
   </span>
@@ -359,14 +361,14 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/mit6.1810.html">
+<a class="md-nav__link" href="../mit6.1810.html">
 <span class="md-ellipsis">
     MIT 6.1810
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/rcore.html">
+<a class="md-nav__link" href="../rcore.html">
 <span class="md-ellipsis">
     rCore
   </span>
@@ -378,7 +380,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/compiler/index.html">
+<a class="md-nav__link" href="../../compiler/index.html">
 <span class="md-ellipsis">
     Compiler
   </span>
@@ -399,7 +401,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../sec/index.html">
+<a class="md-nav__link" href="../../../sec/index.html">
 <span class="md-ellipsis">
     Security
   </span>
@@ -417,7 +419,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../ctf/index.html">
+<a class="md-nav__link" href="../../../ctf/index.html">
 <span class="md-ellipsis">
     CTF
   </span>
@@ -435,7 +437,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../writeups/index.html">
+<a class="md-nav__link" href="../../../writeups/index.html">
 <span class="md-ellipsis">
     Writeups
   </span>
@@ -450,16 +452,16 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link md-nav__link--active" href="index.html">
+<a class="md-nav__link" href="../../../gamedev/index.html">
 <span class="md-ellipsis">
     GameDev
   </span>
 </a>
 </div>
-<nav aria-expanded="true" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_6">
 <span class="md-nav__icon md-icon"></span>
             GameDev
@@ -483,19 +485,66 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="game-development-game-design">Game Development &amp; Game Design<a class="headerlink" href="#game-development-game-design" title="Permanent link">¶</a></h1>
+<h1 id="2">第<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>章 操作系统介绍<a class="headerlink" href="#2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<p>图<span class="heti-skip"><span class="heti-spacing"> </span>2.3<span class="heti-spacing"> </span></span>的程序有点问题，<code>malloc</code> 之后没有释放，<code>%08x</code> 不如使用 <code>%p</code>，强制转换 <code>(unsigned) p</code> 也没有必要。</p>
+<p>改了一下，顺便把自定义的 <code>Spin</code> 函数换成了 <code>sleep</code> 。</p>
+<div class="highlight"><span class="filename">mem.c</span><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"> </span><span class="c1">// a1</span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"(%d) memory address of p: %p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">getpid</span><span class="p">(),</span><span class="w"> </span><span class="n">p</span><span class="p">);</span><span class="w"> </span><span class="c1">// a2</span>
+<span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                                                </span><span class="c1">// a3</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"(%d) p: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">getpid</span><span class="p">(),</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">);</span><span class="w"> </span><span class="c1">// a4</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>如果要得到和书中一样的效果，还需要关闭<span class="heti-skip"><span class="heti-spacing"> </span>ASLR<span class="heti-spacing"> </span></span>地址空间随机化，不然就算是虚拟内存，每次分配的地址也不固定。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/proc/sys/kernel/randomize_va_space
+</code></pre></div>
+<p>如果编译时关掉<span><span class="heti-spacing"> </span>PIE</span> ，得到的地址会更“好看”些，更接近书中内容。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcc<span class="w"> </span>mem.c<span class="w"> </span>-o<span class="w"> </span>mem<span class="w"> </span>-no-pie
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./mem<span class="w"> </span><span class="p">&amp;;</span><span class="w"> </span>./mem<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c1"># (1)!</span>
+<span class="o">(</span><span class="m">63585</span><span class="o">)</span><span class="w"> </span>memory<span class="w"> </span>address<span class="w"> </span>of<span class="w"> </span>p:<span class="w"> </span>0x4052a0
+<span class="o">(</span><span class="m">63586</span><span class="o">)</span><span class="w"> </span>memory<span class="w"> </span>address<span class="w"> </span>of<span class="w"> </span>p:<span class="w"> </span>0x4052a0
+<span class="o">(</span><span class="m">63585</span><span class="o">)</span><span class="w"> </span>p:<span class="w"> </span><span class="m">1</span>
+<span class="o">(</span><span class="m">63586</span><span class="o">)</span><span class="w"> </span>p:<span class="w"> </span><span class="m">1</span>
+<span class="o">(</span><span class="m">63585</span><span class="o">)</span><span class="w"> </span>p:<span class="w"> </span><span class="m">2</span>
+<span class="o">(</span><span class="m">63586</span><span class="o">)</span><span class="w"> </span>p:<span class="w"> </span><span class="m">2</span>
+<span class="o">(</span><span class="m">63586</span><span class="o">)</span><span class="w"> </span>p:<span class="w"> </span><span class="m">3</span>
+<span class="o">(</span><span class="m">63585</span><span class="o">)</span><span class="w"> </span>p:<span class="w"> </span><span class="m">3</span>
+<span class="o">(</span><span class="m">63586</span><span class="o">)</span><span class="w"> </span>p:<span class="w"> </span><span class="m">4</span>
+<span class="o">(</span><span class="m">63585</span><span class="o">)</span><span class="w"> </span>p:<span class="w"> </span><span class="m">4</span>
+<span class="o">(</span><span class="m">63586</span><span class="o">)</span><span class="w"> </span>p:<span class="w"> </span><span class="m">5</span>
+<span class="o">(</span><span class="m">63585</span><span class="o">)</span><span class="w"> </span>p:<span class="w"> </span><span class="m">5</span>
+</code></pre></div>
+<ol>
+<li><code>&amp;</code> 符号用于在<span class="heti-skip"><span class="heti-spacing"> </span>Unix-like<span class="heti-spacing"> </span></span>系统中后台运行进程，它会启动命令然后立即返回到命令行提示符，而不是挂起直到命令完成。不同的<span class="heti-skip"><span class="heti-spacing"> </span>shell<span class="heti-spacing"> </span></span>可能实现方式不同，但行为基本一致。最终的效果就是同时运行两个 <code>mem</code> 程序。</li>
+</ol>
+<p>实验完尽快把<span class="heti-skip"><span class="heti-spacing"> </span>ASLR<span class="heti-spacing"> </span></span>改回去，以免对系统安全造成影响，现代<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>系统中 <code>/proc/sys/kernel/randomize_va_space</code> 内容一般都是 <code>2</code> ，意为更强的随机化。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/proc/sys/kernel/randomize_va_space
+</code></pre></div>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月12日 06:26:42</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月12日 17:13:20</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月12日 06:26:42</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月12日 17:13:20</span>
 </span>
 </aside>
 </article>
@@ -509,7 +558,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="上一页: Writeups" class="md-footer__link md-footer__link--prev" href="../writeups/index.html">
+<a aria-label="上一页: OSTEP 学习笔记" class="md-footer__link md-footer__link--prev" href="index.html">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -518,8 +567,21 @@
                 上一页
               </span>
 <div class="md-ellipsis">
-                Writeups
+                OSTEP 学习笔记
               </div>
+</div>
+</a>
+<a aria-label="下一页: MIT 6.1810" class="md-footer__link md-footer__link--next" href="../mit6.1810.html">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                下一页
+              </span>
+<div class="md-ellipsis">
+                MIT 6.1810
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
 </div>
 </a>
 </nav>
@@ -563,7 +625,7 @@
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <div class="md-progress" data-md-component="progress" role="progressbar"></div>
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.tabs", "navigation.footer", "search.suggest", "content.code.annotate"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-<script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.tabs", "navigation.footer", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
 <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
