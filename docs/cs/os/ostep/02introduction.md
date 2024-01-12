@@ -1,10 +1,46 @@
 # 第 2 章 操作系统介绍
 
-图 2.3 的程序有点问题，`malloc` 之后没有释放，`%08x` 不如使用 `%p`，强制转换 `(unsigned) p` 也没有必要。
+这章引入了课程的三个主题，也是操作系统的三个重要功能：
 
-改了一下，顺便把自定义的 `Spin` 函数换成了 `sleep` 。
+1. 虚拟化内存
+2. 并发
+3. 持久性
 
-```c title='mem.c'
+作者介绍的时候用了一些代码示例，其中许多函数都被刻意包装了一层，不知道是因为什么，很多包装感觉都不太必要，一些代码也没那么规范，作为示例倒是无伤大雅。
+
+一开始我不知道有附录代码，全都重新改了一遍。
+
+附录代码：[github.com/remzi-arpacidusseau/ostep-code/](https://github.com/remzi-arpacidusseau/ostep-code/)
+
+## 2.1 虚拟化 CPU
+
+```c title='cpu.c' hl_lines='3 11 12'
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main(int argc, char *argv[]) {
+  if (argc != 2) {
+    fprintf(stderr, "usage: cpu <string>\n");
+    exit(1);
+  }
+  char *str = argv[1];
+  for (int i = 0; i < 5; i++) {
+    sleep(1);
+    printf("%s\n", str);
+  }
+}
+```
+
+```shell
+$ ./cpu A & ; ./cpu B & ; ./cpu C & ; ./cpu D &
+```
+
+就能看到程序在“同时运行”的假象。
+
+## 2.2 虚拟化内存
+
+```c title='mem.c' hl_lines='4 9 11 12 16'
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,7 +61,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-如果要得到和书中一样的效果，还需要关闭 ASLR 地址空间随机化，不然就算是虚拟内存，每次分配的地址也不固定。
+如果要得到和书中一样的效果，还需要关闭 ASLR 地址空间随机化，不然就算是虚拟内存，每次分配的地址也是不固定的。
 
 ```shell
 $ echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
@@ -60,4 +96,71 @@ $ ./mem &; ./mem & # (1)!
 ```shell
 $ echo 2 | sudo tee /proc/sys/kernel/randomize_va_space
 ```
+
+!!! question "关键问题：如何将资源虚拟化"
+    我们将在本书中回答一个核心问题：操作系统如何将资源虚拟化？这是关键问题。  
+    为什么操作系统这样做？这不是主要问题，因为答案应该很明显：它让系统更易于使用。  
+    因此，我们关注如何虚拟化：
+
+    1. 操作系统通过哪些机制和策略来实现虚拟化？
+    2. 操作系统如何有效地实现虚拟化？
+    3. 需要哪些硬件支持？
+
+## 2.3 并发
+
+```c title='threads.c' hl_lines="1 25-28"
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+volatile int counter = 0;
+int loops;
+
+void *worker(void *arg) {
+  int i;
+  for (i = 0; i < loops; i++) {
+    counter++;
+  }
+  return NULL;
+}
+
+int main(int argc, char *argv[]) {
+  if (argc != 2) {
+    fprintf(stderr, "usage: threads <value>\n");
+    exit(1);
+  }
+  loops = atoi(argv[1]);
+  pthread_t p1, p2;
+  printf("Initial value : %d\n", counter);
+
+  pthread_create(&p1, NULL, worker, NULL);
+  pthread_create(&p2, NULL, worker, NULL);
+  pthread_join(p1, NULL);
+  pthread_join(p2, NULL);
+  printf("Final value : %d\n", counter);
+  return 0;
+}
+```
+
+```shell
+$ ./threads 100000
+Initial value : 0
+Final value : 140997
+$ ./threads 100000
+Initial value : 0
+Final value : 119700
+$ ./threads 100000
+Initial value : 0
+Final value : 129215
+```
+
+!!! question "关键问题：如何构建正确的并发程序"
+    如果同一个内存空间中有很多并发执行的线程，如何构建一个正确工作的程序？  
+
+    1. 操作系统需要什么原语？
+    2. 硬件应该提供哪些机制？
+    3. 我们如何利用它们来解决并发问题？
+
+## 2.6 简单历史
+
 
