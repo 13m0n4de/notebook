@@ -102,12 +102,11 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
-not_in_nav: todo.md
-
 nav:
   - Home:
     - index.md
     - Timeline: changelog.md
+    - Todo: todo.md
   - Computer Science:
     - cs/index.md
     - Programming Language & ISA:
