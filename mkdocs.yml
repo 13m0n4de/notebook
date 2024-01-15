@@ -121,6 +121,7 @@ nav:
       - OSTEP:
         - cs/os/ostep/index.md
         - 02.Introduction: cs/os/ostep/02introduction.md
+        - 04.Processes: cs/os/ostep/04processes.md
       - MIT 6.1810: cs/os/mit6.1810.md
       - rCore: cs/os/rcore.md
     - Compiler:
