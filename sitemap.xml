@@ -2,102 +2,107 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/changelog.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/todo.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/cs/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/cs/compiler/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/cs/os/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/cs/os/mit6.1810.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/cs/os/rcore.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/cs/os/ostep/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/cs/os/ostep/02introduction.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://13m0n4de-notebook.vercel.app/cs/os/ostep/04processes.html</loc>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/cs/pl/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/cs/pl/c/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/cs/pl/python/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/cs/pl/racket/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/cs/pl/riscv/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/cs/pl/rust/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/ctf/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/gamedev/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/sec/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://13m0n4de-notebook.vercel.app/writeups/index.html</loc>
-         <lastmod>2024-01-13</lastmod>
+         <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

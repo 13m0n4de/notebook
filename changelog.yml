@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-01-16":
+    - newpage:
+          text: CS > OS > OSTEP > 04.Processes
+          href: /cs/os/ostep/04processes.html
   - "2024-01-12":
     - pageupdate:
         text: CS > OS > OSTEP > 02.Introduction 添加“持久性”和“简单历史”小节
