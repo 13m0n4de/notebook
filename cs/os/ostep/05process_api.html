@@ -3,24 +3,24 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://13m0n4de-notebook.vercel.app/todo.html" rel="canonical"/>
-<link href="changelog.html" rel="prev"/>
-<link href="cs/index.html" rel="next"/>
-<link href="assets/images/favicon.png" rel="icon"/>
+<link href="https://13m0n4de-notebook.vercel.app/cs/os/ostep/05process_api.html" rel="canonical"/>
+<link href="04processes.html" rel="prev"/>
+<link href="../mit6.1810.html" rel="next"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-9.5.3" name="generator"/>
-<title>Todo - 13m0n4de's notebook</title>
-<link href="assets/stylesheets/main.50c56a3b.min.css" rel="stylesheet"/>
-<link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<title>05.Process API - 13m0n4de's notebook</title>
+<link href="../../../assets/stylesheets/main.50c56a3b.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/iframe-worker/shim"></script>
-<link href="css/toc_extra.css" rel="stylesheet"/>
-<link href="css/heti.css" rel="stylesheet"/>
-<link href="css/timeline.css" rel="stylesheet"/>
+<link href="../../../css/toc_extra.css" rel="stylesheet"/>
+<link href="../../../css/heti.css" rel="stylesheet"/>
+<link href="../../../css/timeline.css" rel="stylesheet"/>
 <link href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css" rel="stylesheet"/>
 <link href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css" rel="stylesheet"/>
-<link href="stylesheets/custom.css" rel="stylesheet"/>
-<script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-<link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+<link href="../../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -31,13 +31,13 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="custom" data-md-color-primary="custom" data-md-color-scheme="slate" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#_1">
+<a class="md-skip" href="#5-api">
           跳转至
         </a>
 </div>
@@ -45,7 +45,7 @@
 </div>
 <header class="md-header" data-md-component="header">
 <nav aria-label="页眉" class="md-header__inner md-grid">
-<a aria-label="13m0n4de's notebook" class="md-header__button md-logo" data-md-component="logo" href="." title="13m0n4de's notebook">
+<a aria-label="13m0n4de's notebook" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="13m0n4de's notebook">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m4 4H5v2h2v-2m0-4V5H5v2h2m0 12v-2H5v2h2Z"></path></svg>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -61,7 +61,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Todo
+              05.Process API
             
           </span>
 </div>
@@ -125,8 +125,8 @@
 <nav aria-label="标签" class="md-tabs" data-md-component="tabs">
 <div class="md-grid">
 <ul class="md-tabs__list">
-<li class="md-tabs__item md-tabs__item--active">
-<a class="md-tabs__link" href="index.html">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../index.html">
           
   
     
@@ -135,8 +135,8 @@
 
         </a>
 </li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="cs/index.html">
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../index.html">
           
   
     
@@ -146,7 +146,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="sec/index.html">
+<a class="md-tabs__link" href="../../../sec/index.html">
           
   
     
@@ -156,7 +156,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="ctf/index.html">
+<a class="md-tabs__link" href="../../../ctf/index.html">
           
   
     
@@ -166,7 +166,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="writeups/index.html">
+<a class="md-tabs__link" href="../../../writeups/index.html">
           
   
     
@@ -176,7 +176,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="gamedev/index.html">
+<a class="md-tabs__link" href="../../../gamedev/index.html">
           
   
     
@@ -195,7 +195,7 @@
 <div class="md-sidebar__inner">
 <nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="13m0n4de's notebook" class="md-nav__button md-logo" data-md-component="logo" href="." title="13m0n4de's notebook">
+<a aria-label="13m0n4de's notebook" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="13m0n4de's notebook">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m4 4H5v2h2v-2m0-4V5H5v2h2m0 12v-2H5v2h2Z"></path></svg>
 </a>
     13m0n4de's notebook
@@ -211,10 +211,10 @@
 </a>
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="index.html">
+<a class="md-nav__link" href="../../../index.html">
 <span class="md-ellipsis">
     Home
   </span>
@@ -223,62 +223,33 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="true" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_1">
 <span class="md-nav__icon md-icon"></span>
             Home
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="changelog.html">
+<a class="md-nav__link" href="../../../changelog.html">
 <span class="md-ellipsis">
     Timeline
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../todo.html">
 <span class="md-ellipsis">
     Todo
   </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="todo.html">
-<span class="md-ellipsis">
-    Todo
-  </span>
-</a>
-<nav aria-label="目录" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_2">
-<span class="md-ellipsis">
-      笔记
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_3">
-<span class="md-ellipsis">
-      网站建设
-    </span>
 </a>
 </li>
 </ul>
 </nav>
 </li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="cs/index.html">
+<a class="md-nav__link" href="../../index.html">
 <span class="md-ellipsis">
     Computer Science
   </span>
@@ -287,7 +258,7 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_2">
 <span class="md-nav__icon md-icon"></span>
             Computer Science
@@ -296,7 +267,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="cs/pl/index.html">
+<a class="md-nav__link" href="../../pl/index.html">
 <span class="md-ellipsis">
     Programming Language &amp; ISA
   </span>
@@ -312,35 +283,35 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="cs/pl/c/index.html">
+<a class="md-nav__link" href="../../pl/c/index.html">
 <span class="md-ellipsis">
     C
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="cs/pl/python/index.html">
+<a class="md-nav__link" href="../../pl/python/index.html">
 <span class="md-ellipsis">
     Python
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="cs/pl/racket/index.html">
+<a class="md-nav__link" href="../../pl/racket/index.html">
 <span class="md-ellipsis">
     Racket
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="cs/pl/riscv/index.html">
+<a class="md-nav__link" href="../../pl/riscv/index.html">
 <span class="md-ellipsis">
     RISC-V ISA
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="cs/pl/rust/index.html">
+<a class="md-nav__link" href="../../pl/rust/index.html">
 <span class="md-ellipsis">
     Rust
   </span>
@@ -349,10 +320,10 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="cs/os/index.html">
+<a class="md-nav__link" href="../index.html">
 <span class="md-ellipsis">
     Operating System
   </span>
@@ -361,16 +332,16 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_2_3">
 <span class="md-nav__icon md-icon"></span>
             Operating System
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="cs/os/ostep/index.html">
+<a class="md-nav__link" href="index.html">
 <span class="md-ellipsis">
     OSTEP
   </span>
@@ -379,45 +350,67 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_3_2_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="true" aria-labelledby="__nav_2_3_2_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_2_3_2">
 <span class="md-nav__icon md-icon"></span>
             OSTEP
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="cs/os/ostep/02introduction.html">
+<a class="md-nav__link" href="02introduction.html">
 <span class="md-ellipsis">
     02.Introduction
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="cs/os/ostep/04processes.html">
+<a class="md-nav__link" href="04processes.html">
 <span class="md-ellipsis">
     04.Processes
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="cs/os/ostep/05process_api.html">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
 <span class="md-ellipsis">
     05.Process API
   </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="05process_api.html">
+<span class="md-ellipsis">
+    05.Process API
+  </span>
+</a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      作业
+    </span>
 </a>
 </li>
 </ul>
 </nav>
 </li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="cs/os/mit6.1810.html">
+<a class="md-nav__link" href="../mit6.1810.html">
 <span class="md-ellipsis">
     MIT 6.1810
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="cs/os/rcore.html">
+<a class="md-nav__link" href="../rcore.html">
 <span class="md-ellipsis">
     rCore
   </span>
@@ -429,7 +422,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="cs/compiler/index.html">
+<a class="md-nav__link" href="../../compiler/index.html">
 <span class="md-ellipsis">
     Compiler
   </span>
@@ -450,7 +443,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="sec/index.html">
+<a class="md-nav__link" href="../../../sec/index.html">
 <span class="md-ellipsis">
     Security
   </span>
@@ -468,7 +461,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="ctf/index.html">
+<a class="md-nav__link" href="../../../ctf/index.html">
 <span class="md-ellipsis">
     CTF
   </span>
@@ -486,7 +479,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="writeups/index.html">
+<a class="md-nav__link" href="../../../writeups/index.html">
 <span class="md-ellipsis">
     Writeups
   </span>
@@ -504,7 +497,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="gamedev/index.html">
+<a class="md-nav__link" href="../../../gamedev/index.html">
 <span class="md-ellipsis">
     GameDev
   </span>
@@ -534,16 +527,9 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#_2">
+<a class="md-nav__link" href="#_1">
 <span class="md-ellipsis">
-      笔记
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_3">
-<span class="md-ellipsis">
-      网站建设
+      作业
     </span>
 </a>
 </li>
@@ -554,75 +540,83 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="_1">待办事项<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
-<p>待办不代表正在办或一定会办，唯一确认的是它们都未完成。</p>
-<h2 id="_2">笔记<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> <span>OSTEP<span class="heti-spacing"> </span></span>学习笔记</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> <span>rCore<span class="heti-spacing"> </span></span>学习笔记，以及自己实现时的一些改进想法</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> <span>MIT 6.1810<span class="heti-spacing"> </span></span>学习笔记，<span>xv6<span class="heti-spacing"> </span></span>源码分析</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 一些游戏相关的<span class="heti-skip"><span class="heti-spacing"> </span>AI<span class="heti-spacing"> </span></span>工作流</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 有关游戏设计的讨论会记录</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 编译器前端</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> <span>Lisp<span class="heti-spacing"> </span></span>解释器的<span class="heti-skip"><span class="heti-spacing"> </span>Rust<span class="heti-spacing"> </span></span>实现</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 编程语言<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 现代<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言编程</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> <span>Python<span class="heti-spacing"> </span></span>不常见特性</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> <span>Rust -&gt; Zig<span class="heti-spacing"> </span></span>速通</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 一些奇怪的“黑魔法”</li>
-</ul>
-</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 以往的<span class="heti-skip"><span class="heti-spacing"> </span>CTF<span class="heti-spacing"> </span></span>比赛题解</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> <span>CTF<span class="heti-spacing"> </span></span>出题经验<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 使用<span class="heti-skip"><span class="heti-spacing"> </span>GitHub<span class="heti-spacing"> </span></span>仓库协作出题、构建镜像</li>
-</ul>
-</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 计算机自救指南（受人委托，写几篇计算机入门指南）<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 如何提问</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 硬件选购</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 电脑日常使用习惯<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 软件选择</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 安全问题</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 隐私保护</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> ...</li>
-</ul>
-</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 保持网络畅通</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 外语</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 信息源<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 搜索引擎</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 论坛，博客</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> RSS</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 书籍</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 如何判断信息源质量</li>
-</ul>
-</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 如何阅读文档</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> AI</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 编程语言选择</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 工具选择</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 各学科前置知识</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> ...</li>
-</ul>
-</li>
-</ul>
-<h2 id="_3">网站建设<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 主页</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> 亮色模式下更好的代码高亮配色方案</li>
-</ul>
+<h1 id="5-api">第<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>章 插叙：进程<span><span class="heti-spacing"> </span>API</span><a class="headerlink" href="#5-api" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<p>这章只是介绍了一些有关进程的<span><span class="heti-spacing"> </span>API</span> 。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">系统调用</th>
+<th style="text-align: left;">功能</th>
+<th style="text-align: left;">返回值</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">fork</td>
+<td style="text-align: left;">创建子进程</td>
+<td style="text-align: left;">在父进程中返回子进程的<span><span class="heti-spacing"> </span>PID</span> ，子进程中返回 <code>0</code> ，失败时返回 <code>-1</code></td>
+<td style="text-align: left;">子进程会复制一份父进程的内存内容，但它们在不同的内存空间，运行 <code>mmap</code> 等不会互相影响</td>
+</tr>
+<tr>
+<td style="text-align: left;">wait</td>
+<td style="text-align: left;">等待子进程运行完毕</td>
+<td style="text-align: left;">成功时返回结束的子进程<span><span class="heti-spacing"> </span>PID</span> ，失败时返回 <code>-1</code></td>
+<td style="text-align: left;">调用 <code>wait()</code> 等于调用 <code>waitpid(-1, &amp;wstatus, 0)</code> ，会等待任意一个子进程结束</td>
+</tr>
+<tr>
+<td style="text-align: left;">exec</td>
+<td style="text-align: left;">执行新的程序</td>
+<td style="text-align: left;">只有发生错误才会返回，返回 <code>-1</code></td>
+<td style="text-align: left;">它实际做的是使用新的进程映像替换当前进程映像，从可执行程序中加载代码和静态数据，并用它覆写自己的代码段（以及静态数据<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，堆、栈及其他内存空间也会被重新初始化。所以 <code>exec()</code> 等函数执行成功后没法返回，因为原有的程序已经被替换了</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_1">作业<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>1．编写一个调用<span class="heti-skip"><span class="heti-spacing"> </span>fork()<span class="heti-spacing"> </span></span>的程序。在调用<span class="heti-skip"><span class="heti-spacing"> </span>fork()<span class="heti-spacing"> </span></span>之前，让主进程访问一个变量（例如<span><span class="heti-spacing"> </span>x</span>）并将其值设置为某个值（例如<span><span class="heti-spacing"> </span>100</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。子进程中的变量有什么值？当子进程和父进程都改变<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>的值，变量会发生什么？</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>2．编写一个打开文件的程序（使用<span class="heti-skip"><span class="heti-spacing"> </span>open()<span class="heti-spacing"> </span></span>系统调用<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，然后调用<span class="heti-skip"><span class="heti-spacing"> </span>fork()<span class="heti-spacing"> </span></span>创建一个新进程。子进程和父进程都可以访问<span class="heti-skip"><span class="heti-spacing"> </span>open()<span class="heti-spacing"> </span></span>返回的文件描述符吗？当它们并发（即同时）写入文件时，会发生什么？</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>3．使用<span class="heti-skip"><span class="heti-spacing"> </span>fork()<span class="heti-spacing"> </span></span>编写另一个程序。子进程应打印“hello”，父进程应打印“goodbye”。你应该尝试确保子进程始终先打印。你能否不在父进程调用<span class="heti-skip"><span class="heti-spacing"> </span>wait()<span class="heti-spacing"> </span></span>而做到这一点呢？</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>4．编写一个调用<span class="heti-skip"><span class="heti-spacing"> </span>fork()<span class="heti-spacing"> </span></span>的程序，然后调用某种形式的<span class="heti-skip"><span class="heti-spacing"> </span>exec()<span class="heti-spacing"> </span></span>来运行程序<span><span class="heti-spacing"> </span>/bin/ls</span>。看看是否可以尝试<span class="heti-skip"><span class="heti-spacing"> </span>exec()<span class="heti-spacing"> </span></span>的所有变体，包括<span><span class="heti-spacing"> </span>execl()</span>、execle()、execlp()、execv()、<span>execvp()<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>execvP()</span>。为什么同样的基本调用会有这么多变种？</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>5．现在编写一个程序，在父进程中使用<span><span class="heti-spacing"> </span>wait()</span>，等待子进程完成。<span>wait()<span class="heti-spacing"> </span></span>返回什么？如果你在子进程中使用<span class="heti-skip"><span class="heti-spacing"> </span>wait()<span class="heti-spacing"> </span></span>会发生什么？</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>6．对前一个程序稍作修改，这次使用<span class="heti-skip"><span class="heti-spacing"> </span>waitpid()<span class="heti-spacing"> </span></span>而我是<span><span class="heti-spacing"> </span>wait()</span>。什么时候<span class="heti-skip"><span class="heti-spacing"> </span>waitpid()<span class="heti-spacing"> </span></span>会有用？</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>7．编写一个创建子进程的程序，然后在子进程中关闭标准输出（STDOUT_FILENO<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。如果子进程在关闭描述符后调用<span class="heti-skip"><span class="heti-spacing"> </span>printf()<span class="heti-spacing"> </span></span>打印输出，会发生什么？</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>8．编写一个程序，创建两个子进程，并使用<span class="heti-skip"><span class="heti-spacing"> </span>pipe()<span class="heti-spacing"> </span></span>系统调用，将一个子进程的标准输出连接到另一个子进程的标准输入。</p>
+</div>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月13日 21:31:57</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月17日 05:37:30</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月12日 06:26:42</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月17日 05:37:30</span>
 </span>
 </aside>
 </article>
@@ -636,7 +630,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="上一页: Timeline" class="md-footer__link md-footer__link--prev" href="changelog.html">
+<a aria-label="上一页: 04.Processes" class="md-footer__link md-footer__link--prev" href="04processes.html">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -645,17 +639,17 @@
                 上一页
               </span>
 <div class="md-ellipsis">
-                Timeline
+                04.Processes
               </div>
 </div>
 </a>
-<a aria-label="下一页: Computer Science" class="md-footer__link md-footer__link--next" href="cs/index.html">
+<a aria-label="下一页: MIT 6.1810" class="md-footer__link md-footer__link--next" href="../mit6.1810.html">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 下一页
               </span>
 <div class="md-ellipsis">
-                Computer Science
+                MIT 6.1810
               </div>
 </div>
 <div class="md-footer__button md-icon">
@@ -703,7 +697,7 @@
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <div class="md-progress" data-md-component="progress" role="progressbar"></div>
-<script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.tabs", "navigation.footer", "search.suggest", "content.code.annotate"], "search": "assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-<script src="assets/javascripts/bundle.d7c377c4.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.tabs", "navigation.footer", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
 <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
