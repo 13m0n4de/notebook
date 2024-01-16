@@ -13,9 +13,9 @@
     - Rust: pl/rust/
 - Operating System:
     - index: os/
-    - OSTEP[note]: os/ostep/
-    - MIT 6.1810[note]: os/mit6.1810.html
-    - rCore[note]: os/rcore.html
+    - OSTEP\[note\]: os/ostep/
+    - MIT 6.1810\[note\]: os/mit6.1810.html
+    - rCore\[note\]: os/rcore.html
 - Compiler:
     - index: compiler/
 
