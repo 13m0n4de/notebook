@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-01-17":
+    - newpage:
+          text: CS > OS > OSTEP > 05.Process API
+          href: /cs/os/ostep/05process_api.html
   - "2024-01-16":
     - newpage:
           text: CS > OS > OSTEP > 04.Processes
