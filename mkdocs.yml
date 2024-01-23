@@ -111,7 +111,8 @@ nav:
     - cs/index.md
     - Programming Language & ISA:
       - cs/pl/index.md
-      - C: cs/pl/c/index.md
+      - C:
+        - Including C Files Over HTTPS: cs/pl/c/including_c_files_over_https.md
       - Python: cs/pl/python/index.md
       - Racket: cs/pl/racket/index.md
       - RISC-V ISA: cs/pl/riscv/index.md
@@ -123,6 +124,7 @@ nav:
         - 02.Introduction: cs/os/ostep/02introduction.md
         - 04.Processes: cs/os/ostep/04processes.md
         - 05.Process API: cs/os/ostep/05process_api.md
+        - 06.Direct Execution: cs/os/ostep/06direct_execution.md
       - MIT 6.1810: cs/os/mit6.1810.md
       - rCore: cs/os/rcore.md
     - Compiler:
