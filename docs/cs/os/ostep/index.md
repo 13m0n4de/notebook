@@ -8,6 +8,7 @@
 
 ## Table of Contents
 
-- [02.Introduction](02introduction.md)
-- [04.Processes](04processes.md)
-- [05.Process API](05process_api.md)
+- [02.Introduction](./02introduction.md)
+- [04.Processes](./04processes.md)
+- [05.Process API](./05process_api.md)
+- [06.Direct Execution](./06direct_execution.md)
