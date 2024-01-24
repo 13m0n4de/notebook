@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-01-24":
+    - pageupdate:
+          text: CS > OS > OSTEP > 06.Direct Execution
+          href: cs/os/ostep/06direct_execution.html
   - "2024-01-23":
     - newpage:
           text: CS > OS > OSTEP > 06.Direct Execution
