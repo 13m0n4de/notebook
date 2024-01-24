@@ -112,6 +112,7 @@ nav:
     - Programming Language & ISA:
       - cs/pl/index.md
       - C:
+        - cs/pl/c/index.md
         - Including C Files Over HTTPS: cs/pl/c/including_c_files_over_https.md
       - Python: cs/pl/python/index.md
       - Racket: cs/pl/racket/index.md
