@@ -1,4 +1,6 @@
 - "2024":
+  - "2024-01-27":
+    - function: 添加 Katex 支持
   - "2024-01-24":
     - pageupdate:
           text: CS > OS > OSTEP > 06.Direct Execution

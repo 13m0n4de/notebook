@@ -52,8 +52,15 @@ extra_css:
   - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
   - https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
   - https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
   
   - stylesheets/custom.css
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
+  - javascripts/katex.js
 
 plugins:
   - search # 搜索
@@ -95,7 +102,11 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tasklist:
@@ -126,6 +137,7 @@ nav:
         - 04.Processes: cs/os/ostep/04processes.md
         - 05.Process API: cs/os/ostep/05process_api.md
         - 06.Direct Execution: cs/os/ostep/06direct_execution.md
+        - 07.CPU Scheduling: cs/os/ostep/07cpu_scheduling.md
       - MIT 6.1810: cs/os/mit6.1810.md
       - rCore: cs/os/rcore.md
     - Compiler:
