@@ -966,8 +966,8 @@ T_C = 10s \\
 </div>
 <div class="admonition note">
 <p class="admonition-title">Answer</p>
-<p><span class="arithmatex">\(T_{\text{SJF response}} \approx 107.33\)</span> <span class="arithmatex">\(T_{\text{SJF turnaround}} \approx 242.67\)</span></p>
-<p><span class="arithmatex">\(T_{\text{FIFO response}} \approx 163.33\)</span> <span class="arithmatex">\(T_{\text{FIFO turnaround}} \approx 298.67\)</span></p>
+<p><span class="arithmatex">\(\bar{T_{\text{SJF response}}} \approx 107.33\)</span> <span class="arithmatex">\(\bar{T_{\text{SJF turnaround}}} \approx 242.67\)</span></p>
+<p><span class="arithmatex">\(\bar{T_{\text{FIFO response}}} \approx 163.33\)</span> <span class="arithmatex">\(\bar{T_{\text{FIFO turnaround}}} \approx 298.67\)</span></p>
 <div class="highlight"><span class="filename">python scheduler.py -p SJF -j 3 -m 200 -c</span><pre><span></span><code>ARG policy SJF
 ARG jobs 3
 ARG maxlen 200
@@ -1025,18 +1025,134 @@ Final statistics:
 <p class="admonition-title">Answer</p>
 <p>同上，<span>SFJ<span class="heti-spacing"> </span></span>的响应时间和周转时间都要比<span class="heti-skip"><span class="heti-spacing"> </span>FIFO<span class="heti-spacing"> </span></span>少。</p>
 </div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>3．现在做同样的事情，但采用<span class="heti-skip"><span class="heti-spacing"> </span>RR<span class="heti-spacing"> </span></span>调度程序，时间片为<span><span class="heti-spacing"> </span>1</span>。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p><span class="arithmatex">\(\bar{T_{\text{RR response}}} = 1\)</span> <span class="arithmatex">\(\bar{T_{\text{RR turnaround}}} = 350\)</span></p>
+<div class="highlight"><span class="filename">python scheduler.py -p RR -j 3 -m 200 -q 1 -c</span><pre><span></span><code>ARG policy RR
+ARG jobs 3
+ARG maxlen 200
+ARG seed 0
+
+Here is the job list, with the run time of each job:
+  Job 0 ( length = 169 )
+  Job 1 ( length = 152 )
+  Job 2 ( length = 85 )
+
+** Solutions **
+
+Execution trace:
+  [ time   0 ] Run job   0 for 1.00 secs
+  [ time   1 ] Run job   1 for 1.00 secs
+  [ time   2 ] Run job   2 for 1.00 secs
+  [ time   3 ] Run job   0 for 1.00 secs
+  ...
+  [ time 402 ] Run job   0 for 1.00 secs
+  [ time 403 ] Run job   0 for 1.00 secs
+  [ time 404 ] Run job   0 for 1.00 secs
+  [ time 405 ] Run job   0 for 1.00 secs ( DONE at 406.00 )
+
+Final statistics:
+  Job   0 -- Response: 0.00  Turnaround 406.00  Wait 237.00
+  Job   1 -- Response: 1.00  Turnaround 389.00  Wait 237.00
+  Job   2 -- Response: 2.00  Turnaround 255.00  Wait 170.00
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>4．对于什么类型的工作负载，<span>SJF<span class="heti-spacing"> </span></span>提供与<span class="heti-skip"><span class="heti-spacing"> </span>FIFO<span class="heti-spacing"> </span></span>相同的周转时间？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>任务同时到达咯。</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>5．对于什么类型的工作负载和量子长度，<span>SJF<span class="heti-spacing"> </span></span>与<span class="heti-skip"><span class="heti-spacing"> </span>RR<span class="heti-spacing"> </span></span>提供相同的响应时间？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>任务长度相同且等于量子长度。</p>
+<div class="highlight"><span class="filename">python scheduler.py -p SJF -c -l 10,10,10</span><pre><span></span><code>ARG policy SJF
+ARG jlist 10,10,10
+
+Here is the job list, with the run time of each job:
+  Job 0 ( length = 10.0 )
+  Job 1 ( length = 10.0 )
+  Job 2 ( length = 10.0 )
+
+** Solutions **
+
+Execution trace:
+  [ time   0 ] Run job 0 for 10.00 secs ( DONE at 10.00 )
+  [ time  10 ] Run job 1 for 10.00 secs ( DONE at 20.00 )
+  [ time  20 ] Run job 2 for 10.00 secs ( DONE at 30.00 )
+
+Final statistics:
+  Job   0 -- Response: 0.00  Turnaround 10.00  Wait 0.00
+  Job   1 -- Response: 10.00  Turnaround 20.00  Wait 10.00
+  Job   2 -- Response: 20.00  Turnaround 30.00  Wait 20.00
+
+  Average -- Response: 10.00  Turnaround 20.00  Wait 10.00
+</code></pre></div>
+<div class="highlight"><span class="filename">python scheduler.py -p RR -q 10 -c -l 10,10,10</span><pre><span></span><code>ARG policy RR
+ARG jlist 10,10,10
+
+Here is the job list, with the run time of each job:
+  Job 0 ( length = 10.0 )
+  Job 1 ( length = 10.0 )
+  Job 2 ( length = 10.0 )
+
+** Solutions **
+
+Execution trace:
+  [ time   0 ] Run job   0 for 10.00 secs ( DONE at 10.00 )
+  [ time  10 ] Run job   1 for 10.00 secs ( DONE at 20.00 )
+  [ time  20 ] Run job   2 for 10.00 secs ( DONE at 30.00 )
+
+Final statistics:
+  Job   0 -- Response: 0.00  Turnaround 10.00  Wait 0.00
+  Job   1 -- Response: 10.00  Turnaround 20.00  Wait 10.00
+  Job   2 -- Response: 20.00  Turnaround 30.00  Wait 20.00
+
+  Average -- Response: 10.00  Turnaround 20.00  Wait 10.00
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>6．随着工作长度的增加，<span>SJF<span class="heti-spacing"> </span></span>的响应时间会怎样？你能使用模拟程序来展示趋势吗？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<div class="highlight"><pre><span></span><code>$ python scheduler.py -p SJF -j 3 -m 10 -c
+$ python scheduler.py -p SJF -j 3 -m 100 -c
+$ python scheduler.py -p SJF -j 3 -m 1000 -c
+</code></pre></div>
+<p><span><span class="arithmatex">\(T_{\text{SJF response}}\)</span><span class="heti-spacing"> </span></span>会不断增加。</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>7．随着量子长度的增加，<span>RR<span class="heti-spacing"> </span></span>的响应时间会怎样？你能写出一个方程，计算给定<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>个工作时，最坏情况的响应时间吗？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p><span class="arithmatex">\(T_{\text{worst-case response}} = (N - 1) \times T_{\text{quantum}}\)</span></p>
+</div>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月27日 23:55:57</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月28日 00:48:58</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月27日 23:55:57</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月28日 00:48:58</span>
 </span>
 </aside>
 </article>

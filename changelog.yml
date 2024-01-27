@@ -1,4 +1,10 @@
 - "2024":
+  - "2024-01-27":
+    - pageupdate:
+          text: CS > OS > OSTEP > 07.CPU Scheduling
+          href: cs/os/ostep/07cpu_scheduling.html
+  - "2024-01-27":
+    - function: 添加 Katex 支持
   - "2024-01-24":
     - pageupdate:
           text: CS > OS > OSTEP > 06.Direct Execution
