@@ -159,13 +159,15 @@ $$
 T_{\text{response}} = T_{\text{firstrun}} - T_{\text{arrival}}
 $$
 
-上小节示例中，A 在 0s 到达，B 和 C 在 10s 到达，每个作业的响应时间如下：
+上小节示例中，A 在 0s 到达，B 和 C 在 10s 到达，作业的响应时间如下：
 
 $$
-T_A = 0s \\
-T_B = 0s \\
-T_C = 10s \\
-\bar{T_{\text{response}}} \approx 3.33s
+\begin{align}
+    T_{\text{A response}} &= 0s \\
+    T_{\text{B response}} &= 0s \\
+    T_{\text{B response}} &= 10s \\
+    \bar{T_{\text{response}}} &\approx 3.33s
+\end{align}
 $$
 
 这种方法虽然有很好的周转时间，但对于响应时间和交互性是相当糟糕的。
