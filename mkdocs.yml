@@ -49,8 +49,8 @@ extra:
       link: https://example.com/
 
 extra_css:
-  - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
-  - https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
+  # - https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css
   - https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
   
