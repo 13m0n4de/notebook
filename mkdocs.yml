@@ -21,6 +21,7 @@ theme:
     - navigation.footer
     - search.suggest
     - content.code.annotate
+    - content.footnote.tooltips
 
   palette:
     - media: "(prefers-color-scheme: dark)"
