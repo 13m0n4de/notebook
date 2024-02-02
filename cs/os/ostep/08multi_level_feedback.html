@@ -4,9 +4,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://13m0n4de-notebook.vercel.app/cs/os/ostep/08multi_level_feedback.html" rel="canonical"/>
+<link href="07cpu_scheduling.html" rel="prev"/>
+<link href="../mit6.1810.html" rel="next"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-9.5.5" name="generator"/>
-<title>第 8 章 调度：多级反馈队列 - 13m0n4de's notebook</title>
+<title>08.Multi-level Feedback - 13m0n4de's notebook</title>
 <link href="../../../assets/stylesheets/main.50c56a3b.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/iframe-worker/shim"></script>
@@ -59,7 +61,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              第 8 章 调度：多级反馈队列
+              08.Multi-level Feedback
             
           </span>
 </div>
@@ -133,7 +135,7 @@
 
         </a>
 </li>
-<li class="md-tabs__item">
+<li class="md-tabs__item md-tabs__item--active">
 <a class="md-tabs__link" href="../../index.html">
           
   
@@ -244,8 +246,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
 <a class="md-nav__link" href="../../index.html">
 <span class="md-ellipsis">
@@ -256,7 +258,7 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_2">
 <span class="md-nav__icon md-icon"></span>
             Computer Science
@@ -339,8 +341,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
 <a class="md-nav__link" href="../index.html">
 <span class="md-ellipsis">
@@ -351,14 +353,14 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_2_3">
 <span class="md-nav__icon md-icon"></span>
             Operating System
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
 <a class="md-nav__link" href="index.html">
 <span class="md-ellipsis">
@@ -369,7 +371,7 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_3_2_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="true" aria-labelledby="__nav_2_3_2_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_2_3_2">
 <span class="md-nav__icon md-icon"></span>
             OSTEP
@@ -409,6 +411,109 @@
     07.CPU Scheduling
   </span>
 </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    08.Multi-level Feedback
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="08multi_level_feedback.html">
+<span class="md-ellipsis">
+    08.Multi-level Feedback
+  </span>
+</a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#81-mlfq">
+<span class="md-ellipsis">
+      8.1 MLFQ：基本规则
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#82-1">
+<span class="md-ellipsis">
+      8.2 尝试 1：如何改变优先级
+    </span>
+</a>
+<nav aria-label="8.2 尝试 1：如何改变优先级" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1">
+<span class="md-ellipsis">
+      实例 1：单个长工作
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2">
+<span class="md-ellipsis">
+      实例 2：来了一个短工作
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-io">
+<span class="md-ellipsis">
+      实例 3：如果有 I/O 呢
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mlfq">
+<span class="md-ellipsis">
+      当前 MLFQ 的一些问题
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#83-2">
+<span class="md-ellipsis">
+      8.3 尝试 2：提升优先级
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#84-3">
+<span class="md-ellipsis">
+      8.4 尝试 3：更好的计时方式
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#85-mlfq">
+<span class="md-ellipsis">
+      8.5 MLFQ 调优及其他问题
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#86-mlfq">
+<span class="md-ellipsis">
+      8.6 MLFQ：小结
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      作业
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -573,8 +678,50 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mlfq">
+<span class="md-ellipsis">
+      当前 MLFQ 的一些问题
+    </span>
+</a>
+</li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#83-2">
+<span class="md-ellipsis">
+      8.3 尝试 2：提升优先级
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#84-3">
+<span class="md-ellipsis">
+      8.4 尝试 3：更好的计时方式
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#85-mlfq">
+<span class="md-ellipsis">
+      8.5 MLFQ 调优及其他问题
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#86-mlfq">
+<span class="md-ellipsis">
+      8.6 MLFQ：小结
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      作业
+    </span>
+</a>
 </li>
 </ul>
 </nav>
@@ -648,6 +795,7 @@ gantt
 </div>
 <h3 id="3-io">实例<span><span class="heti-spacing"> </span>3</span>：如果有<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>呢<a class="headerlink" href="#3-io" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>如果进程在时间片用完之前主动放弃<span><span class="heti-spacing"> </span>CPU</span> ，则不“处罚”它，保持它的优先级不变。</p>
+<p>交互型工作<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>每执行<span class="heti-skip"><span class="heti-spacing"> </span>1ms<span class="heti-spacing"> </span></span>便需要进行<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>操作，它与长时间运行的工作<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>竞争<span><span class="heti-spacing"> </span>CPU</span> 。<span>MLFQ<span class="heti-spacing"> </span></span>算法保持<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>在最高优先级，因为<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>总是让出<span><span class="heti-spacing"> </span>CPU</span> 。</p>
 <pre class="mermaid"><code>---
 displayMode: compact
 ---
@@ -700,18 +848,326 @@ gantt
         A:  171,    9ms
         A:  181,    9ms
         A:  191,    9ms</code></pre>
+<h3 id="mlfq">当前<span class="heti-skip"><span class="heti-spacing"> </span>MLFQ<span class="heti-spacing"> </span></span>的一些问题<a class="headerlink" href="#mlfq" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<dl>
+<dt>“饥饿问题”</dt>
+<dd>
+<p>如果系统有“太多”交互型工作，就会不断占用<span><span class="heti-spacing"> </span>CPU</span> ，导致长工作永远无法得到<span><span class="heti-spacing"> </span>CPU</span>（它们饿死了<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+</dd>
+<dt>愚弄调度程序（game the scheduler）</dt>
+<dd>
+<p>用一些卑鄙的手段欺骗调度程序，让它给你远超公平的资源。上述算法对如下的攻击束手无策：进程在时间片用完之前，调用一个<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>操作（比如访问一个无关的文件<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，从而主动释放<span><span class="heti-spacing"> </span>CPU</span>。如此便可以保持在高优先级，占用更多的<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>时间。</p>
+</dd>
+</dl>
+<h2 id="83-2"><span>8.3<span class="heti-spacing"> </span></span>尝试<span><span class="heti-spacing"> </span>2</span>：提升优先级<a class="headerlink" href="#83-2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>规则<span><span class="heti-spacing"> </span>5</span>：经过一段时间<span><span class="heti-spacing"> </span><span class="arithmatex">\(S\)</span></span>，就将系统中所有工作重新加入最高优先级队列。</li>
+</ul>
+<p>长工作与两个短工作竞争<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>时，长工作在两个短工作到达后被饿死。</p>
+<pre class="mermaid"><code>---
+displayMode: compact
+---
+gantt
+    title 不采用优先级提升
+    dateFormat SSS
+    axisFormat %Lms
+    tickInterval 50millisecond
+
+    section Q2
+        A:  000,    10ms
+        B:  100,    5ms
+        C:  105,    5ms
+        B:  110,    5ms
+        C:  115,    5ms
+        B:  120,    5ms
+        C:  125,    5ms
+        B:  130,    5ms
+        C:  135,    5ms
+        B:  140,    5ms
+        C:  145,    5ms
+        B:  150,    5ms
+        C:  155,    5ms
+        B:  160,    5ms
+        C:  165,    5ms
+        B:  170,    5ms
+        C:  175,    5ms
+        B:  180,    5ms
+        C:  185,    5ms
+        B:  190,    5ms
+        C:  195,    5ms
+    section Q1
+        A:  010,    10ms
+    section Q0
+        A:  020,    80ms</code></pre>
+<p>每<span class="heti-skip"><span class="heti-spacing"> </span>50ms<span class="heti-spacing"> </span></span>就有一次优先级提升（这里只是举例，这个值可能过小<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，因此至少保证长工作会有一些进展，每过<span class="heti-skip"><span class="heti-spacing"> </span>50ms<span class="heti-spacing"> </span></span>就被提升到最高优先级，从而定期获得执行。</p>
+<pre class="mermaid"><code>---
+displayMode: compact
+---
+gantt
+    title 采用优先级提升
+    dateFormat SSS
+    axisFormat %Lms
+    tickInterval 50millisecond
+
+    section Q2
+        A:  000,    10ms
+        A:  050,    10ms
+        A:  100,    10ms
+        B:  110,    5ms
+        C:  115,    5ms
+        B:  120,    5ms
+        C:  125,    5ms
+        B:  130,    5ms
+        C:  135,    5ms
+        B:  140,    5ms
+        C:  145,    5ms
+        A:  150,    10ms
+        B:  160,    5ms
+        C:  165,    5ms
+        B:  170,    5ms
+        C:  175,    5ms
+        B:  180,    5ms
+        C:  185,    5ms
+        B:  190,    5ms
+        C:  195,    5ms
+    section Q1
+        A:  010,    10ms
+        A:  060,    10ms
+    section Q0
+        A:  020,    30ms
+        A:  070,    30ms</code></pre>
+<p>如果<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S\)</span><span class="heti-spacing"> </span></span>设置得太高，长工作会饥饿；如果设置得太低，交互型工作又得不到合适的<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>时间比例。</p>
+<h2 id="84-3"><span>8.4<span class="heti-spacing"> </span></span>尝试<span><span class="heti-spacing"> </span>3</span>：更好的计时方式<a class="headerlink" href="#84-3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<blockquote>
+<p>调度程序应该记录一个进程在某一层中消耗的总时间，而不是在调度时重新计时。只要进程用完了自己的配额，就将它降到低一优先级的队列中去。不论它是一次用完的，还是拆成很多次用完。</p>
+</blockquote>
+<p>重写规则<span class="heti-skip"><span class="heti-spacing"> </span>4a<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>4b</span> ：</p>
+<ul>
+<li>规则<span><span class="heti-spacing"> </span>4</span>：一旦工作用完了其在某一层中的时间配额（无论中间主动放弃了多少次<span><span class="heti-spacing"> </span>CPU</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，就降低其优先级（移入低一级队列<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+</ul>
+<pre class="mermaid"><code>---
+displayMode: compact
+---
+gantt
+    title 不采用愚弄反制
+    dateFormat SSS
+    axisFormat %Lms
+    tickInterval 10millisecond
+section Q2
+        B:  001,    9ms
+        B:  011,    9ms
+        B:  021,    9ms
+        B:  031,    9ms
+        B:  041,    9ms
+        B:  051,    9ms
+        B:  061,    9ms
+        B:  071,    9ms
+        B:  081,    9ms
+        B:  091,    9ms
+        B:  101,    9ms
+        B:  111,    9ms
+        B:  121,    9ms
+        B:  131,    9ms
+        B:  141,    9ms
+        B:  151,    9ms
+        B:  161,    9ms
+        B:  171,    9ms
+        B:  181,    9ms
+        B:  191,    9ms
+    section Q1
+    section Q0
+        A:  000,    1ms
+        A:  010,    1ms
+        A:  020,    1ms
+        A:  030,    1ms
+        A:  040,    1ms
+        A:  050,    1ms
+        A:  060,    1ms
+        A:  070,    1ms
+        A:  080,    1ms
+        A:  090,    1ms
+        A:  100,    1ms
+        A:  110,    1ms
+        A:  120,    1ms
+        A:  130,    1ms
+        A:  140,    1ms
+        A:  150,    1ms
+        A:  160,    1ms
+        A:  170,    1ms
+        A:  180,    1ms
+        A:  190,    1ms</code></pre>
+<pre class="mermaid"><code>---
+displayMode: compact
+---
+gantt
+    title 采用愚弄反制
+    dateFormat SSS
+    axisFormat %Lms
+    tickInterval 10millisecond
+
+    section Q2
+        B:  active, 000,    10ms
+    section Q1
+        B:  active, 011,    9ms
+        B:  active, 021,    1ms
+    section Q0
+        A:          010,    1ms
+        A:          020,    1ms
+        A:          022,    8ms
+        B:  active,         9ms
+        A:                  1ms
+        B:  active,         1ms
+        A:                  9ms
+        B:  active,         9ms
+        A:                  1ms
+        B:  active,         1ms
+        A:                  9ms
+        B:  active,         9ms
+        A:                  1ms
+        B:  active,         1ms
+        A:                  9ms
+        B:  active,         9ms
+        A:                  1ms
+        B:  active,         1ms
+        A:                  9ms</code></pre>
+<p><span>B<span class="heti-spacing"> </span></span>每个时间片的最后<span class="heti-skip"><span class="heti-spacing"> </span>1ms<span class="heti-spacing"> </span></span>时会主动调用<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>一次，以此愚弄调度器。</p>
+<p>通过采用愚弄反制，记录工作在某层消耗的总时间，不论它是以此用完还是多次用完，只要耗尽了时间配额，就降低其优先级（当然还会中断它<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<h2 id="85-mlfq"><span>8.5 MLFQ<span class="heti-spacing"> </span></span>调优及其他问题<a class="headerlink" href="#85-mlfq" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<blockquote>
+<p>关于<span class="heti-skip"><span class="heti-spacing"> </span>MLFQ<span class="heti-spacing"> </span></span>调度算法还有一些问题。其中一个大问题是如何配置一个调度程序，例如，配置多少队列？每一层队列的时间片配置多大？为了避免饥饿问题以及进程行为改变，应该多久提升一次进程的优先级？这些问题都没有显而易见的答案，因此只有利用对工作负载的经验，以及后续对调度程序的调优，才会导致令人满意的平衡。</p>
+</blockquote>
+<p>大多数的<span class="heti-skip"><span class="heti-spacing"> </span>MLFQ<span class="heti-spacing"> </span></span>变体都支持不同队列可变的时间片长度。</p>
+<ul>
+<li>高优先级队列通常只有较短的时间片（比如<span class="heti-skip"><span class="heti-spacing"> </span>10ms<span class="heti-spacing"> </span></span>或者更少<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，因而这一层的交互工作可以更快地切换。</li>
+<li>低优先级队列中更多的是<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>密集型工作，配置更长的时间片会取得更好的效果。</li>
+</ul>
+<pre class="mermaid"><code>---
+displayMode: compact
+---
+gantt
+    title 优先级越低，时间片越长
+    dateFormat SSS
+    axisFormat %Lms
+    tickInterval 10millisecond
+
+    section Q2
+        A:          000,    10ms
+        B:  active,         10ms
+    section Q1
+        A:                  20ms
+        B:  active,         20ms
+    section Q0
+        A:                  40ms
+        B:  active,         40ms
+        A:                  40ms
+        B:  active,         40ms</code></pre>
+<div class="admonition note">
+<p class="admonition-title">提示：避免巫毒常量（<span>Ousterhout<span class="heti-spacing"> </span></span>定律）</p>
+<p>尽可能避免巫毒常量是个好主意。然而，从上面的例子可以看出，这通常很难。当然，我们也可以让系统自己去学习一个很优化的值，但这同样也不容易。<br/>
+因此，通常我们会有一个写满各种参数值默认值的配置文件，使得系统管理员可以方便地进行修改调整。然而，大多数使用者并不会去修改这些默认值，这时就寄希望于默认值合适了。<br/>
+这个提示是由资深的 OS 教授 John Ousterhout 提出的，因此称为 Ousterhout 定律（Ousterhout’s Law）。</p>
+</div>
+<p><span>Solaris<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>MLFQ<span class="heti-spacing"> </span></span>实现提供了一组表来配置调度程序，该表默认有<span class="heti-skip"><span class="heti-spacing"> </span>60<span class="heti-spacing"> </span></span>层队列，时间片长度从<span><span class="heti-spacing"> </span>20ms</span>（最高优先级<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，到几百<span><span class="heti-spacing"> </span>ms</span>（最低优先级<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，每一秒左右提升一次进程的优先级。</p>
+<p><span>FreeBSD<span class="heti-spacing"> </span></span>调度车很难过序（<span>4.3<span class="heti-spacing"> </span></span>版本）没用表，它采用数学公式来计算某个工作的优先级。</p>
+<p>有些调度程序将最高优先级队列留给操作系统使用，有些系统支持用户给出优先级建议（是的只是建议<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，会略微提高优先级。</p>
+<h2 id="86-mlfq">8.6 MLFQ：小结<a class="headerlink" href="#86-mlfq" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>规则<span><span class="heti-spacing"> </span>1</span>：如果<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>的优先级<span class="heti-skip"><span class="heti-spacing"> </span>&gt; B<span class="heti-spacing"> </span></span>的优先级，运行<span><span class="heti-spacing"> </span>A</span>（不运行<span><span class="heti-spacing"> </span>B</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；</li>
+<li>规则<span><span class="heti-spacing"> </span>2</span>：如果<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>的优先级<span class="heti-skip"><span class="heti-spacing"> </span>= B<span class="heti-spacing"> </span></span>的优先级，轮转运行<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>B</span>；</li>
+<li>规则<span><span class="heti-spacing"> </span>3</span>：工作进入系统时，放在最高优先级（最上层队列<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；</li>
+<li>规则<span><span class="heti-spacing"> </span>4</span>：一旦工作用完了其在某一层中的时间配额（无论中间主动放弃了多少次<span><span class="heti-spacing"> </span>CPU</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，就降低其优先级（移入低一级队列<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；</li>
+<li>规则<span><span class="heti-spacing"> </span>5</span>：经过一段时间<span><span class="heti-spacing"> </span><span class="arithmatex">\(S\)</span></span> ，就将系统中所有工作重新加入最高优先级队列。</li>
+</ul>
+<h2 id="_1">作业<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>好像回到了中学时代，我还是很不喜欢作业。</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>1．只用两个工作和两个队列运行几个随机生成的问题。针对每个工作计算<span class="heti-skip"><span class="heti-spacing"> </span>MLFQ<span class="heti-spacing"> </span></span>的执行记录。限制每项作业的长度并关闭<span><span class="heti-spacing"> </span>I/O</span>，让你的生活更轻松。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<div class="highlight"><span class="filename">./mlfq.py -n 2 -j 2 -M 0 -c</span><pre><span></span><code>Job List:
+  Job  0: startTime   0 - runTime  84 - ioFreq   0
+  Job  1: startTime   0 - runTime  42 - ioFreq   0
+...
+Final statistics:
+  Job  0: startTime   0 - response   0 - turnaround 126
+  Job  1: startTime   0 - response  10 - turnaround  92
+
+  Avg  1: startTime n/a - response 5.00 - turnaround 109.00
+</code></pre></div>
+<p>$ \bar{T_{\text{turnaround}}} = \frac{T_{\text{0 finish}} + T_{\text{1 finish}}}{2} = \frac{92 + 126}{2} = 109 $</p>
+<p>$ \bar{T_{\text{response}}} = \frac{T_{\text{0 response}} + T_{\text{1 response}}}{2} = \frac{0 + 10}{2} = 5 $</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>2．如何运行调度程序来重现本章中的每个实例？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<div class="highlight"><pre><span></span><code>$ # 8.2
+$ ./mlfq.py -n 3 -l 0,200,0 -q 10 -c
+$ # 8.3
+$ ./mlfq.py -n 3 -l 0,200,0:100,20,0 -q 10 -c
+$ # 8.4
+$ ./mlfq.py -n 3 -l 0,200,0:50,25,1 -q 10 -i 4 -c
+$ # 8.5
+$ ./mlfq.py -n 3 -l 0,200,0:50,20,3:53,20,3 -q 10 -i 3 -c
+$ ./mlfq.py -n 3 -l 0,200,0:50,20,3:53,20,3 -q 10 -i 3 -c -B 30 -S
+$ # 8.6
+$ ./mlfq.py -n 3 -l 0,200,0:50,100,9 -i 1 -S -c
+$ ./mlfq.py -n 3 -l 0,200,0:50,100,9 -i 1 -c
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>3．将如何配置调度程序参数，像轮转调度程序那样工作？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>只用一个队列，这样就不存在任务优先级的问题了，同队列采用轮转。</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>4．设计两个工作的负载和调度程序参数，以便一个工作利用较早的规则<span class="heti-skip"><span class="heti-spacing"> </span>4a<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>4b</span>（用<span class="heti-skip"><span class="heti-spacing"> </span>-S<span class="heti-spacing"> </span></span>标志打开）来“愚弄”调度程序，在特定的时间间隔内获得<span class="heti-skip"><span class="heti-spacing"> </span>99%<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>CPU</span>。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<div class="highlight"><pre><span></span><code>$ ./mlfq.py -n 3 -q 10 -i 1 -S -l 0,50,9:0,50,0 -c | grep "Run JOB 0"
+</code></pre></div>
+<p>会发现任务<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>一直在优先级<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>下运行</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>5．给定一个系统，其最高队列中的时间片长度为<span><span class="heti-spacing"> </span>10ms</span>，你需要如何频繁地将工作推回到最高优先级级别（带有<span class="heti-skip"><span class="heti-spacing"> </span>-B<span class="heti-spacing"> </span></span>标志<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，以保证一个长时间运行（并可能饥饿）的工作得到至少<span class="heti-skip"><span class="heti-spacing"> </span>5%<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>CPU</span>？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>$ T_{\text{Boost}} = \frac{10}{5\%} = 200ms $</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>6．调度中有一个问题，即刚完成<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>的作业添加在队列的哪一端。<span>-I<span class="heti-spacing"> </span></span>标志改变了这个调度模拟器的这方面行为。尝试一些工作负载，看看你是否能看到这个标志的效果。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<div class="highlight"><span class="filename">push back</span><pre><span></span><code>$ ./mlfq.py -j 2 -n 3 -q 20 -l 0,20,2:0,20,2 -i 1 -c
+</code></pre></div>
+<div class="highlight"><span class="filename">push head</span><pre><span></span><code>$ ./mlfq.py -j 2 -n 3 -q 20 -l 0,20,2:0,20,2 -i 1 -I -c
+</code></pre></div>
+</div>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月2日 20:01:55</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月3日 01:48:04</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月2日 20:01:55</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月3日 01:48:04</span>
 </span>
 </aside>
 </article>
@@ -724,6 +1180,34 @@ gantt
 </button>
 </main>
 <footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: 07.CPU Scheduling" class="md-footer__link md-footer__link--prev" href="07cpu_scheduling.html">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                上一页
+              </span>
+<div class="md-ellipsis">
+                07.CPU Scheduling
+              </div>
+</div>
+</a>
+<a aria-label="下一页: MIT 6.1810" class="md-footer__link md-footer__link--next" href="../mit6.1810.html">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                下一页
+              </span>
+<div class="md-ellipsis">
+                MIT 6.1810
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
