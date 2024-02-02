@@ -327,6 +327,20 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#tcc">
+<span class="md-ellipsis">
+      为什么是 TCC ？
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tcc_1">
+<span class="md-ellipsis">
+      分析 TCC
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#wip">
 <span class="md-ellipsis">
       WIP...
@@ -583,6 +597,20 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#tcc">
+<span class="md-ellipsis">
+      为什么是 TCC ？
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tcc_1">
+<span class="md-ellipsis">
+      分析 TCC
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#wip">
 <span class="md-ellipsis">
       WIP...
@@ -620,14 +648,268 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>你知道的，<span>4202<span class="heti-spacing"> </span></span>年，Everything Over HTTPS（笑<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>My Patch: <a href="https://gist.github.com/13m0n4de/84912522cce6db31da069baf1add04f8">https://gist.github.com/13m0n4de/84912522cce6db31da069baf1add04f8</a></p>
 <h2 id="_1">起因<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p><a href="https://github.com/rexim"><span>@rexim<span class="heti-spacing"> </span></span></a><span>2021<span class="heti-spacing"> </span></span>年的时候发了一个视频：<a href="https://www.youtube.com/watch?v=4vSyqK3SK-0">Including C File Over HTTPS</a> ，他通过修改<span class="heti-skip"><span class="heti-spacing"> </span>TinyCC<span class="heti-spacing"> </span></span>编译器完成了上述效果。但是现在<span class="heti-skip"><span class="heti-spacing"> </span>TCC<span class="heti-spacing"> </span></span>有一些变化，他的补丁不能用了。</p>
 <p>我试着重新分析了<span class="heti-skip"><span class="heti-spacing"> </span>TCC<span class="heti-spacing"> </span></span>的源码，写了份新的<span><span class="heti-spacing"> </span>Patch</span> ，这篇文章用于记录具体实现过程。</p>
+<h2 id="tcc">为什么是<span><span class="heti-spacing"> </span>TCC</span> ？<a class="headerlink" href="#tcc" title="Permanent link">¶</a></h2>
+<p>语言语法上的<span class="heti-skip"><span class="heti-spacing"> </span>Hack<span class="heti-spacing"> </span></span>少不了折腾编译器，我短暂的生命不支持我阅读几百万行以上的大型编译器（如<span><span class="heti-spacing"> </span>GCC</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，最好是寻找精简的实现。</p>
+<p><span>Tiny C Compiler (TCC or TinyCC)<span class="heti-spacing"> </span></span>就是其中之一<sup id="fnref:1"><a class="footnote-ref" href="#fn:1"><span><span class="heti-spacing"> </span>1</span></a></sup>，完成了大部分<span class="heti-skip"><span class="heti-spacing"> </span>C99 ISO<span class="heti-spacing"> </span></span>标准。</p>
+<p>它足够小，足够易拓展，所以就是它了。</p>
+<h2 id="tcc_1">分析<span><span class="heti-spacing"> </span>TCC</span><a class="headerlink" href="#tcc_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>克隆仓库：</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>git://repo.or.cz/tinycc.git
+</code></pre></div>
+<p>只有几万行代码，真好。</p>
+<div class="highlight"><pre><span></span><code>===============================================================================
+ Language            Files        Lines         Code     Comments       Blanks
+===============================================================================
+ GNU Style Assembly      7         2151         1906           52          193
+ Batch                   1          204          182            0           22
+ C                     214        73313        60945         5499         6869
+ C Header              109        45901        38807         1906         5188
+ Makefile                5         1188          870          134          184
+ Module-Definition       6         3520         3467            0           53
+ Perl                    1          427          306           63           58
+ Shell                   3         1058          939           46           73
+ Plain Text              1          168            0          111           57
+===============================================================================
+ Total                 347       127930       107422         7811        12697
+===============================================================================
+</code></pre></div>
+<p class="annotate">编译运行：(1)</p>
+<ol>
+<li>是的，你需要一个编译器来编译编译器，无论是<span class="heti-skip"><span class="heti-spacing"> </span>GCC<span class="heti-spacing"> </span></span>还是什么</li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./configure
+$<span class="w"> </span>make
+$<span class="w"> </span>./tcc<span class="w"> </span>--version
+tcc<span class="w"> </span>version<span class="w"> </span><span class="m">0</span>.9.28rc<span class="w"> </span><span class="m">2024</span>-01-29<span class="w"> </span>mob@c7263571<span class="w"> </span><span class="o">(</span>x86_64<span class="w"> </span>Linux<span class="o">)</span>
+$<span class="w"> </span>./tcc<span class="w"> </span>-run<span class="w"> </span>examples/ex1.c
+Hello<span class="w"> </span>World
+</code></pre></div>
+<p>当然它现在肯定不能包含远程文件：</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./tcc<span class="w"> </span>include_files_from_internet.c
+include_files_from_internet.c:2:<span class="w"> </span>error:<span class="w"> </span>include<span class="w"> </span>file<span class="w"> </span><span class="s1">'https://raw.githubusercontent.com/nothings/stb/master/stb_sprintf.h'</span><span class="w"> </span>not<span class="w"> </span>found
+</code></pre></div>
+<p>通过报错信息，可以很快定位到解析 <code class="highlight"><span class="cp">#include</span></code> 语句的代码位置：</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>rg<span class="w"> </span><span class="s2">"include file .* not found"</span>
+tccpp.c
+<span class="m">1406</span>:<span class="w">                </span>tcc_error<span class="o">(</span><span class="s2">"include file '%s' not found"</span>,<span class="w"> </span>name<span class="o">)</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">tccpp.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1347</span>
+<span class="normal">1348</span>
+<span class="normal">1349</span>
+<span class="normal">1350</span>
+<span class="normal">1351</span>
+<span class="normal">1352</span>
+<span class="normal">1353</span>
+<span class="normal">1354</span>
+<span class="normal">1355</span>
+<span class="normal">1356</span>
+<span class="normal">1357</span>
+<span class="normal">1358</span>
+<span class="normal">1359</span>
+<span class="normal">1360</span>
+<span class="normal">1361</span>
+<span class="normal">1362</span>
+<span class="normal">1363</span>
+<span class="normal">1364</span>
+<span class="normal">1365</span>
+<span class="normal">1366</span>
+<span class="normal">1367</span>
+<span class="normal">1368</span>
+<span class="normal">1369</span>
+<span class="normal">1370</span>
+<span class="normal">1371</span>
+<span class="normal">1372</span>
+<span class="normal">1373</span>
+<span class="normal">1374</span>
+<span class="normal">1375</span>
+<span class="normal">1376</span>
+<span class="normal">1377</span>
+<span class="normal">1378</span>
+<span class="normal">1379</span>
+<span class="normal">1380</span>
+<span class="normal">1381</span>
+<span class="normal">1382</span>
+<span class="normal">1383</span>
+<span class="normal">1384</span>
+<span class="normal">1385</span>
+<span class="normal">1386</span>
+<span class="normal">1387</span>
+<span class="normal">1388</span>
+<span class="normal">1389</span>
+<span class="normal">1390</span>
+<span class="normal">1391</span>
+<span class="normal">1392</span>
+<span class="normal">1393</span>
+<span class="normal">1394</span>
+<span class="normal">1395</span>
+<span class="normal">1396</span>
+<span class="normal">1397</span>
+<span class="normal">1398</span>
+<span class="normal">1399</span>
+<span class="normal">1400</span>
+<span class="normal">1401</span>
+<span class="normal">1402</span>
+<span class="normal">1403</span>
+<span class="normal">1404</span>
+<span class="normal">1405</span>
+<span class="normal">1406</span>
+<span class="normal">1407</span>
+<span class="normal">1408</span>
+<span class="normal">1409</span>
+<span class="normal">1410</span>
+<span class="normal">1411</span>
+<span class="normal">1412</span>
+<span class="normal">1413</span>
+<span class="normal">1414</span>
+<span class="normal">1415</span>
+<span class="normal">1416</span>
+<span class="normal">1417</span>
+<span class="normal">1418</span>
+<span class="normal">1419</span>
+<span class="normal">1420</span>
+<span class="normal">1421</span>
+<span class="normal">1422</span>
+<span class="normal">1423</span>
+<span class="normal">1424</span>
+<span class="normal">1425</span>
+<span class="normal">1426</span>
+<span class="normal">1427</span>
+<span class="normal">1428</span>
+<span class="normal">1429</span>
+<span class="normal">1430</span>
+<span class="normal">1431</span>
+<span class="normal">1432</span>
+<span class="normal">1433</span>
+<span class="normal">1434</span>
+<span class="normal">1435</span>
+<span class="normal">1436</span>
+<span class="normal">1437</span>
+<span class="normal">1438</span>
+<span class="normal">1439</span>
+<span class="normal">1440</span>
+<span class="normal">1441</span>
+<span class="normal">1442</span>
+<span class="normal">1443</span>
+<span class="normal">1444</span>
+<span class="normal">1445</span>
+<span class="normal">1446</span>
+<span class="normal">1447</span>
+<span class="normal">1448</span>
+<span class="normal">1449</span>
+<span class="normal">1450</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">parse_include</span><span class="p">(</span><span class="n">TCCState</span><span class="w"> </span><span class="o">*</span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">do_next</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">test</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">1024</span><span class="p">],</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">1024</span><span class="p">],</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+<span class="w">    </span><span class="n">CachedInclude</span><span class="w"> </span><span class="o">*</span><span class="n">e</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">skip_spaces</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'&lt;'</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'\"'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cstr_reset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tokcstr</span><span class="p">);</span>
+<span class="w">        </span><span class="n">file</span><span class="o">-&gt;</span><span class="n">buf_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse_pp_string</span><span class="p">(</span><span class="n">file</span><span class="o">-&gt;</span><span class="n">buf_ptr</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'&lt;'</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sc">'&gt;'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tokcstr</span><span class="p">);</span>
+<span class="w">        </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tokcstr</span><span class="p">.</span><span class="n">size</span><span class="p">;</span>
+<span class="w">        </span><span class="n">pstrncpy</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">tokcstr</span><span class="p">.</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">        </span><span class="n">next_nomacro</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="cm">/* computed #include : concatenate tokens until result is one of</span>
+<span class="cm">           the two accepted forms.  Don't convert pp-tokens to tokens here. */</span>
+<span class="w">    </span><span class="n">parse_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PARSE_FLAG_PREPROCESS</span>
+<span class="w">                    </span><span class="o">|</span><span class="w"> </span><span class="n">PARSE_FLAG_LINEFEED</span>
+<span class="w">                    </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">parse_flags</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">PARSE_FLAG_ASM_FILE</span><span class="p">);</span>
+<span class="w">        </span><span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">next</span><span class="p">();</span>
+<span class="w">            </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">((</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'"'</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'"'</span><span class="p">)</span>
+<span class="w">                 </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'&lt;'</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'&gt;'</span><span class="p">)))</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tok</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TOK_LINEFEED</span><span class="p">)</span>
+<span class="w">                </span><span class="n">tcc_error</span><span class="p">(</span><span class="s">"'#include' expects </span><span class="se">\"</span><span class="s">FILENAME</span><span class="se">\"</span><span class="s"> or &lt;FILENAME&gt;"</span><span class="p">);</span>
+<span class="w">            </span><span class="n">pstrcat</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">get_tok_str</span><span class="p">(</span><span class="n">tok</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tokc</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">        </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">        </span><span class="cm">/* remove '&lt;&gt;|""' */</span>
+<span class="w">        </span><span class="n">memmove</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">do_next</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">file</span><span class="o">-&gt;</span><span class="n">include_next_index</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">++</span><span class="n">i</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="cm">/* check absolute include path */</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">IS_ABSPATH</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+<span class="w">                </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">            </span><span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'\0'</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="cm">/* search in file's dir if "header.h" */</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">'\"'</span><span class="p">)</span>
+<span class="w">                </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">            </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="o">-&gt;</span><span class="n">true_filename</span><span class="p">;</span>
+<span class="w">            </span><span class="n">pstrncpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">tcc_basename</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s1</span><span class="o">-&gt;</span><span class="n">nb_include_paths</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">                </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s1</span><span class="o">-&gt;</span><span class="n">include_paths</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">s1</span><span class="o">-&gt;</span><span class="n">nb_sysinclude_paths</span><span class="p">)</span>
+<span class="w">                </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s1</span><span class="o">-&gt;</span><span class="n">sysinclude_paths</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">                </span><span class="n">tcc_error</span><span class="p">(</span><span class="s">"include file '%s' not found"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">            </span><span class="n">pstrcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">);</span>
+<span class="w">            </span><span class="n">pstrcat</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="s">"/"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">pstrcat</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">        </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">search_cached_include</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">define_find</span><span class="p">(</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">ifndef_macro</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">once</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="cm">/* no need to parse the include because the 'ifndef macro'</span>
+<span class="cm">               is defined (or had #pragma once) */</span>
+<span class="cp">#ifdef INC_DEBUG</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s: skipping cached %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="o">-&gt;</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tcc_open</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">test</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tcc_close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="o">-&gt;</span><span class="n">include_stack_ptr</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">s1</span><span class="o">-&gt;</span><span class="n">include_stack</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">INCLUDE_STACK_SIZE</span><span class="p">)</span>
+<span class="w">            </span><span class="n">tcc_error</span><span class="p">(</span><span class="s">"#include recursion too deep"</span><span class="p">);</span>
+<span class="w">        </span><span class="cm">/* push previous file on stack */</span>
+<span class="w">        </span><span class="o">*</span><span class="n">s1</span><span class="o">-&gt;</span><span class="n">include_stack_ptr</span><span class="o">++</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="o">-&gt;</span><span class="n">prev</span><span class="p">;</span>
+<span class="w">        </span><span class="n">file</span><span class="o">-&gt;</span><span class="n">include_next_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="cp">#ifdef INC_DEBUG</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s: including %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="o">-&gt;</span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="o">-&gt;</span><span class="n">filename</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="w">        </span><span class="cm">/* update target deps */</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="o">-&gt;</span><span class="n">gen_deps</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">BufferedFile</span><span class="w"> </span><span class="o">*</span><span class="n">bf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">;</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">bf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bf</span><span class="o">-&gt;</span><span class="n">prev</span><span class="p">))</span>
+<span class="w">                </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bf</span><span class="o">-&gt;</span><span class="n">include_next_index</span><span class="p">;</span>
+<span class="w">            </span><span class="cm">/* skip system include files */</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="o">-&gt;</span><span class="n">include_sys_deps</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">s1</span><span class="o">-&gt;</span><span class="n">nb_include_paths</span><span class="p">)</span>
+<span class="w">                </span><span class="n">dynarray_add</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s1</span><span class="o">-&gt;</span><span class="n">target_deps</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s1</span><span class="o">-&gt;</span><span class="n">nb_target_deps</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">tcc_strdup</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="cm">/* add include file debug info */</span>
+<span class="w">        </span><span class="n">tcc_debug_bincl</span><span class="p">(</span><span class="n">s1</span><span class="p">);</span>
+<span class="w">        </span><span class="n">tok_flags</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">TOK_FLAG_BOF</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">TOK_FLAG_BOL</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
 <h2 id="wip">WIP...<a class="headerlink" href="#wip" title="Permanent link">¶</a></h2>
 <h2 id="_2">参阅<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <ul>
-<li>TinyCC Wiki page: <a href="https://en.wikipedia.org/wiki/Tiny_C_Compiler">https://en.wikipedia.org/wiki/Tiny_C_Compiler</a></li>
-<li>TinyCC Git Repo (GitHub): <a href="https://github.com/TinyCC/tinycc">https://github.com/TinyCC/tinycc</a></li>
+<li>TinyCC: <a href="https://bellard.org/tcc/">https://bellard.org/tcc/</a></li>
+<li>TinyCC Git repo: <a href="https://repo.or.cz/tinycc.git">https://repo.or.cz/tinycc.git</a></li>
 <li>STB libs: <a href="https://github.com/nothings/stb">https://github.com/nothings/stb</a></li>
 <li>libcurl HTTPS example: <a href="https://curl.se/libcurl/c/https.html">https://curl.se/libcurl/c/https.html</a></li>
 <li>libcurl URL parseing example: <a href="https://curl.se/libcurl/c/parseurl.html">https://curl.se/libcurl/c/parseurl.html</a></li>
@@ -635,6 +917,16 @@
 <li>@rexim's Video: <a href="https://www.youtube.com/watch?v=4vSyqK3SK-0">https://www.youtube.com/watch?v=4vSyqK3SK-0</a></li>
 <li>My Patch: <a href="https://gist.github.com/13m0n4de/84912522cce6db31da069baf1add04f8">https://gist.github.com/13m0n4de/84912522cce6db31da069baf1add04f8</a></li>
 </ul>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>当然，还有很多精简的<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言编译器，比如<span><span class="heti-spacing"> </span>LCC</span> 、C4 、OTCC ，只不过它们的设计理念不同<br/>
+LCC 和 TCC 的实现足够完整，能够覆盖编译器设计的主要方面，适合用来学习编译原理或定制自己的编译器<br/>
+C4 和 OTCC 极度简化，语义高度浓缩，需要更多编程技巧 <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+</ol>
+</div>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
@@ -727,7 +1019,7 @@
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <div class="md-progress" data-md-component="progress" role="progressbar"></div>
-<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.tabs", "navigation.footer", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.tabs", "navigation.footer", "search.suggest", "content.code.annotate", "content.footnote.tooltips"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
 <script src="../../../assets/javascripts/bundle.c18c5fb9.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
