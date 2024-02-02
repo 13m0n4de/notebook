@@ -47,6 +47,9 @@ $$
 $$
 
 ```mermaid
+---
+displayMode: compact
+---
 gantt
     title FIFO 的简单例子
     dateFormat s
@@ -102,6 +105,9 @@ $$
 如果所有工作同时到达，SJF 就是一个最优调度算法，但这并不现实，工作往往都是随时到达的，比如 B 和 C 晚到了 10s ：
 
 ```mermaid
+---
+displayMode: compact
+---
 gantt
     title B 和 C 晚到时的 SJF
     dateFormat mm:ss
@@ -124,6 +130,9 @@ gantt
 它基本等于向 SJF 添加抢占，每当新工作进入系统时，它就会确定剩余工作和新工作中，谁的剩余时间最少，然后调度该工作。
 
 ```mermaid
+---
+displayMode: compact
+---
 gantt
     title STCF 的简单例子
     dateFormat s
@@ -198,6 +207,9 @@ $$
 $$
 
 ```mermaid
+---
+displayMode: compact
+---
 gantt
     title 轮转（响应时间好）
     dateFormat s
@@ -259,6 +271,9 @@ $$
 我们放宽它，假设所有程序会执行 I/O 。举个例子，有两项工作 A 和 B ，每项工作需要 50ms 的 CPU 时间，A 运行 10ms 后发出 I/O 请求，每个 I/O 需要 10ms ，而 B 只是使用 CPU 50ms ，不执行 I/O 。
 
 ```mermaid
+---
+displayMode: compact
+---
 gantt
     title 资源的糟糕使用
     dateFormat SSS
@@ -282,6 +297,9 @@ gantt
 ```
 
 ```mermaid
+---
+displayMode: compact
+---
 gantt
     title 重叠可以更好地使用资源
     dateFormat SSS
