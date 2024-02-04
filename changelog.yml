@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-02-05":
+    - newpage:
+          text: Writeups > DiceCTF 2024 Quals
+          href: writeups/dicectf2024_quals.html
   - "2024-02-03":
     - newpage:
           text: CS > OS > OSTEP > 08.Multi-level Feedback

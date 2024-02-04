@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://13m0n4de-notebook.vercel.app/cs/os/ostep/index.html" rel="canonical"/>
-<link href="../index.html" rel="prev"/>
-<link href="02introduction.html" rel="next"/>
+<link href="https://13m0n4de-notebook.vercel.app/cs/os/ostep/09lottery_scheduling.html" rel="canonical"/>
+<link href="08multi_level_feedback.html" rel="prev"/>
+<link href="../mit6.1810.html" rel="next"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-9.5.7" name="generator"/>
-<title>OSTEP 学习笔记 - 13m0n4de's notebook</title>
+<title>09.Lottery Scheduling - 13m0n4de's notebook</title>
 <link href="../../../assets/stylesheets/main.f2e4d321.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/iframe-worker/shim"></script>
@@ -37,7 +37,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#ostep">
+<a class="md-skip" href="#9">
           跳转至
         </a>
 </div>
@@ -61,7 +61,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              OSTEP 学习笔记
+              09.Lottery Scheduling
             
           </span>
 </div>
@@ -362,12 +362,12 @@
 <li class="md-nav__item md-nav__item--active md-nav__item--nested">
 <input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link md-nav__link--active" href="index.html">
+<a class="md-nav__link" href="index.html">
 <span class="md-ellipsis">
     OSTEP
   </span>
 </a>
-<label class="md-nav__link md-nav__link--active" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+<label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
@@ -419,12 +419,34 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="09lottery_scheduling.html">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    09.Lottery Scheduling
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="09lottery_scheduling.html">
 <span class="md-ellipsis">
     09.Lottery Scheduling
   </span>
 </a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#91">
+<span class="md-ellipsis">
+      9.1 基本概念：彩票数表示份额
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -581,22 +603,11 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#table-of-contents">
+<a class="md-nav__link" href="#91">
 <span class="md-ellipsis">
-      Table of Contents
+      9.1 基本概念：彩票数表示份额
     </span>
 </a>
-<nav aria-label="Table of Contents" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#virtualization">
-<span class="md-ellipsis">
-      Virtualization
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 </ul>
 </nav>
@@ -605,39 +616,31 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="ostep"><span>OSTEP<span class="heti-spacing"> </span></span>学习笔记<a class="headerlink" href="#ostep" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
-<div class="admonition abstract">
-<p class="admonition-title">资源</p>
-<ul>
-<li><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">OSTEP</a></li>
-<li><a href="https://github.com/remzi-arpacidusseau/ostep-translations/blob/master/chinese/README.md"><span>OSTEP<span class="heti-spacing"> </span></span>中文翻译</a></li>
-<li><a href="https://github.com/remzi-arpacidusseau/ostep-code/"><span>OSTEP<span class="heti-spacing"> </span></span>书中代码</a></li>
-<li><a href="https://github.com/remzi-arpacidusseau/ostep-homework/"><span>OSTEP<span class="heti-spacing"> </span></span>作业所需代码</a></li>
-</ul>
-</div>
-<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">¶</a></h2>
-<h3 id="virtualization">Virtualization<a class="headerlink" href="#virtualization" title="Permanent link">¶</a></h3>
-<ul>
-<li><a href="02introduction.html">02.Introduction</a></li>
-<li><a href="04processes.html">04.Processes</a></li>
-<li><a href="05process_api.html">05.Process API</a></li>
-<li><a href="06direct_execution.html">06.Direct Execution</a></li>
-<li><a href="07cpu_scheduling.html">07.CPU Scheduling</a></li>
-<li><a href="08multi_level_feedback.html">08.Multi-level Feedback</a></li>
-<li><a href="09lottery_scheduling.html">09.Lottery Scheduling</a></li>
-</ul>
+<h1 id="9">第<span class="heti-skip"><span class="heti-spacing"> </span>9<span class="heti-spacing"> </span></span>章 调度：比例份额<a class="headerlink" href="#9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<blockquote>
+<p>比例份额（proportional-share）调度程序，有时也称为公平份额（fair-share）调度程序。</p>
+<p>比例份额算法基于一个简单的想法：调度程序的最终目标，是确保每个工作获得一定比例的<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>时间，而不是优化周转时间和响应时间，</p>
+</blockquote>
+<dl>
+<dt>彩票调度（lottery scheduling）</dt>
+<dd>
+<p>每隔一段时间，都会举行一次彩票抽奖，以确定接下来应该运行哪个进程。越是应该频繁运行的进程，越是应该拥有更多地赢得彩票的机会。</p>
+</dd>
+</dl>
+<h2 id="91"><span>9.1<span class="heti-spacing"> </span></span>基本概念：彩票数表示份额<a class="headerlink" href="#91" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>彩票数（ticket）代表了进程（或用户或其他）占有某个资源的份额。一个进程拥有的彩票数占总彩票数的百分比，就是它占有资源的份额。</p>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月3日 01:48:04</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月5日 06:05:12</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月12日 06:26:42</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月5日 06:05:12</span>
 </span>
 </aside>
 </article>
@@ -651,7 +654,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="上一页: Operating System" class="md-footer__link md-footer__link--prev" href="../index.html">
+<a aria-label="上一页: 08.Multi-level Feedback" class="md-footer__link md-footer__link--prev" href="08multi_level_feedback.html">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -660,17 +663,17 @@
                 上一页
               </span>
 <div class="md-ellipsis">
-                Operating System
+                08.Multi-level Feedback
               </div>
 </div>
 </a>
-<a aria-label="下一页: 02.Introduction" class="md-footer__link md-footer__link--next" href="02introduction.html">
+<a aria-label="下一页: MIT 6.1810" class="md-footer__link md-footer__link--next" href="../mit6.1810.html">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 下一页
               </span>
 <div class="md-ellipsis">
-                02.Introduction
+                MIT 6.1810
               </div>
 </div>
 <div class="md-footer__button md-icon">
