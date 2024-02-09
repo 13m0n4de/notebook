@@ -841,15 +841,22 @@
 </ul>
 </nav>
 </li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#wip">
+<a class="md-nav__link" href="#_9">
 <span class="md-ellipsis">
-      小结（WIP）
+      总结
     </span>
 </a>
 </li>
-</ul>
-</nav>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      引用
+    </span>
+</a>
 </li>
 </ul>
 </nav>
@@ -1098,15 +1105,22 @@
 </ul>
 </nav>
 </li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#wip">
+<a class="md-nav__link" href="#_9">
 <span class="md-ellipsis">
-      小结（WIP）
+      总结
     </span>
 </a>
 </li>
-</ul>
-</nav>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      引用
+    </span>
+</a>
 </li>
 </ul>
 </nav>
@@ -1116,6 +1130,12 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="checkpoint-2024-02-07"><span>Checkpoint<span class="heti-spacing"> </span></span>筛选<span><span class="heti-spacing"> </span>2024-02-07</span><a class="headerlink" href="#checkpoint-2024-02-07" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>由于<span><span class="heti-spacing"> </span>CFG</span>、Ksampler、<span>Steps<span class="heti-spacing"> </span></span>关联性强，不太适合拆开分析，所以 <code>Ksampler &amp; Steps</code> 小节里，固定<span class="heti-skip"><span class="heti-spacing"> </span>CFG<span class="heti-spacing"> </span></span>值，变动采样器和和步数的方式，并不能完全完全体现采样器在模型上的工作情况<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（有的采样器需要特殊的<span><span class="heti-spacing"> </span>CFG</span> ，不同的<span class="heti-skip"><span class="heti-spacing"> </span>CFG<span class="heti-spacing"> </span></span>也需要不同的步数来配合）</p>
+<p>所以现在认为此部分内容不太具有分析意义，在下次筛选时会制作<span class="heti-skip"><span class="heti-spacing"> </span>X/Y/Z<span class="heti-spacing"> </span></span>图表，将三个参数都纳作变量。</p>
+<p>不过，还是在过程中还是发现了各个模型的问题和特性。</p>
+</div>
 <p>这次筛选是用于虚拟小说的原型设计，基本需求有：</p>
 <ul>
 <li>干净的人物立绘（与背景区别明显，便于抠图）</li>
@@ -1134,13 +1154,9 @@
 <li><a href="https://civitai.com/models/116867/cetus-mix-fp16cleaned">Cetus-Mix (fp16/cleaned) (WhaleFall2)</a></li>
 <li><a href="https://civitai.com/models/27259?modelVersionId=116759">TMND-Mix (VI-Pruned)</a></li>
 </ul>
-<p>使用到的<span><span class="heti-spacing"> </span>VAE</span> ：</p>
-<ul>
-<li><a href="https://huggingface.co/hakurei/waifu-diffusion-v1-4/blob/5c5d89ee15d82f346fe10290da173abcd6d89c0a/vae/kl-f8-anime2.safetensors">kl-f8-anime2</a></li>
-<li><a href="https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.safetensors">vae-ft-mse-840000-ema-pruned</a></li>
-</ul>
-<p>这些模型的版本不一定是最新，此次筛选也是为了整理一下硬盘里常用的模型，同样也是为了试验一下筛选的工作流。</p>
+<p>这些模型的版本不一定是最新，此次筛选也不会检测需求的所有部分，就当作是整理一下硬盘里常用的模型，同样也是为了试验一下工作流。</p>
 <p>顺利的话过些日子进行正式的测试，重新从网站上挑选模型，并且设置更详细的需求。</p>
+<p>我的工作流见<a href="#_10">引用</a>。</p>
 <h2 id="_1">初筛<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>为了确定模型是否满足基本需求，准备了五组提示词，都是剧本中经常出现的人和物。</p>
 <p>测试参数从简。</p>
@@ -1268,12 +1284,15 @@
 </li>
 </ul>
 <h2 id="_8">多维检查<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>分别从<span><span class="heti-spacing"> </span>CFG</span> 、VAE 、采样器表现 来检查模型稳定性，挑选合适参数。</p>
+<p>分别从 <code>CFG</code> 、<code>VAE</code> 、<code>Ksampler &amp; Steps</code> 来检查模型稳定性，挑选合适参数。</p>
 <ul>
 <li>CFG: <code>3.0</code>, <code>5.0</code>, <code>7.0</code>, <code>9.0</code>, <code>11.0</code>, <code>13.0</code></li>
 <li>VAE: <code>kl-f8-anime2</code>, <code>vae-ft-mse-840000-ema-pruned</code></li>
-<li>Sampler: <code>euler</code>, <code>dpmpp_2m</code>, <code>dpmpp_sde</code>, <code>dpmpp_3m_sde</code>, <code>dpm_2</code></li>
+<li>Ksampler: <code>euler</code>, <code>dpmpp_2m</code>, <code>dpmpp_sde</code>, <code>dpmpp_3m_sde</code>, <code>dpm_2</code></li>
+<li>Steps: <code>8</code>, <code>16</code>, <code>24</code>, <code>32</code>, <code>40</code></li>
 </ul>
+<p>采样器选择了几个图像质量比较高的，不在意速度。</p>
+<p>本来是不带 <code>dpmpp_sde</code> 和 <code>dpmpp_3m_sde</code> 的，因为这次是二次元画像，非真实系优先选择不带祖先采样器特征的采样器（个人习惯<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，更何况画面收敛对与稳定<span class="heti-skip"><span class="heti-spacing"> </span>IP<span class="heti-spacing"> </span></span>有好处，但还是加上了，看看它们能不能带来惊喜。</p>
 <h3 id="counterfeit-v30">CounterFeit-V3.0<a class="headerlink" href="#counterfeit-v30" title="Permanent link">¶</a></h3>
 <h4 id="cfg">CFG<a class="headerlink" href="#cfg" title="Permanent link">¶</a></h4>
 <details class="note">
@@ -1690,7 +1709,7 @@
 </table>
 </details>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/sbg_xy_ksampler_steps.png"><img alt="sbg_xy_ksampler_steps" src="../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/sbg_xy_ksampler_steps.png"/></a></p>
-<details class="背景的问题">
+<details class="warning">
 <summary>背景的问题</summary>
 <p>又用 <code>dpmpp_2m karras 30 steps</code> 生成了五张，确定是模型的问题，它会把人物服饰的一些部分会延伸到纯色背景上去（像是飘带、领子<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，在背景提示词复杂的时候就没这种情况。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/sbg_background_test.png"><img alt="sbg_background_test" src="../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/sbg_background_test.png"/></a></p>
@@ -1967,37 +1986,73 @@
 </details>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/tmnd_xy_ksampler_steps.png"><img alt="tmnd_xy_ksampler_steps" src="../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/tmnd_xy_ksampler_steps.png"/></a></p>
 <p>我多测试了<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>步，为了观察 <code>dpmpp_3m_sde</code> 的情况。</p>
-<h3 id="wip">小结（WIP）<a class="headerlink" href="#wip" title="Permanent link">¶</a></h3>
-<p>各种采样器在五个模型中的表现都符合预期。</p>
+<h2 id="_9">总结<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <ul>
 <li>
 <p><code>Counterfeit-V3.0</code></p>
+<ul>
+<li><span>CFG<span class="heti-spacing"> </span></span>越高头发越“透光”</li>
+<li>必须使用外置<span><span class="heti-spacing"> </span>VAE</span>，不使用会出现色斑</li>
+<li>发色、发型、表情、衣服和角度在无提示词情况下不多变</li>
+<li><span>Clip Skip<span class="heti-spacing"> </span></span>设为 <code>-2</code> 会导致纯色背景出现额外内容。</li>
+</ul>
 </li>
 <li>
 <p><code>AbyssOrangeMix3 (AOM3A1B)</code></p>
+<ul>
+<li><span>CFG<span class="heti-spacing"> </span></span>不宜太低</li>
+<li>需要外置<span><span class="heti-spacing"> </span>VAE</span>，不使用会发灰</li>
+<li>概率生成非纯色背景。</li>
+</ul>
 </li>
 <li>
 <p><code>Store Bought Gyoza (VV)</code></p>
+<ul>
+<li>引导词不足时画面杂乱、人物面部背光</li>
+<li>不需要外置<span><span class="heti-spacing"> </span>VAE</span>，内置的饱和度稍低一些</li>
+<li>人物服饰的一部分会延伸到纯色背景上去</li>
+</ul>
 </li>
 <li>
 <p><code>Cetus-Mix (fp16/cleaned) (WhaleFall2)</code></p>
+<ul>
+<li>需要外置<span><span class="heti-spacing"> </span>VAE</span>，不使用会发灰</li>
+<li>纯色背景最干净的一个</li>
+</ul>
 </li>
 <li>
 <p><code>TMND-Mix (VI-Pruned)</code></p>
+<ul>
+<li><span>CFG<span class="heti-spacing"> </span></span>太低时背景不是纯色</li>
+<li>不需要外置<span><span class="heti-spacing"> </span>VAE</span>，内置的饱和度稍低一些</li>
+<li>背景干净</li>
+</ul>
 </li>
+</ul>
+<h2 id="_10">引用<a class="headerlink" href="#_10" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>我的工作流：<a href="../../../assets/files/gamedev/ai/sd/checkpoint_selection_2024-02-07/workflow.json">workflow.json</a></li>
+<li>参考视频（<span>by @<span class="heti-spacing"> </span></span>阿米粒包子<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：<a href="https://www.bilibili.com/video/av1000242033">www.bilibili.com/video/av1000242033</a></li>
+<li><a href="https://civitai.com/models/4468/counterfeit-v30">Counterfeit-V3.0</a></li>
+<li><a href="https://civitai.com/models/9942/abyssorangemix3-aom3">AbyssOrangeMix3 (AOM3A1B)</a></li>
+<li><a href="https://civitai.com/models/14734?modelVersionId=107360">Store Bought Gyoza (VV)</a></li>
+<li><a href="https://civitai.com/models/116867/cetus-mix-fp16cleaned">Cetus-Mix (fp16/cleaned) (WhaleFall2)</a></li>
+<li><a href="https://civitai.com/models/27259?modelVersionId=116759">TMND-Mix (VI-Pruned)</a></li>
+<li><a href="https://huggingface.co/hakurei/waifu-diffusion-v1-4/blob/5c5d89ee15d82f346fe10290da173abcd6d89c0a/vae/kl-f8-anime2.safetensors">kl-f8-anime2</a></li>
+<li><a href="https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.safetensors">vae-ft-mse-840000-ema-pruned</a></li>
 </ul>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月8日 15:19:56</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月9日 10:36:54</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月8日 15:19:56</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月9日 10:36:54</span>
 </span>
 </aside>
 </article>
