@@ -16,7 +16,7 @@ Misc 题目也挺有意思，也一起补了。
 
 纯前端的小游戏。
 
-![dicedicegoose](../assets/images/writeups/dicectf2024_quals/dicedicegoose.png)
+![dicedicegoose](../../assets/images/writeups/dicectf2024_quals/dicedicegoose.png)
 
 W/A/S/D 移动骰子，黑色方块也会跟着随机朝一个方向移动，两个方块位置重合的时候就算赢了。
 
@@ -74,7 +74,7 @@ history = [
 ```
 
 `encode` 函数可以直接在控制台调用：
-![dicedicegoose_console](../assets/images/writeups/dicectf2024_quals/dicedicegoose_console.png)
+![dicedicegoose_console](../../assets/images/writeups/dicectf2024_quals/dicedicegoose_console.png)
 
 Flag: `dice{pr0_duck_gam3r_AAEJCQEBCQgCAQkHAwEJBgQBCQUFAQkEBgEJAwcBCQIIAQkB}`
 
