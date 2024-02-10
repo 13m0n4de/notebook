@@ -57,10 +57,7 @@
 ![checkpoint_xy_prompts1_0](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/checkpoint_xy_prompts1_0.png)
 ![checkpoint_xy_prompts1_1](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/checkpoint_xy_prompts1_1.png)
 
-`storeBoughtGyoza` 是问题最大的一个：(1)
-{ .annotate }
-
-1. 造成此问题的原因在 [多维检查](#store-bought-gyoza-vv) 中找到了。
+`storeBoughtGyoza` 是问题最大的一个：
 
 1. 背景不干净，与人物服饰产生了干扰（这个在以往的使用过程中也发现了）
 
