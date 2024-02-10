@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-02-11":
+    - pageupdate:
+          text: Writeups > DiceCTF 2024 Quals
+          href: writeups/dicectf2024_quals.html
   - "2024-02-07":
     - newpage:
           text: GameDev > AI > Stable Diffusion > Checkpoint Selection 2024-02-07

