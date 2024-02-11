@@ -12,11 +12,13 @@
 
 Misc 题目也挺有意思，也一起补了。
 
-## web/dicedicegoose
+## Web
+
+### dicedicegoose
 
 纯前端的小游戏。
 
-![dicedicegoose](../../assets/images/writeups/dicectf2024_quals/dicedicegoose.png)
+![dicedicegoose](../../assets/images/writeups/2024/dicectf2024_quals/dicedicegoose.png)
 
 W/A/S/D 移动骰子，黑色方块也会跟着随机朝一个方向移动，两个方块位置重合的时候就算赢了。
 
@@ -74,11 +76,11 @@ history = [
 ```
 
 `encode` 函数可以直接在控制台调用：
-![dicedicegoose_console](../../assets/images/writeups/dicectf2024_quals/dicedicegoose_console.png)
+![dicedicegoose_console](../../assets/images/writeups/2024/dicectf2024_quals/dicedicegoose_console.png)
 
 Flag: `dice{pr0_duck_gam3r_AAEJCQEBCQgCAQkHAwEJBgQBCQUFAQkEBgEJAwcBCQIIAQkB}`
 
-## web/funnylogin
+### funnylogin
 
 “原来有附件啊？”.jpg
 
@@ -157,7 +159,7 @@ user=__proto__&pass=' OR id = 1 AND 'a' = 'a
 
 Flag: `dice{i_l0ve_java5cript!}`
 
-## web/gpwaf
+### gpwaf
 
 有意思，Prompt Injection 的题目。
 
@@ -192,7 +194,7 @@ Flag ：`dice{wtf_gpt_i_thought_you_were_a_smart_waf}`
 
 准备在校内赛也出一个 Prompt Injection 的题目，人数少，API 调用应该没那么多限制了。
 
-## web/calculator
+### calculator
 
 输入单个 TypeScript 表达式，求值后将结果直接显示到页面上。
 
@@ -400,7 +402,7 @@ XSS Payload:
 
 Flag: `dice{society_if_typescript_were_sound}`
 
-## web/calculator-2
+### calculator-2
 
 参考 write-up：[ouuan.moe/post/2024/02/dicectf-2024-quals#calculator](https://ouuan.moe/post/2024/02/dicectf-2024-quals#calculator)
 
@@ -452,3 +454,123 @@ URL 需要缩短一下，推荐 [t.ly](https://t.ly/)
 （如果随机的短网址中包含了黑名单词，就再缩短一次吧……如果你和我一样倒霉的话）
 
 Flag: `dice{learning-how-eslint-works}`
+
+在这之后，我又找到一个 writeup：[nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003#Web-272-another-csp-16-solves](https://nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003#Web-272-another-csp-16-solves)
+
+它有利用 `eval` 的解决方法。
+
+!!! quote
+    なかなかアイデアが出てこなかった。急に、`eval` を使っているけれども、常に `number` が返ってくるように見えるようなコードを使うのはどうかと思いついた。ただ eval を呼び出すだけだと当然 "Unsafe return of an any typed value." と怒られてしまうけれども、以下のように無理やり `eval` の返り値を数値に変換してやれば、トランスパイラは見逃してくれる。`eval` の実行時に何が起こっていようが気にはしない。
+
+    ```ts
+    +eval('[].join("fuga")')
+    ```
+
+    これを利用して、`eval` の中でやりたい放題やれるのではないかと考えた。次のコードは、実際には `Number` が `String` に置き換えられているので返り値は `NaNabc` になる。しかしながら、型推論では `eval` の中で何が起こるかは考慮されないので、`Number` が置き換えられないものとして、数値が返ってくるため問題ないとされる。
+
+    ```ts
+    (x=>+eval(`Number=String`)+Number(x))('abc')
+    ```
+
+    これを利用して、以下のコードで alert(123) というコードを実行できた。
+
+    ```ts
+    (x=>+eval(`Number=String`)+Number(x))('<script>alert(123)</script>')
+    ```
+
+??? quote "翻译自 GPT"
+    我一直没有什么好主意。突然，我想到了使用 eval，虽然它看起来总是返回数字。但如果只是简单地调用 eval，显然会被警告说 "Unsafe return of an any typed value." 但如果我们强行将 eval 的返回值转换成数字，就可以让转译器忽略这个问题。eval 在执行时无论发生什么都不在乎。
+
+    ```ts
+    +eval('[].join("fuga")')
+    ```
+
+    利用这一点，我们可以在 eval 中为所欲为。下面的代码实际上是将 `Number` 替换成了 `String`，所以返回值会变成 `NaNabc`。但是，在类型推断中，不会考虑 `eval` 中会发生什么，所以假定 `Number` 不会被替换，认为返回值是数字，因此不会出现问题。
+
+    ```ts
+    (x=>+eval(Number=String)+Number(x))('abc')
+    ```
+
+    利用这一点，下面的代码可以执行 alert(123)。
+
+    ```ts
+    (x=>+eval(`Number=String`)+Number(x))('<script>alert(123)</script>')
+    ```
+
+## Rev
+
+### dicequest
+
+不知道因为什么 WGPU 没有提供足够的内存，运行出错：
+
+```
+thread 'main' panicked at index.crates.io-6f17d22bba15001f/wgpu-0.17.2/src/backend/direct.rs:771:18:
+Error in Surface::configure: Validation Error
+
+Caused by:
+    Not enough memory left
+
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+Encountered a panic in system `bevy_render::view::window::prepare_windows`!
+thread 'Compute Task Pool (7)' panicked at index.crates.io-6f17d22bba15001f/bevy_render-0.12.1/src/pipelined_rendering.rs:145:45:
+called `Result::unwrap()` on an `Err` value: RecvError
+```
+
+不过倒是获得了一些信息，Bevy 写的游戏（这是好消息，意味着不是反编译逆向的题目）。
+
+通过设置 `WGPU_POWER_PREF=low` 来使用集显，成功运行了。
+
+干掉小骰子获得 \$5, 攒的钱可以在商店中购买道具。
+
+![dicequest_shop](../../assets/images/writeups/2024/dicectf2024_quals/dicequest_shop.png)
+
+龙军会在一段时间后出现，如果没买到售价 \$10000 的 `Tame Dragon` 就输了。
+
+嗯，又是修改内存值来修改金钱。
+
+Windows 下可能是用 Cheat Engine，Linux 下可以用 [scanmem](https://github.com/scanmem/scanmem)。
+
+使用逻辑和 CE 差不多，不断扫描内存中匹配的值，判断出金钱的内存地址，修改它。
+
+```
+> pid 45225
+info: maps file located at /proc/45225/maps opened.
+info: 102 suitable regions found.
+> = 0
+01/102 searching 0x55a3cc327000 - 0x55a3cc329000..........ok
+02/102 searching 0x55a3cc329000 - 0x55a3cc33a000..........ok
+03/102 searching 0x55a3cdf84000 - 0x55a3cee7f000..........ok
+...
+100/102 searching 0x7f4b9d997000 - 0x7f4b9d999000..........ok
+101/102 searching 0x7f4b9d99a000 - 0x7f4b9d99c000..........ok
+102/102 searching 0x7ffefe800000 - 0x7ffefe827000..........ok
+info: we currently have 176066591 matches.
+176066591> = 5
+..........ok
+info: we currently have 1189 matches.
+1189> = 10
+...........ok
+info: we currently have 63 matches.
+63> = 20
+.......ok
+info: we currently have 1 matches.
+info: match identified, use "set" to modify value.
+info: enter "help" for other commands.
+1> set 20000000
+info: setting *0x55a3cdfecee0 to 0x1312d00...
+```
+
+钱就被修改为了 \$20000000，随便杀个小怪刷新一下就能看到。
+
+买了 `Tame Dragon` 龙军就被驯服了，排成 Flag 的内容：
+
+![dicequest_flag](../../assets/images/writeups/2024/dicectf2024_quals/dicequest_flag.png)
+
+龙成群结队飞过去还挺酷，想知道代码怎么写的。
+
+Flag: `dice{your_flag_is_not_in_another_castle}`
+
+## 引用
+
+- ouuan's write-up: [ouuan.moe/post/2024/02/dicectf-2024-quals](https://ouuan.moe/post/2024/02/dicectf-2024-quals)
+- st98's write-up: [nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003](https://nanimokangaeteinai.hateblo.jp/entry/2024/02/06/051003)
