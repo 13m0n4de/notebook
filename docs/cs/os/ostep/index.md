@@ -17,3 +17,4 @@
 - [07.CPU Scheduling](./07cpu_scheduling.md)
 - [08.Multi-level Feedback](./08multi_level_feedback.md)
 - [09.Lottery Scheduling](./09lottery_scheduling.md)
+- [10.Multi-CPU Scheduling](./10multi_cpu_scheduling.md)

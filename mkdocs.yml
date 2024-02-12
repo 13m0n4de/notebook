@@ -141,6 +141,7 @@ nav:
         - 07.CPU Scheduling: cs/os/ostep/07cpu_scheduling.md
         - 08.Multi-level Feedback: cs/os/ostep/08multi_level_feedback.md
         - 09.Lottery Scheduling: cs/os/ostep/09lottery_scheduling.md
+        - 10.Multi-CPU Scheduling: cs/os/ostep/10multi_cpu_scheduling.md
       - MIT 6.1810: cs/os/mit6.1810.md
       - rCore: cs/os/rcore.md
     - Compiler:
