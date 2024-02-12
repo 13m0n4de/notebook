@@ -16,3 +16,4 @@
 - [06.Direct Execution](./06direct_execution.md)
 - [07.CPU Scheduling](./07cpu_scheduling.md)
 - [08.Multi-level Feedback](./08multi_level_feedback.md)
+- [09.Lottery Scheduling](./09lottery_scheduling.md)
