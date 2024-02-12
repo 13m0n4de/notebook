@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-02-12":
+    - newpage:
+          text: CS > OS > OSTEP > 09.Lottery Scheduling
+          href: cs/os/ostep/09lottery_scheduling.html
   - "2024-02-11":
     - pageupdate:
           text: Writeups > DiceCTF 2024 Quals
