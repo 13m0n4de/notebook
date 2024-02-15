@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-02-16":
+    - newpage:
+          text: CS > OS > OSTEP > 14.Memory API
+          href: cs/os/ostep/14memory_api.html
   - "2024-02-15":
     - newpage:
           text: CS > OS > OSTEP > 13.Address Spaces
