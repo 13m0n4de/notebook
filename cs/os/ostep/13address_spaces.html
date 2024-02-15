@@ -4,9 +4,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://13m0n4de.vercel.app/cs/os/ostep/13address_spaces.html" rel="canonical"/>
+<link href="10multi_cpu_scheduling.html" rel="prev"/>
+<link href="../mit6.1810.html" rel="next"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-9.5.7" name="generator"/>
-<title>第 13 章 抽象：地址空间 - 13m0n4de's notebook</title>
+<title>13.Address Spaces - 13m0n4de's notebook</title>
 <link href="../../../assets/stylesheets/main.f2e4d321.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/iframe-worker/shim"></script>
@@ -59,7 +61,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              第 13 章 抽象：地址空间
+              13.Address Spaces
             
           </span>
 </div>
@@ -133,7 +135,7 @@
 
         </a>
 </li>
-<li class="md-tabs__item">
+<li class="md-tabs__item md-tabs__item--active">
 <a class="md-tabs__link" href="../../index.html">
           
   
@@ -254,8 +256,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
 <a class="md-nav__link" href="../../index.html">
 <span class="md-ellipsis">
@@ -266,7 +268,7 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_2">
 <span class="md-nav__icon md-icon"></span>
             Computer Science
@@ -349,8 +351,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
 <a class="md-nav__link" href="../index.html">
 <span class="md-ellipsis">
@@ -361,14 +363,14 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_2_3">
 <span class="md-nav__icon md-icon"></span>
             Operating System
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
 <a class="md-nav__link" href="index.html">
 <span class="md-ellipsis">
@@ -379,7 +381,7 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_3_2_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="true" aria-labelledby="__nav_2_3_2_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_2_3_2">
 <span class="md-nav__icon md-icon"></span>
             OSTEP
@@ -440,6 +442,63 @@
     10.Multi-CPU Scheduling
   </span>
 </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    13.Address Spaces
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="13address_spaces.html">
+<span class="md-ellipsis">
+    13.Address Spaces
+  </span>
+</a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#131">
+<span class="md-ellipsis">
+      13.1 早期系统
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#132">
+<span class="md-ellipsis">
+      13.2 多道程序和时分共享
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#133">
+<span class="md-ellipsis">
+      13.3 地址空间
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#134">
+<span class="md-ellipsis">
+      13.4 目标
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      作业
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -701,6 +760,47 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#131">
+<span class="md-ellipsis">
+      13.1 早期系统
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#132">
+<span class="md-ellipsis">
+      13.2 多道程序和时分共享
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#133">
+<span class="md-ellipsis">
+      13.3 地址空间
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#134">
+<span class="md-ellipsis">
+      13.4 目标
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      作业
+    </span>
+</a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -709,18 +809,150 @@
 <article class="md-content__inner md-typeset">
 <h1 id="13">第<span class="heti-skip"><span class="heti-spacing"> </span>13<span class="heti-spacing"> </span></span>章 抽象：地址空间<a class="headerlink" href="#13" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
 <p>终于，在年后追上了<span class="heti-skip"><span class="heti-spacing"> </span>Rust<span class="heti-spacing"> </span></span>内核项目的进度……比预期的晚了一些<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（看<a href="../../../changelog.html#2024">时间线</a>就知道忙了些什么七七八八的）</p>
+<p>参考：<a href="https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter4/2address-space.html#id1"><span>rCore-Tutorial-Book-v3 #<span class="heti-spacing"> </span></span>地址空间</a></p>
+<h2 id="131"><span>13.1<span class="heti-spacing"> </span></span>早期系统<a class="headerlink" href="#131" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>早期的操作系统类似于函数库，在内存中从物理地址<span class="heti-skip"><span class="heti-spacing"> </span>0KB<span class="heti-spacing"> </span></span>开始到<span class="heti-skip"><span class="heti-spacing"> </span>64KB<span class="heti-spacing"> </span></span>结束，而应用程序则从物理地址<span class="heti-skip"><span class="heti-spacing"> </span>64KB<span class="heti-spacing"> </span></span>开始，继续使用剩余的内存。</p>
+<table>
+<thead>
+<tr>
+<th>Memory</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0KB - 64KB</td>
+<td>OS (code, data, etc.)</td>
+</tr>
+<tr>
+<td>64KB - MAX</td>
+<td>Program (code, data, etc.)</td>
+</tr>
+</tbody>
+</table>
+<p>物理内存的一部分用来保存操作系统（函数库）的代码和数据，余下的部分都交给应用来使用。</p>
+<p>从功能上应用的内存数据可以分为几个段：</p>
+<ul>
+<li>代码段</li>
+<li>全局数据段</li>
+<li>堆</li>
+<li>栈</li>
+<li>...</li>
+</ul>
+<p>由于只有一个应用，如何调整布局是它自己的事情。</p>
+<p>这个时期，内核提供给应用的访存视角一致，它们始终独占一块固定的内存区域，每个应用的开发者都基于这一认知来规划程序的内存布局。</p>
+<p>（批处理系统也一样，只不过它会在下一个应用运行前清空上个应用占据的内存区域）</p>
+<h2 id="132"><span>13.2<span class="heti-spacing"> </span></span>多道程序和时分共享<a class="headerlink" href="#132" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>为了降低等待<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>操作带来的资源消耗，多道程序出现了。</p>
+<p>为了提升用户的交互式体验，分时多任务系统诞生了。</p>
+<p>这个时代的操作系统中会同时有多个程序在运行，当程序在等待<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>操作或执行足够长时间后时会被“暂停”，操作系统负责切换到另一个程序。</p>
+<p>当它们处于暂停状态时，驻留在内存中的代码、数据该何去何从呢？</p>
+<p>一种方式是将这些代码、数据存放到磁盘上，然后把即将换入的应用在磁盘上的代码、数据恢复到内存。</p>
+<p>这种做法需要大量读写外部存储设备，而它们的速度都比<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>慢上几个数量级，这导致任务切换的开销过大，甚至完全不能接受。</p>
+<p>因此，可以在进程切换的时候，仍将进程信息留在内存中，也就是内存中同时存放所有进程的内存，代价是需要限制每个应用的可用内存大小。</p>
+<table>
+<thead>
+<tr>
+<th>Memory</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0KB - 64KB</td>
+<td>OS (Code, Data)</td>
+</tr>
+<tr>
+<td>64KB - 128KB</td>
+<td>(free)</td>
+</tr>
+<tr>
+<td>128KB - 192KB</td>
+<td>Process C (code, data, etc.)</td>
+</tr>
+<tr>
+<td>192KB - 256KB</td>
+<td>Process B (code, data, etc.)</td>
+</tr>
+<tr>
+<td>256KB - 320KB</td>
+<td>(free)</td>
+</tr>
+<tr>
+<td>320KB - 384KB</td>
+<td>Process A (code, data, etc.)</td>
+</tr>
+<tr>
+<td>384KB - 448KB</td>
+<td>(free)</td>
+</tr>
+<tr>
+<td>448KB - 512KB</td>
+<td>(free)</td>
+</tr>
+</tbody>
+</table>
+<p>从应用开发的角度来看，这种做法给开发带来了一定困难，因为需要自己决定加载到哪个物理地址运行，要求开发者对硬件特性和使用方法有更多了解，额外的学习成本。</p>
+<p>从内核的角度来看，应用能够直接访问物理内存，就也可以读取或修改其他进程（甚至操作系统）的内存，这是极大的安全隐患。</p>
+<h2 id="133"><span>13.3<span class="heti-spacing"> </span></span>地址空间<a class="headerlink" href="#133" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Memory</th>
+<th>Data</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0KB - 1KB</td>
+<td>Program Code</td>
+<td>代码段：指令所在位置</td>
+</tr>
+<tr>
+<td>1KB - 2KB</td>
+<td>Heap</td>
+<td>堆段：包括<span class="heti-skip"><span class="heti-spacing"> </span>malloc<span class="heti-spacing"> </span></span>分配的数据，向下增长</td>
+</tr>
+<tr>
+<td>2KB - 15KB</td>
+<td>(free)</td>
+<td></td>
+</tr>
+<tr>
+<td>15KB - 16KB</td>
+<td>Stack</td>
+<td>栈段：包含局部变量、函数的参数、返回值等，向上增长</td>
+</tr>
+</tbody>
+</table>
+<p>以上是操作系统提供给运行程序的抽象，程序实际不在物理地址<span class="heti-skip"><span class="heti-spacing"> </span>0 ~ 16KB<span class="heti-spacing"> </span></span>的内存中，而是加载在任意的物理地址，程序会认为自己被加载到特定地址（例如<span><span class="heti-spacing"> </span>0</span>）的内存中，并且具有非常大的地址空间，这都是虚拟化内存<span class="heti-skip"><span class="heti-spacing"> </span>(virtualizing memory)<span class="heti-spacing"> </span></span>的功劳，而程序访存使用的地址称为虚拟地址<span><span class="heti-spacing"> </span>(virtual address)</span>。</p>
+<p>从此，操作系统拥有了 特权级<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>地址空间 两重安全措施。</p>
+<h2 id="134"><span>13.4<span class="heti-spacing"> </span></span>目标<a class="headerlink" href="#134" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="admonition quote">
+<p class="admonition-title"><span>rCore-Tutorial-Book-v3 #<span class="heti-spacing"> </span></span>加一层抽象加强内存管理</p>
+<p>为了解决这种困境，抽象仍然是最重要的指导思想。在这里，抽象意味着内核要负责将物理内存管理起来，并为上面的应用提供一层抽象接口，从之前的失败经验学习，这层抽象需要达成下面的设计目标：</p>
+<ul>
+<li>透明 ：应用开发者可以不必了解底层真实物理内存的硬件细节，且在非必要时也不必关心内核的实现策略， 最小化他们的心智负担；</li>
+<li>高效 ：这层抽象至少在大多数情况下不应带来过大的额外开销；</li>
+<li>安全 ：这层抽象应该有效检测并阻止应用读写其他应用或内核的代码、数据等一系列恶意行为。</li>
+</ul>
+</div>
+<p>“透明”这个说法不知来源，可能是想表达“不被感知”但是失败了，容易让人误会。含义其实与透明的直觉感受相反————“屏蔽”。下层屏蔽细节，把封装好的内容提供给上层。</p>
+<h2 id="_1">作业<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>没有，开心。</p>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月15日 12:21:39</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月15日 20:13:16</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月15日 12:21:39</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月15日 20:13:16</span>
 </span>
 </aside>
 </article>
@@ -733,6 +965,34 @@
 </button>
 </main>
 <footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: 10.Multi-CPU Scheduling" class="md-footer__link md-footer__link--prev" href="10multi_cpu_scheduling.html">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                上一页
+              </span>
+<div class="md-ellipsis">
+                10.Multi-CPU Scheduling
+              </div>
+</div>
+</a>
+<a aria-label="下一页: MIT 6.1810" class="md-footer__link md-footer__link--next" href="../mit6.1810.html">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                下一页
+              </span>
+<div class="md-ellipsis">
+                MIT 6.1810
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
