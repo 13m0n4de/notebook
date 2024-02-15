@@ -144,6 +144,7 @@ nav:
         - 09.Lottery Scheduling: cs/os/ostep/09lottery_scheduling.md
         - 10.Multi-CPU Scheduling: cs/os/ostep/10multi_cpu_scheduling.md
         - 13.Address Spaces: cs/os/ostep/13address_spaces.md
+        - 14.Memory API: cs/os/ostep/14memory_api.md
       - MIT 6.1810: cs/os/mit6.1810.md
       - rCore: cs/os/rcore.md
     - Compiler:
