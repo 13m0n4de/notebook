@@ -1,5 +1,9 @@
 - "2024":
   - "2024-02-15":
+    - newpage:
+          text: CS > OS > OSTEP > 13.Address Spaces
+          href: cs/os/ostep/13address_spaces.html
+  - "2024-02-15":
     - function: 添加 Blog，将部分文章移动到 Blog
   - "2024-02-12":
     - newpage:
