@@ -1,3 +1,9 @@
+---
+date: 2024-02-07
+categories:
+  - AI
+---
+
 # Checkpoint 筛选 2024-02-07
 
 !!! warning
@@ -16,6 +22,8 @@
 - 稳定配合两到三个 Lora（服饰、配饰、发型等）
 - 稳定配合两到三个 ControlNet （姿势、语义等）
 - 室内室外、不同时间段的场景
+
+<!-- more -->
 
 初选的五个模型（画风在 2D ~ 2.5D 之间）：
 
@@ -54,8 +62,8 @@
 1girl, standing, looking_at_viewer, upper_body, simple_background
 ```
 
-![checkpoint_xy_prompts1_0](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/checkpoint_xy_prompts1_0.png)
-![checkpoint_xy_prompts1_1](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/checkpoint_xy_prompts1_1.png)
+![checkpoint_xy_prompts1_0](../../assets/images/blog/checkpoint_selection_2024-02-07/checkpoint_xy_prompts1_0.png)
+![checkpoint_xy_prompts1_1](../../assets/images/blog/checkpoint_selection_2024-02-07/checkpoint_xy_prompts1_1.png)
 
 `storeBoughtGyoza` 是问题最大的一个：
 
@@ -69,7 +77,7 @@
 1girl, standing, looking_at_viewer, upper_body, indoors
 ```
 
-![checkpoint_xy_prompts1_2](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/checkpoint_xy_prompts1_2.png)
+![checkpoint_xy_prompts1_2](../../assets/images/blog/checkpoint_selection_2024-02-07/checkpoint_xy_prompts1_2.png)
 
 `storeBoughtGyoza` 我其实很喜欢，这个模型的颜色很鲜艳，光影重，细节多，可以获得很绚丽的画面，我偏好把 [Add More Details](https://civitai.com/models/82098?modelVersionId=87153) Lora 调成负的一起用。但它不是特别听话，尤其是对于背景和姿势的控制。
 
@@ -85,7 +93,7 @@
 vintage train interior, snowing
 ```
 
-![checkpoint_xy_prompts2](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/checkpoint_xy_prompts2.png)
+![checkpoint_xy_prompts2](../../assets/images/blog/checkpoint_selection_2024-02-07/checkpoint_xy_prompts2.png)
 
 与刚刚的人像对比，画面风格基本一致，而且窗景的效果都不错。
 
@@ -95,7 +103,7 @@ vintage train interior, snowing
 1boy, driving a car in the town, from_side, 
 ```
 
-![checkpoint_xy_prompts3](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/checkpoint_xy_prompts3.png)
+![checkpoint_xy_prompts3](../../assets/images/blog/checkpoint_selection_2024-02-07/checkpoint_xy_prompts3.png)
 
 驾车这个场景比较复杂，不搭配深度图出问题也正常。
 
@@ -109,7 +117,7 @@ vintage train interior, snowing
 a wood desk in a room
 ```
 
-![checkpoint_xy_prompts4](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/checkpoint_xy_prompts4.png)
+![checkpoint_xy_prompts4](../../assets/images/blog/checkpoint_selection_2024-02-07/checkpoint_xy_prompts4.png)
 
 对于视觉小说，背景比人物写实是没太大问题的，曾经试验过把二次元画像合到现实世界的照片中，只要稍微调整一下就没有违合感了，甚至可以称之为风格。
 
@@ -119,13 +127,13 @@ a wood desk in a room
 outdoors, road, car, motor vehicle, ground vehicle, scenery, tree, power lines, street, utility pole, sky, building, day, road sign, lamppost, crosswalk, fence, traffic light, sign, city, cloud, blue sky
 ```
 
-![checkpoint_xy_prompts5_0](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/checkpoint_xy_prompts5_0.png)
+![checkpoint_xy_prompts5_0](../../assets/images/blog/checkpoint_selection_2024-02-07/checkpoint_xy_prompts5_0.png)
 
 ```title="Positive Prompt"
 outdoors, tree, road, sky, night sky, city, power lines, building, cityscape, street, sign, dark, guard rail, road sign, ground vehicle,
 ```
 
-![checkpoint_xy_prompts5_1](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/checkpoint_xy_prompts5_1.png)
+![checkpoint_xy_prompts5_1](../../assets/images/blog/checkpoint_selection_2024-02-07/checkpoint_xy_prompts5_1.png)
 
 还顺便试了下废墟房间：
 
@@ -133,7 +141,7 @@ outdoors, tree, road, sky, night sky, city, power lines, building, cityscape, st
 a room with a wall that has been torn down
 ```
 
-![checkpoint_xy_prompts5_2](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/checkpoint_xy_prompts5_2.png)
+![checkpoint_xy_prompts5_2](../../assets/images/blog/checkpoint_selection_2024-02-07/checkpoint_xy_prompts5_2.png)
 
 ### 小结
 
@@ -195,17 +203,17 @@ a room with a wall that has been torn down
     | Scheduler       | `karras`                                                                                                                                                                                                       |
     | VAE             | `vae-ft-mse-840000-ema-pruned`                                                                                                                                                                                 |
 
-![counterfeit_xy_cfg_girl](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/counterfeit_xy_cfg_girl.png)
+![counterfeit_xy_cfg_girl](../../assets/images/blog/checkpoint_selection_2024-02-07/counterfeit_xy_cfg_girl.png)
 
 `1girl` -> `1boy`，`maid` -> `maid dress`
 
-![counterfeit_xy_cfg_boy](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/counterfeit_xy_cfg_boy.png)
+![counterfeit_xy_cfg_boy](../../assets/images/blog/checkpoint_selection_2024-02-07/counterfeit_xy_cfg_boy.png)
 
 CFG 作用明显，尤其体现在刘海、雀斑、裙子和背景颜色上。低 CFG 值也能还原提示词特征。
 
 这个模型有个特点，会出现类似隐藏染的头发，CFG 越高越明显，猜测是模型给出了阳光透过背后头发的效果，换种发色看得更清楚一些：
 
-![counterfeit_xy_cfg_girl_green_hair](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/counterfeit_xy_cfg_girl_green_hair.png)
+![counterfeit_xy_cfg_girl_green_hair](../../assets/images/blog/checkpoint_selection_2024-02-07/counterfeit_xy_cfg_girl_green_hair.png)
 
 #### VAE
 
@@ -220,14 +228,14 @@ CFG 作用明显，尤其体现在刘海、雀斑、裙子和背景颜色上。�
     | Scheduler       | `karras`                                                            |
     | VAE             | `Baked VAE`, `kl-f8-anime2`, `vae-ft-mse-840000-ema-pruned`         |
 
-![counterfeit_xy_vae](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/counterfeit_xy_vae.png)
+![counterfeit_xy_vae](../../assets/images/blog/checkpoint_selection_2024-02-07/counterfeit_xy_vae.png)
 
 使用 `Baked VAE` 会出现绿斑，`kl-f8-anime2` 和 `vae-ft-mse-840000-ema-pruned` 没问题。
 
 ??? warning "clip_skip 对画面的影响"
     这个模型在 Clip Skip 为 `-2` 的时候，背景会出现额外的内容。
 
-    ![counterfeit_xy_vae_clip_skip2](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/counterfeit_xy_vae_clip_skip2.png)
+    ![counterfeit_xy_vae_clip_skip2](../../assets/images/blog/checkpoint_selection_2024-02-07/counterfeit_xy_vae_clip_skip2.png)
 
 `kl-f8-anime2` 和 `vae-ft-mse-840000-ema-pruned` 看不出区别，之后的测试中用后者。
 
@@ -246,7 +254,7 @@ CFG 作用明显，尤其体现在刘海、雀斑、裙子和背景颜色上。�
     | Scheduler       | `karras`                                                                                                                                                                                                       |
     | VAE             | `vae-ft-mse-840000-ema-pruned`                                                                                                                                                                                 |
 
-![counterfeit_xy_ksampler_steps](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/counterfeit_xy_ksampler_steps.png)
+![counterfeit_xy_ksampler_steps](../../assets/images/blog/checkpoint_selection_2024-02-07/counterfeit_xy_ksampler_steps.png)
 
 ### AbyssOrangeMix3 (AOM3A1B)
 
@@ -263,12 +271,12 @@ CFG 作用明显，尤其体现在刘海、雀斑、裙子和背景颜色上。�
     | Scheduler       | `karras`                                                                                                                                                                                                       |
     | VAE             | `vae-ft-mse-840000-ema-pruned`                                                                                                                                                                                 |
 
-![aom3_xy_cfg_girl_0](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/aom3_xy_cfg_girl_0.png)
-![aom3_xy_cfg_girl_1](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/aom3_xy_cfg_girl_1.png)
+![aom3_xy_cfg_girl_0](../../assets/images/blog/checkpoint_selection_2024-02-07/aom3_xy_cfg_girl_0.png)
+![aom3_xy_cfg_girl_1](../../assets/images/blog/checkpoint_selection_2024-02-07/aom3_xy_cfg_girl_1.png)
 
 `1girl` -> `1boy`，`maid` -> `maid dress`
 
-![aom3_xy_cfg_boy](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/aom3_xy_cfg_boy.png)
+![aom3_xy_cfg_boy](../../assets/images/blog/checkpoint_selection_2024-02-07/aom3_xy_cfg_boy.png)
 
 ~~（好幼）~~
 
@@ -291,7 +299,7 @@ CFG 作用明显，尤其体现在刘海、雀斑、裙子和背景颜色上。�
     | Scheduler       | `karras`                                                                                                                                                                                                       |
     | VAE             | `Baked VAE`, `kl-f8-anime2`, `vae-ft-mse-840000-ema-pruned`                                                                                                                                                    |
 
-![aom3_xy_vae](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/aom3_xy_vae.png)
+![aom3_xy_vae](../../assets/images/blog/checkpoint_selection_2024-02-07/aom3_xy_vae.png)
 
 不用 VAE 会发灰。
 
@@ -308,7 +316,7 @@ CFG 作用明显，尤其体现在刘海、雀斑、裙子和背景颜色上。�
     | Scheduler       | `karras`                                                                                                                                                                                                       |
     | VAE             | `vae-ft-mse-840000-ema-pruned`                                                                                                                                                                                 |
 
-![aom3_xy_ksampler_steps](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/aom3_xy_ksampler_steps.png)
+![aom3_xy_ksampler_steps](../../assets/images/blog/checkpoint_selection_2024-02-07/aom3_xy_ksampler_steps.png)
 
 ### Store Bought Gyoza (VV)
 
@@ -325,11 +333,11 @@ CFG 作用明显，尤其体现在刘海、雀斑、裙子和背景颜色上。�
     | Scheduler       | `karras`                                                                                                                                                                                                       |
     | VAE             | `vae-ft-mse-840000-ema-pruned`                                                                                                                                                                                 |
 
-![sbg_xy_cfg_girl](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/sbg_xy_cfg_girl.png)
+![sbg_xy_cfg_girl](../../assets/images/blog/checkpoint_selection_2024-02-07/sbg_xy_cfg_girl.png)
 
 `1girl` -> `1boy`, `maid` -> `maid dress`
 
-![sbg_xy_cfg_boy](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/sbg_xy_cfg_boy.png)
+![sbg_xy_cfg_boy](../../assets/images/blog/checkpoint_selection_2024-02-07/sbg_xy_cfg_boy.png)
 
 CFG `3.0` 的时候人物特征也都在。
 
@@ -348,7 +356,7 @@ CFG `3.0` 的时候人物特征也都在。
     | Scheduler       | `karras`                                                                                                                                                                                                       |
     | VAE             | `Baked VAE`, `kl-f8-anime2`, `vae-ft-mse-840000-ema-pruned`                                                                                                                                                    |
 
-![sbg_xy_vae](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/sbg_xy_vae.png)
+![sbg_xy_vae](../../assets/images/blog/checkpoint_selection_2024-02-07/sbg_xy_vae.png)
 
 内置的 VAE 饱和度会低一点点，我觉得比后两个好看，下一项测试时会使用 `Baked VAE`。
 
@@ -365,12 +373,12 @@ CFG `3.0` 的时候人物特征也都在。
     | Scheduler       | `karras`                                                                                                                                                                                                       |
     | VAE             | `Baked VAE`                                                                                                                                                                                                    |
 
-![sbg_xy_ksampler_steps](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/sbg_xy_ksampler_steps.png)
+![sbg_xy_ksampler_steps](../../assets/images/blog/checkpoint_selection_2024-02-07/sbg_xy_ksampler_steps.png)
 
 ??? warning "背景的问题"
     又用 `dpmpp_2m karras 30 steps` 生成了五张，确定是模型的问题，它会把人物服饰的一些部分会延伸到纯色背景上去（像是飘带、领子），在背景提示词复杂的时候就没这种情况。
 
-    ![sbg_background_test](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/sbg_background_test.png)
+    ![sbg_background_test](../../assets/images/blog/checkpoint_selection_2024-02-07/sbg_background_test.png)
 
 ### Cetus-Mix (WhaleFall2)
 
@@ -387,15 +395,15 @@ CFG `3.0` 的时候人物特征也都在。
     | Scheduler       | `karras`                                                                                                                                                                                                       |
     | VAE             | `vae-ft-mse-840000-ema-pruned`                                                                                                                                                                                 |
 
-![cetus_xy_cfg_girl](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/cetus_xy_cfg_girl.png)
+![cetus_xy_cfg_girl](../../assets/images/blog/checkpoint_selection_2024-02-07/cetus_xy_cfg_girl.png)
 
 `1girl` -> `1boy`, `maid` -> `maid dress`, `medium hair` -> `short hair`
 
-![cetus_xy_cfg_boy_0](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/cetus_xy_cfg_boy_0.png)
+![cetus_xy_cfg_boy_0](../../assets/images/blog/checkpoint_selection_2024-02-07/cetus_xy_cfg_boy_0.png)
 
 特意改成了短发又测了一遍，但我还是无法认可这是女生，并且头发完全没短吧，所以又加了条 `male` 进去，会好一点。
 
-![cetus_xy_cfg_boy_1](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/cetus_xy_cfg_boy_1.png)
+![cetus_xy_cfg_boy_1](../../assets/images/blog/checkpoint_selection_2024-02-07/cetus_xy_cfg_boy_1.png)
 
 看来这些模型对“穿着女仆裙的男生”的理解有些差异。
 
@@ -412,7 +420,7 @@ CFG `3.0` 的时候人物特征也都在。
     | Scheduler       | `karras`                                                                                                                                                                                                       |
     | VAE             | `Baked VAE`, `kl-f8-anime2`, `vae-ft-mse-840000-ema-pruned`                                                                                                                                                    |
 
-![cetus_xy_vae](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/cetus_xy_vae.png)
+![cetus_xy_vae](../../assets/images/blog/checkpoint_selection_2024-02-07/cetus_xy_vae.png)
 
 不用 VAE 会发灰。
 
@@ -429,7 +437,7 @@ CFG `3.0` 的时候人物特征也都在。
     | Scheduler       | `karras`                                                                                                                                                                                                       |
     | VAE             | `vae-ft-mse-840000-ema-pruned`                                                                                                                                                                                 |
 
-![cetus_xy_ksampler_steps](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/cetus_xy_ksampler_steps.png)
+![cetus_xy_ksampler_steps](../../assets/images/blog/checkpoint_selection_2024-02-07/cetus_xy_ksampler_steps.png)
 
 ### TMND-Mix (VI-Pruned)
 
@@ -446,11 +454,11 @@ CFG `3.0` 的时候人物特征也都在。
     | Scheduler       | `karras`                                                                                                                                                                                                       |
     | VAE             | `vae-ft-mse-840000-ema-pruned`                                                                                                                                                                                 |
 
-![tmnd_xy_cfg_girl](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/tmnd_xy_cfg_girl.png)
+![tmnd_xy_cfg_girl](../../assets/images/blog/checkpoint_selection_2024-02-07/tmnd_xy_cfg_girl.png)
 
 `1girl` -> `1boy`, `maid` -> `maid dress`, `medium hair` -> `short hair`
 
-![tmnd_xy_cfg_boy](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/tmnd_xy_cfg_boy.png)
+![tmnd_xy_cfg_boy](../../assets/images/blog/checkpoint_selection_2024-02-07/tmnd_xy_cfg_boy.png)
 
 CFG `3.0` 的时候背景不纯，但人物特征基本都在。
 
@@ -469,7 +477,7 @@ CFG `3.0` 的时候背景不纯，但人物特征基本都在。
     | Scheduler       | `karras`                                                                                                                                                                                                       |
     | VAE             | `Baked VAE`, `kl-f8-anime2`, `vae-ft-mse-840000-ema-pruned`                                                                                                                                                    |
 
-![tmnd_xy_vae](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/tmnd_xy_vae.png)
+![tmnd_xy_vae](../../assets/images/blog/checkpoint_selection_2024-02-07/tmnd_xy_vae.png)
 
 内嵌了 VAE ，而且我认为比其他两个好看一些。
 
@@ -486,7 +494,7 @@ CFG `3.0` 的时候背景不纯，但人物特征基本都在。
     | Scheduler       | `karras`                                                                                                                                                                                                       |
     | VAE             | `Baked VAE`                                                                                                                                                                                                    |
 
-![tmnd_xy_ksampler_steps](../../../assets/images/gamedev/ai/sd/checkpoint_selection_2024-02-07/tmnd_xy_ksampler_steps.png)
+![tmnd_xy_ksampler_steps](../../assets/images/blog/checkpoint_selection_2024-02-07/tmnd_xy_ksampler_steps.png)
 
 我多测试了 8 步，为了观察 `dpmpp_3m_sde` 的情况。
 
@@ -524,7 +532,7 @@ CFG `3.0` 的时候背景不纯，但人物特征基本都在。
 
 ## 引用
 
-- 我的工作流：[workflow.json](../../../assets/files/gamedev/ai/sd/checkpoint_selection_2024-02-07/workflow.json)
+- 我的工作流：[workflow.json](../../assets/files/blog/checkpoint_selection_2024-02-07/workflow.json)
 - 参考视频（by @阿米粒包子）：[www.bilibili.com/video/av1000242033](https://www.bilibili.com/video/av1000242033)
 - [Counterfeit-V3.0](https://civitai.com/models/4468/counterfeit-v30)
 - [AbyssOrangeMix3 (AOM3A1B)](https://civitai.com/models/9942/abyssorangemix3-aom3)
