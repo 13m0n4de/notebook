@@ -119,25 +119,25 @@ void func() {
 
 ```mermaid
 sequenceDiagram
+    participant ProgramA as 程序 A（用户模式）
+    participant ProgramB as 程序 B（用户模式）
     participant OS as 操作系统（内核模式）
     participant Hardware as 硬件
 
-    Note over OS, Hardware: 启动
+    Note over ProgramA, Hardware: 启动
     OS->>Hardware: 初始化陷阱表
     Note over Hardware: 记住以下地址:<br>系统调用处理程序<br>时钟处理程序<br>非法内存处理程序<br>非常指令处理程序
     OS->>Hardware: 开始中断时钟
     Note over Hardware: 开始时钟, 在 x ms 后中断
     Note over OS: 初始化进程表, 初始化空闲列表
 
-    Note over OS, Hardware: 运行
+    Note over ProgramA, Hardware: 运行
     Note over OS: 在进程表中分配条目
     Note over OS: 为进程分配内存
     Note over OS: 设置基址/界限寄存器
+    Note over OS: 恢复 A 的寄存器    
 
-    OS->>Hardware: 从陷阱返回（进入 A）
-    Note over Hardware: 恢复 A 的寄存器    
-    create participant ProgramA as 程序 A（用户模式）
-    Hardware->>ProgramA: 跳到 A（最初）的程序计数器
+    OS->>ProgramA: 跳到 A（最初）的程序计数器
     Note over ProgramA: 运行
     ProgramA->>Hardware: 获取指令
     Note over Hardware: 转换虚拟地址并获取
@@ -145,21 +145,19 @@ sequenceDiagram
     Note over ProgramA: 执行指令
     ProgramA->>Hardware: 加载/保存
     Note over Hardware: 确保地址不越界
-    Note over Hardware: 转换虚拟地址并执行
-    Note over ProgramA: ……
+    Note over Hardware: 转换虚拟地址并获取
+    Hardware->>ProgramA: 返回指令
+    Note over ProgramA: 执行
 
     Note over ProgramA, Hardware: 时钟中断
-    Hardware->>OS: 跳到中断处理程序
+    ProgramA->>OS: 陷入
     Note over OS: 将寄存器 (A) 保存到进程结构 (A) 
     Note over OS: 从进程结构 (B) 恢复寄存器 (B)
-    OS->>Hardware: 从陷阱返回（进入 B）
-    Note over Hardware: 恢复 B 的寄存器
-    create participant ProgramB as 程序 B（用户模式）
-    Hardware->>ProgramB: 跳到 B 的程序计数器
+    OS->>ProgramB: 从陷入返回（进入 B）
     Note over ProgramB: 运行
     ProgramB->>Hardware: 执行错误的加载
     Note over Hardware: 加载越界
-    Hardware->OS: 跳到陷阱处理程序
+    Hardware->>OS: 跳到陷阱处理程序
     Note over OS: 决定终止进程 B
     Note over OS: 回收 B 的内存
     Note over OS: 移除 B 在进程表中的条目
