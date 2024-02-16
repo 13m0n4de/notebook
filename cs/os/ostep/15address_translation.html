@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://13m0n4de.vercel.app/cs/os/ostep/index.html" rel="canonical"/>
-<link href="../index.html" rel="prev"/>
-<link href="02introduction.html" rel="next"/>
+<link href="https://13m0n4de.vercel.app/cs/os/ostep/15address_translation.html" rel="canonical"/>
+<link href="14memory_api.html" rel="prev"/>
+<link href="../mit6.1810.html" rel="next"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-9.5.7" name="generator"/>
-<title>OSTEP 学习笔记 - 13m0n4de's notebook</title>
+<title>15.Address Translation - 13m0n4de's notebook</title>
 <link href="../../../assets/stylesheets/main.f2e4d321.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/iframe-worker/shim"></script>
@@ -37,7 +37,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#ostep">
+<a class="md-skip" href="#15">
           跳转至
         </a>
 </div>
@@ -61,7 +61,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              OSTEP 学习笔记
+              15.Address Translation
             
           </span>
 </div>
@@ -372,12 +372,12 @@
 <li class="md-nav__item md-nav__item--active md-nav__item--nested">
 <input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link md-nav__link--active" href="index.html">
+<a class="md-nav__link" href="index.html">
 <span class="md-ellipsis">
     OSTEP
   </span>
 </a>
-<label class="md-nav__link md-nav__link--active" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+<label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
@@ -457,12 +457,80 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="15address_translation.html">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    15.Address Translation
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="15address_translation.html">
 <span class="md-ellipsis">
     15.Address Translation
   </span>
 </a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#151">
+<span class="md-ellipsis">
+      15.1 假设
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#152">
+<span class="md-ellipsis">
+      15.2 一个例子
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#153">
+<span class="md-ellipsis">
+      15.3 动态（基于硬件）重定位
+    </span>
+</a>
+<nav aria-label="15.3 动态（基于硬件）重定位" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      转换示例
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#154">
+<span class="md-ellipsis">
+      15.4 硬件支持：总结
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#155">
+<span class="md-ellipsis">
+      15.5 操作系统的问题
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      作业
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -730,22 +798,57 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#table-of-contents">
+<a class="md-nav__link" href="#151">
 <span class="md-ellipsis">
-      Table of Contents
+      15.1 假设
     </span>
 </a>
-<nav aria-label="Table of Contents" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#152">
+<span class="md-ellipsis">
+      15.2 一个例子
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#153">
+<span class="md-ellipsis">
+      15.3 动态（基于硬件）重定位
+    </span>
+</a>
+<nav aria-label="15.3 动态（基于硬件）重定位" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#virtualization">
+<a class="md-nav__link" href="#_1">
 <span class="md-ellipsis">
-      Virtualization
+      转换示例
     </span>
 </a>
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#154">
+<span class="md-ellipsis">
+      15.4 硬件支持：总结
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#155">
+<span class="md-ellipsis">
+      15.5 操作系统的问题
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      作业
+    </span>
+</a>
 </li>
 </ul>
 </nav>
@@ -754,31 +857,357 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="ostep"><span>OSTEP<span class="heti-spacing"> </span></span>学习笔记<a class="headerlink" href="#ostep" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
-<div class="admonition abstract">
-<p class="admonition-title">资源</p>
+<h1 id="15">第<span class="heti-skip"><span class="heti-spacing"> </span>15<span class="heti-spacing"> </span></span>章 机制：地址转换<a class="headerlink" href="#15" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<p>这章是讲如何高效、灵活地虚拟化内存。</p>
+<p>当<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>取指令或者执行一条访存指令的时候，它都是基于虚拟地址访问属于当前正在运行的应用的地址空间。</p>
+<p>此时，<span>CPU<span class="heti-spacing"> </span></span>中的 内存管理单元<span class="heti-skip"><span class="heti-spacing"> </span>(MMU, Memory Management Unit)<span class="heti-spacing"> </span></span>自动将这个虚拟地址进行 地址转换<span class="heti-skip"><span class="heti-spacing"> </span>(Address Translation)<span class="heti-spacing"> </span></span>变为一个物理地址，即这个应用的数据<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>指令的物理内存位置。</p>
+<p>参考：<a href="https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter4/2address-space.html#id6"><span>rCore-Tutorial-Book-v3 #<span class="heti-spacing"> </span></span>增加硬件加速虚实地址转换</a></p>
+<h2 id="151"><span>15.1<span class="heti-spacing"> </span></span>假设<a class="headerlink" href="#151" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<details class="quote">
+<summary>来自操作系统的嘲笑</summary>
+<p>我们对内存虚拟化的第一次尝试非常简单，甚至有点可笑。如果你觉得可笑就笑吧，很快就轮到操作系统嘲笑你了。当你试图理解<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>的换入换出、多级页表，和其他技术一样有奇迹之处的时候。不喜欢操作系统嘲笑你？很不幸，但这就是操作系统的运行方式。</p>
+</details>
+<p>假设：</p>
+<ol>
+<li>用户的地址空间必须连续地放在物理内存中；</li>
+<li>地址空间不是很大；</li>
+<li>每个地址空间大小完全一样。</li>
+</ol>
+<h2 id="152"><span>15.2<span class="heti-spacing"> </span></span>一个例子<a class="headerlink" href="#152" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// this is the line of code we are interested in</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">128:</span><span class="w"> </span><span class="nf">movl</span><span class="w"> </span><span class="mi">0x0</span><span class="p">(</span><span class="nv">%ebx</span><span class="p">),</span><span class="w"> </span><span class="nv">%eax</span><span class="w"> </span><span class="c1">;load 0+ebx into eax</span>
+<span class="err">132:</span><span class="w"> </span><span class="nf">addl</span><span class="w"> </span><span class="no">$0x03</span><span class="p">,</span><span class="w"> </span><span class="nv">%eax</span><span class="w"> </span><span class="c1">;add 3 to eax register</span>
+<span class="err">135:</span><span class="w"> </span><span class="nf">movl</span><span class="w"> </span><span class="nv">%eax</span><span class="p">,</span><span class="w"> </span><span class="mi">0x0</span><span class="p">(</span><span class="nv">%ebx</span><span class="p">)</span><span class="w"> </span><span class="c1">;store eax back to mem</span>
+</code></pre></div>
+<p>代码和数据都位于进程的地址口令你感觉，<span>3<span class="heti-spacing"> </span></span>条指令序列位于地址<span><span class="heti-spacing"> </span>128</span>（靠近头部的代码段<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，变量<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>的值位于地址<span><span class="heti-spacing"> </span>15 KB</span> （在靠近底部的栈中<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>如果这<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>条指令执行，从进程的角度来看，发生了以下几次内存访问：</p>
 <ul>
-<li><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">OSTEP</a></li>
-<li><a href="https://github.com/remzi-arpacidusseau/ostep-translations/blob/master/chinese/README.md"><span>OSTEP<span class="heti-spacing"> </span></span>中文翻译</a></li>
-<li><a href="https://github.com/remzi-arpacidusseau/ostep-code/"><span>OSTEP<span class="heti-spacing"> </span></span>书中代码</a></li>
-<li><a href="https://github.com/remzi-arpacidusseau/ostep-homework/"><span>OSTEP<span class="heti-spacing"> </span></span>作业所需代码</a></li>
+<li>从地址<span class="heti-skip"><span class="heti-spacing"> </span>128<span class="heti-spacing"> </span></span>获取指令；</li>
+<li>执行指令（从地址<span class="heti-skip"><span class="heti-spacing"> </span>15 KB<span class="heti-spacing"> </span></span>加载数据<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；</li>
+<li>从地址<span class="heti-skip"><span class="heti-spacing"> </span>132<span class="heti-spacing"> </span></span>获取命令；</li>
+<li>执行命令（没有内存访问<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；</li>
+<li>从地址<span class="heti-skip"><span class="heti-spacing"> </span>135<span class="heti-spacing"> </span></span>获取指令；</li>
+<li>执行指令（新值存入地址<span><span class="heti-spacing"> </span>15 KB</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
 </ul>
+<p>从程序的角度来看，它的地址空间（address space）从<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>开始到<span class="heti-skip"><span class="heti-spacing"> </span>16 KB<span class="heti-spacing"> </span></span>结束。它包含的所有内存引用都应该在这个范围内。然而，对虚拟内存来说，操作系统希望将这个进程地址空间放在物理内存的其他位置，并不一定从地址<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>开始。</p>
+<p>因此我们遇到了如下问题：</p>
+<ul>
+<li>怎样在内存中重定位这个进程，同时对该进程透明（transparent<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>？</li>
+<li>怎么样提供一种虚拟地址空间从<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>开始的假象，而实际上地址空间位于另外某个物理地址？</li>
+</ul>
+<p>例子：</p>
+<table>
+<thead>
+<tr>
+<th>Physics Address</th>
+<th>Virtual Address</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 KB - 16 KB</td>
+<td></td>
+<td>OS</td>
+</tr>
+<tr>
+<td>16 KB - 32 KB</td>
+<td></td>
+<td>(not in use)</td>
+</tr>
+<tr>
+<td>32 KB - 48 KB</td>
+<td>0 KB - 2 KB</td>
+<td>Program Code</td>
+</tr>
+<tr>
+<td>32 KB - 48 KB</td>
+<td>2 KB - 4 KB</td>
+<td>Heap</td>
+</tr>
+<tr>
+<td>32 KB - 48 KB</td>
+<td>4 KB - 14 KB</td>
+<td>(free)</td>
+</tr>
+<tr>
+<td>32 KB - 48 KB</td>
+<td>14 KB - 16 KB</td>
+<td>Stack</td>
+</tr>
+<tr>
+<td>48 KB - 64 KB</td>
+<td></td>
+<td>(not in use)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">关于介入<span><span class="heti-spacing"> </span>(Interposition)</span></p>
+<p>书中介绍介入有点突然，介入其实指的是在不同的软件组件或硬件之间插入一个 <strong>中间层</strong> 来实现对它们之间交互的监视、修改或拓展</p>
 </div>
-<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">¶</a></h2>
-<h3 id="virtualization">Virtualization<a class="headerlink" href="#virtualization" title="Permanent link">¶</a></h3>
+<h2 id="153"><span>15.3<span class="heti-spacing"> </span></span>动态（基于硬件）重定位<a class="headerlink" href="#153" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>动态（基于硬件）重定位，最初只是一个简单的实现，称为基址加界限<span class="heti-skip"><span class="heti-spacing"> </span>(base and bound)<span class="heti-spacing"> </span></span>机制，有时又称为动态重定位<span><span class="heti-spacing"> </span>(dynamic relocation)</span>。</p>
+<p>每个<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>需要两个硬件寄存器：</p>
 <ul>
-<li><a href="02introduction.html">02.Introduction</a></li>
-<li><a href="04processes.html">04.Processes</a></li>
-<li><a href="05process_api.html">05.Process API</a></li>
-<li><a href="06direct_execution.html">06.Direct Execution</a></li>
-<li><a href="07cpu_scheduling.html">07.CPU Scheduling</a></li>
-<li><a href="08multi_level_feedback.html">08.Multi-level Feedback</a></li>
-<li><a href="09lottery_scheduling.html">09.Lottery Scheduling</a></li>
-<li><a href="10multi_cpu_scheduling.html">10.Multi-CPU Scheduling</a></li>
-<li><a href="13address_spaces.html">13.Address Spaces</a></li>
-<li><a href="14memory_api.html">14.Memory API</a></li>
-<li><a href="15address_translation.html">15.Address Translation</a></li>
+<li>基址<span class="heti-skip"><span class="heti-spacing"> </span>(base)<span class="heti-spacing"> </span></span>寄存器</li>
+<li>界限<span class="heti-skip"><span class="heti-spacing"> </span>(bound)<span class="heti-spacing"> </span></span>寄存器，有时称为限制<span class="heti-skip"><span class="heti-spacing"> </span>(limit)<span class="heti-spacing"> </span></span>寄存器</li>
 </ul>
+<p>程序真正运行时，操作系统会决定其在物理内存中的实际加载地址，并将起始地址记录在基址寄存器中。进程中使用的内存引用都是虚拟地址<span><span class="heti-spacing"> </span>(virtual address)</span>，硬件将虚拟地址加上基址寄存器的值，得到物理地址<span><span class="heti-spacing"> </span>(physical address)</span>，再发给内存系统。</p>
+<p>界限寄存器被用来保存虚拟地址空间的大小，如果程序访问超过这个界限或者为负数的虚拟地址，<span>CPU<span class="heti-spacing"> </span></span>将触发异常<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（界限寄存器也可以记录地址空间结束的物理地址，硬件在转化虚拟地址到物理地址之后才去检查这个界限，逻辑上是等价的<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>）</p>
+<div class="admonition quote">
+<p class="admonition-title">补充：基于软件的重定位</p>
+<p>在早期，在硬件支持重定位之前，一些系统曾经采用纯软件的重定位方式。基本技术被称为静态重定位（static relocation<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，其中一个名为加载程序（loader）的软件接手将要运行的可执行程序，将它的地址重写到物理内存中期望的偏移位置。</p>
+<p>例如，程序中有一条指令是从地址<span class="heti-skip"><span class="heti-spacing"> </span>1000<span class="heti-spacing"> </span></span>加载到寄存器（即<span><span class="heti-spacing"> </span>movl 1000</span>，%eax<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，当整个程序的地址空间被加载到从<span><span class="heti-spacing"> </span>3000</span>（不是程序认为的<span><span class="heti-spacing"> </span>0</span>）开始的物理地址中，加载程序会重写指令中的地址（即<span><span class="heti-spacing"> </span>movl4000, %eax</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，从而完成简单的静态重定位。</p>
+<p>然而，静态重定位有许多问题，首先也是最重要的是不提供访问保护，进程中的错误地址可能导致对其他进程或操作系统内存的非法访问，一般来说，需要硬件支持来实现真正的访问保护。静态重定位的另一个缺点是一旦完成，稍后很难将内存空间重定位到其他位置。</p>
+</div>
+<h3 id="_1">转换示例<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<table>
+<thead>
+<tr>
+<th>Virtual Address</th>
+<th>Physical Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>16 KB</td>
+</tr>
+<tr>
+<td>1 KB</td>
+<td>17 KB</td>
+</tr>
+<tr>
+<td>3000</td>
+<td>19384</td>
+</tr>
+<tr>
+<td>4400</td>
+<td>Fault (out of bounds)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="154"><span>15.4<span class="heti-spacing"> </span></span>硬件支持：总结<a class="headerlink" href="#154" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>硬件要求</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>特权模式</td>
+<td>需要，以防用户模式的进程执行特权操作</td>
+</tr>
+<tr>
+<td>基址<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>界限寄存器</td>
+<td>每个<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>需要一对寄存器来支持地址转换和界限检查</td>
+</tr>
+<tr>
+<td>能够转换虚拟地址并检查它是否越界</td>
+<td>需要电路来完成转换和检查界限，在这种情况下，非常简单</td>
+</tr>
+<tr>
+<td>修改基址<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>界限寄存器的特权指令</td>
+<td>在让用户程序运行之前，操作系统必须能够设置这些值</td>
+</tr>
+<tr>
+<td>注册异常处理程序的特权指令</td>
+<td>操作系统必须能告诉硬件，如果异常发生，那么执行哪些代码</td>
+</tr>
+<tr>
+<td>能够触发异常</td>
+<td>如果进程试图使用特权指令或越界的内存，则必须能够触发异常</td>
+</tr>
+</tbody>
+</table>
+<h2 id="155"><span>15.5<span class="heti-spacing"> </span></span>操作系统的问题<a class="headerlink" href="#155" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>操作系统的要求</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内存管理</td>
+<td>需要为新进程分配内存<br/>从终止的进程回收内存<br/>一般通过空闲列表（free list）来管理内存</td>
+</tr>
+<tr>
+<td>基址<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>界限管理</td>
+<td>必须在上下文切换时正确设置基址<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>界限寄存器</td>
+</tr>
+<tr>
+<td>异常处理</td>
+<td>当异常发生时执行的代码，可能的动作是终止犯错的进程</td>
+</tr>
+</tbody>
+</table>
+<p>硬件与操作系统的交互过程：</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant OS as 操作系统（内核模式）
+    participant Hardware as 硬件
+
+    Note over OS, Hardware: 启动
+    OS-&gt;&gt;Hardware: 初始化陷阱表
+    Note over Hardware: 记住以下地址:&lt;br&gt;系统调用处理程序&lt;br&gt;时钟处理程序&lt;br&gt;非法内存处理程序&lt;br&gt;非常指令处理程序
+    OS-&gt;&gt;Hardware: 开始中断时钟
+    Note over Hardware: 开始时钟, 在 x ms 后中断
+    Note over OS: 初始化进程表, 初始化空闲列表
+
+    Note over OS, Hardware: 运行
+    Note over OS: 在进程表中分配条目
+    Note over OS: 为进程分配内存
+    Note over OS: 设置基址/界限寄存器
+
+    OS-&gt;&gt;Hardware: 从陷阱返回（进入 A）
+    Note over Hardware: 恢复 A 的寄存器    
+    create participant ProgramA as 程序 A（用户模式）
+    Hardware-&gt;&gt;ProgramA: 跳到 A（最初）的程序计数器
+    Note over ProgramA: 运行
+    ProgramA-&gt;&gt;Hardware: 获取指令
+    Note over Hardware: 转换虚拟地址并获取
+    Hardware-&gt;&gt;ProgramA: 返回指令
+    Note over ProgramA: 执行指令
+    ProgramA-&gt;&gt;Hardware: 加载/保存
+    Note over Hardware: 确保地址不越界
+    Note over Hardware: 转换虚拟地址并执行
+    Note over ProgramA: ……
+
+    Note over ProgramA, Hardware: 时钟中断
+    Hardware-&gt;&gt;OS: 跳到中断处理程序
+    Note over OS: 将寄存器 (A) 保存到进程结构 (A) 
+    Note over OS: 从进程结构 (B) 恢复寄存器 (B)
+    OS-&gt;&gt;Hardware: 从陷阱返回（进入 B）
+    Note over Hardware: 恢复 B 的寄存器
+    create participant ProgramB as 程序 B（用户模式）
+    Hardware-&gt;&gt;ProgramB: 跳到 B 的程序计数器
+    Note over ProgramB: 运行
+    ProgramB-&gt;&gt;Hardware: 执行错误的加载
+    Note over Hardware: 加载越界
+    Hardware-&gt;OS: 跳到陷阱处理程序
+    Note over OS: 决定终止进程 B
+    Note over OS: 回收 B 的内存
+    Note over OS: 移除 B 在进程表中的条目</code></pre>
+<h2 id="_2">作业<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>1．用种子<span><span class="heti-spacing"> </span>1</span>、<span>2<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>运行，并计算进程生成的每个虚拟地址是处于界限内还是界限外<span class="heti-skip"><span class="heti-spacing"> </span>?<span class="heti-spacing"> </span></span>如果在界限内，请计算地址转换。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<div class="highlight"><span class="filename">./relocation.py -s 1</span><pre><span></span><code>ARG seed 1
+ARG address space size 1k
+ARG phys mem size 16k
+
+Base-and-Bounds register information:
+
+  Base   : 0x0000363c (decimal 13884)
+  Limit  : 290
+
+Virtual Address Trace
+  VA  0: 0x0000030e (decimal:  782) --&gt; PA or segmentation violation?
+  VA  1: 0x00000105 (decimal:  261) --&gt; PA or segmentation violation?
+  VA  2: 0x000001fb (decimal:  507) --&gt; PA or segmentation violation?
+  VA  3: 0x000001cc (decimal:  460) --&gt; PA or segmentation violation?
+  VA  4: 0x0000029b (decimal:  667) --&gt; PA or segmentation violation?
+</code></pre></div>
+<p><code>VA 1</code> 在<span class="heti-skip"><span class="heti-spacing"> </span>Limit<span class="heti-spacing"> </span></span>内，其他都超出了界限。</p>
+<p>剩下两个同理计算。</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>2．使用以下标志运行：-s 0 -n 10。为了确保所有生成的虚拟地址都处于边界内，要将<span><span class="heti-spacing"> </span>-l</span>（界限寄存器）设置为什么值？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<div class="highlight"><span class="filename">./relocation.py -s 0 -n 10</span><pre><span></span><code>ARG seed 0
+ARG address space size 1k
+ARG phys mem size 16k
+
+Base-and-Bounds register information:
+
+  Base   : 0x00003082 (decimal 12418)
+  Limit  : 472
+
+Virtual Address Trace
+  VA  0: 0x000001ae (decimal:  430) --&gt; PA or segmentation violation?
+  VA  1: 0x00000109 (decimal:  265) --&gt; PA or segmentation violation?
+  VA  2: 0x0000020b (decimal:  523) --&gt; PA or segmentation violation?
+  VA  3: 0x0000019e (decimal:  414) --&gt; PA or segmentation violation?
+  VA  4: 0x00000322 (decimal:  802) --&gt; PA or segmentation violation?
+  VA  5: 0x00000136 (decimal:  310) --&gt; PA or segmentation violation?
+  VA  6: 0x000001e8 (decimal:  488) --&gt; PA or segmentation violation?
+  VA  7: 0x00000255 (decimal:  597) --&gt; PA or segmentation violation?
+  VA  8: 0x000003a1 (decimal:  929) --&gt; PA or segmentation violation?
+  VA  9: 0x00000204 (decimal:  516) --&gt; PA or segmentation violation?
+</code></pre></div>
+<p>最大<span><span class="heti-spacing"> </span>929</span>，设置<span class="heti-skip"><span class="heti-spacing"> </span>Limit<span class="heti-spacing"> </span></span>大于<span class="heti-skip"><span class="heti-spacing"> </span>929<span class="heti-spacing"> </span></span>的就可以了，但更推荐设置为<span class="heti-skip"><span class="heti-spacing"> </span>1024<span class="heti-spacing"> </span></span>的倍数。</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>3．使用以下标志运行：-s 1 -n 10 -l 100。可以设置 <del>界限</del> 基址的最大值是多少，以便地址空间仍然完全放在物理内存中？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>翻译有误<heti-adjacent class="heti-adjacent-quarter">，</heti-adjacent>“界限”应是“基址”。</p>
+<p>界限为<span><span class="heti-spacing"> </span>100</span>，默认物理内存大小为<span><span class="heti-spacing"> </span>16 KB</span>，计算得最大基址为 <code>(16 &lt;&lt; 10) - 100 = 16284</code></p>
+<div class="highlight"><pre><span></span><code>$ ./relocation.py -s 1 -n 10 -l 100 -b 16284 -c
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>4．运行和第<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>题相同的操作，但使用较大的地址空间（-a）和物理内存（-p<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p><code>-a 32m -p 1g</code> 时，<code>-b</code> 的最大值为 <code>(1 &lt;&lt; 10 &lt;&lt; 10 &lt;&lt; 10) - 100 = 1073741724</code></p>
+<div class="highlight"><pre><span></span><code>$ ./relocation.py -s 1 -n 10 -l 100 -b 16284 -a 32m -p 1g -c
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>5．作为边界寄存器的值的函数，随机生成的虚拟地址的哪一部分是有效的？画一个图，使用不同随机种子运行，限制值从<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>到最大地址空间大小。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># 定义常量</span>
+<span class="n">address_size</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">10</span>
+<span class="n">phys_size</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">&lt;&lt;</span> <span class="mi">10</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">300</span>
+
+<span class="c1"># 预先生成所有需要的随机地址</span>
+<span class="n">random_addresses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">address_size</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">phys_size</span><span class="p">,</span> <span class="n">iterations</span><span class="p">))</span>
+
+<span class="c1"># 通过累计求和计算每个限制值下的有效地址分数</span>
+<span class="n">valid_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">random_addresses</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">phys_size</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 计算有效地址的平均分数</span>
+<span class="n">valid_fraction</span> <span class="o">=</span> <span class="n">valid_counts</span> <span class="o">/</span> <span class="n">iterations</span>
+
+<span class="c1"># 绘图</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">phys_size</span><span class="p">,</span> <span class="n">phys_size</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">valid_fraction</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"teal"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Limit"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Valid fraction (Average)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"valid_fraction.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">227</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../../assets/images/cs/os/ostep/15_valid_fraction.png"><img alt="15_valid_fraction" src="../../../assets/images/cs/os/ostep/15_valid_fraction.png"/></a></p>
+</div>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
@@ -790,7 +1219,7 @@
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月12日 06:26:42</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月16日 18:08:12</span>
 </span>
 </aside>
 </article>
@@ -804,7 +1233,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="上一页: Operating System" class="md-footer__link md-footer__link--prev" href="../index.html">
+<a aria-label="上一页: 14.Memory API" class="md-footer__link md-footer__link--prev" href="14memory_api.html">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -813,17 +1242,17 @@
                 上一页
               </span>
 <div class="md-ellipsis">
-                Operating System
+                14.Memory API
               </div>
 </div>
 </a>
-<a aria-label="下一页: 02.Introduction" class="md-footer__link md-footer__link--next" href="02introduction.html">
+<a aria-label="下一页: MIT 6.1810" class="md-footer__link md-footer__link--next" href="../mit6.1810.html">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 下一页
               </span>
 <div class="md-ellipsis">
-                02.Introduction
+                MIT 6.1810
               </div>
 </div>
 <div class="md-footer__button md-icon">
