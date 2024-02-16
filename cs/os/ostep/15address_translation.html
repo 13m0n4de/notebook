@@ -1052,25 +1052,25 @@
 </table>
 <p>硬件与操作系统的交互过程：</p>
 <pre class="mermaid"><code>sequenceDiagram
+    participant ProgramA as 程序 A（用户模式）
+    participant ProgramB as 程序 B（用户模式）
     participant OS as 操作系统（内核模式）
     participant Hardware as 硬件
 
-    Note over OS, Hardware: 启动
+    Note over ProgramA, Hardware: 启动
     OS-&gt;&gt;Hardware: 初始化陷阱表
     Note over Hardware: 记住以下地址:&lt;br&gt;系统调用处理程序&lt;br&gt;时钟处理程序&lt;br&gt;非法内存处理程序&lt;br&gt;非常指令处理程序
     OS-&gt;&gt;Hardware: 开始中断时钟
     Note over Hardware: 开始时钟, 在 x ms 后中断
     Note over OS: 初始化进程表, 初始化空闲列表
 
-    Note over OS, Hardware: 运行
+    Note over ProgramA, Hardware: 运行
     Note over OS: 在进程表中分配条目
     Note over OS: 为进程分配内存
     Note over OS: 设置基址/界限寄存器
+    Note over OS: 恢复 A 的寄存器    
 
-    OS-&gt;&gt;Hardware: 从陷阱返回（进入 A）
-    Note over Hardware: 恢复 A 的寄存器    
-    create participant ProgramA as 程序 A（用户模式）
-    Hardware-&gt;&gt;ProgramA: 跳到 A（最初）的程序计数器
+    OS-&gt;&gt;ProgramA: 跳到 A（最初）的程序计数器
     Note over ProgramA: 运行
     ProgramA-&gt;&gt;Hardware: 获取指令
     Note over Hardware: 转换虚拟地址并获取
@@ -1078,21 +1078,19 @@
     Note over ProgramA: 执行指令
     ProgramA-&gt;&gt;Hardware: 加载/保存
     Note over Hardware: 确保地址不越界
-    Note over Hardware: 转换虚拟地址并执行
-    Note over ProgramA: ……
+    Note over Hardware: 转换虚拟地址并获取
+    Hardware-&gt;&gt;ProgramA: 返回指令
+    Note over ProgramA: 执行
 
     Note over ProgramA, Hardware: 时钟中断
-    Hardware-&gt;&gt;OS: 跳到中断处理程序
+    ProgramA-&gt;&gt;OS: 陷入
     Note over OS: 将寄存器 (A) 保存到进程结构 (A) 
     Note over OS: 从进程结构 (B) 恢复寄存器 (B)
-    OS-&gt;&gt;Hardware: 从陷阱返回（进入 B）
-    Note over Hardware: 恢复 B 的寄存器
-    create participant ProgramB as 程序 B（用户模式）
-    Hardware-&gt;&gt;ProgramB: 跳到 B 的程序计数器
+    OS-&gt;&gt;ProgramB: 从陷入返回（进入 B）
     Note over ProgramB: 运行
     ProgramB-&gt;&gt;Hardware: 执行错误的加载
     Note over Hardware: 加载越界
-    Hardware-&gt;OS: 跳到陷阱处理程序
+    Hardware-&gt;&gt;OS: 跳到陷阱处理程序
     Note over OS: 决定终止进程 B
     Note over OS: 回收 B 的内存
     Note over OS: 移除 B 在进程表中的条目</code></pre>
@@ -1213,7 +1211,7 @@ Virtual Address Trace
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月16日 18:08:12</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月16日 20:07:40</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
