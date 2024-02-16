@@ -20,3 +20,4 @@
 - [10.Multi-CPU Scheduling](./10multi_cpu_scheduling.md)
 - [13.Address Spaces](./13address_spaces.md)
 - [14.Memory API](./14memory_api.md)
+- [15.Address Translation](./15address_translation.md)
