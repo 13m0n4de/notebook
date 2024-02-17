@@ -126,7 +126,6 @@ nav:
       - cs/pl/index.md
       - C:
         - cs/pl/c/index.md
-        - Including C Files Over HTTPS: cs/pl/c/including_c_files_over_https.md
       - Python: cs/pl/python/index.md
       - Racket: cs/pl/racket/index.md
       - RISC-V ISA: cs/pl/riscv/index.md
@@ -146,6 +145,7 @@ nav:
         - 13.Address Spaces: cs/os/ostep/13address_spaces.md
         - 14.Memory API: cs/os/ostep/14memory_api.md
         - 15.Address Translation: cs/os/ostep/15address_translation.md
+        - 16.Segmentation: cs/os/ostep/16segmentation.md
       - MIT 6.1810: cs/os/mit6.1810.md
       - rCore: cs/os/rcore.md
     - Compiler:
