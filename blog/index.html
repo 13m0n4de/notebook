@@ -297,9 +297,6 @@
     C
   </span>
 </a>
-<label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
-<span class="md-nav__icon md-icon"></span>
-</label>
 </div>
 <nav aria-expanded="false" aria-labelledby="__nav_2_2_2_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_2_2_2">
@@ -307,13 +304,6 @@
             C
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/c/including_c_files_over_https.html">
-<span class="md-ellipsis">
-    Including C Files Over HTTPS
-  </span>
-</a>
-</li>
 </ul>
 </nav>
 </li>
@@ -458,6 +448,13 @@
 <a class="md-nav__link" href="../cs/os/ostep/15address_translation.html">
 <span class="md-ellipsis">
     15.Address Translation
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cs/os/ostep/16segmentation.html">
+<span class="md-ellipsis">
+    16.Segmentation
   </span>
 </a>
 </li>
@@ -706,6 +703,13 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="category/programming-language.html">
+<span class="md-ellipsis">
+    Programming Language
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -729,6 +733,53 @@
 <div class="md-content__inner">
 <header class="md-typeset">
 </header>
+<article class="md-post md-post--excerpt">
+<header class="md-post__header">
+<div class="md-post__meta md-meta">
+<ul class="md-meta__list">
+<li class="md-meta__item">
+<time datetime="2024-02-17 00:00:00">2024年2月17日</time></li>
+<li class="md-meta__item">
+            分类于
+            
+              <a class="md-meta__link" href="category/programming-language.html">Programming Language</a></li>
+<li class="md-meta__item">
+            
+              需要 1 分钟阅读时间
+            
+          </li>
+</ul>
+</div>
+</header>
+<div class="md-post__content md-typeset">
+<h2 id="https"><a class="toclink" href="2024/02/17/%E9%80%9A%E8%BF%87-https-%E5%8C%85%E5%90%AB%E5%A4%B4%E6%96%87%E4%BB%B6.html">通过<span class="heti-skip"><span class="heti-spacing"> </span>HTTPS<span class="heti-spacing"> </span></span>包含头文件</a></h2>
+<p>实现了一个有意思的效果，让<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言可以从互联网上 <code class="highlight"><span class="cp">#include</span></code> 头文件。</p>
+<div class="highlight"><span class="filename">include_files_from_internet.c</span><pre><span></span><code><span class="cp">#define STB_SPRINTF_IMPLEMENTATION</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;https://raw.githubusercontent.com/nothings/stb/master/stb_sprintf.h&gt;</span><span class="c1"> // &lt;- look at this </span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+
+<span class="w">    </span><span class="c1">// Using functions defined by stb_sprintf.h</span>
+<span class="w">    </span><span class="n">stbsp_sprintf</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="s">"Hello %s"</span><span class="p">,</span><span class="w"> </span><span class="s">"NAVI"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>你知道的，<span>4202<span class="heti-spacing"> </span></span>年，Everything Over HTTPS（笑<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<ul>
+<li>My TinyCC Patch: <a href="https://gist.github.com/13m0n4de/84912522cce6db31da069baf1add04f8">https://gist.github.com/13m0n4de/84912522cce6db31da069baf1add04f8</a></li>
+<li>My Chibicc Patch: <a href="https://gist.github.com/13m0n4de/f2b4b8e71ce6a93530cbe9e4e45cbe71">https://gist.github.com/13m0n4de/f2b4b8e71ce6a93530cbe9e4e45cbe71</a></li>
+</ul>
+<nav class="md-post__action">
+<a href="2024/02/17/%E9%80%9A%E8%BF%87-https-%E5%8C%85%E5%90%AB%E5%A4%B4%E6%96%87%E4%BB%B6.html">
+        继续阅读
+      </a>
+</nav>
+</div>
+</article>
 <article class="md-post md-post--excerpt">
 <header class="md-post__header">
 <div class="md-post__meta md-meta">

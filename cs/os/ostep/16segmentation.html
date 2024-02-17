@@ -3,24 +3,24 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://13m0n4de.vercel.app/writeups/index.html" rel="canonical"/>
-<link href="../ctf/index.html" rel="prev"/>
-<link href="2024/dicectf2024_quals.html" rel="next"/>
-<link href="../assets/images/favicon.png" rel="icon"/>
+<link href="https://13m0n4de.vercel.app/cs/os/ostep/16segmentation.html" rel="canonical"/>
+<link href="15address_translation.html" rel="prev"/>
+<link href="../mit6.1810.html" rel="next"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-9.5.7" name="generator"/>
-<title>Writeups - 13m0n4de's notebook</title>
-<link href="../assets/stylesheets/main.f2e4d321.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<title>16.Segmentation - 13m0n4de's notebook</title>
+<link href="../../../assets/stylesheets/main.f2e4d321.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/iframe-worker/shim"></script>
-<link href="../css/toc_extra.css" rel="stylesheet"/>
-<link href="../css/heti.css" rel="stylesheet"/>
-<link href="../css/timeline.css" rel="stylesheet"/>
+<link href="../../../css/toc_extra.css" rel="stylesheet"/>
+<link href="../../../css/heti.css" rel="stylesheet"/>
+<link href="../../../css/timeline.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css" rel="stylesheet"/>
-<link href="../stylesheets/custom.css" rel="stylesheet"/>
-<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+<link href="../../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -31,13 +31,13 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="custom" data-md-color-primary="custom" data-md-color-scheme="slate" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#writeups">
+<a class="md-skip" href="#16">
           跳转至
         </a>
 </div>
@@ -45,7 +45,7 @@
 </div>
 <header class="md-header" data-md-component="header">
 <nav aria-label="页眉" class="md-header__inner md-grid">
-<a aria-label="13m0n4de's notebook" class="md-header__button md-logo" data-md-component="logo" href=".." title="13m0n4de's notebook">
+<a aria-label="13m0n4de's notebook" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="13m0n4de's notebook">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m4 4H5v2h2v-2m0-4V5H5v2h2m0 12v-2H5v2h2Z"></path></svg>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -61,7 +61,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Writeups
+              16.Segmentation
             
           </span>
 </div>
@@ -126,7 +126,7 @@
 <div class="md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../index.html">
+<a class="md-tabs__link" href="../../../index.html">
           
   
     
@@ -135,8 +135,8 @@
 
         </a>
 </li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../cs/index.html">
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../index.html">
           
   
     
@@ -146,7 +146,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../sec/index.html">
+<a class="md-tabs__link" href="../../../sec/index.html">
           
   
     
@@ -156,7 +156,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../ctf/index.html">
+<a class="md-tabs__link" href="../../../ctf/index.html">
           
   
     
@@ -165,8 +165,8 @@
 
         </a>
 </li>
-<li class="md-tabs__item md-tabs__item--active">
-<a class="md-tabs__link" href="index.html">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../writeups/index.html">
           
   
     
@@ -176,7 +176,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../gamedev/index.html">
+<a class="md-tabs__link" href="../../../gamedev/index.html">
           
   
     
@@ -186,7 +186,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../blog/index.html">
+<a class="md-tabs__link" href="../../../blog/index.html">
           
   
     
@@ -205,7 +205,7 @@
 <div class="md-sidebar__inner">
 <nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="13m0n4de's notebook" class="md-nav__button md-logo" data-md-component="logo" href=".." title="13m0n4de's notebook">
+<a aria-label="13m0n4de's notebook" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="13m0n4de's notebook">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m4 4H5v2h2v-2m0-4V5H5v2h2m0 12v-2H5v2h2Z"></path></svg>
 </a>
     13m0n4de's notebook
@@ -224,7 +224,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../index.html">
+<a class="md-nav__link" href="../../../index.html">
 <span class="md-ellipsis">
     Home
   </span>
@@ -240,14 +240,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../changelog.html">
+<a class="md-nav__link" href="../../../changelog.html">
 <span class="md-ellipsis">
     Timeline
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../todo.html">
+<a class="md-nav__link" href="../../../todo.html">
 <span class="md-ellipsis">
     Todo
   </span>
@@ -256,10 +256,10 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/index.html">
+<a class="md-nav__link" href="../../index.html">
 <span class="md-ellipsis">
     Computer Science
   </span>
@@ -268,7 +268,7 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_2">
 <span class="md-nav__icon md-icon"></span>
             Computer Science
@@ -277,7 +277,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/pl/index.html">
+<a class="md-nav__link" href="../../pl/index.html">
 <span class="md-ellipsis">
     Programming Language &amp; ISA
   </span>
@@ -295,7 +295,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_2_2_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/pl/c/index.html">
+<a class="md-nav__link" href="../../pl/c/index.html">
 <span class="md-ellipsis">
     C
   </span>
@@ -311,28 +311,28 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/python/index.html">
+<a class="md-nav__link" href="../../pl/python/index.html">
 <span class="md-ellipsis">
     Python
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/racket/index.html">
+<a class="md-nav__link" href="../../pl/racket/index.html">
 <span class="md-ellipsis">
     Racket
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/riscv/index.html">
+<a class="md-nav__link" href="../../pl/riscv/index.html">
 <span class="md-ellipsis">
     RISC-V ISA
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/rust/index.html">
+<a class="md-nav__link" href="../../pl/rust/index.html">
 <span class="md-ellipsis">
     Rust
   </span>
@@ -341,10 +341,10 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/os/index.html">
+<a class="md-nav__link" href="../index.html">
 <span class="md-ellipsis">
     Operating System
   </span>
@@ -353,16 +353,16 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_2_3">
 <span class="md-nav__icon md-icon"></span>
             Operating System
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/os/ostep/index.html">
+<a class="md-nav__link" href="index.html">
 <span class="md-ellipsis">
     OSTEP
   </span>
@@ -371,108 +371,137 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_3_2_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="true" aria-labelledby="__nav_2_3_2_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_2_3_2">
 <span class="md-nav__icon md-icon"></span>
             OSTEP
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/02introduction.html">
+<a class="md-nav__link" href="02introduction.html">
 <span class="md-ellipsis">
     02.Introduction
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/04processes.html">
+<a class="md-nav__link" href="04processes.html">
 <span class="md-ellipsis">
     04.Processes
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/05process_api.html">
+<a class="md-nav__link" href="05process_api.html">
 <span class="md-ellipsis">
     05.Process API
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/06direct_execution.html">
+<a class="md-nav__link" href="06direct_execution.html">
 <span class="md-ellipsis">
     06.Direct Execution
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/07cpu_scheduling.html">
+<a class="md-nav__link" href="07cpu_scheduling.html">
 <span class="md-ellipsis">
     07.CPU Scheduling
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/08multi_level_feedback.html">
+<a class="md-nav__link" href="08multi_level_feedback.html">
 <span class="md-ellipsis">
     08.Multi-level Feedback
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/09lottery_scheduling.html">
+<a class="md-nav__link" href="09lottery_scheduling.html">
 <span class="md-ellipsis">
     09.Lottery Scheduling
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/10multi_cpu_scheduling.html">
+<a class="md-nav__link" href="10multi_cpu_scheduling.html">
 <span class="md-ellipsis">
     10.Multi-CPU Scheduling
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/13address_spaces.html">
+<a class="md-nav__link" href="13address_spaces.html">
 <span class="md-ellipsis">
     13.Address Spaces
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/14memory_api.html">
+<a class="md-nav__link" href="14memory_api.html">
 <span class="md-ellipsis">
     14.Memory API
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/15address_translation.html">
+<a class="md-nav__link" href="15address_translation.html">
 <span class="md-ellipsis">
     15.Address Translation
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/16segmentation.html">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
 <span class="md-ellipsis">
     16.Segmentation
   </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="16segmentation.html">
+<span class="md-ellipsis">
+    16.Segmentation
+  </span>
+</a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#161">
+<span class="md-ellipsis">
+      16.1 分段：泛化的基址/界限
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#162">
+<span class="md-ellipsis">
+      16.2 我们引用哪个段
+    </span>
 </a>
 </li>
 </ul>
 </nav>
 </li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/mit6.1810.html">
+<a class="md-nav__link" href="../mit6.1810.html">
 <span class="md-ellipsis">
     MIT 6.1810
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/rcore.html">
+<a class="md-nav__link" href="../rcore.html">
 <span class="md-ellipsis">
     rCore
   </span>
@@ -484,7 +513,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/compiler/index.html">
+<a class="md-nav__link" href="../../compiler/index.html">
 <span class="md-ellipsis">
     Compiler
   </span>
@@ -505,7 +534,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../sec/index.html">
+<a class="md-nav__link" href="../../../sec/index.html">
 <span class="md-ellipsis">
     Security
   </span>
@@ -523,7 +552,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../ctf/index.html">
+<a class="md-nav__link" href="../../../ctf/index.html">
 <span class="md-ellipsis">
     CTF
   </span>
@@ -538,19 +567,19 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link md-nav__link--active" href="index.html">
+<a class="md-nav__link" href="../../../writeups/index.html">
 <span class="md-ellipsis">
     Writeups
   </span>
 </a>
-<label class="md-nav__link md-nav__link--active" for="__nav_5" id="__nav_5_label" tabindex="">
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_5">
 <span class="md-nav__icon md-icon"></span>
             Writeups
@@ -571,7 +600,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="2024/dicectf2024_quals.html">
+<a class="md-nav__link" href="../../../writeups/2024/dicectf2024_quals.html">
 <span class="md-ellipsis">
     DiceCTF 2024 Quals
   </span>
@@ -586,7 +615,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../gamedev/index.html">
+<a class="md-nav__link" href="../../../gamedev/index.html">
 <span class="md-ellipsis">
     GameDev
   </span>
@@ -604,7 +633,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_6_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../gamedev/ai/index.html">
+<a class="md-nav__link" href="../../../gamedev/ai/index.html">
 <span class="md-ellipsis">
     AI
   </span>
@@ -622,7 +651,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_6_2_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../gamedev/ai/sd/index.html">
+<a class="md-nav__link" href="../../../gamedev/ai/sd/index.html">
 <span class="md-ellipsis">
     Stable Diffusion
   </span>
@@ -646,7 +675,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../blog/index.html">
+<a class="md-nav__link" href="../../../blog/index.html">
 <span class="md-ellipsis">
     Blog
   </span>
@@ -676,7 +705,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../blog/archive/2024.html">
+<a class="md-nav__link" href="../../../blog/archive/2024.html">
 <span class="md-ellipsis">
     2024
   </span>
@@ -700,14 +729,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../blog/category/ai.html">
+<a class="md-nav__link" href="../../../blog/category/ai.html">
 <span class="md-ellipsis">
     AI
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../blog/category/programming-language.html">
+<a class="md-nav__link" href="../../../blog/category/programming-language.html">
 <span class="md-ellipsis">
     Programming Language
   </span>
@@ -734,9 +763,16 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#table-of-contents">
+<a class="md-nav__link" href="#161">
 <span class="md-ellipsis">
-      Table of Contents
+      16.1 分段：泛化的基址/界限
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#162">
+<span class="md-ellipsis">
+      16.2 我们引用哪个段
     </span>
 </a>
 </li>
@@ -747,88 +783,120 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="writeups">Writeups<a class="headerlink" href="#writeups" title="Permanent link">¶</a></h1>
-<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">¶</a></h2>
-<div class="index-item-wrapper">
-<div class="title-wrapper">
-<button onclick="buttonHandler(0)">
-<span class="twemoji" style="margin-right: 4px; font-size: 0.8em;">
-<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M12.78 6.22a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L3.22 7.28a.75.75 0 0 1 1.06-1.06L8 9.94l3.72-3.72a.75.75 0 0 1 1.06 0z" fill-rule="evenodd"></path></svg>
-</span>2024
-        </button>
-</div>
-<ul class="content-item-wrapper">
-<li>
-<div class="item-primary"><a href="2024/dicectf2024_quals.html" target="_self">DiceCTF 2024 Quals</a></div>
-<div class="item-status"></div>
-<div class="item-main-content">
-<span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 2389 <span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> <span>308</span> <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 12 mins
-            </div>
-<div class="item-metadata">
-</div>
-<div class="item-actions">1707685824</div>
-</li>
-</ul>
-</div>
-<script>
-function buttonHandler(i) {
-    let content = document.getElementsByClassName("content-item-wrapper")[i];
-    let button = document.getElementsByClassName("title-wrapper")[i].getElementsByTagName("button")[0];
-    if (content.style.display == "none") {
-        content.style.display = "block";
-        button.children[0].children[0].style.transform = "rotate(0deg)";
-    } else {
-        content.style.display = "none";
-        button.children[0].children[0].style.transform = "rotate(-90deg)";
-    }
-}
-function produce_time() {
-    let time = document.getElementsByClassName("item-actions");
-    for (let i = 0; i < time.length; i++) {
-        let timestamp;
-        if (time[i].childElementCount > 0) {
-            timestamp = time[i].children[0].innerHTML;
-        } else {
-            timestamp = time[i].innerHTML;
-        }
-        let date = new Date(parseInt(timestamp) * 1000);
-        let now = new Date();
-        let diff = now.getTime() - date.getTime();
-        let years = Math.floor(diff / (24 * 3600 * 1000 * 365));
-        let months = Math.floor(diff / (24 * 3600 * 1000 * 30));
-        let days = Math.floor(diff / (24 * 3600 * 1000));
-        let hours = Math.floor((diff % (24 * 3600 * 1000)) / (3600 * 1000));
-        let minutes = Math.floor((diff % (3600 * 1000)) / (60 * 1000));
-        let seconds = Math.floor((diff % (60 * 1000)) / 1000);
-        if (years > 0) {
-            time[i].innerHTML = years + " years ago";
-        } else if (months > 0) {
-            time[i].innerHTML = months + " months ago";
-        } else if (days > 0) {
-            time[i].innerHTML = days + " days ago";
-        } else if (hours > 0) {
-            time[i].innerHTML = hours + " hours ago";
-        } else if (minutes > 0) {
-            time[i].innerHTML = minutes + " minutes ago";
-        } else {
-            time[i].innerHTML = seconds + " seconds ago";
-        }
-    }
-}
-produce_time();
-</script>
+<h1 id="16">第<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>章 分段<a class="headerlink" href="#16" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<p>之前一直将所有进程的地址空间完整地加载到内存中，栈和堆之间，有一大块“空闲”空间。</p>
+<p>另外，如果剩余的物理内存无法提供连续区域来放置完整的地址空间，进程便无法运行。</p>
+<p>这章讲的就是如何使用 <strong>分段<span><span class="heti-spacing"> </span>(Segmentation)</span></strong> 解决它们。</p>
+<h2 id="161"><span>16.1<span class="heti-spacing"> </span></span>分段：泛化的基址<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>界限<a class="headerlink" href="#161" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>分段<span class="heti-skip"><span class="heti-spacing"> </span>(segmentation)<span class="heti-spacing"> </span></span>指的是将地址空间分为多个逻辑段<span><span class="heti-spacing"> </span>(segment)</span>，给每个逻辑段都引入一对基址<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>界限寄存器。</p>
+<p>一个段只是地址空间里的一个 <strong>连续定长</strong> 的区域，在典型的地址空间中有三个逻辑不同的段：代码、栈、和堆<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（实际更多）</p>
+<table>
+<thead>
+<tr>
+<th>Virtual Address</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 KB - 2 KB</td>
+<td>Code</td>
+</tr>
+<tr>
+<td>2 KB - 4 KB</td>
+<td>(free)</td>
+</tr>
+<tr>
+<td>4 KB - 7 KB</td>
+<td>Heap ↓</td>
+</tr>
+<tr>
+<td>7 KB - 14 KB</td>
+<td>(free)</td>
+</tr>
+<tr>
+<td>14 KB - 16 KB</td>
+<td>Stack ↑</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Physics Address</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 KB - 16 KB</td>
+<td>OS</td>
+</tr>
+<tr>
+<td>16 KB - 26 KB</td>
+<td>(not in use)</td>
+</tr>
+<tr>
+<td>26 KB - 28 KB</td>
+<td>Stack ↑</td>
+</tr>
+<tr>
+<td>28 KB - 32 KB</td>
+<td>(not in use)</td>
+</tr>
+<tr>
+<td>32 KB - 34 KB</td>
+<td>Code</td>
+</tr>
+<tr>
+<td>34 KB - 37 KB</td>
+<td>Heap ↓</td>
+</tr>
+<tr>
+<td>37 KB - 64 KB</td>
+<td>(not in use)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Base</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code</td>
+<td>32 KB</td>
+<td>2 KB</td>
+</tr>
+<tr>
+<td>Heap</td>
+<td>34 KB</td>
+<td>3 KB</td>
+</tr>
+<tr>
+<td>Stack</td>
+<td>28 KB</td>
+<td>2 KB</td>
+</tr>
+</tbody>
+</table>
+<h2 id="162"><span>16.2<span class="heti-spacing"> </span></span>我们引用哪个段<a class="headerlink" href="#162" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月11日 05:26:30</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月17日 23:19:28</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月12日 06:26:42</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月17日 23:19:28</span>
 </span>
 </aside>
 </article>
@@ -842,7 +910,7 @@ produce_time();
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="上一页: Capture The Flag" class="md-footer__link md-footer__link--prev" href="../ctf/index.html">
+<a aria-label="上一页: 15.Address Translation" class="md-footer__link md-footer__link--prev" href="15address_translation.html">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -851,17 +919,17 @@ produce_time();
                 上一页
               </span>
 <div class="md-ellipsis">
-                Capture The Flag
+                15.Address Translation
               </div>
 </div>
 </a>
-<a aria-label="下一页: DiceCTF 2024 Quals" class="md-footer__link md-footer__link--next" href="2024/dicectf2024_quals.html">
+<a aria-label="下一页: MIT 6.1810" class="md-footer__link md-footer__link--next" href="../mit6.1810.html">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 下一页
               </span>
 <div class="md-ellipsis">
-                DiceCTF 2024 Quals
+                MIT 6.1810
               </div>
 </div>
 <div class="md-footer__button md-icon">
@@ -909,10 +977,10 @@ produce_time();
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <div class="md-progress" data-md-component="progress" role="progressbar"></div>
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.tabs", "navigation.footer", "search.suggest", "content.code.annotate", "content.footnote.tooltips"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-<script src="../assets/javascripts/bundle.caa56a14.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.tabs", "navigation.footer", "search.suggest", "content.code.annotate", "content.footnote.tooltips"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../../assets/javascripts/bundle.caa56a14.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
-<script src="../javascripts/katex.js"></script>
+<script src="../../../javascripts/katex.js"></script>
 <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
