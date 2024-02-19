@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-02-18":
+    - newpage:
+          text: Blog > 探索 Hare 语言
+          href: blog/2024/02/18/探索-hare-语言.html
   - "2024-02-17":
     - newpage:
           text: Blog > 通过 HTTPS 包含头文件
