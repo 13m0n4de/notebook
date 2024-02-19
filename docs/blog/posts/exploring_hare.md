@@ -133,8 +133,7 @@ export fn main() void = {
 
 到底是谁在用八空格？？？
 
-```
-hare run hello.ha
+```title="hare run hello.ha"
 97/97 tasks completed (100%)
 Hello world!
 ```
@@ -147,8 +146,7 @@ Hello world!
 
 通过搜索 `cache` 发现名叫 `hare-cache` 的手册
 
-```
-fd cache
+```title="fd cache"
 hare/cmd/hare/cache.ha
 hare/docs/hare-cache.1.scd
 hare/hare/module/cache.ha
@@ -328,10 +326,6 @@ home/
 
 高亮行是源代码的路径，看来编译器会自动添加它。
 
-我还没找到能去掉它的编译选项，Rust 默认也会有，但它可以通过 `--remap-path-prefix` 来映射到其他地方。
-
-嗯，有点小小的隐私问题。
-
 ```title="*.s.txt"
 qbe -t 'amd64_sysv' -o /home/13m0n4de/.cache/hare/home/13m0n4de/Code/Hare/hello.ha/278f991c88b8d7c6dc83d6259a3abc2b47b99d22e00354f2da6c9a1d6d512919.s.tmp /home/13m0n4de/.cache/hare/home/13m0n4de/Code/Hare/hello.ha/ee744b05753cb66d0c9c91a6572eb5f38e926c3b9c2b7666dd58dcbb39e60fc7.ssa
 ```
@@ -340,7 +334,7 @@ qbe -t 'amd64_sysv' -o /home/13m0n4de/.cache/hare/home/13m0n4de/Code/Hare/hello.
 
 所以说，Hare 可能是使用外部进程的方式来调用 QBE。
 
-这个 `.ssa` 文件很可能
+这个 `.ssa` 文件很可能来自 `harec`。
 
 ### `.td` 类型定义文件
 
@@ -573,15 +567,13 @@ harec -M /home/13m0n4de/Code/Hare/hello.ha/ -o /home/13m0n4de/.cache/hare/home/1
 
 首先，静态链接，这和官网宣传地一致，默认不链接 LIBC。
 
-```
-file hello
+```title="file hello"
 hello: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, with debug_info, not stripped
 ```
 
 pwn checksec 检测结果：
 
-```
-pwn checksec hello
+```title="pwn checksec hello"
     Arch:     amd64-64-little
     RELRO:    No RELRO
     Stack:    No canary found
@@ -654,8 +646,7 @@ pwn checksec hello
 
 它是有的，并且 checksec 也正确识别：
 
-```
-pwn checksec *.o
+```title="pwn checksec *.o"
     Arch:     amd64-64-little
     RELRO:    No RELRO
     Stack:    No canary found
@@ -677,7 +668,7 @@ pwn checksec *.o
 
 写一个执行栈上 ShellCode 的代码测试一下：
 
-```hare
+```hare title="shellcode.ha"
 export fn main() void = {
 	const shellcode: []u8 = [0x90, 0x90, 0x90, 0xC3];
 	let func: *fn() void = &shellcode: *fn() void;
@@ -685,21 +676,20 @@ export fn main() void = {
 };
 ```
 
-```
-hare run hello.ha
+```title="hare run shellcode.ha"
 Stack overflow (invalid permissions for mapped object) at address 0x7ffd8bbc3498
 /home/13m0n4de/Code/Hare/rt/+linux/start.ha:13:13 rt::start_ha+0xe [0x8003901]
 
 /home/13m0n4de/Code/Hare/rt/+linux/platformstart-libc.ha:8:17 rt::start_linux+0x3a [0x8003ae8]
 
-fish: Job 1, 'hare run hello.ha' terminated by signal SIGABRT (Abort)
+fish: Job 1, 'hare run shellcode.ha' terminated by signal SIGABRT (Abort)
 ```
 
 提示 `0x7ffd8bbc3498` 位置的权限错误，这是栈上的地址。
 
 调试，断在 `call rax` 前：
 
-```asm title="gdb hello"
+```asm title="gdb shellcode"
 gef➤  disassemble main
 Dump of assembler code for function main:
    0x000000000802eae1 <+0>:	push   rbp
@@ -719,7 +709,7 @@ Dump of assembler code for function main:
    0x000000000802eb18 <+55>:	ret
 End of assembler dump.
 gef➤  b *0x000000000802eb15
-Breakpoint 1 at 0x802eb15: file /home/13m0n4de/Code/Hare/hello.ha, line 4.
+Breakpoint 1 at 0x802eb15: file /home/13m0n4de/Code/Hare/shellcode.ha, line 4.
 ```
 
 `vmmap` 显示栈上没有执行权限：
@@ -728,8 +718,8 @@ Breakpoint 1 at 0x802eb15: file /home/13m0n4de/Code/Hare/hello.ha, line 4.
 gef➤  vmmap
 [ Legend:  Code | Heap | Stack ]
 Start              End                Offset             Perm Path
-0x00000007fff000 0x0000000802f000 0x00000000000000 r-x /home/13m0n4de/Code/Hare/hello
-0x00000080000000 0x00000080007000 0x00000000030000 rw- /home/13m0n4de/Code/Hare/hello
+0x00000007fff000 0x0000000802f000 0x00000000000000 r-x /home/13m0n4de/Code/Hare/shellcode
+0x00000080000000 0x00000080007000 0x00000000030000 rw- /home/13m0n4de/Code/Hare/shellcode
 0x00000080007000 0x00000080015000 0x00000000000000 rw- [heap]
 0x007ffff7ff4000 0x007ffff7ff9000 0x00000000000000 rw-
 0x007ffff7ff9000 0x007ffff7ffd000 0x00000000000000 r-- [vvar]
@@ -752,9 +742,61 @@ Start              End                Offset             Perm Path
 
 pwntools 可以检测 `GNU-stack`。
 
+### 调试信息
+
+我把源代码移到了 `Hare/mycode/shellcode.ha`
+
+```title="strings hello | rg 13m0n4de"
+/home/13m0n4de/Code/Hare/mycode
+/home/13m0n4de/Code/Hare
+/home/13m0n4de/Code/Hare/mycode
+```
+
+这是之前就提到的文件路径，`harec` 默认生成，它们在 `strip` 之后就没有了，说明是调试信息。
+
+去除之后，原本的报错信息会变成 `(unknown)`：
+
+```title="strip hello && ./hello"
+Stack overflow (invalid permissions for mapped object) at address 0x7ffe297d0568
+(unknown) [0x8003901]
+(unknown) [0x8003ae8]
+fish: Job 1, './hello' terminated by signal SIGABRT (Abort)
+```
+
+通过 `-R` 选项编译 Release 模式的文件还是会带有调试信息的：
+
+```title="hare build -R -o shellcode shellcode.ha && file shellcode"
+shellcode: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, with debug_info, not stripped
+```
+
+但是就没有那么详尽的报错了：
+
+```title="./shellcode"
+fish: Job 1, './shellcode' terminated by signal SIGSEGV (Address boundary error)
+```
+
+release + strip，这个文件只有不到 11 KB，挺好。
+
+### 默认编译文件名
+
+我在 `mycode/` 下编译 `hello.ha`，如果不指定 `-o` 选项，默认给我了一个 `mycode` 可执行文件。
+
+所以源码所在目录是某种类似 Module 的东西？如果 build 会默认以它作为文件名？
+
+---
+
+看完视频后：
+
+这也许就是为什么视频中他遇到了 `Error: Output path 'hare' already exists, but isn't an executable file`
+
+## 安全特性
+
+todo!()
+
 ## WIP...
 
 ## 参考
 
-- Hare: [https://harelang.org/](https://harelang.org/)
+- Hare: [harelang.org](https://harelang.org/)
 - Hare .note.GNU-stack ticket: [~sircmpwn/hare#748](https://todo.sr.ht/~sircmpwn/hare/748)
+- Safety features of the Hare programming language: [harelang.org/blog/2022-06-21-safety-features/](https://harelang.org/blog/2022-06-21-safety-features/)
