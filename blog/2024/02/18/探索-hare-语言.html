@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://13m0n4de.vercel.app/blog/2024/02/18/%E6%8E%A2%E7%B4%A2-hare-%E8%AF%AD%E8%A8%80.html" rel="canonical"/>
+<link href="../17/%E9%80%9A%E8%BF%87-https-%E5%8C%85%E5%90%AB%E5%A4%B4%E6%96%87%E4%BB%B6.html" rel="prev"/>
+<link href="../../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.7" name="generator"/>
+<title>探索 Hare 语言 - 13m0n4de's notebook</title>
+<link href="../../../../assets/stylesheets/main.f2e4d321.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<script src="https://unpkg.com/iframe-worker/shim"></script>
+<link href="../../../../css/toc_extra.css" rel="stylesheet"/>
+<link href="../../../../css/heti.css" rel="stylesheet"/>
+<link href="../../../../css/timeline.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css" rel="stylesheet"/>
+<link href="../../../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="custom" data-md-color-primary="custom" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#hare">
+          跳转至
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="13m0n4de's notebook" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="13m0n4de's notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m4 4H5v2h2v-2m0-4V5H5v2h2m0 12v-2H5v2h2Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            13m0n4de's notebook
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              探索 Hare 语言
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="custom" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="custom" data-md-color-scheme="slate" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="custom" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="custom" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+</form>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/13m0n4de/notebook" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    13m0n4de/notebook
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../index.html">
+          
+  
+    
+  
+  Home
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../cs/index.html">
+          
+  
+    
+  
+  Computer Science
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../sec/index.html">
+          
+  
+    
+  
+  Security
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../ctf/index.html">
+          
+  
+    
+  
+  CTF
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../writeups/index.html">
+          
+  
+    
+  
+  Writeups
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../gamedev/index.html">
+          
+  
+    
+  
+  GameDev
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../../index.html">
+          
+  
+    
+  
+  Blog
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="13m0n4de's notebook" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="13m0n4de's notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m4 4H5v2h2v-2m0-4V5H5v2h2m0 12v-2H5v2h2Z"></path></svg>
+</a>
+    13m0n4de's notebook
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/13m0n4de/notebook" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    13m0n4de/notebook
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../index.html">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../changelog.html">
+<span class="md-ellipsis">
+    Timeline
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../todo.html">
+<span class="md-ellipsis">
+    Todo
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../cs/index.html">
+<span class="md-ellipsis">
+    Computer Science
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../cs/pl/index.html">
+<span class="md-ellipsis">
+    Programming Language &amp; ISA
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Programming Language &amp; ISA
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../cs/pl/c/index.html">
+<span class="md-ellipsis">
+    C
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_2">
+<span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/pl/python/index.html">
+<span class="md-ellipsis">
+    Python
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/pl/racket/index.html">
+<span class="md-ellipsis">
+    Racket
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/pl/riscv/index.html">
+<span class="md-ellipsis">
+    RISC-V ISA
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/pl/rust/index.html">
+<span class="md-ellipsis">
+    Rust
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../cs/os/index.html">
+<span class="md-ellipsis">
+    Operating System
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+            Operating System
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../cs/os/ostep/index.html">
+<span class="md-ellipsis">
+    OSTEP
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_2">
+<span class="md-nav__icon md-icon"></span>
+            OSTEP
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/os/ostep/02introduction.html">
+<span class="md-ellipsis">
+    02.Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/os/ostep/04processes.html">
+<span class="md-ellipsis">
+    04.Processes
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/os/ostep/05process_api.html">
+<span class="md-ellipsis">
+    05.Process API
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/os/ostep/06direct_execution.html">
+<span class="md-ellipsis">
+    06.Direct Execution
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/os/ostep/07cpu_scheduling.html">
+<span class="md-ellipsis">
+    07.CPU Scheduling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/os/ostep/08multi_level_feedback.html">
+<span class="md-ellipsis">
+    08.Multi-level Feedback
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/os/ostep/09lottery_scheduling.html">
+<span class="md-ellipsis">
+    09.Lottery Scheduling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/os/ostep/10multi_cpu_scheduling.html">
+<span class="md-ellipsis">
+    10.Multi-CPU Scheduling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/os/ostep/13address_spaces.html">
+<span class="md-ellipsis">
+    13.Address Spaces
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/os/ostep/14memory_api.html">
+<span class="md-ellipsis">
+    14.Memory API
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/os/ostep/15address_translation.html">
+<span class="md-ellipsis">
+    15.Address Translation
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/os/ostep/16segmentation.html">
+<span class="md-ellipsis">
+    16.Segmentation
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/os/mit6.1810.html">
+<span class="md-ellipsis">
+    MIT 6.1810
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../cs/os/rcore.html">
+<span class="md-ellipsis">
+    rCore
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../cs/compiler/index.html">
+<span class="md-ellipsis">
+    Compiler
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+            Compiler
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../sec/index.html">
+<span class="md-ellipsis">
+    Security
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Security
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../ctf/index.html">
+<span class="md-ellipsis">
+    CTF
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            CTF
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../writeups/index.html">
+<span class="md-ellipsis">
+    Writeups
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Writeups
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+<span class="md-ellipsis">
+    2024
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+            2024
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/2024/dicectf2024_quals.html">
+<span class="md-ellipsis">
+    DiceCTF 2024 Quals
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../gamedev/index.html">
+<span class="md-ellipsis">
+    GameDev
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            GameDev
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../gamedev/ai/index.html">
+<span class="md-ellipsis">
+    AI
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+            AI
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../gamedev/ai/sd/index.html">
+<span class="md-ellipsis">
+    Stable Diffusion
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Stable Diffusion
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../index.html">
+<span class="md-ellipsis">
+    Blog
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+<span class="md-ellipsis">
+    归档
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_2">
+<span class="md-nav__icon md-icon"></span>
+            归档
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../archive/2024.html">
+<span class="md-ellipsis">
+    2024
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+<span class="md-ellipsis">
+    分类
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_3">
+<span class="md-nav__icon md-icon"></span>
+            分类
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../category/ai.html">
+<span class="md-ellipsis">
+    AI
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../category/programming-language.html">
+<span class="md-ellipsis">
+    Programming Language
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      关于
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      安装
+    </span>
+</a>
+<nav aria-label="安装" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-0-pre-requisites">
+<span class="md-ellipsis">
+      Step 0: Pre-requisites
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-1-building-the-bootstrap-compiler">
+<span class="md-ellipsis">
+      Step 1: Building the bootstrap compiler
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-2-building-the-build-driver-standard-library">
+<span class="md-ellipsis">
+      Step 2: Building the build driver &amp; standard library
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hello-world">
+<span class="md-ellipsis">
+      从 Hello world! 开始
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      编译缓存
+    </span>
+</a>
+<nav aria-label="编译缓存" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#s">
+<span class="md-ellipsis">
+      .s 汇编文件
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#td">
+<span class="md-ellipsis">
+      .td 类型定义文件
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bin">
+<span class="md-ellipsis">
+      .bin 可执行文件
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#o">
+<span class="md-ellipsis">
+      .o 目标文件
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#depstxt">
+<span class="md-ellipsis">
+      deps.txt 依赖文件
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ssa">
+<span class="md-ellipsis">
+      .ssa 中间语言文件
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      编译流程
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      可执行文件特征
+    </span>
+</a>
+<nav aria-label="可执行文件特征" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nx">
+<span class="md-ellipsis">
+      NX ?
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#wip">
+<span class="md-ellipsis">
+      WIP...
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      参考
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content md-content--post" data-md-component="content">
+<div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner md-post">
+<nav class="md-nav md-nav--primary">
+<div class="md-post__back">
+<div class="md-nav__title md-nav__container">
+<a class="md-nav__link" href="../../../index.html">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+<span class="md-ellipsis">
+                    回到主页
+                  </span>
+</a>
+</div>
+</div>
+<ul class="md-post__meta md-nav__list">
+<li class="md-nav__item md-nav__item--section">
+<div class="md-post__title">
+<span class="md-ellipsis">
+                    元数据
+                  </span>
+</div>
+<nav class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<div class="md-nav__link">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"></path></svg>
+<time class="md-ellipsis" datetime="2024-02-18 00:00:00">2024年2月18日</time>
+</div>
+</li>
+<li class="md-nav__item">
+<div class="md-nav__link">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 3v15h3V3H9m3 2 4 13 3-1-4-13-3 1M5 5v13h3V5H5M3 19v2h18v-2H3Z"></path></svg>
+<span class="md-ellipsis">
+                            分类于
+                            
+                              <a href="../../../category/programming-language.html">Programming Language</a></span>
+</div>
+</li>
+<li class="md-nav__item">
+<div class="md-nav__link">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"></path></svg>
+<span class="md-ellipsis">
+                            
+                              需要 11 分钟阅读时间
+                            
+                          </span>
+</div>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<article class="md-content__inner md-typeset">
+<h1 id="hare">探索<span class="heti-skip"><span class="heti-spacing"> </span>Hare<span class="heti-spacing"> </span></span>语言<a class="headerlink" href="#hare" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<p>这篇依旧是跟屁虫系列。</p>
+<p><span>Tsoding Daily<span class="heti-spacing"> </span></span>的新视频：<a href="https://www.youtube.com/watch?v=2E3E_Rh3mvw">Hare Programming Language</a></p>
+<p>我决定先自己探索一遍再看。</p>
+<!-- more -->
+<h2 id="_1">关于<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="admonition quote">
+<p class="admonition-title">https://harelang.org/</p>
+<p>Hare is a systems programming language designed to be simple, stable, and robust. Hare uses a static type system, manual memory management, and a minimal runtime. It is well-suited to writing operating systems, system tools, compilers, networking software, and other low-level, high performance tasks.</p>
+</div>
+<p>作者是<a href="https://drewdevault.com/"><span><span class="heti-spacing"> </span>Drew DeVault</span></a>，<span>Sway<span class="heti-spacing"> </span></span>的开发者。</p>
+<p>描述中强调它 <strong>简单</strong>、<strong>稳定</strong> 和 <strong>健壮</strong>，适合编写操作系统、系统工具、编译器、网络软件和其他低级高性能任务。</p>
+<p>拥有以下特性：</p>
+<ul>
+<li>静态类型</li>
+<li>手动内存管理</li>
+<li>最小运行时</li>
+</ul>
+<p>给我的初印象类似“现代<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言”。</p>
+<h2 id="_2">安装<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p><span>AUR<span class="heti-spacing"> </span></span>容易把人惯坏，<code>paru -S hare</code> 或 <code>paru -S hare-git</code> 就装好了。</p>
+<p>这次我想手动编译，并且不把它们安装到系统环境里去。</p>
+<p>安装比较有意思，需要三个阶段。</p>
+<p>目录结构安排：</p>
+<div class="highlight"><pre><span></span><code>Hare/
+├── hare    # The Hare programming language
+├── harec   # Hare bootstrap compiler
+├── qbe     # compiler backend
+├── scdoc   # man page generator
+└── usr     # storage for installed tools, similar to system's /usr/.
+</code></pre></div>
+<h3 id="step-0-pre-requisites">Step 0: Pre-requisites<a class="headerlink" href="#step-0-pre-requisites" title="Permanent link">¶</a></h3>
+<ul>
+<li>支持<span class="heti-skip"><span class="heti-spacing"> </span>C11<span class="heti-spacing"> </span></span>的编译器</li>
+<li><a href="https://c9x.me/compile/">QBE</a></li>
+<li><a href="https://sr.ht/~sircmpwn/scdoc">scdoc</a></li>
+</ul>
+<p><span>QBE<span class="heti-spacing"> </span></span>是一个编译器后端，旨在用<span class="heti-skip"><span class="heti-spacing"> </span>10%<span class="heti-spacing"> </span></span>的代码提供 工业优化编译器<span class="heti-skip"><span class="heti-spacing"> </span>70%<span class="heti-spacing"> </span></span>的性能。</p>
+<p>不同于其他“现代<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言”，<span>Hare<span class="heti-spacing"> </span></span>可能真的想<span class="heti-skip"><span class="heti-spacing"> </span>Simple<span class="heti-spacing"> </span></span>到底<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（<span>Zig<span class="heti-spacing"> </span></span>使用了<span><span class="heti-spacing"> </span>LLVM</span>）</p>
+<p>如果我以后又想造点什么玩具，也会优先考虑<span class="heti-skip"><span class="heti-spacing"> </span>QBE<span class="heti-spacing"> </span></span>的。</p>
+<p><span>Hare<span class="heti-spacing"> </span></span>特意说明需要使用<span class="heti-skip"><span class="heti-spacing"> </span>QBE<span class="heti-spacing"> </span></span><code>master</code>分支上的最新版本，而不是最新的<span><span class="heti-spacing"> </span>release</span>。</p>
+<p>克隆仓库，并安装到 <code>../usr/local</code></p>
+<div class="highlight"><pre><span></span><code>git clone git://c9x.me/qbe.git --depth=1
+make PREFIX=../usr/local
+make install PREFIX=../usr/local
+</code></pre></div>
+<p><span>scdoc<span class="heti-spacing"> </span></span>是个简单轻量的<span class="heti-skip"><span class="heti-spacing"> </span>man page<span class="heti-spacing"> </span></span>生成器，也是<span class="heti-skip"><span class="heti-spacing"> </span>Drew DeVault<span class="heti-spacing"> </span></span>写的。</p>
+<p>克隆仓库，并安装到 <code>../usr/local</code></p>
+<div class="highlight"><pre><span></span><code>git clone https://git.sr.ht/~sircmpwn/scdoc --depth=1
+make DESTDIR=..
+make install DESTDIR=..
+</code></pre></div>
+<p>因为<span class="heti-skip"><span class="heti-spacing"> </span>Makefile<span class="heti-spacing"> </span></span>中写的是 <code>$(DESTDIR)/$(BINDIR)</code> 而不是 <code>$(DESTDIR)$(BINDIR)</code>，所以这里改 <code>PREFIX</code> 没用，得设置 <code>DESTDIR=..</code>。</p>
+<h3 id="step-1-building-the-bootstrap-compiler">Step 1: Building the bootstrap compiler<a class="headerlink" href="#step-1-building-the-bootstrap-compiler" title="Permanent link">¶</a></h3>
+<p>克隆仓库，并安装到 <code>../usr/local</code></p>
+<div class="highlight"><pre><span></span><code>git clone https://git.sr.ht/~sircmpwn/harec --depth=1
+cp configs/linux.mk config.mk
+sed -i 's|PREFIX = /usr/local|PREFIX = ../usr/local|' config.mk
+make &amp;&amp; make install
+</code></pre></div>
+<h3 id="step-2-building-the-build-driver-standard-library">Step 2: Building the build driver &amp; standard library<a class="headerlink" href="#step-2-building-the-build-driver-standard-library" title="Permanent link">¶</a></h3>
+<p>克隆仓库，并安装到 <code>../usr/local</code></p>
+<div class="highlight"><pre><span></span><code>git clone https://git.sr.ht/~sircmpwn/hare --depth=1
+cp configs/linux.mk config.mk
+sed -i 's|PREFIX = /usr/local|PREFIX = ../usr/local|' config.mk
+make &amp;&amp; make install
+</code></pre></div>
+<p>临时设置环境变量 <code>PATH</code> 和 <code>HAREPATH</code>，后者是标准库和第三方库的位置，编译的时候需要用到。</p>
+<div class="highlight"><pre><span></span><code><span class="k">set</span> -gx PATH <span class="nv">$PWD</span>/usr/local/bin/ <span class="nv">$PATH</span>
+<span class="k">set</span> -gx HAREPATH <span class="nv">$PWD</span>/usr/local/src/hare/stdlib:<span class="nv">$PWD</span>/usr/local/src/hare/third-party
+</code></pre></div>
+<h2 id="hello-world">从<span class="heti-skip"><span class="heti-spacing"> </span>Hello world!<span class="heti-spacing"> </span></span>开始<a class="headerlink" href="#hello-world" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>官方给了个教程：<a href="https://harelang.org/tutorials/introduction">https://harelang.org/tutorials/introduction</a></p>
+<p>官方示例：</p>
+<div class="highlight"><span class="filename">hello.ha</span><pre><span></span><code>use fmt;
+
+export fn main() void = {
+    fmt::println("Hello world!")!;
+};
+</code></pre></div>
+<p>这个拓展名还挺有意思的<heti-adjacent class="heti-adjacent-half">，</heti-adjacent>「哈<heti-adjacent class="heti-adjacent-half">！</heti-adjacent><heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，很多个文件就是「哈哈哈哈哈哈哈<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>。</p>
+<p>我的<span class="heti-skip"><span class="heti-spacing"> </span>nvim<span class="heti-spacing"> </span></span>自动识别到了 <code>hare</code>，看上去官方推荐缩进用<span><span class="heti-spacing"> </span>TAB</span> （一股<span class="heti-skip"><span class="heti-spacing"> </span>Go<span class="heti-spacing"> </span></span>味<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，每个<span class="heti-skip"><span class="heti-spacing"> </span>TAB<span class="heti-spacing"> </span></span>八空格（？？<heti-adjacent class="heti-adjacent-half">？</heti-adjacent><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>到底是谁在用八空格？？？</p>
+<div class="highlight"><pre><span></span><code>hare run hello.ha
+97/97 tasks completed (100%)
+Hello world!
+</code></pre></div>
+<p>再次运行的时候就没有 <code>tasks</code> 进度了，应该是有改动才会再次编译。</p>
+<h2 id="_3">编译缓存<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>看起来编译文件是有缓存这么一说的，但当前目录下什么也没生成。</p>
+<p>通过搜索 <code>cache</code> 发现名叫 <code>hare-cache</code> 的手册</p>
+<div class="highlight"><pre><span></span><code>fd cache
+hare/cmd/hare/cache.ha
+hare/docs/hare-cache.1.scd
+hare/hare/module/cache.ha
+usr/local/share/man/man1/hare-cache.1           &lt;----
+usr/local/src/hare/stdlib/hare/module/cache.ha
+</code></pre></div>
+<div class="highlight"><span class="filename">man hare-cache</span><pre><span></span><code>hare-cache(1)                                           General Commands Manual                                           hare-cache(1)
+
+NAME
+       hare cache - inspect and manage the build cache
+
+SYNOPSIS
+       hare cache [-hc]
+
+DESCRIPTION
+       hare  cache  provides  tools  to  manage  the  build cache. If no options are supplied, the path and disk usage of the cache are
+       printed.
+
+OPTIONS
+       -h
+           Print the help text.
+
+       -c
+           Clear the cache.
+
+ENVIRONMENT
+       The following environment variables affect hare cache's execution:
+
+       HARECACHE   The path to the build cache. Defaults to $XDG_CACHE_HOME/hare, or ~/.cache/hare if $XDG_CACHE_HOME isn't set.
+</code></pre></div>
+<p>我没有设置 <code>HARECACHE</code> 和 <code>XDG_CACHE_HOME</code>，所以它给我放在了 <code>~/.cache/hare</code>，直接输入 <code>hare cache</code> 也能看到。</p>
+<p>这下面的目录结构就是源代码的路径结构，比如源代码在 <code>/home/13m0n4de/Code/Hare/hello.ha</code>，缓存目录下的文件就会是：</p>
+<div class="highlight"><span class="filename">/home/13m0n4de/.cache/hare/</span><pre><span></span><code>home/
+└── 13m0n4de
+    └── Code
+        └── Hare
+            └── hello.ha
+                ├── 278f991c88b8d7c6dc83d6259a3abc2b47b99d22e00354f2da6c9a1d6d512919.s
+                ├── 278f991c88b8d7c6dc83d6259a3abc2b47b99d22e00354f2da6c9a1d6d512919.s.lock
+                ├── 278f991c88b8d7c6dc83d6259a3abc2b47b99d22e00354f2da6c9a1d6d512919.s.log
+                ├── 278f991c88b8d7c6dc83d6259a3abc2b47b99d22e00354f2da6c9a1d6d512919.s.txt
+                ├── 6caa6d8dd4d8d9fcb6e47a54bc0a25b6fb88276c8ce8f3e2e787c2252638e7dc.td
+                ├── 7f10f81946d21e37e6bc4a05efed5f541c449e5e23a9f451b282f7c144b32e1e.bin
+                ├── 7f10f81946d21e37e6bc4a05efed5f541c449e5e23a9f451b282f7c144b32e1e.bin.lock
+                ├── 7f10f81946d21e37e6bc4a05efed5f541c449e5e23a9f451b282f7c144b32e1e.bin.log
+                ├── 7f10f81946d21e37e6bc4a05efed5f541c449e5e23a9f451b282f7c144b32e1e.bin.txt
+                ├── 932ff2196cd983391326e8f5fbbb81a6785e1f4cffaf943f1f5e351d385bac47.o
+                ├── 932ff2196cd983391326e8f5fbbb81a6785e1f4cffaf943f1f5e351d385bac47.o.lock
+                ├── 932ff2196cd983391326e8f5fbbb81a6785e1f4cffaf943f1f5e351d385bac47.o.log
+                ├── 932ff2196cd983391326e8f5fbbb81a6785e1f4cffaf943f1f5e351d385bac47.o.txt
+                ├── deps.txt
+                ├── ee744b05753cb66d0c9c91a6572eb5f38e926c3b9c2b7666dd58dcbb39e60fc7.ssa
+                ├── ee744b05753cb66d0c9c91a6572eb5f38e926c3b9c2b7666dd58dcbb39e60fc7.ssa.lock
+                ├── ee744b05753cb66d0c9c91a6572eb5f38e926c3b9c2b7666dd58dcbb39e60fc7.ssa.log
+                ├── ee744b05753cb66d0c9c91a6572eb5f38e926c3b9c2b7666dd58dcbb39e60fc7.ssa.td
+                └── ee744b05753cb66d0c9c91a6572eb5f38e926c3b9c2b7666dd58dcbb39e60fc7.ssa.txt
+</code></pre></div>
+<p>一共有六种文件，<code>.s</code>、<code>.bin</code>、<code>.td</code>、<code>.o</code>、<code>.ssa</code>、<code>deps.txt</code>。</p>
+<p>其中 <code>.s</code>、<code>.bin</code>、<code>.ssa</code> 每个都还有 <code>.lock</code>、<code>.log</code>、<code>.tmp</code>、<code>.txt</code> 几种文件。</p>
+<p><code>.lock</code>：防止文件被同时访问</p>
+<p><code>.log</code>：日志，只有失败的时候才有内容，可能它只是错误日志，日志内容与编译器输出报错信息一致（带有色彩控制字符）</p>
+<div class="highlight"><span class="filename">*.ssa.log</span><pre><span></span><code>/home/13m0n4de/Code/Hare/hello.ha:4:21: error: Cannot ignore error here
+
+4 |     fmt::println("Hello world!");
+  |                     [31m^[0m
+</code></pre></div>
+<p><code>.tmp</code>：输出缓存，比如 <code>qbe</code> 先把结果输出到 <code>.s.tmp</code></p>
+<p><code>.txt</code>：详细命令，比如 <code>qbe -t 'xxx' -o xxx.s.tmp xxx.ssa</code></p>
+<h3 id="s"><code>.s</code> 汇编文件<a class="headerlink" href="#s" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<details class="note">
+<summary>文件内容</summary>
+<div class="highlight"><span class="filename">*.s</span><pre><span></span><code><span class="na">.file</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"&lt;unknown&gt;"</span>
+<span class="na">.section</span><span class="w"> </span><span class="s">".data.strdata.1"</span>
+<span class="na">.balign</span><span class="w"> </span><span class="mi">8</span>
+<span class="nl">strdata.1:</span>
+<span class="hll"><span class="w">    </span><span class="na">.ascii</span><span class="w"> </span><span class="s">"/home/13m0n4de/Code/Hare/hello.ha"</span>
+</span><span class="cm">/* end data */</span>
+
+<span class="na">.section</span><span class="w"> </span><span class="s">".data.strliteral.0"</span>
+<span class="na">.balign</span><span class="w"> </span><span class="mi">8</span>
+<span class="nl">strliteral.0:</span>
+<span class="w">    </span><span class="na">.quad</span><span class="w"> </span><span class="no">strdata.1</span><span class="err">+</span><span class="mi">0</span>
+<span class="w">    </span><span class="na">.quad</span><span class="w"> </span><span class="mi">32</span>
+<span class="w">    </span><span class="na">.quad</span><span class="w"> </span><span class="mi">32</span>
+<span class="cm">/* end data */</span>
+
+<span class="na">.section</span><span class="w"> </span><span class="s">".data.strdata.33"</span>
+<span class="na">.balign</span><span class="w"> </span><span class="mi">8</span>
+<span class="nl">strdata.33:</span>
+<span class="w">    </span><span class="na">.ascii</span><span class="w"> </span><span class="s">"Hello world!"</span>
+<span class="cm">/* end data */</span>
+
+<span class="hll"><span class="na">.file</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="s">"/home/13m0n4de/Code/Hare/hello.ha"</span>
+</span><span class="na">.section</span><span class="w"> </span><span class="s">".data.strliteral.32"</span>
+<span class="na">.balign</span><span class="w"> </span><span class="mi">8</span>
+<span class="nl">strliteral.32:</span>
+<span class="w">    </span><span class="na">.quad</span><span class="w"> </span><span class="no">strdata.33</span><span class="err">+</span><span class="mi">0</span>
+<span class="w">    </span><span class="na">.quad</span><span class="w"> </span><span class="mi">12</span>
+<span class="w">    </span><span class="na">.quad</span><span class="w"> </span><span class="mi">12</span>
+<span class="cm">/* end data */</span>
+
+<span class="na">.section</span><span class="w"> </span><span class="s">".text.main"</span><span class="p">,</span><span class="s">"ax"</span>
+<span class="na">.globl</span><span class="w"> </span><span class="no">main</span>
+<span class="nl">main:</span>
+<span class="w">    </span><span class="nf">pushq</span><span class="w"> </span><span class="nv">%rbp</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="nv">%rsp</span><span class="p">,</span><span class="w"> </span><span class="nv">%rbp</span>
+<span class="w">    </span><span class="nf">subq</span><span class="w"> </span><span class="no">$112</span><span class="p">,</span><span class="w"> </span><span class="nv">%rsp</span>
+<span class="w">    </span><span class="na">.loc</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">25</span>
+<span class="w">    </span><span class="na">.loc</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">38</span>
+<span class="w">    </span><span class="na">.loc</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">21</span>
+<span class="w">    </span><span class="na">.loc</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">21</span>
+<span class="w">    </span><span class="na">.loc</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">35</span>
+<span class="w">    </span><span class="nf">movl</span><span class="w"> </span><span class="no">$2206074632</span><span class="p">,</span><span class="w"> </span><span class="mi">-32</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">)</span>
+<span class="w">    </span><span class="na">.loc</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">35</span>
+<span class="w">    </span><span class="nf">leaq</span><span class="w"> </span><span class="no">strliteral.32</span><span class="p">(</span><span class="nv">%rip</span><span class="p">),</span><span class="w"> </span><span class="nv">%rax</span>
+<span class="w">    </span><span class="nf">addq</span><span class="w"> </span><span class="no">$0</span><span class="p">,</span><span class="w"> </span><span class="nv">%rax</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="p">(</span><span class="nv">%rax</span><span class="p">),</span><span class="w"> </span><span class="nv">%rax</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="nv">%rax</span><span class="p">,</span><span class="w"> </span><span class="mi">-24</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">leaq</span><span class="w"> </span><span class="no">strliteral.32</span><span class="p">(</span><span class="nv">%rip</span><span class="p">),</span><span class="w"> </span><span class="nv">%rax</span>
+<span class="w">    </span><span class="nf">addq</span><span class="w"> </span><span class="no">$8</span><span class="p">,</span><span class="w"> </span><span class="nv">%rax</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="p">(</span><span class="nv">%rax</span><span class="p">),</span><span class="w"> </span><span class="nv">%rax</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="nv">%rax</span><span class="p">,</span><span class="w"> </span><span class="mi">-16</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">leaq</span><span class="w"> </span><span class="no">strliteral.32</span><span class="p">(</span><span class="nv">%rip</span><span class="p">),</span><span class="w"> </span><span class="nv">%rax</span>
+<span class="w">    </span><span class="nf">addq</span><span class="w"> </span><span class="no">$16</span><span class="p">,</span><span class="w"> </span><span class="nv">%rax</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="p">(</span><span class="nv">%rax</span><span class="p">),</span><span class="w"> </span><span class="nv">%rax</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="nv">%rax</span><span class="p">,</span><span class="w"> </span><span class="mi">-8</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">leaq</span><span class="w"> </span><span class="mi">-32</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">),</span><span class="w"> </span><span class="nv">%rax</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="nv">%rax</span><span class="p">,</span><span class="w"> </span><span class="mi">-56</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="no">$1</span><span class="p">,</span><span class="w"> </span><span class="mi">-48</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="no">$1</span><span class="p">,</span><span class="w"> </span><span class="mi">-40</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">subq</span><span class="w"> </span><span class="no">$32</span><span class="p">,</span><span class="w"> </span><span class="nv">%rsp</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="nv">%rsp</span><span class="p">,</span><span class="w"> </span><span class="nv">%rcx</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="mi">-56</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">),</span><span class="w"> </span><span class="nv">%rax</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="nv">%rax</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="nv">%rcx</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="mi">-48</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">),</span><span class="w"> </span><span class="nv">%rax</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="nv">%rax</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">(</span><span class="nv">%rcx</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="mi">-40</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">),</span><span class="w"> </span><span class="nv">%rax</span>
+<span class="w">    </span><span class="nf">movq</span><span class="w"> </span><span class="nv">%rax</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">(</span><span class="nv">%rcx</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">leaq</span><span class="w"> </span><span class="mi">-104</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">),</span><span class="w"> </span><span class="nv">%rdi</span>
+<span class="w">    </span><span class="nf">callq</span><span class="w"> </span><span class="no">fmt.println</span>
+<span class="w">    </span><span class="nf">subq</span><span class="w"> </span><span class="no">$-32</span><span class="p">,</span><span class="w"> </span><span class="nv">%rsp</span>
+<span class="w">    </span><span class="nf">movl</span><span class="w"> </span><span class="p">(</span><span class="nv">%rax</span><span class="p">),</span><span class="w"> </span><span class="nv">%eax</span>
+<span class="w">    </span><span class="nf">cmpl</span><span class="w"> </span><span class="no">$2843771249</span><span class="p">,</span><span class="w"> </span><span class="nv">%eax</span>
+<span class="w">    </span><span class="nf">jz</span><span class="w"> </span><span class="no">.Lbb3</span>
+<span class="w">    </span><span class="na">.loc</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">38</span>
+<span class="w">    </span><span class="nf">movl</span><span class="w"> </span><span class="no">$7</span><span class="p">,</span><span class="w"> </span><span class="nv">%ecx</span>
+<span class="w">    </span><span class="nf">movl</span><span class="w"> </span><span class="no">$38</span><span class="p">,</span><span class="w"> </span><span class="nv">%edx</span>
+<span class="w">    </span><span class="nf">movl</span><span class="w"> </span><span class="no">$4</span><span class="p">,</span><span class="w"> </span><span class="nv">%esi</span>
+<span class="w">    </span><span class="nf">leaq</span><span class="w"> </span><span class="no">strliteral.0</span><span class="p">(</span><span class="nv">%rip</span><span class="p">),</span><span class="w"> </span><span class="nv">%rdi</span>
+<span class="w">    </span><span class="nf">callq</span><span class="w"> </span><span class="no">rt.abort_fixed</span>
+<span class="w">    </span><span class="nf">ud2</span>
+<span class="nl">.Lbb3:</span>
+<span class="w">    </span><span class="nf">leave</span>
+<span class="w">    </span><span class="nf">ret</span>
+<span class="na">.type</span><span class="w"> </span><span class="no">main</span><span class="p">,</span><span class="w"> </span><span class="na">@function</span>
+<span class="na">.size</span><span class="w"> </span><span class="no">main</span><span class="p">,</span><span class="w"> </span><span class="no">.-main</span>
+<span class="cm">/* end function main */</span>
+
+<span class="na">.section</span><span class="w"> </span><span class="no">.note.GNU-stack</span><span class="p">,</span><span class="s">""</span><span class="p">,</span><span class="na">@progbits</span>
+</code></pre></div>
+</details>
+<p>高亮行是源代码的路径，看来编译器会自动添加它。</p>
+<p>我还没找到能去掉它的编译选项，<span>Rust<span class="heti-spacing"> </span></span>默认也会有，但它可以通过 <code>--remap-path-prefix</code> 来映射到其他地方。</p>
+<p>嗯，有点小小的隐私问题。</p>
+<div class="highlight"><span class="filename">*.s.txt</span><pre><span></span><code>qbe -t 'amd64_sysv' -o /home/13m0n4de/.cache/hare/home/13m0n4de/Code/Hare/hello.ha/278f991c88b8d7c6dc83d6259a3abc2b47b99d22e00354f2da6c9a1d6d512919.s.tmp /home/13m0n4de/.cache/hare/home/13m0n4de/Code/Hare/hello.ha/ee744b05753cb66d0c9c91a6572eb5f38e926c3b9c2b7666dd58dcbb39e60fc7.ssa
+</code></pre></div>
+<p>使用 <code>qbe</code> 编译 <code>.ssa</code> 文件，输出到 <code>.s.tmp</code></p>
+<p>所以说，<span>Hare<span class="heti-spacing"> </span></span>可能是使用外部进程的方式来调用<span><span class="heti-spacing"> </span>QBE</span>。</p>
+<p>这个 <code>.ssa</code> 文件很可能</p>
+<h3 id="td"><code>.td</code> 类型定义文件<a class="headerlink" href="#td" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<div class="highlight"><span class="filename">*.td</span><pre><span></span><code>use fmt;
+export @symbol("main") fn main() void;
+6caa6d8dd4d8d9fcb6e47a54bc0a25b6fb88276c8ce8f3e2e787c2252638e7dc
+</code></pre></div>
+<p>根据文件内容猜测是类型定义<span class="heti-skip"><span class="heti-spacing"> </span>(Type Definition)<span class="heti-spacing"> </span></span>文件，导出了主函数。</p>
+<h3 id="bin"><code>.bin</code> 可执行文件<a class="headerlink" href="#bin" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>这个文件和 <code>hare build</code> 出来的文件一样，静态链接的可执行文件，默认带有调试符号（所以之前的源代码路径是调试符号在的原因<heti-adjacent class="heti-adjacent-half">？</heti-adjacent><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<div class="highlight"><span class="filename">file *.bin</span><pre><span></span><code>7f10f81946d21e37e6bc4a05efed5f541c449e5e23a9f451b282f7c144b32e1e.bin: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, with debug_info, not stripped
+</code></pre></div>
+<p><code>*.bin.txt</code> 中是一大长串使用 <code>ld</code> 链接目标文件的命令，把标准库中的一些内容链接进去了。</p>
+<h3 id="o"><code>.o</code> 目标文件<a class="headerlink" href="#o" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>由 <code>.s</code> 文件编译而来的目标文件。</p>
+<p>命令：</p>
+<div class="highlight"><span class="filename">*.o.txt</span><pre><span></span><code>as -o /home/13m0n4de/.cache/hare/home/13m0n4de/Code/Hare/hello.ha/932ff2196cd983391326e8f5fbbb81a6785e1f4cffaf943f1f5e351d385bac47.o.tmp /home/13m0n4de/.cache/hare/home/13m0n4de/Code/Hare/hello.ha/278f991c88b8d7c6dc83d6259a3abc2b47b99d22e00354f2da6c9a1d6d512919.s
+</code></pre></div>
+<h3 id="depstxt"><code>deps.txt</code> 依赖文件<a class="headerlink" href="#depstxt" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<div class="highlight"><span class="filename">deps.txt</span><pre><span></span><code>fmt
+</code></pre></div>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>Hello world!<span class="heti-spacing"> </span></span>示例中就只有 <code>fmt</code> 一个依赖。</p>
+<p>经过测试，它按行分割，且会按照字母顺序排列。</p>
+<p>比如这样的代码：</p>
+<div class="highlight"><pre><span></span><code>use fmt;
+use net;
+use crypto;
+</code></pre></div>
+<p>会生成：</p>
+<div class="highlight"><pre><span></span><code>crypto
+fmt
+net
+</code></pre></div>
+<p>就算没有用到，只是 <code>use</code> 了，依然会编译并链接进二进制文件。</p>
+<h3 id="ssa"><code>.ssa</code> 中间语言文件<a class="headerlink" href="#ssa" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>这是<span class="heti-skip"><span class="heti-spacing"> </span>QBE<span class="heti-spacing"> </span></span>使用的基于<a href="https://en.wikipedia.org/wiki/Static_single-assignment_form"><span class="heti-skip"><span class="heti-spacing"> </span>SSA<span class="heti-spacing"> </span></span></a>的中间语言。</p>
+<details class="note">
+<summary>文件内容</summary>
+<div class="highlight"><pre><span></span><code>bgfile "&lt;unknown&gt;"
+section ".data.strdata.1"
+data $strdata.1 = { b "/home/13m0n4de/Code/Hare/hello.ha" }
+
+dbgfile "&lt;unknown&gt;"
+section ".data.strliteral.0"
+data $strliteral.0 = { l $strdata.1, l 29, l 29 }
+
+dbgfile "&lt;unknown&gt;"
+# [24]u8 [id: 3457361888; size: 24]
+type :type.13 = align 1 { b 24 }
+
+dbgfile "&lt;unknown&gt;"
+# !struct { strerror: *fn(*errors::opaque_data) const str, data: errors::opaque_data, } [id: 4125378837; size: 32]
+type :type.12 = align 8 { l 1, :type.13 1 }
+
+dbgfile "&lt;unknown&gt;"
+type :values.align8.11 = { { :type.12 1 } { l 1 } }
+
+dbgfile "&lt;unknown&gt;"
+type :tagged.align8.14 = { w 1, :values.align8.11 1 }
+
+dbgfile "&lt;unknown&gt;"
+# !(!errors::unsupported | !errors::overflow | !errors::again | !errors::nomem | !errors::invalid | !errors::opaque_ | !errors::refused | !errors::cancelled | !errors::noaccess | !io::underread | !errors::noentry | !errors::interrupted | !errors::timeout | !errors::exists | !errors::busy) [id: 1589175157; size: 40]
+type :type.10 = align 8 { { :tagged.align8.14 1 } { w 1 } }
+
+dbgfile "&lt;unknown&gt;"
+type :values.align8.9 = { { l 1 } { :type.10 1 } }
+
+dbgfile "&lt;unknown&gt;"
+type :tagged.align8.15 = { w 1, :values.align8.9 1 }
+
+dbgfile "&lt;unknown&gt;"
+# (size | !io::error) [id: 1998184497; size: 48]
+type :type.8 = align 8 { { :tagged.align8.15 1 } }
+
+dbgfile "&lt;unknown&gt;"
+# []fmt::formattable [id: 2967698318; size: 24]
+type :type.17 = align 8 { l 3 }
+
+dbgfile "&lt;unknown&gt;"
+type :values.align1.21 = { { b 1 } { b 1 } { b 1 } }
+
+dbgfile "&lt;unknown&gt;"
+type :tagged.align1.22 = { w 1, :values.align1.21 1 }
+
+dbgfile "&lt;unknown&gt;"
+type :values.align2.23 = { { h 1 } { h 1 } }
+
+dbgfile "&lt;unknown&gt;"
+type :tagged.align2.24 = { w 1, :values.align2.23 1 }
+
+dbgfile "&lt;unknown&gt;"
+type :values.align4.25 = { { w 1 } { w 1 } { w 1 } { w 1 } { w 1 } { s 1 } }
+
+dbgfile "&lt;unknown&gt;"
+type :tagged.align4.26 = { w 1, :values.align4.25 1 }
+
+dbgfile "&lt;unknown&gt;"
+# str [id: 2206074632; size: 24]
+type :type.28 = align 8 { l 3 }
+
+dbgfile "&lt;unknown&gt;"
+type :values.align8.27 = { { l 1 } { d 1 } { l 1 } { l 1 } { :type.28 1 } { l 1 } { l 1 } }
+
+dbgfile "&lt;unknown&gt;"
+type :tagged.align8.29 = { w 1, :values.align8.27 1 }
+
+dbgfile "&lt;unknown&gt;"
+# (bool | i16 | u8 | i64 | f64 | rune | u64 | nullable *opaque | i32 | str | uintptr | int | size | uint | i8 | u32 | void | f32 | u16) [id: 3683259087; size: 32]
+type :type.20 = align 8 { { :tagged.align1.22 1 } { :tagged.align2.24 1 } { :tagged.align4.26 1 } { :tagged.align8.29 1 } { w 1 } }
+
+dbgfile "&lt;unknown&gt;"
+# [1]fmt::formattable [id: 1080674779; size: 32]
+type :type.19 = align 8 { :type.20 1 }
+
+dbgfile "&lt;unknown&gt;"
+section ".data.strdata.33"
+data $strdata.33 = { b "Hello world!" }
+
+dbgfile "/home/13m0n4de/Code/Hare/hello.ha"
+section ".data.strliteral.32"
+data $strliteral.32 = { l $strdata.33, l 12, l 12 }
+
+dbgfile "/home/13m0n4de/Code/Hare/hello.ha"
+section ".text.main" "ax" export
+function $main() {
+@start.2
+    %object.16 =l alloc8 24
+    %object.18 =l alloc8 32
+    %binding.43 =l alloc8 8
+@body.3
+    dbgloc 3, 25
+    dbgloc 4, 38
+    dbgloc 4, 21
+    dbgloc 4, 21
+    # gen lowered cast
+    dbgloc 4, 35
+    %item.30 =l add %object.18, 0
+    # gen lowered cast
+    storew 2206074632, %item.30
+    %.31 =l add %item.30, 8
+    dbgloc 4, 35
+    blit $strliteral.32, %.31, 24
+    storel %object.18, %object.16
+    %.34 =l add %object.16, 8
+    storel 1, %.34
+    %.34 =l add %.34, 8
+    storel 1, %.34
+    %returns.7 =:type.8 call $fmt.println(:type.17 %object.16)
+    %tag.35 =l loaduw %returns.7
+    %subval.39 =l copy %returns.7
+    %.40 =w ceqw %tag.35, 2843771249
+    jnz %.40, @subtype.42, @next.38
+@subtype.42
+    jmp @matches.37
+@matches.37
+    %.44 =l add %returns.7, 8
+    %.45 =l loadl %.44
+    storel %.45, %binding.43
+    %.46 =l loadl %binding.43
+    %.6 =l copy %.46
+    jmp @.36
+@next.38
+    dbgloc 4, 38
+    call $rt.abort_fixed(l $strliteral.0, l 4, l 38, l 7)
+    hlt
+@.47
+@.36
+    jmp @.4
+@.48
+@.4
+    ret
+}
+</code></pre></div>
+</details>
+<p>从中间语言中看到了一些亲切的东西：</p>
+<ul>
+<li><code>u8</code>、<code>f64</code> 和<span class="heti-skip"><span class="heti-spacing"> </span>Rust<span class="heti-spacing"> </span></span>很像的类型名称</li>
+<li><code>errors::unsupported</code> 像是错误处理用的</li>
+</ul>
+<div class="highlight"><span class="filename">*.ssa.txt</span><pre><span></span><code># HARE_TD_fmt=/home/13m0n4de/.cache/hare/home/13m0n4de/Code/Hare/usr/local/src/hare/stdlib/fmt/60d472e1243334af6cf3c4165412b40e1f8ae51d534ef26a4f19624efa4c22a1.td
+harec -M /home/13m0n4de/Code/Hare/hello.ha/ -o /home/13m0n4de/.cache/hare/home/13m0n4de/Code/Hare/hello.ha/ee744b05753cb66d0c9c91a6572eb5f38e926c3b9c2b7666dd58dcbb39e60fc7.ssa.tmp -t /home/13m0n4de/.cache/hare/home/13m0n4de/Code/Hare/hello.ha/ee744b05753cb66d0c9c91a6572eb5f38e926c3b9c2b7666dd58dcbb39e60fc7.ssa.td.tmp /home/13m0n4de/Code/Hare/hello.ha
+</code></pre></div>
+<p><code>harec</code> 从源代码中生成了中间语言 <code>*.ssa.tmp</code> 和类型定义 <code>*.ssa.tmp.td</code> 文件。</p>
+<p>最终，在某个操作后，这个类型定义文件存到了 <code>*.td</code>。</p>
+<h2 id="_4">编译流程<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>整理一下编译流程：</p>
+<ol>
+<li>使用 <code>harec</code> 生成中间语言文件 <code>.ssa</code></li>
+<li>使用 <code>qbe</code> 通过中间语言生成汇编语言文件 <code>.s</code></li>
+<li>使用 <code>as</code> 将汇编生成目标机器代码文件 <code>.o</code></li>
+<li>使用 <code>ld</code> 链接所有的目标文件，生成二进制文件 <code>.bin</code></li>
+</ol>
+<p>关于文件名我不太清楚，好像依赖变动了会重新生成一套 <code>.ssa</code>、<code>.s</code>、<code>.o</code>、<code>.bin</code>、<code>.td</code>，只要依赖不变，变动代码也不会改变这套文件名。</p>
+<p>在我修改 <code>println</code> 输出内容后，只有四个 <code>task</code>，应该就对应了上面的四个吧。</p>
+<h2 id="_5">可执行文件特征<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>首先，静态链接，这和官网宣传地一致，默认不链接<span><span class="heti-spacing"> </span>LIBC</span>。</p>
+<div class="highlight"><pre><span></span><code>file hello
+hello: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, with debug_info, not stripped
+</code></pre></div>
+<p><span>pwn checksec<span class="heti-spacing"> </span></span>检测结果：</p>
+<div class="highlight"><pre><span></span><code>pwn checksec hello
+    Arch:     amd64-64-little
+    RELRO:    No RELRO
+    Stack:    No canary found
+    NX:       NX unknown - GNU_STACK missing
+    PIE:      No PIE (0x7fff000)
+    Stack:    Executable
+    RWX:      Has RWX segments
+</code></pre></div>
+<p>感觉不对，<span>NX<span class="heti-spacing"> </span></span>像是识别问题，而且<span class="heti-skip"><span class="heti-spacing"> </span>RWX<span class="heti-spacing"> </span></span>的段理应没有才对。</p>
+<h3 id="nx">NX ?<a class="headerlink" href="#nx" title="Permanent link">¶</a></h3>
+<p><code>*.bin.txt</code> 中链接命令使用了 <code>-z noexecstack</code> 选项，栈应该是不可执行。</p>
+<p>查看段信息，发现只剩下 <code>.note.gnu.property</code>，没有 <code>GNU-stack</code>。</p>
+<div class="highlight"><span class="filename">readelf -W -S *.bin</span><pre><span></span><code>[Nr] Name              Type            Address          Off    Size   ES Flg Lk Inf Al
+[ 0]                   NULL            0000000000000000 000000 000000 00      0   0  0
+[ 1] .text             PROGBITS        0000000008000000 001000 02ec17 00  AX  0   0  1
+[ 2] .note.gnu.property NOTE            000000000802ec18 02fc18 000030 00   A  0   0  8
+[ 3] .data             PROGBITS        0000000080000000 030000 006020 00  WA  0   0  8
+[ 4] .init_array       INIT_ARRAY      0000000080006020 036020 000030 08  WA  0   0  8
+[ 5] .fini_array       FINI_ARRAY      0000000080006050 036050 000020 08  WA  0   0  8
+[ 6] .bss              NOBITS          0000000080008000 036070 00c2a0 00  WA  0   0 16384
+[ 7] .debug_line       PROGBITS        0000000000000000 036070 01de14 00      0   0  1
+[ 8] .debug_info       PROGBITS        0000000000000000 053e84 0065d2 00      0   0  1
+[ 9] .debug_abbrev     PROGBITS        0000000000000000 05a456 00049c 00      0   0  1
+[10] .debug_aranges    PROGBITS        0000000000000000 05a900 0044d0 00      0   0 16
+[11] .debug_str        PROGBITS        0000000000000000 05edd0 003bf0 01  MS  0   0  1
+[12] .debug_ranges     PROGBITS        0000000000000000 0629c0 004470 00      0   0 16
+[13] .symtab           SYMTAB          0000000000000000 066e30 007488 18     14 1016  8
+[14] .strtab           STRTAB          0000000000000000 06e2b8 004514 00      0   0  1
+[15] .shstrtab         STRTAB          0000000000000000 0727cc 0000a5 00      0   0  1
+</code></pre></div>
+<p>奇怪的是明明在之前看到汇编中看到有 <code>GNU-stack</code>。</p>
+<p>查看 <code>hello.ha</code> 的目标文件的段信息：</p>
+<div class="highlight"><span class="filename">readelf -W -S *.o</span><pre><span></span><code>[Nr] Name              Type            Address          Off    Size   ES Flg Lk Inf Al
+[ 0]                   NULL            0000000000000000 000000 000000 00      0   0  0
+[ 1] .text             PROGBITS        0000000000000000 000040 000000 00  AX  0   0  1
+[ 2] .data             PROGBITS        0000000000000000 000040 000000 00  WA  0   0  1
+[ 3] .bss              NOBITS          0000000000000000 000040 000000 00  WA  0   0  1
+[ 4] .data.strdata.1   PROGBITS        0000000000000000 000040 00001d 00  WA  0   0  8
+[ 5] .data.strliteral.0 PROGBITS        0000000000000000 000060 000018 00  WA  0   0  8
+[ 6] .rela.data.strliteral.0 RELA            0000000000000000 0004b0 000018 18   I 22   5  8
+[ 7] .data.strdata.33  PROGBITS        0000000000000000 000078 00000c 00  WA  0   0  8
+[ 8] .data.strliteral.32 PROGBITS        0000000000000000 000088 000018 00  WA  0   0  8
+[ 9] .rela.data.strliteral.32 RELA            0000000000000000 0004c8 000018 18   I 22   8  8
+[10] .text.main        PROGBITS        0000000000000000 0000a0 0000b0 00  AX  0   0  1
+[11] .rela.text.main   RELA            0000000000000000 0004e0 000090 18   I 22  10  8
+<span class="hll">[12] .note.GNU-stack   PROGBITS        0000000000000000 000150 000000 00      0   0  1
+</span>[13] .note.gnu.property NOTE            0000000000000000 000150 000030 00   A  0   0  8
+[14] .debug_line       PROGBITS        0000000000000000 000180 000071 00      0   0  1
+[15] .rela.debug_line  RELA            0000000000000000 000570 000018 18   I 22  14  8
+[16] .debug_info       PROGBITS        0000000000000000 0001f8 000036 00   C  0   0  8
+[17] .rela.debug_info  RELA            0000000000000000 000588 0000f0 18   I 22  16  8
+[18] .debug_abbrev     PROGBITS        0000000000000000 00022e 000028 00      0   0  1
+[19] .debug_aranges    PROGBITS        0000000000000000 000258 00002f 00   C  0   0  8
+[20] .rela.debug_aranges RELA            0000000000000000 000678 000030 18   I 22  19  8
+[21] .debug_str        PROGBITS        0000000000000000 000287 000032 01  MS  0   0  1
+[22] .symtab           SYMTAB          0000000000000000 0002c0 000198 18     23  14  8
+[23] .strtab           STRTAB          0000000000000000 000458 000051 00      0   0  1
+[24] .shstrtab         STRTAB          0000000000000000 0006a8 000100 00      0   0  1
+</code></pre></div>
+<p>它是有的，并且<span class="heti-skip"><span class="heti-spacing"> </span>checksec<span class="heti-spacing"> </span></span>也正确识别：</p>
+<div class="highlight"><pre><span></span><code>pwn checksec *.o
+    Arch:     amd64-64-little
+    RELRO:    No RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x0)
+</code></pre></div>
+<p>所以说，是在最后一步使用 <code>ld</code> 链接的时候去掉了这个段。</p>
+<p><code>*.bin.txt</code> 中显示，链接用了 <code>--gc-sections</code>、<code>-z noexecstack</code>、<code>-T hare.sc</code> 三个选项。</p>
+<p>我检查了一下，所有链接的 <code>.o</code> 文件都有 <code>.note.GNU-stack</code>，而这三个选项都对这个段不直接影响。</p>
+<p>我只能理解为<heti-adjacent class="heti-adjacent-half">：</heti-adjacent>「链接器认为不需要标注了，去掉这个空段减少文件大小<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>。</p>
+<hr/>
+<p>那么，它实际有执行权限吗？</p>
+<p>写一个执行栈上<span class="heti-skip"><span class="heti-spacing"> </span>ShellCode<span class="heti-spacing"> </span></span>的代码测试一下：</p>
+<div class="highlight"><pre><span></span><code>export fn main() void = {
+    const shellcode: []u8 = [0x90, 0x90, 0x90, 0xC3];
+    let func: *fn() void = &amp;shellcode: *fn() void;
+    func();
+};
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>hare run hello.ha
+Stack overflow (invalid permissions for mapped object) at address 0x7ffd8bbc3498
+/home/13m0n4de/Code/Hare/rt/+linux/start.ha:13:13 rt::start_ha+0xe [0x8003901]
+
+/home/13m0n4de/Code/Hare/rt/+linux/platformstart-libc.ha:8:17 rt::start_linux+0x3a [0x8003ae8]
+
+fish: Job 1, 'hare run hello.ha' terminated by signal SIGABRT (Abort)
+</code></pre></div>
+<p>提示 <code>0x7ffd8bbc3498</code> 位置的权限错误，这是栈上的地址。</p>
+<p>调试，断在 <code>call rax</code> 前：</p>
+<div class="highlight"><span class="filename">gdb hello</span><pre><span></span><code><span class="nf">gef</span><span class="err">➤</span><span class="w">  </span><span class="no">disassemble</span><span class="w"> </span><span class="no">main</span>
+<span class="nf">Dump</span><span class="w"> </span><span class="no">of</span><span class="w"> </span><span class="no">assembler</span><span class="w"> </span><span class="no">code</span><span class="w"> </span><span class="no">for</span><span class="w"> </span><span class="no">function</span><span class="w"> </span><span class="no">main</span><span class="p">:</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eae1</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">0</span><span class="err">&gt;</span><span class="p">:</span><span class="w"> </span><span class="no">push</span><span class="w">   </span><span class="no">rbp</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eae2</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">1</span><span class="err">&gt;</span><span class="p">:</span><span class="w"> </span><span class="no">mov</span><span class="w">    </span><span class="no">rbp</span><span class="p">,</span><span class="no">rsp</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eae5</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">4</span><span class="err">&gt;</span><span class="p">:</span><span class="w"> </span><span class="no">sub</span><span class="w">    </span><span class="no">rsp</span><span class="p">,</span><span class="mi">0x20</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eae9</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">8</span><span class="err">&gt;</span><span class="p">:</span><span class="w"> </span><span class="no">mov</span><span class="w">    </span><span class="no">BYTE</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">rbp-0x1c</span><span class="p">],</span><span class="mi">0x90</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eaed</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">12</span><span class="err">&gt;</span><span class="p">:</span><span class="w">    </span><span class="no">mov</span><span class="w">    </span><span class="no">BYTE</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">rbp-0x1b</span><span class="p">],</span><span class="mi">0x90</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eaf1</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">16</span><span class="err">&gt;</span><span class="p">:</span><span class="w">    </span><span class="no">mov</span><span class="w">    </span><span class="no">BYTE</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">rbp-0x1a</span><span class="p">],</span><span class="mi">0x90</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eaf5</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">20</span><span class="err">&gt;</span><span class="p">:</span><span class="w">    </span><span class="no">mov</span><span class="w">    </span><span class="no">BYTE</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">rbp-0x19</span><span class="p">],</span><span class="mi">0xc3</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eaf9</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">24</span><span class="err">&gt;</span><span class="p">:</span><span class="w">    </span><span class="no">lea</span><span class="w">    </span><span class="no">rax</span><span class="p">,[</span><span class="no">rbp-0x1c</span><span class="p">]</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eafd</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">28</span><span class="err">&gt;</span><span class="p">:</span><span class="w">    </span><span class="no">mov</span><span class="w">    </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">rbp-0x18</span><span class="p">],</span><span class="no">rax</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eb01</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">32</span><span class="err">&gt;</span><span class="p">:</span><span class="w">    </span><span class="no">mov</span><span class="w">    </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">rbp-0x10</span><span class="p">],</span><span class="mi">0x4</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eb09</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">40</span><span class="err">&gt;</span><span class="p">:</span><span class="w">    </span><span class="no">mov</span><span class="w">    </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">rbp-0x8</span><span class="p">],</span><span class="mi">0x4</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eb11</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">48</span><span class="err">&gt;</span><span class="p">:</span><span class="w">    </span><span class="no">lea</span><span class="w">    </span><span class="no">rax</span><span class="p">,[</span><span class="no">rbp-0x18</span><span class="p">]</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eb15</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">52</span><span class="err">&gt;</span><span class="p">:</span><span class="w">    </span><span class="no">call</span><span class="w">   </span><span class="no">rax</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eb17</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">54</span><span class="err">&gt;</span><span class="p">:</span><span class="w">    </span><span class="no">leave</span>
+<span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eb18</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">55</span><span class="err">&gt;</span><span class="p">:</span><span class="w">    </span><span class="no">ret</span>
+<span class="nf">End</span><span class="w"> </span><span class="no">of</span><span class="w"> </span><span class="no">assembler</span><span class="w"> </span><span class="no">dump.</span>
+<span class="nf">gef</span><span class="err">➤</span><span class="w">  </span><span class="no">b</span><span class="w"> </span><span class="p">*</span><span class="mi">0x000000000802eb15</span>
+<span class="nf">Breakpoint</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="no">at</span><span class="w"> </span><span class="mi">0x802eb15</span><span class="p">:</span><span class="w"> </span><span class="no">file</span><span class="w"> </span><span class="err">/</span><span class="no">home</span><span class="err">/</span><span class="mi">13</span><span class="no">m0n4de</span><span class="err">/</span><span class="no">Code</span><span class="err">/</span><span class="no">Hare</span><span class="err">/</span><span class="no">hello.ha</span><span class="p">,</span><span class="w"> </span><span class="no">line</span><span class="w"> </span><span class="mi">4</span><span class="p">.</span>
+</code></pre></div>
+<p><code>vmmap</code> 显示栈上没有执行权限：</p>
+<div class="highlight"><pre><span></span><code><span class="nf">gef</span><span class="err">➤</span><span class="w">  </span><span class="no">vmmap</span>
+<span class="err">[</span><span class="w"> </span><span class="nl">Legend:</span><span class="w">  </span><span class="nf">Code</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="no">Heap</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="no">Stack</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">Start</span><span class="w">              </span><span class="no">End</span><span class="w">                </span><span class="no">Offset</span><span class="w">             </span><span class="no">Perm</span><span class="w"> </span><span class="no">Path</span>
+<span class="err">0</span><span class="nf">x00000007fff000</span><span class="w"> </span><span class="mi">0x0000000802f000</span><span class="w"> </span><span class="mi">0x00000000000000</span><span class="w"> </span><span class="no">r-x</span><span class="w"> </span><span class="err">/</span><span class="no">home</span><span class="err">/</span><span class="mi">13</span><span class="no">m0n4de</span><span class="err">/</span><span class="no">Code</span><span class="err">/</span><span class="no">Hare</span><span class="err">/</span><span class="no">hello</span>
+<span class="err">0</span><span class="nf">x00000080000000</span><span class="w"> </span><span class="mi">0x00000080007000</span><span class="w"> </span><span class="mi">0x00000000030000</span><span class="w"> </span><span class="no">rw-</span><span class="w"> </span><span class="err">/</span><span class="no">home</span><span class="err">/</span><span class="mi">13</span><span class="no">m0n4de</span><span class="err">/</span><span class="no">Code</span><span class="err">/</span><span class="no">Hare</span><span class="err">/</span><span class="no">hello</span>
+<span class="err">0</span><span class="nf">x00000080007000</span><span class="w"> </span><span class="mi">0x00000080015000</span><span class="w"> </span><span class="mi">0x00000000000000</span><span class="w"> </span><span class="no">rw-</span><span class="w"> </span><span class="p">[</span><span class="no">heap</span><span class="p">]</span>
+<span class="err">0</span><span class="nf">x007ffff7ff4000</span><span class="w"> </span><span class="mi">0x007ffff7ff9000</span><span class="w"> </span><span class="mi">0x00000000000000</span><span class="w"> </span><span class="no">rw-</span>
+<span class="err">0</span><span class="nf">x007ffff7ff9000</span><span class="w"> </span><span class="mi">0x007ffff7ffd000</span><span class="w"> </span><span class="mi">0x00000000000000</span><span class="w"> </span><span class="no">r--</span><span class="w"> </span><span class="p">[</span><span class="no">vvar</span><span class="p">]</span>
+<span class="err">0</span><span class="nf">x007ffff7ffd000</span><span class="w"> </span><span class="mi">0x007ffff7fff000</span><span class="w"> </span><span class="mi">0x00000000000000</span><span class="w"> </span><span class="no">r-x</span><span class="w"> </span><span class="p">[</span><span class="no">vdso</span><span class="p">]</span>
+<span class="err">0</span><span class="nf">x007ffffffde000</span><span class="w"> </span><span class="mi">0x007ffffffff000</span><span class="w"> </span><span class="mi">0x00000000000000</span><span class="w"> </span><span class="no">rw-</span><span class="w"> </span><span class="p">[</span><span class="no">stack</span><span class="p">]</span>
+<span class="err">0</span><span class="nf">xffffffffff600000</span><span class="w"> </span><span class="mi">0xffffffffff601000</span><span class="w"> </span><span class="mi">0x00000000000000</span><span class="w"> </span><span class="p">--</span><span class="no">x</span><span class="w"> </span><span class="p">[</span><span class="no">vsyscall</span><span class="p">]</span>
+</code></pre></div>
+<p>所以它确实是 <strong>没有执行权限</strong>。</p>
+<p>也有个<span class="heti-skip"><span class="heti-spacing"> </span>ticket<span class="heti-spacing"> </span></span>问到 <em>Are we actually using an executable stack?</em>，开发者回复说不是。</p>
+<p><a href="https://todo.sr.ht/~sircmpwn/hare/748">~sircmpwn/hare#748: Resolve .note.GNU-stack warning emitted by GNU ld</a></p>
+<hr/>
+<p>顺带一提，<a href="https://github.com/slimm609/checksec.sh"><span>github.com/slimm609/checksec.sh<span class="heti-spacing"> </span></span></a>只检测 <code>GNU_STACK</code> 而不检测 <code>GNU-stack</code>：</p>
+<p><a href="https://github.com/slimm609/checksec.sh/blob/36a67b388193d26289773f4153cb3b9f5bf5c9ec/src/functions/filecheck.sh#L27-L39">https://github.com/slimm609/checksec.sh/blob/36a67b388193d26289773f4153cb3b9f5bf5c9ec/src/functions/filecheck.sh#L27-L39</a></p>
+<p><span>pwntools<span class="heti-spacing"> </span></span>可以检测 <code>GNU-stack</code>。</p>
+<h2 id="wip">WIP...<a class="headerlink" href="#wip" title="Permanent link">¶</a></h2>
+<h2 id="_6">参考<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>Hare: <a href="https://harelang.org/">https://harelang.org/</a></li>
+<li>Hare .note.GNU-stack ticket: <a href="https://todo.sr.ht/~sircmpwn/hare/748">~sircmpwn/hare#748</a></li>
+</ul>
+<aside class="md-source-file">
+<span class="md-source-file__fact">
+<span class="md-icon" title="最后更新">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月19日 23:40:04</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="创建日期">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月19日 23:40:04</span>
+</span>
+</aside>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+  回到页面顶部
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: 通过 HTTPS 包含头文件" class="md-footer__link md-footer__link--prev" href="../17/%E9%80%9A%E8%BF%87-https-%E5%8C%85%E5%90%AB%E5%A4%B4%E6%96%87%E4%BB%B6.html">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                上一页
+              </span>
+<div class="md-ellipsis">
+                通过 HTTPS 包含头文件
+              </div>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+        Copyright © 2024-2025 <a href="https://github.com/13m0n4de" rel="noopener" target="_blank">13m0n4de</a>
+</div>
+    
+    
+    Powered by
+    <a href="https://www.mkdocs.org/" rel="noopener" target="_blank">
+        MkDocs
+    </a>
+    with theme
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+        Material
+    </a>
+    modified by
+    <a href="https://github.com/13m0n4de" rel="noopener" target="_blank">
+        13m0n4de
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/13m0n4de/" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+<a class="md-social__link" href="https://13m0n4de.vercel.app/blog/" rel="noopener" target="_blank" title="13m0n4de.vercel.app">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M192 32c0 17.7 14.3 32 32 32 123.7 0 224 100.3 224 224 0 17.7 14.3 32 32 32s32-14.3 32-32C512 128.9 383.1 0 224 0c-17.7 0-32 14.3-32 32zm0 96c0 17.7 14.3 32 32 32 70.7 0 128 57.3 128 128 0 17.7 14.3 32 32 32s32-14.3 32-32c0-106-86-192-192-192-17.7 0-32 14.3-32 32zm-96 16c0-26.5-21.5-48-48-48S0 117.5 0 144v224c0 79.5 64.5 144 144 144s144-64.5 144-144-64.5-144-144-144h-16v96h16c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48V144z"></path></svg>
+</a>
+<a class="md-social__link" href="https://13m0n4de.vercel.app" rel="noopener" target="_blank" title="13m0n4de.vercel.app">
+<svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40h-16c-1.1 0-2.2 0-3.3-.1-1.4.1-2.8.1-4.2.1H392c-22.1 0-40-17.9-40-40v-88c0-17.7-14.3-32-32-32h-64c-17.7 0-32 14.3-32 32v88c0 22.1-17.9 40-40 40h-55.9c-1.5 0-3-.1-4.5-.2-1.2.1-2.4.2-3.6.2h-16c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9.1-2.8v-69.6H32c-18 0-32-14-32-32.1 0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7l255.4 224.5c8 7 12 15 11 24z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.tabs", "navigation.footer", "search.suggest", "content.code.annotate", "content.footnote.tooltips"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../../../assets/javascripts/bundle.caa56a14.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+<script src="../../../../javascripts/katex.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
