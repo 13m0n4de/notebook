@@ -853,8 +853,29 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      调试信息
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      默认编译文件名
+    </span>
+</a>
+</li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      安全特性
+    </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#wip">
@@ -864,7 +885,7 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#_6">
+<a class="md-nav__link" href="#_9">
 <span class="md-ellipsis">
       参考
     </span>
@@ -919,7 +940,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"></path></svg>
 <span class="md-ellipsis">
                             
-                              需要 11 分钟阅读时间
+                              需要 12 分钟阅读时间
                             
                           </span>
 </div>
@@ -1016,16 +1037,14 @@ export fn main() void = {
 <p>这个拓展名还挺有意思的<heti-adjacent class="heti-adjacent-half">，</heti-adjacent>「哈<heti-adjacent class="heti-adjacent-half">！</heti-adjacent><heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，很多个文件就是「哈哈哈哈哈哈哈<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>。</p>
 <p>我的<span class="heti-skip"><span class="heti-spacing"> </span>nvim<span class="heti-spacing"> </span></span>自动识别到了 <code>hare</code>，看上去官方推荐缩进用<span><span class="heti-spacing"> </span>TAB</span> （一股<span class="heti-skip"><span class="heti-spacing"> </span>Go<span class="heti-spacing"> </span></span>味<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，每个<span class="heti-skip"><span class="heti-spacing"> </span>TAB<span class="heti-spacing"> </span></span>八空格（？？<heti-adjacent class="heti-adjacent-half">？</heti-adjacent><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <p>到底是谁在用八空格？？？</p>
-<div class="highlight"><pre><span></span><code>hare run hello.ha
-97/97 tasks completed (100%)
+<div class="highlight"><span class="filename">hare run hello.ha</span><pre><span></span><code>97/97 tasks completed (100%)
 Hello world!
 </code></pre></div>
 <p>再次运行的时候就没有 <code>tasks</code> 进度了，应该是有改动才会再次编译。</p>
 <h2 id="_3">编译缓存<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>看起来编译文件是有缓存这么一说的，但当前目录下什么也没生成。</p>
 <p>通过搜索 <code>cache</code> 发现名叫 <code>hare-cache</code> 的手册</p>
-<div class="highlight"><pre><span></span><code>fd cache
-hare/cmd/hare/cache.ha
+<div class="highlight"><span class="filename">fd cache</span><pre><span></span><code>hare/cmd/hare/cache.ha
 hare/docs/hare-cache.1.scd
 hare/hare/module/cache.ha
 usr/local/share/man/man1/hare-cache.1           &lt;----
@@ -1187,13 +1206,11 @@ ENVIRONMENT
 </code></pre></div>
 </details>
 <p>高亮行是源代码的路径，看来编译器会自动添加它。</p>
-<p>我还没找到能去掉它的编译选项，<span>Rust<span class="heti-spacing"> </span></span>默认也会有，但它可以通过 <code>--remap-path-prefix</code> 来映射到其他地方。</p>
-<p>嗯，有点小小的隐私问题。</p>
 <div class="highlight"><span class="filename">*.s.txt</span><pre><span></span><code>qbe -t 'amd64_sysv' -o /home/13m0n4de/.cache/hare/home/13m0n4de/Code/Hare/hello.ha/278f991c88b8d7c6dc83d6259a3abc2b47b99d22e00354f2da6c9a1d6d512919.s.tmp /home/13m0n4de/.cache/hare/home/13m0n4de/Code/Hare/hello.ha/ee744b05753cb66d0c9c91a6572eb5f38e926c3b9c2b7666dd58dcbb39e60fc7.ssa
 </code></pre></div>
 <p>使用 <code>qbe</code> 编译 <code>.ssa</code> 文件，输出到 <code>.s.tmp</code></p>
 <p>所以说，<span>Hare<span class="heti-spacing"> </span></span>可能是使用外部进程的方式来调用<span><span class="heti-spacing"> </span>QBE</span>。</p>
-<p>这个 <code>.ssa</code> 文件很可能</p>
+<p>这个 <code>.ssa</code> 文件很可能来自 <code>harec</code>。</p>
 <h3 id="td"><code>.td</code> 类型定义文件<a class="headerlink" href="#td" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <div class="highlight"><span class="filename">*.td</span><pre><span></span><code>use fmt;
 export @symbol("main") fn main() void;
@@ -1388,12 +1405,10 @@ harec -M /home/13m0n4de/Code/Hare/hello.ha/ -o /home/13m0n4de/.cache/hare/home/1
 <p>在我修改 <code>println</code> 输出内容后，只有四个 <code>task</code>，应该就对应了上面的四个吧。</p>
 <h2 id="_5">可执行文件特征<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>首先，静态链接，这和官网宣传地一致，默认不链接<span><span class="heti-spacing"> </span>LIBC</span>。</p>
-<div class="highlight"><pre><span></span><code>file hello
-hello: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, with debug_info, not stripped
+<div class="highlight"><span class="filename">file hello</span><pre><span></span><code>hello: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, with debug_info, not stripped
 </code></pre></div>
 <p><span>pwn checksec<span class="heti-spacing"> </span></span>检测结果：</p>
-<div class="highlight"><pre><span></span><code>pwn checksec hello
-    Arch:     amd64-64-little
+<div class="highlight"><span class="filename">pwn checksec hello</span><pre><span></span><code>    Arch:     amd64-64-little
     RELRO:    No RELRO
     Stack:    No canary found
     NX:       NX unknown - GNU_STACK missing
@@ -1453,8 +1468,7 @@ hello: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, w
 [24] .shstrtab         STRTAB          0000000000000000 0006a8 000100 00      0   0  1
 </code></pre></div>
 <p>它是有的，并且<span class="heti-skip"><span class="heti-spacing"> </span>checksec<span class="heti-spacing"> </span></span>也正确识别：</p>
-<div class="highlight"><pre><span></span><code>pwn checksec *.o
-    Arch:     amd64-64-little
+<div class="highlight"><span class="filename">pwn checksec *.o</span><pre><span></span><code>    Arch:     amd64-64-little
     RELRO:    No RELRO
     Stack:    No canary found
     NX:       NX enabled
@@ -1467,23 +1481,22 @@ hello: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, w
 <hr/>
 <p>那么，它实际有执行权限吗？</p>
 <p>写一个执行栈上<span class="heti-skip"><span class="heti-spacing"> </span>ShellCode<span class="heti-spacing"> </span></span>的代码测试一下：</p>
-<div class="highlight"><pre><span></span><code>export fn main() void = {
+<div class="highlight"><span class="filename">shellcode.ha</span><pre><span></span><code>export fn main() void = {
     const shellcode: []u8 = [0x90, 0x90, 0x90, 0xC3];
     let func: *fn() void = &amp;shellcode: *fn() void;
     func();
 };
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>hare run hello.ha
-Stack overflow (invalid permissions for mapped object) at address 0x7ffd8bbc3498
+<div class="highlight"><span class="filename">hare run shellcode.ha</span><pre><span></span><code>Stack overflow (invalid permissions for mapped object) at address 0x7ffd8bbc3498
 /home/13m0n4de/Code/Hare/rt/+linux/start.ha:13:13 rt::start_ha+0xe [0x8003901]
 
 /home/13m0n4de/Code/Hare/rt/+linux/platformstart-libc.ha:8:17 rt::start_linux+0x3a [0x8003ae8]
 
-fish: Job 1, 'hare run hello.ha' terminated by signal SIGABRT (Abort)
+fish: Job 1, 'hare run shellcode.ha' terminated by signal SIGABRT (Abort)
 </code></pre></div>
 <p>提示 <code>0x7ffd8bbc3498</code> 位置的权限错误，这是栈上的地址。</p>
 <p>调试，断在 <code>call rax</code> 前：</p>
-<div class="highlight"><span class="filename">gdb hello</span><pre><span></span><code><span class="nf">gef</span><span class="err">➤</span><span class="w">  </span><span class="no">disassemble</span><span class="w"> </span><span class="no">main</span>
+<div class="highlight"><span class="filename">gdb shellcode</span><pre><span></span><code><span class="nf">gef</span><span class="err">➤</span><span class="w">  </span><span class="no">disassemble</span><span class="w"> </span><span class="no">main</span>
 <span class="nf">Dump</span><span class="w"> </span><span class="no">of</span><span class="w"> </span><span class="no">assembler</span><span class="w"> </span><span class="no">code</span><span class="w"> </span><span class="no">for</span><span class="w"> </span><span class="no">function</span><span class="w"> </span><span class="no">main</span><span class="p">:</span>
 <span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eae1</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">0</span><span class="err">&gt;</span><span class="p">:</span><span class="w"> </span><span class="no">push</span><span class="w">   </span><span class="no">rbp</span>
 <span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eae2</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">1</span><span class="err">&gt;</span><span class="p">:</span><span class="w"> </span><span class="no">mov</span><span class="w">    </span><span class="no">rbp</span><span class="p">,</span><span class="no">rsp</span>
@@ -1502,14 +1515,14 @@ fish: Job 1, 'hare run hello.ha' terminated by signal SIGABRT (Abort)
 <span class="w">   </span><span class="err">0</span><span class="nf">x000000000802eb18</span><span class="w"> </span><span class="err">&lt;+</span><span class="mi">55</span><span class="err">&gt;</span><span class="p">:</span><span class="w">    </span><span class="no">ret</span>
 <span class="nf">End</span><span class="w"> </span><span class="no">of</span><span class="w"> </span><span class="no">assembler</span><span class="w"> </span><span class="no">dump.</span>
 <span class="nf">gef</span><span class="err">➤</span><span class="w">  </span><span class="no">b</span><span class="w"> </span><span class="p">*</span><span class="mi">0x000000000802eb15</span>
-<span class="nf">Breakpoint</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="no">at</span><span class="w"> </span><span class="mi">0x802eb15</span><span class="p">:</span><span class="w"> </span><span class="no">file</span><span class="w"> </span><span class="err">/</span><span class="no">home</span><span class="err">/</span><span class="mi">13</span><span class="no">m0n4de</span><span class="err">/</span><span class="no">Code</span><span class="err">/</span><span class="no">Hare</span><span class="err">/</span><span class="no">hello.ha</span><span class="p">,</span><span class="w"> </span><span class="no">line</span><span class="w"> </span><span class="mi">4</span><span class="p">.</span>
+<span class="nf">Breakpoint</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="no">at</span><span class="w"> </span><span class="mi">0x802eb15</span><span class="p">:</span><span class="w"> </span><span class="no">file</span><span class="w"> </span><span class="err">/</span><span class="no">home</span><span class="err">/</span><span class="mi">13</span><span class="no">m0n4de</span><span class="err">/</span><span class="no">Code</span><span class="err">/</span><span class="no">Hare</span><span class="err">/</span><span class="no">shellcode.ha</span><span class="p">,</span><span class="w"> </span><span class="no">line</span><span class="w"> </span><span class="mi">4</span><span class="p">.</span>
 </code></pre></div>
 <p><code>vmmap</code> 显示栈上没有执行权限：</p>
 <div class="highlight"><pre><span></span><code><span class="nf">gef</span><span class="err">➤</span><span class="w">  </span><span class="no">vmmap</span>
 <span class="err">[</span><span class="w"> </span><span class="nl">Legend:</span><span class="w">  </span><span class="nf">Code</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="no">Heap</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="no">Stack</span><span class="w"> </span><span class="p">]</span>
 <span class="nf">Start</span><span class="w">              </span><span class="no">End</span><span class="w">                </span><span class="no">Offset</span><span class="w">             </span><span class="no">Perm</span><span class="w"> </span><span class="no">Path</span>
-<span class="err">0</span><span class="nf">x00000007fff000</span><span class="w"> </span><span class="mi">0x0000000802f000</span><span class="w"> </span><span class="mi">0x00000000000000</span><span class="w"> </span><span class="no">r-x</span><span class="w"> </span><span class="err">/</span><span class="no">home</span><span class="err">/</span><span class="mi">13</span><span class="no">m0n4de</span><span class="err">/</span><span class="no">Code</span><span class="err">/</span><span class="no">Hare</span><span class="err">/</span><span class="no">hello</span>
-<span class="err">0</span><span class="nf">x00000080000000</span><span class="w"> </span><span class="mi">0x00000080007000</span><span class="w"> </span><span class="mi">0x00000000030000</span><span class="w"> </span><span class="no">rw-</span><span class="w"> </span><span class="err">/</span><span class="no">home</span><span class="err">/</span><span class="mi">13</span><span class="no">m0n4de</span><span class="err">/</span><span class="no">Code</span><span class="err">/</span><span class="no">Hare</span><span class="err">/</span><span class="no">hello</span>
+<span class="err">0</span><span class="nf">x00000007fff000</span><span class="w"> </span><span class="mi">0x0000000802f000</span><span class="w"> </span><span class="mi">0x00000000000000</span><span class="w"> </span><span class="no">r-x</span><span class="w"> </span><span class="err">/</span><span class="no">home</span><span class="err">/</span><span class="mi">13</span><span class="no">m0n4de</span><span class="err">/</span><span class="no">Code</span><span class="err">/</span><span class="no">Hare</span><span class="err">/</span><span class="no">shellcode</span>
+<span class="err">0</span><span class="nf">x00000080000000</span><span class="w"> </span><span class="mi">0x00000080007000</span><span class="w"> </span><span class="mi">0x00000000030000</span><span class="w"> </span><span class="no">rw-</span><span class="w"> </span><span class="err">/</span><span class="no">home</span><span class="err">/</span><span class="mi">13</span><span class="no">m0n4de</span><span class="err">/</span><span class="no">Code</span><span class="err">/</span><span class="no">Hare</span><span class="err">/</span><span class="no">shellcode</span>
 <span class="err">0</span><span class="nf">x00000080007000</span><span class="w"> </span><span class="mi">0x00000080015000</span><span class="w"> </span><span class="mi">0x00000000000000</span><span class="w"> </span><span class="no">rw-</span><span class="w"> </span><span class="p">[</span><span class="no">heap</span><span class="p">]</span>
 <span class="err">0</span><span class="nf">x007ffff7ff4000</span><span class="w"> </span><span class="mi">0x007ffff7ff9000</span><span class="w"> </span><span class="mi">0x00000000000000</span><span class="w"> </span><span class="no">rw-</span>
 <span class="err">0</span><span class="nf">x007ffff7ff9000</span><span class="w"> </span><span class="mi">0x007ffff7ffd000</span><span class="w"> </span><span class="mi">0x00000000000000</span><span class="w"> </span><span class="no">r--</span><span class="w"> </span><span class="p">[</span><span class="no">vvar</span><span class="p">]</span>
@@ -1524,18 +1537,47 @@ fish: Job 1, 'hare run hello.ha' terminated by signal SIGABRT (Abort)
 <p>顺带一提，<a href="https://github.com/slimm609/checksec.sh"><span>github.com/slimm609/checksec.sh<span class="heti-spacing"> </span></span></a>只检测 <code>GNU_STACK</code> 而不检测 <code>GNU-stack</code>：</p>
 <p><a href="https://github.com/slimm609/checksec.sh/blob/36a67b388193d26289773f4153cb3b9f5bf5c9ec/src/functions/filecheck.sh#L27-L39">https://github.com/slimm609/checksec.sh/blob/36a67b388193d26289773f4153cb3b9f5bf5c9ec/src/functions/filecheck.sh#L27-L39</a></p>
 <p><span>pwntools<span class="heti-spacing"> </span></span>可以检测 <code>GNU-stack</code>。</p>
+<h3 id="_6">调试信息<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>我把源代码移到了 <code>Hare/mycode/shellcode.ha</code></p>
+<div class="highlight"><span class="filename">strings hello | rg 13m0n4de</span><pre><span></span><code>/home/13m0n4de/Code/Hare/mycode
+/home/13m0n4de/Code/Hare
+/home/13m0n4de/Code/Hare/mycode
+</code></pre></div>
+<p>这是之前就提到的文件路径，<code>harec</code> 默认生成，它们在 <code>strip</code> 之后就没有了，说明是调试信息。</p>
+<p>去除之后，原本的报错信息会变成 <code>(unknown)</code>：</p>
+<div class="highlight"><span class="filename">strip hello &amp;&amp; ./hello</span><pre><span></span><code>Stack overflow (invalid permissions for mapped object) at address 0x7ffe297d0568
+(unknown) [0x8003901]
+(unknown) [0x8003ae8]
+fish: Job 1, './hello' terminated by signal SIGABRT (Abort)
+</code></pre></div>
+<p>通过 <code>-R</code> 选项编译<span class="heti-skip"><span class="heti-spacing"> </span>Release<span class="heti-spacing"> </span></span>模式的文件还是会带有调试信息的：</p>
+<div class="highlight"><span class="filename">hare build -R -o shellcode shellcode.ha &amp;&amp; file shellcode</span><pre><span></span><code>shellcode: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, with debug_info, not stripped
+</code></pre></div>
+<p>但是就没有那么详尽的报错了：</p>
+<div class="highlight"><span class="filename">./shellcode</span><pre><span></span><code>fish: Job 1, './shellcode' terminated by signal SIGSEGV (Address boundary error)
+</code></pre></div>
+<p>release + strip，这个文件只有不到<span><span class="heti-spacing"> </span>11 KB</span>，挺好。</p>
+<h3 id="_7">默认编译文件名<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>我在 <code>mycode/</code> 下编译 <code>hello.ha</code>，如果不指定 <code>-o</code> 选项，默认给我了一个 <code>mycode</code> 可执行文件。</p>
+<p>所以源码所在目录是某种类似<span class="heti-skip"><span class="heti-spacing"> </span>Module<span class="heti-spacing"> </span></span>的东西？如果<span class="heti-skip"><span class="heti-spacing"> </span>build<span class="heti-spacing"> </span></span>会默认以它作为文件名？</p>
+<hr/>
+<p>看完视频后：</p>
+<p>这也许就是为什么视频中他遇到了 <code>Error: Output path 'hare' already exists, but isn't an executable file</code></p>
+<h2 id="_8">安全特性<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>todo!()</p>
 <h2 id="wip">WIP...<a class="headerlink" href="#wip" title="Permanent link">¶</a></h2>
-<h2 id="_6">参考<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h2 id="_9">参考<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <ul>
-<li>Hare: <a href="https://harelang.org/">https://harelang.org/</a></li>
+<li>Hare: <a href="https://harelang.org/">harelang.org</a></li>
 <li>Hare .note.GNU-stack ticket: <a href="https://todo.sr.ht/~sircmpwn/hare/748">~sircmpwn/hare#748</a></li>
+<li>Safety features of the Hare programming language: <a href="https://harelang.org/blog/2022-06-21-safety-features/">harelang.org/blog/2022-06-21-safety-features/</a></li>
 </ul>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月19日 23:40:04</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月20日 02:01:56</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
