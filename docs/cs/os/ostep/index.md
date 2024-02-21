@@ -21,3 +21,4 @@
 - [13.Address Spaces](./13address_spaces.md)
 - [14.Memory API](./14memory_api.md)
 - [15.Address Translation](./15address_translation.md)
+- [16.Segmentation](./16segmentation.md)
