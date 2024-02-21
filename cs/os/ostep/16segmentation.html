@@ -487,6 +487,41 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#163">
+<span class="md-ellipsis">
+      16.3 栈怎么办
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#164">
+<span class="md-ellipsis">
+      16.4 支持共享
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#165">
+<span class="md-ellipsis">
+      16.5 细粒度与粗粒度的分段
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#166">
+<span class="md-ellipsis">
+      16.6 操作系统支持
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      作业
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -776,6 +811,41 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#163">
+<span class="md-ellipsis">
+      16.3 栈怎么办
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#164">
+<span class="md-ellipsis">
+      16.4 支持共享
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#165">
+<span class="md-ellipsis">
+      16.5 细粒度与粗粒度的分段
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#166">
+<span class="md-ellipsis">
+      16.6 操作系统支持
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      作业
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </div>
@@ -884,19 +954,340 @@
 </tr>
 </tbody>
 </table>
+<p>假设现在要引用虚拟地址<span><span class="heti-spacing"> </span>100</span>（在代码段中<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<span>MMU<span class="heti-spacing"> </span></span>将基址值加上偏移量<span class="heti-skip"><span class="heti-spacing"> </span>(100)<span class="heti-spacing"> </span></span>得到实际的物理地址：100 + 32 KB = 32868。</p>
+<p>然后它会检查该地址是否在界限内（<span>100<span class="heti-spacing"> </span></span>小于<span><span class="heti-spacing"> </span>2 KB</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，发现是的，于是发起对物理地址<span class="heti-skip"><span class="heti-spacing"> </span>32868<span class="heti-spacing"> </span></span>的引用。</p>
+<p>如果是虚拟地址<span><span class="heti-spacing"> </span>4200</span>，它在堆上，不应该用它直接加上基址<span><span class="heti-spacing"> </span>34 KB</span>，而是应该首先减去堆的偏移量，即该地址指的是这个段中的哪个字节。</p>
+<p>因为堆从虚拟地址<span class="heti-skip"><span class="heti-spacing"> </span>4 K (4096)<span class="heti-spacing"> </span></span>开始，<span>4200<span class="heti-spacing"> </span></span>的偏移量实际上是<span><span class="heti-spacing"> </span>4200 - 4096 = 104</span>，然后用这个偏移量<span><span class="heti-spacing"> </span>(104)</span>，加上基址寄存器中的物理地址<span><span class="heti-spacing"> </span>(34 KB)</span>，得到真正的物理地址<span><span class="heti-spacing"> </span>34920</span>。</p>
 <h2 id="162"><span>16.2<span class="heti-spacing"> </span></span>我们引用哪个段<a class="headerlink" href="#162" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>硬件在地址转换时使用段寄存器。</p>
+<ul>
+<li>它如何知道段内的偏移量？</li>
+<li>它如何知道地址引用哪个段？</li>
+</ul>
+<p>显式<span class="heti-skip"><span class="heti-spacing"> </span>(explicit)<span class="heti-spacing"> </span></span>方式：用虚拟地址的开头几位标识不同的段。</p>
+<div class="highlight"><pre><span></span><code>13 12 11 10 09 08 07 06 05 04 03 02 01 00
+^   ^ ^                                 ^
++---+ +---------------------------------+
+  段                偏移量
+</code></pre></div>
+<p>在之前的例子中，如果前两位是 <code>00</code> 硬件就知道是属于代码段的地址，如果前两位是 <code>01</code> 则是堆地址。</p>
+<p>虚拟地址<span class="heti-skip"><span class="heti-spacing"> </span>4200<span class="heti-spacing"> </span></span>的二进制形式如下：</p>
+<div class="highlight"><pre><span></span><code>13 12 11 10 09 08 07 06 05 04 03 02 01 00
+ 0  1  0  0  0  0  0  1  1  0  1  0  0  0
+ ^  ^  ^                                ^
+ +--+  +--------------------------------+
+  段                偏移量
+</code></pre></div>
+<p>隐式<span class="heti-skip"><span class="heti-spacing"> </span>(implicit)<span class="heti-spacing"> </span></span>方式：硬件通过地址产生的方式来确定段。例如，地址由程序计数产生，那么它在代码段。如果是基于栈或基址指针，它一定在栈段。其他地址则在堆段。</p>
+<p>听着就好不靠谱啊。</p>
+<h2 id="163"><span>16.3<span class="heti-spacing"> </span></span>栈怎么办<a class="headerlink" href="#163" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>栈比较特殊，它反向增长，硬件需要额外保存段的增长方向。</p>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Base</th>
+<th>Size (max 4 K)</th>
+<th>Grows Positive?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code <code>00</code></td>
+<td>32 KB</td>
+<td>2 KB</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Heap <code>01</code></td>
+<td>34 KB</td>
+<td>3 KB</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Stack <code>11</code></td>
+<td>28 KB</td>
+<td>2 KB</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>假设要访问虚拟地址<span><span class="heti-spacing"> </span>15 KB</span>，它应该映射到物理地址<span><span class="heti-spacing"> </span>27 KB</span>。</p>
+<p>该虚拟地址的二进制形式是：<code>11 1100 0000 0000</code>。</p>
+<p>前两位 <code>11</code> 指定栈段，后几位 <code>1100 0000 0000</code> 指定偏移量<span><span class="heti-spacing"> </span>3 KB</span>。</p>
+<p>为了得到正确的反向偏移，需要用<span class="heti-skip"><span class="heti-spacing"> </span>3 KB<span class="heti-spacing"> </span></span>减去最大段地址<span><span class="heti-spacing"> </span>4 KB</span>，得到反向偏移量<span><span class="heti-spacing"> </span>-1 KB</span>。</p>
+<p>再用反向偏移量加上基址，得到正确的物理地址<span><span class="heti-spacing"> </span>-1 KB + 28 KB = 27 KB</span>。</p>
+<h2 id="164"><span>16.4<span class="heti-spacing"> </span></span>支持共享<a class="headerlink" href="#164" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>在一些地址空间之间共享某些内存段可以节省内存。</p>
+<p>为了支持共享，需要添加新的功能，保护位<span><span class="heti-spacing"> </span>(protection bit)</span>，用于标识程序能否读写该段，或执行其中代码。</p>
+<p>通过将代码段标记为可读可执行，同样的代码可以被多个进程共享，而不用担心破坏隔离。</p>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Base</th>
+<th>Size (max 4 K)</th>
+<th>Grows Positive?</th>
+<th>Protection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code <code>00</code></td>
+<td>32 KB</td>
+<td>2 KB</td>
+<td>1</td>
+<td>Read-Excute</td>
+</tr>
+<tr>
+<td>Heap <code>01</code></td>
+<td>34 KB</td>
+<td>3 KB</td>
+<td>1</td>
+<td>Read-Write</td>
+</tr>
+<tr>
+<td>Stack <code>11</code></td>
+<td>28 KB</td>
+<td>2 KB</td>
+<td>0</td>
+<td>Read-Write</td>
+</tr>
+</tbody>
+</table>
+<p>现在，除了需要检查虚拟地址是否越界，还需要检查特定访问是否允许（符合权限<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<h2 id="165"><span>16.5<span class="heti-spacing"> </span></span>细粒度与粗粒度的分段<a class="headerlink" href="#165" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>目前为止，我们的例子大多针对只有很少的几个段的系统（即代码、栈、堆<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。
+我们可以认为这种分段是粗粒度的（coarse-grained），因为它将地址空间分成较大的、粗粒度的块。
+但是，一些早期系统（如 Multics）更灵活，允许将地址空间划分为大量较小的段，这被称为细粒度（fine-grained）分段。</p>
+<p>支持许多段需要进一步的硬件支持，并在内存中保存某种段表（segment table<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。
+这种段表通常支持创建非常多的段，因此系统使用段的方式，可以比之前讨论的方式更灵活。
+例如，像 Burroughs B5000 这样的早期机器可以支持成千上万的段，有了操作系统和硬件的支持，编译器可以将代码段和数据段划分为许多不同的部分。
+当时的考虑是，通过更细粒度的段，操作系统可以更好地了解哪些段在使用哪些没有，从而可以更高效地利用内存。</p>
+</div>
+<h2 id="166"><span>16.6<span class="heti-spacing"> </span></span>操作系统支持<a class="headerlink" href="#166" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>分段给操作系统带来了一些新任务：</p>
+<ul>
+<li>在上下文切换时需要保存各个段寄存器内容；</li>
+<li>管理物理内存的空闲空间，操作系统需要为新建的地址空间找到物理内存中的空闲位置。</li>
+</ul>
+<p>第二个任务会遇到一个问题：物理内存很快就充满了许多空闲空间的小洞，因而很难分配给新的段，或扩大已有的段。这种问题被成为外部碎片<span><span class="heti-spacing"> </span>(external fragmentation)</span>。</p>
+<p>非紧凑物理内存：</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 kB - 16 kB</td>
+<td>OS</td>
+</tr>
+<tr>
+<td>16 kB - 24 kB</td>
+<td>(not in use)</td>
+</tr>
+<tr>
+<td>24 kB - 32 kB</td>
+<td>Allocated</td>
+</tr>
+<tr>
+<td>32 kB - 40 kB</td>
+<td>(not in use)</td>
+</tr>
+<tr>
+<td>40 kB - 48 kB</td>
+<td>Allocated</td>
+</tr>
+<tr>
+<td>48 kB - 56 kB</td>
+<td>(not in use)</td>
+</tr>
+<tr>
+<td>56 kB - 64 kB</td>
+<td>Allocated</td>
+</tr>
+</tbody>
+</table>
+<p>紧凑物理内存：</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 kB - 16 kB</td>
+<td>OS</td>
+</tr>
+<tr>
+<td>16 kB - 40 kB</td>
+<td>Allocated</td>
+</tr>
+<tr>
+<td>40 kB - 64 kB</td>
+<td>(not in use)</td>
+</tr>
+</tbody>
+</table>
+<p>紧凑物理内存会重新安排原有的段，终止相关进程，再将它们的数据复制到连续的内存区域中去，改变它们的段寄存器中的值，指向新的物理地址。</p>
+<p>但是内存紧凑成本很高，因为拷贝段是内存密集型的，会占用大量的处理器时间。</p>
+<p>一种更简单的做法是利用空闲列表管理算法，试图保留大的内存块用于分配。</p>
+<p>相关算法有成百上千种：</p>
+<ul>
+<li>best-fit</li>
+<li>worst-fit</li>
+<li>first-fit</li>
+<li>buddy</li>
+</ul>
+<div class="admonition quote">
+<p class="admonition-title">提示：如果有一千个解决方案，就没有特别好的</p>
+<p>存在如此多不同的算法来尝试减少外部碎片，正说明了解决这个问题没有最好的办法。
+因此我们满足于找到一个合理的足够好的方案。
+唯一真正的解决办法就是（我们会在后续章节看到），完全避免这个问题，永远不要分配不同大小的内存块。</p>
+</div>
+<h2 id="_1">作业<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>1．先让我们用一个小地址空间来转换一些地址。这里有一组简单的参数和几个不同的随机种子。你可以转换这些地址吗？</p>
+<div class="highlight"><pre><span></span><code>segmentation.py -a 128 -p 512 -b 0 -l 20 -B 512 -L 20 -s 0
+segmentation.py -a 128 -p 512 -b 0 -l 20 -B 512 -L 20 -s 1
+segmentation.py -a 128 -p 512 -b 0 -l 20 -B 512 -L 20 -s 2
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<div class="highlight"><span class="filename">./segmentation.py -a 128 -p 512 -b 0 -l 20 -B 512 -L 20 -s 0</span><pre><span></span><code>ARG seed 0
+ARG address space size 128
+ARG phys mem size 512
+
+Segment register information:
+
+  Segment 0 base  (grows positive) : 0x00000000 (decimal 0)
+  Segment 0 limit                  : 20
+
+  Segment 1 base  (grows negative) : 0x00000200 (decimal 512)
+  Segment 1 limit                  : 20
+
+Virtual Address Trace
+  VA  0: 0x0000006c (decimal:  108) --&gt; PA or segmentation violation?
+  VA  1: 0x00000061 (decimal:   97) --&gt; PA or segmentation violation?
+  VA  2: 0x00000035 (decimal:   53) --&gt; PA or segmentation violation?
+  VA  3: 0x00000021 (decimal:   33) --&gt; PA or segmentation violation?
+  VA  4: 0x00000041 (decimal:   65) --&gt; PA or segmentation violation?
+</code></pre></div>
+<p><code>0x0000006c</code> -&gt; <code>1101100</code>，最高位为 <code>1</code>，128 - 108 = 20，20 = 20，正好在界限内，所以<span class="heti-skip"><span class="heti-spacing"> </span>VA 0<span class="heti-spacing"> </span></span>合法。
+<code>0x00000061</code> -&gt; <code>1100001</code>，最高位为 <code>1</code>，128 - 97 = 23，23 &gt; 20，超过了界限，VA 1 不合法。
+<code>0x00000035</code> -&gt; <code>0110101</code>，最高位为 <code>0</code>，53 &gt; 20，超过了界限，VA 2 不合法。</p>
+<p>以此类推。</p>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>现在，让我们看看是否理解了这个构建的小地址空间（使用上面问题的参数<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。段<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>中最高的合法虚拟地址是什么？段<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>中最低的合法虚拟地址是什么？在整个地址空间中，最低和最高的非法地址是什么？最后，如何运行带有<span class="heti-skip"><span class="heti-spacing"> </span>-A<span class="heti-spacing"> </span></span>标志的<span class="heti-skip"><span class="heti-spacing"> </span>segmentation.py<span class="heti-spacing"> </span></span>来测试你是否正确？</li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>基于上题第一条命令，段<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>最高合法虚拟地址是 <code>0x19</code>，段<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>最低合法虚拟地址是 <code>0x6c</code></p>
+<div class="highlight"><span class="filename">./segmentation.py -a 128 -p 512 -b 0 -l 20 -B 512 -L 20 -s 1 -A 19,108,20,107 -c</span><pre><span></span><code>ARG seed 1
+ARG address space size 128
+ARG phys mem size 512
+
+Segment register information:
+
+  Segment 0 base  (grows positive) : 0x00000000 (decimal 0)
+  Segment 0 limit                  : 20
+
+  Segment 1 base  (grows negative) : 0x00000200 (decimal 512)
+  Segment 1 limit                  : 20
+
+Virtual Address Trace
+  VA  0: 0x00000013 (decimal:   19) --&gt; VALID in SEG0: 0x00000013 (decimal:   19)
+  VA  1: 0x0000006c (decimal:  108) --&gt; VALID in SEG1: 0x000001ec (decimal:  492)
+  VA  2: 0x00000014 (decimal:   20) --&gt; SEGMENTATION VIOLATION (SEG0)
+  VA  3: 0x0000006b (decimal:  107) --&gt; SEGMENTATION VIOLATION (SEG1)
+</code></pre></div>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>3．假设我们在一个<span class="heti-skip"><span class="heti-spacing"> </span>128<span class="heti-spacing"> </span></span>字节的物理内存中有一个很小的<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>字节地址空间。你会设置什么样的基址和界限，以便让模拟器为指定的地址流生成以下转换结果：有效，有效，违规，违反，有效，有效？假设用以下参数：</p>
+<div class="highlight"><pre><span></span><code>segmentation.py -a 16 -p 128
+-A 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+--b0 ? --l0 ? --b1 ? --l1 ?
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<div class="highlight"><span class="filename">./segmentation.py -a 16 -p 128 -A 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 --b0 0 --l0 2 --b1 16 --l1 2 -c</span><pre><span></span><code>ARG seed 0
+ARG address space size 16
+ARG phys mem size 128
+
+Segment register information:
+
+  Segment 0 base  (grows positive) : 0x00000000 (decimal 0)
+  Segment 0 limit                  : 2
+
+  Segment 1 base  (grows negative) : 0x00000010 (decimal 16)
+  Segment 1 limit                  : 2
+
+Virtual Address Trace
+  VA  0: 0x00000000 (decimal:    0) --&gt; VALID in SEG0: 0x00000000 (decimal:    0)
+  VA  1: 0x00000001 (decimal:    1) --&gt; VALID in SEG0: 0x00000001 (decimal:    1)
+  VA  2: 0x00000002 (decimal:    2) --&gt; SEGMENTATION VIOLATION (SEG0)
+  VA  3: 0x00000003 (decimal:    3) --&gt; SEGMENTATION VIOLATION (SEG0)
+  VA  4: 0x00000004 (decimal:    4) --&gt; SEGMENTATION VIOLATION (SEG0)
+  VA  5: 0x00000005 (decimal:    5) --&gt; SEGMENTATION VIOLATION (SEG0)
+  VA  6: 0x00000006 (decimal:    6) --&gt; SEGMENTATION VIOLATION (SEG0)
+  VA  7: 0x00000007 (decimal:    7) --&gt; SEGMENTATION VIOLATION (SEG0)
+  VA  8: 0x00000008 (decimal:    8) --&gt; SEGMENTATION VIOLATION (SEG1)
+  VA  9: 0x00000009 (decimal:    9) --&gt; SEGMENTATION VIOLATION (SEG1)
+  VA 10: 0x0000000a (decimal:   10) --&gt; SEGMENTATION VIOLATION (SEG1)
+  VA 11: 0x0000000b (decimal:   11) --&gt; SEGMENTATION VIOLATION (SEG1)
+  VA 12: 0x0000000c (decimal:   12) --&gt; SEGMENTATION VIOLATION (SEG1)
+  VA 13: 0x0000000d (decimal:   13) --&gt; SEGMENTATION VIOLATION (SEG1)
+  VA 14: 0x0000000e (decimal:   14) --&gt; VALID in SEG1: 0x0000000e (decimal:   14)
+  VA 15: 0x0000000f (decimal:   15) --&gt; VALID in SEG1: 0x0000000f (decimal:   15)
+</code></pre></div>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>4．假设我们想要生成一个问题，其中大约<span class="heti-skip"><span class="heti-spacing"> </span>90%<span class="heti-spacing"> </span></span>的随机生成的虚拟地址是有效的（即不产生段异常<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。你应该如何配置模拟器来做到这一点？哪些参数很重要？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>界限调整到地址空间的<span><span class="heti-spacing"> </span>90%</span>：<code>-l</code> = 0.9 * <code>-a</code>。</p>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>5．你可以运行模拟器，使所有虚拟地址无效吗？怎么做到？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>把界限调成<span><span class="heti-spacing"> </span>0</span>，<code>-l 0 -L 0</code></p>
+</div>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月20日 02:02:51</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月21日 10:10:00</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月20日 02:02:51</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月21日 10:10:00</span>
 </span>
 </aside>
 </article>

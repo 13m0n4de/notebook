@@ -992,7 +992,7 @@
 <li><a href="https://sr.ht/~sircmpwn/scdoc">scdoc</a></li>
 </ul>
 <p><span>QBE<span class="heti-spacing"> </span></span>是一个编译器后端，旨在用<span class="heti-skip"><span class="heti-spacing"> </span>10%<span class="heti-spacing"> </span></span>的代码提供 工业优化编译器<span class="heti-skip"><span class="heti-spacing"> </span>70%<span class="heti-spacing"> </span></span>的性能。</p>
-<p>不同于其他“现代<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言”，<span>Hare<span class="heti-spacing"> </span></span>可能真的想<span class="heti-skip"><span class="heti-spacing"> </span>Simple<span class="heti-spacing"> </span></span>到底<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（<span>Zig<span class="heti-spacing"> </span></span>使用了<span><span class="heti-spacing"> </span>LLVM</span>）</p>
+<p>不同于其他“现代<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言”，<span>Hare<span class="heti-spacing"> </span></span>可能真的想<span class="heti-skip"><span class="heti-spacing"> </span>Simple<span class="heti-spacing"> </span></span>到底<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（<span>Zig<span class="heti-spacing"> </span></span>使用了<span><span class="heti-spacing"> </span>LLVM</span>，但它们正在迁移，想要摆脱<span><span class="heti-spacing"> </span>LLVM</span>）</p>
 <p>如果我以后又想造点什么玩具，也会优先考虑<span class="heti-skip"><span class="heti-spacing"> </span>QBE<span class="heti-spacing"> </span></span>的。</p>
 <p><span>Hare<span class="heti-spacing"> </span></span>特意说明需要使用<span class="heti-skip"><span class="heti-spacing"> </span>QBE<span class="heti-spacing"> </span></span><code>master</code>分支上的最新版本，而不是最新的<span><span class="heti-spacing"> </span>release</span>。</p>
 <p>克隆仓库，并安装到 <code>../usr/local</code></p>
@@ -1242,6 +1242,7 @@ use crypto;
 fmt
 net
 </code></pre></div>
+<p>（其实官方推荐 <code>use</code> 语句按字母顺序排列，但不强制）</p>
 <p>就算没有用到，只是 <code>use</code> 了，依然会编译并链接进二进制文件。</p>
 <h3 id="ssa"><code>.ssa</code> 中间语言文件<a class="headerlink" href="#ssa" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>这是<span class="heti-skip"><span class="heti-spacing"> </span>QBE<span class="heti-spacing"> </span></span>使用的基于<a href="https://en.wikipedia.org/wiki/Static_single-assignment_form"><span class="heti-skip"><span class="heti-spacing"> </span>SSA<span class="heti-spacing"> </span></span></a>的中间语言。</p>

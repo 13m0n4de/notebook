@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-02-21":
+    - newpage:
+          text: CS > OS > OSTEP > 16.Segmentation
+          href: cs/os/ostep/16segmentation.html
   - "2024-02-18":
     - newpage:
           text: Blog > 探索 Hare 语言
