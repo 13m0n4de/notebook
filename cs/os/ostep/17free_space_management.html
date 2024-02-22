@@ -578,6 +578,38 @@
       17.4 其他方式
     </span>
 </a>
+<nav aria-label="17.4 其他方式" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#segregated-list">
+<span class="md-ellipsis">
+      分离空闲列表 (segregated list)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#buddy-allocator">
+<span class="md-ellipsis">
+      伙伴系统 (buddy allocator)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      其他想法
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      作业
+    </span>
+</a>
 </li>
 </ul>
 </nav>
@@ -952,6 +984,38 @@
       17.4 其他方式
     </span>
 </a>
+<nav aria-label="17.4 其他方式" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#segregated-list">
+<span class="md-ellipsis">
+      分离空闲列表 (segregated list)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#buddy-allocator">
+<span class="md-ellipsis">
+      伙伴系统 (buddy allocator)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      其他想法
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      作业
+    </span>
+</a>
 </li>
 </ul>
 </nav>
@@ -1226,12 +1290,333 @@ head --&gt; +----------------+                                 | |
     C --&gt; NULL</code></pre>
 <p>在这个例子中，首次匹配会和最差匹配一样，也发现满足请求的第一个空闲块。不同的是查找开销，最优匹配和最差匹配都需要遍历整个列表，而首次匹配只找到第一个满足需求的块即可，因此减少了查找开销。</p>
 <h2 id="174"><span>17.4<span class="heti-spacing"> </span></span>其他方式<a class="headerlink" href="#174" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="segregated-list">分离空闲列表<span><span class="heti-spacing"> </span>(segregated list)</span><a class="headerlink" href="#segregated-list" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>如果某个应用程序经常申请一种（或几种）大小的内存空间，那就用一个独立的列表，只管理这样大小的对象。其他大小的请求都一给更通用的内存分配程序。</p>
+<p>通过拿出一部分内存专门满足某种大小的请求，碎片就不再是问题了。而且，由于没有复杂的列表查找过程，这种特定大小的内存分配和释放都很快。</p>
+<p>但是这种方式引入了新的复杂性：应该拿出多少内存来专门为某种大小的请求服务，同时剩余的内存还能用来满足一般请求？</p>
+<div class="admonition quote">
+<p class="admonition-title"><span>Solaris<span class="heti-spacing"> </span></span>系统内核的厚块分配程序<span class="heti-skip"><span class="heti-spacing"> </span>(slab allocator)<span class="heti-spacing"> </span></span>的解决方案</p>
+<p>具体来说，在内核启动时，它为可能频繁请求的内核对象创建一些对象缓存（object cache<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，如锁和文件系统<span class="heti-skip"><span class="heti-spacing"> </span>inode<span class="heti-spacing"> </span></span>等。这些的对象缓存每个分离了特定大小的空闲列表，因此能够很快地响应内存请求和释放。</p>
+<p>如果某个缓存中的空闲空间快耗尽时，它就向通用内存分配程序申请一些内存厚块（slab<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>（总量是页大小和对象大小的公倍数<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>相反，如果给定厚块中对象的引用计数变为<span><span class="heti-spacing"> </span>0</span>，通用的内存分配程序可以从专门的分配程序中回收这些空间，这通常发生在虚拟内存系统需要更多的空间的时候。</p>
+<p>厚块分配程序比大多数分离空闲列表做得更多，它将列表中的空闲对象保持在预初始化的状态。</p>
+<p><span>Bonwick<span class="heti-spacing"> </span></span>指出，数据结构的初始化和销毁的开销很大。通过将空闲对象保持在初始化状态，厚块分配程序避免了频繁的初始化和销毁，从而显著降低了开销。</p>
+</div>
+<h3 id="buddy-allocator">伙伴系统<span><span class="heti-spacing"> </span>(buddy allocator)</span><a class="headerlink" href="#buddy-allocator" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><strong>二分伙伴分配程序</strong>，空闲空间被看成为<span class="heti-skip"><span class="heti-spacing"> </span>$ 2^{N} $<span class="heti-spacing"> </span></span>的大空间，当有内存分配请求时，空闲空间被递归地一分为二，直到刚好可以满足请求大小。</p>
+<div class="highlight"><pre><span></span><code>+-------------------------------------------------------+
+|                         64 KB                         |
++-------------------------------------------------------+
+              |                           |
++---------------------------+---------------------------+
+|           32 KB           |           32 KB           |
++---------------------------+---------------------------+
+       |             |
++-------------+-------------+
+|    16 KB    |    16 KB    |
++-------------+-------------+
+   |      |
++------+------+
+| 8 KB | 8 KB |
++------+------+
+</code></pre></div>
+<p>这种分配策略只允许 分配<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>的整数次幂大小的空闲块，因此会有内部碎片<span class="heti-skip"><span class="heti-spacing"> </span>(internal fragment)<span class="heti-spacing"> </span></span>的麻烦。</p>
+<p>伙伴系统释放时会检查“伙伴” <span>8 KB<span class="heti-spacing"> </span></span>是否空闲，如果是就合二为一，变成<span class="heti-skip"><span class="heti-spacing"> </span>16 KB<span class="heti-spacing"> </span></span>的块，然后检查这个<span class="heti-skip"><span class="heti-spacing"> </span>16 KB<span class="heti-spacing"> </span></span>块的伙伴是否空闲，如此递归上溯，直到合并整个内存区域，或者某个块的伙伴还没有被释放。</p>
+<p>伙伴系统运转良好的原因，在于很容易确定某个块的伙伴，每对互为伙伴的块只有一位不同也正是这一位决定了它们在整个伙伴树中的层次。</p>
+<table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Binary Representation of Address</th>
+<th>Size</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>0000 0000 0000 0000</td>
+<td>4KB</td>
+<td></td>
+</tr>
+<tr>
+<td>B</td>
+<td>0001 0000 0000 0000</td>
+<td>4KB</td>
+<td><span>A<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>互为伙伴，第<span class="heti-skip"><span class="heti-spacing"> </span>13<span class="heti-spacing"> </span></span>位不同</td>
+</tr>
+<tr>
+<td>-------</td>
+<td>----------------------------------</td>
+<td>------</td>
+<td>--------------------------------------</td>
+</tr>
+<tr>
+<td>C</td>
+<td>0000 0000 0000 0000</td>
+<td>2KB</td>
+<td>从<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>分割而来</td>
+</tr>
+<tr>
+<td>D</td>
+<td>0000 1000 0000 0000</td>
+<td>2KB</td>
+<td><span>C<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>D<span class="heti-spacing"> </span></span>互为伙伴，第<span class="heti-skip"><span class="heti-spacing"> </span>12<span class="heti-spacing"> </span></span>位不同</td>
+</tr>
+<tr>
+<td>-------</td>
+<td>----------------------------------</td>
+<td>------</td>
+<td>--------------------------------------</td>
+</tr>
+<tr>
+<td>E</td>
+<td>0001 0000 0000 0000</td>
+<td>2KB</td>
+<td>从<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>分割而来</td>
+</tr>
+<tr>
+<td>F</td>
+<td>0001 1000 0000 0000</td>
+<td>2KB</td>
+<td><span>E<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>F<span class="heti-spacing"> </span></span>互为伙伴，第<span class="heti-skip"><span class="heti-spacing"> </span>12<span class="heti-spacing"> </span></span>位不同</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">其他想法<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>上面提到的众多方法都有一个重要的问题，缺乏可扩展性<span><span class="heti-spacing"> </span>(scaling)</span>。</p>
+<p>具体来说，就是查找列表可能很慢。因此，更先进的分配程序采用更复杂的数据结构来优化这个开销，牺牲简单性来换取性能。例子包括平衡二叉树、伸展树和偏序树。</p>
+<h2 id="_7">作业<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>1．首先运行<span class="heti-skip"><span class="heti-spacing"> </span>-n 10 -H 0 -p BEST -s 0<span class="heti-spacing"> </span></span>来产生一些随机分配和释放。你能预测<span class="heti-skip"><span class="heti-spacing"> </span>malloc()/free()<span class="heti-spacing"> </span></span>会返回什么吗？你可以在每次请求后猜测空闲列表的状态吗？随着时间的推移，你对空闲列表有什么发现？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>内存被分为更细小的碎块留在靠前的位置。</p>
+<div class="highlight"><span class="filename">./malloc.py -n 10 -H 0 -p BEST -s 0 -c</span><pre><span></span><code>ptr[0] = Alloc(3) returned 1000 (searched 1 elements)
+Free List [ Size 1 ]: [ addr:1003 sz:97 ]
+
+Free(ptr[0])
+returned 0
+Free List [ Size 2 ]: [ addr:1000 sz:3 ][ addr:1003 sz:97 ]
+
+ptr[1] = Alloc(5) returned 1003 (searched 2 elements)
+Free List [ Size 2 ]: [ addr:1000 sz:3 ][ addr:1008 sz:92 ]
+
+Free(ptr[1])
+returned 0
+Free List [ Size 3 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1008 sz:92 ]
+
+ptr[2] = Alloc(8) returned 1008 (searched 3 elements)
+Free List [ Size 3 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1016 sz:84 ]
+
+Free(ptr[2])
+returned 0
+Free List [ Size 4 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1008 sz:8 ][ addr:1016 sz:84 ]
+
+ptr[3] = Alloc(8) returned 1008 (searched 4 elements)
+Free List [ Size 3 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1016 sz:84 ]
+
+Free(ptr[3])
+returned 0
+Free List [ Size 4 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1008 sz:8 ][ addr:1016 sz:84 ]
+
+ptr[4] = Alloc(2) returned 1000 (searched 4 elements)
+Free List [ Size 4 ]: [ addr:1002 sz:1 ][ addr:1003 sz:5 ][ addr:1008 sz:8 ][ addr:1016 sz:84 ]
+
+ptr[5] = Alloc(7) returned 1008 (searched 4 elements)
+Free List [ Size 4 ]: [ addr:1002 sz:1 ][ addr:1003 sz:5 ][ addr:1015 sz:1 ][ addr:1016 sz:84 ]
+</code></pre></div>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>2．使用最差匹配策略搜索空闲列表（-p WORST）时，结果有何不同？什么改变了？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>内存被分割为更多的碎片，搜索了更多元素。</p>
+<div class="highlight"><span class="filename">./malloc.py -n 10 -H 0 -p WORST -s 0 -c</span><pre><span></span><code>ptr[0] = Alloc(3) returned 1000 (searched 1 elements)
+Free List [ Size 1 ]: [ addr:1003 sz:97 ]
+
+Free(ptr[0])
+returned 0
+Free List [ Size 2 ]: [ addr:1000 sz:3 ][ addr:1003 sz:97 ]
+
+ptr[1] = Alloc(5) returned 1003 (searched 2 elements)
+Free List [ Size 2 ]: [ addr:1000 sz:3 ][ addr:1008 sz:92 ]
+
+Free(ptr[1])
+returned 0
+Free List [ Size 3 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1008 sz:92 ]
+
+ptr[2] = Alloc(8) returned 1008 (searched 3 elements)
+Free List [ Size 3 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1016 sz:84 ]
+
+Free(ptr[2])
+returned 0
+Free List [ Size 4 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1008 sz:8 ][ addr:1016 sz:84 ]
+
+ptr[3] = Alloc(8) returned 1016 (searched 4 elements)
+Free List [ Size 4 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1008 sz:8 ][ addr:1024 sz:76 ]
+
+Free(ptr[3])
+returned 0
+Free List [ Size 5 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1008 sz:8 ][ addr:1016 sz:8 ][ addr:1024 sz:76 ]
+
+ptr[4] = Alloc(2) returned 1024 (searched 5 elements)
+Free List [ Size 5 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1008 sz:8 ][ addr:1016 sz:8 ][ addr:1026 sz:74 ]
+
+ptr[5] = Alloc(7) returned 1026 (searched 5 elements)
+Free List [ Size 5 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1008 sz:8 ][ addr:1016 sz:8 ][ addr:1033 sz:67 ]
+</code></pre></div>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>3．如果使用首次匹配（-p FIRST）会如何？使用首次匹配时，什么变快了？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>搜索的元素更少。</p>
+<div class="highlight"><span class="filename">./malloc.py -n 10 -H 0 -p FIRST -s 0 -c</span><pre><span></span><code>ptr[0] = Alloc(3) returned 1000 (searched 1 elements)
+Free List [ Size 1 ]: [ addr:1003 sz:97 ]
+
+Free(ptr[0])
+returned 0
+Free List [ Size 2 ]: [ addr:1000 sz:3 ][ addr:1003 sz:97 ]
+
+ptr[1] = Alloc(5) returned 1003 (searched 2 elements)
+Free List [ Size 2 ]: [ addr:1000 sz:3 ][ addr:1008 sz:92 ]
+
+Free(ptr[1])
+returned 0
+Free List [ Size 3 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1008 sz:92 ]
+
+ptr[2] = Alloc(8) returned 1008 (searched 3 elements)
+Free List [ Size 3 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1016 sz:84 ]
+
+Free(ptr[2])
+returned 0
+Free List [ Size 4 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1008 sz:8 ][ addr:1016 sz:84 ]
+
+ptr[3] = Alloc(8) returned 1008 (searched 3 elements)
+Free List [ Size 3 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1016 sz:84 ]
+
+Free(ptr[3])
+returned 0
+Free List [ Size 4 ]: [ addr:1000 sz:3 ][ addr:1003 sz:5 ][ addr:1008 sz:8 ][ addr:1016 sz:84 ]
+
+ptr[4] = Alloc(2) returned 1000 (searched 1 elements)
+Free List [ Size 4 ]: [ addr:1002 sz:1 ][ addr:1003 sz:5 ][ addr:1008 sz:8 ][ addr:1016 sz:84 ]
+
+ptr[5] = Alloc(7) returned 1008 (searched 3 elements)
+Free List [ Size 4 ]: [ addr:1002 sz:1 ][ addr:1003 sz:5 ][ addr:1015 sz:1 ][ addr:1016 sz:84 ]
+</code></pre></div>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>4．对于上述问题，列表在保持有序时，可能会影响某些策略找到空闲位置所需的时间。使用不同的空闲列表排序（-l ADDRSORT，-l SIZESORT +，-l SIZESORT-）查看策略和列表排序如何相互影响。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>对于最优匹配，按照地址和按照大小排序没有区别，搜索次数和碎块数量都不变。</p>
+<p>对于最差匹配也一样。</p>
+<p>首次匹配时，将最大块放在最前面可以保证没有多次搜索的成本，反之，会拥有最多的搜索次数。</p>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>5．合并空闲列表可能非常重要。增加随机分配的数量（比如说<span><span class="heti-spacing"> </span>-n 1000</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。随着时间的推移，大型分配请求会发生什么？在有和没有合并的情况下运行（即不用和采用<span class="heti-skip"><span class="heti-spacing"> </span>-C<span class="heti-spacing"> </span></span>标志<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。你看到了什么结果差异？每种情况下的空闲列表有多大？在这种情况下，列表的排序是否重要？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>只考虑块大小时，按地址排序更好，尤其在启用合并后。</p>
+<p>With out <code>-C</code>:</p>
+<ul>
+<li><code>ADDRSORT</code>:<ul>
+<li><code>BEST</code>: 31</li>
+<li><code>WORST</code>: 100</li>
+<li><code>FIRST</code>: 51</li>
+</ul>
+</li>
+<li><code>SIZESORT+</code>:<ul>
+<li><code>BEST</code>: 31</li>
+<li><code>WORST</code>: 100</li>
+<li><code>FIRST</code>: 31</li>
+</ul>
+</li>
+<li><code>SIZESORT-</code>:<ul>
+<li><code>BEST</code>: 31</li>
+<li><code>WORST</code>: 100</li>
+<li><code>FIRST</code>: 100</li>
+</ul>
+</li>
+</ul>
+<p>With <code>-C</code>:</p>
+<ul>
+<li><code>ADDRSORT</code>:<ul>
+<li><code>BEST</code>: 1</li>
+<li><code>WORST</code>: 1</li>
+<li><code>FIRST</code>: 1</li>
+</ul>
+</li>
+<li><code>SIZESORT+</code>:<ul>
+<li><code>BEST</code>: 28</li>
+<li><code>WORST</code>: 100</li>
+<li><code>FIRST</code>: 28</li>
+</ul>
+</li>
+<li><code>SIZESORT-</code>:<ul>
+<li><code>BEST</code>: 33</li>
+<li><code>WORST</code>: 100</li>
+<li><code>FIRST</code>: 98</li>
+</ul>
+</li>
+</ul>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>6．将已分配百分比<span class="heti-skip"><span class="heti-spacing"> </span>-P<span class="heti-spacing"> </span></span>改为高于<span><span class="heti-spacing"> </span>50</span>，会发生什么？它接近<span class="heti-skip"><span class="heti-spacing"> </span>100<span class="heti-spacing"> </span></span>时分配会怎样？接近<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>会怎样？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<div class="highlight"><pre><span></span><code>./malloc.py -c -n 1000 -P 100
+./malloc.py -c -n 1000 -P 1
+</code></pre></div>
+<p>非常靠近<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>的时候，没有更多空间可以分配，所有指针都返回 <code class="highlight"><span class="nb">NULL</span></code>。</p>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>7．要生成高度碎片化的空闲空间，你可以提出怎样的具体请求？使用<span class="heti-skip"><span class="heti-spacing"> </span>-A<span class="heti-spacing"> </span></span>标志创建碎片化的空闲列表，查看不同的策略和选项如何改变空闲列表的组织。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>来自<a href="https://github.com/xxyzz/ostep-hw/tree/master/17"><span><span class="heti-spacing"> </span>github.com/xxyzz/ostep-hw/tree/master/17</span></a></p>
+<div class="highlight"><pre><span></span><code>$ ./malloc.py -c -A +20,+20,+20,+20,+20,-0,-1,-2,-3,-4
+$ ./malloc.py -c -A +20,+20,+20,+20,+20,-0,-1,-2,-3,-4 -C
+$ ./malloc.py -c -A +10,-0,+20,-1,+30,-2,+40,-3 -l SIZESORT-
+$ ./malloc.py -c -A +10,-0,+20,-1,+30,-2,+40,-3 -l SIZESORT- -C
+$ ./malloc.py -c -A +10,-0,+20,-1,+30,-2,+40,-3 -p FIRST -l SIZESORT+
+$ ./malloc.py -c -A +10,-0,+20,-1,+30,-2,+40,-3 -p FIRST -l SIZESORT+ -C
+$ ./malloc.py -c -A +10,-0,+20,-1,+30,-2,+40,-3 -p FIRST -l SIZESORT-
+$ ./malloc.py -c -A +10,-0,+20,-1,+30,-2,+40,-3 -p FIRST -l SIZESORT- -C
+$ ./malloc.py -c -A +10,-0,+20,-1,+30,-2,+40,-3 -p WORST -l SIZESORT+
+$ ./malloc.py -c -A +10,-0,+20,-1,+30,-2,+40,-3 -p WORST -l SIZESORT+ -C
+$ ./malloc.py -c -A +10,-0,+20,-1,+30,-2,+40,-3 -p WORST -l SIZESORT-
+$ ./malloc.py -c -A +10,-0,+20,-1,+30,-2,+40,-3 -p WORST -l SIZESORT- -C
+</code></pre></div>
+</div>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月22日 09:54:39</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月22日 21:55:19</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
