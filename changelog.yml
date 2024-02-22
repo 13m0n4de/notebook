@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-02-22":
+    - newpage:
+          text: CS > OS > OSTEP > 17.Free Space Management
+          href: cs/os/ostep/17free_space_management.html
   - "2024-02-21":
     - newpage:
           text: CS > OS > OSTEP > 16.Segmentation

@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://13m0n4de.vercel.app/cs/os/ostep/10multi_cpu_scheduling.html" rel="canonical"/>
-<link href="09lottery_scheduling.html" rel="prev"/>
-<link href="13address_spaces.html" rel="next"/>
+<link href="https://13m0n4de.vercel.app/cs/os/ostep/17free_space_management.html" rel="canonical"/>
+<link href="16segmentation.html" rel="prev"/>
+<link href="../mit6.1810.html" rel="next"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-9.5.7" name="generator"/>
-<title>10.Multi-CPU Scheduling - 13m0n4de's notebook</title>
+<title>17.Free Space Management - 13m0n4de's notebook</title>
 <link href="../../../assets/stylesheets/main.f2e4d321.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/iframe-worker/shim"></script>
@@ -37,7 +37,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#10">
+<a class="md-skip" href="#17">
           跳转至
         </a>
 </div>
@@ -61,7 +61,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              10.Multi-CPU Scheduling
+              17.Free Space Management
             
           </span>
 </div>
@@ -426,9 +426,8 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href="10multi_cpu_scheduling.html">
+<li class="md-nav__item">
+<a class="md-nav__link" href="10multi_cpu_scheduling.html">
 <span class="md-ellipsis">
     10.Multi-CPU Scheduling
   </span>
@@ -462,12 +461,126 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="17free_space_management.html">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    17.Free Space Management
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="17free_space_management.html">
 <span class="md-ellipsis">
     17.Free Space Management
   </span>
 </a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#171">
+<span class="md-ellipsis">
+      17.1 假设
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#172">
+<span class="md-ellipsis">
+      17.2 底层机制
+    </span>
+</a>
+<nav aria-label="17.2 底层机制" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      分割与合并
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      追踪已分配空间的大小
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      嵌入空闲列表
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      让堆增长
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#173">
+<span class="md-ellipsis">
+      17.3 基本策略
+    </span>
+</a>
+<nav aria-label="17.3 基本策略" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#best-fit">
+<span class="md-ellipsis">
+      最优匹配 (best-fit)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#worst-fit">
+<span class="md-ellipsis">
+      最差匹配 (worst-fit)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#first-fit">
+<span class="md-ellipsis">
+      首次匹配 (first-fit)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#next-fit">
+<span class="md-ellipsis">
+      下次匹配 (next-fit)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      例子
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#174">
+<span class="md-ellipsis">
+      17.4 其他方式
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -736,26 +849,395 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#171">
+<span class="md-ellipsis">
+      17.1 假设
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#172">
+<span class="md-ellipsis">
+      17.2 底层机制
+    </span>
+</a>
+<nav aria-label="17.2 底层机制" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      分割与合并
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      追踪已分配空间的大小
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      嵌入空闲列表
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      让堆增长
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#173">
+<span class="md-ellipsis">
+      17.3 基本策略
+    </span>
+</a>
+<nav aria-label="17.3 基本策略" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#best-fit">
+<span class="md-ellipsis">
+      最优匹配 (best-fit)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#worst-fit">
+<span class="md-ellipsis">
+      最差匹配 (worst-fit)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#first-fit">
+<span class="md-ellipsis">
+      首次匹配 (first-fit)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#next-fit">
+<span class="md-ellipsis">
+      下次匹配 (next-fit)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      例子
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#174">
+<span class="md-ellipsis">
+      17.4 其他方式
+    </span>
+</a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="10">第<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>章 多处理器调度（高级）<a class="headerlink" href="#10" title="Permanent link">¶</a></h1>
-<p>根据建议，学完第<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>部分之后再来学习此高级章节。</p>
+<h1 id="17">第<span class="heti-skip"><span class="heti-spacing"> </span>17<span class="heti-spacing"> </span></span>章 空闲空间管理<a class="headerlink" href="#17" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<p>上一章遇到了外部碎片的问题，这章介绍几个策略来尽可能减少碎片。</p>
+<h2 id="171"><span>17.1<span class="heti-spacing"> </span></span>假设<a class="headerlink" href="#171" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ol>
+<li>内存分配库的接口就像 <code class="highlight"><span class="n">malloc</span><span class="p">()</span></code> 和 <code class="highlight"><span class="n">free</span><span class="p">()</span></code> 提供的那样，分配时只传入大小，回收时只传入指针；</li>
+<li>不在意内部碎片（分配程序给出的内存块超出请求的大小<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；</li>
+<li>内存被分配给用户，就不可以被重定位（不能进行紧凑空间的操作<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；</li>
+<li>分配程序管理的是连续的一块字节区域。</li>
+</ol>
+<p>空闲列表<span><span class="heti-spacing"> </span>(free list)</span>：在堆上管理空闲空间的数据结构，该结构包含了管理内存区域中所有空闲块的引用。</p>
+<h2 id="172"><span>17.2<span class="heti-spacing"> </span></span>底层机制<a class="headerlink" href="#172" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>分配程序采用的一些通用机制。</p>
+<h3 id="_1">分割与合并<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><strong>分割<span><span class="heti-spacing"> </span>(splitting)</span></strong></p>
+<p>假设有下面的<span class="heti-skip"><span class="heti-spacing"> </span>30<span class="heti-spacing"> </span></span>字节的堆：</p>
+<div class="highlight"><pre><span></span><code>0      10     20     30
+^      ^      ^      ^
++------+------+------+
+| free | used | free |
+</code></pre></div>
+<p>这个堆对应的空闲列表会有两个元素，一个描述第一个<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>字节的空闲区域（字节<span><span class="heti-spacing"> </span>0 ~ 9</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，一个描述另一个空闲区域（字节<span><span class="heti-spacing"> </span>20 ~ 29</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
+<pre class="mermaid"><code>graph LR;
+    HEAD --&gt; A[addr: 0, len: 10]
+    A --&gt; B[addr: 20, len: 10]
+    B --&gt; NULL</code></pre>
+<p>此时任何大于<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>字节的分配请求都会失败（返回<span><span class="heti-spacing"> </span>NULL</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，但如果申请小于<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>字节的内存，分配程序会执行所谓的分割动作：找到一块可以满足请求的空闲空间，将其分割，第一块返回给用户，第二块留在空闲列表中。</p>
+<p>假设申请<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>字节的请求，分配程序选择使用第二块空闲空间，对 <code class="highlight"><span class="n">malloc</span><span class="p">()</span></code> 的调用会返回<span><span class="heti-spacing"> </span>20</span> （<span>1<span class="heti-spacing"> </span></span>字节分配区域的地址<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，空闲列表会变成这样：</p>
+<pre class="mermaid"><code>graph LR;
+    HEAD --&gt; A[addr: 0, len: 10]
+    A --&gt; B[addr: 21, len: 9]
+    B --&gt; NULL</code></pre>
+<hr/>
+<p><strong>合并<span><span class="heti-spacing"> </span>(coalescing)</span></strong></p>
+<p>一开始的例子中，<span>10<span class="heti-spacing"> </span></span>字节的空闲空间，<span>10<span class="heti-spacing"> </span></span>字节的已分配空间，<span>10<span class="heti-spacing"> </span></span>字节的空闲空间。</p>
+<p>如果执行 <code class="highlight"><span class="n">free</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code>，归还堆中间的空间，可能得到如下结果：</p>
+<pre class="mermaid"><code>graph LR;
+    HEAD --&gt; A[addr: 10, len: 10]
+    A --&gt; B[addr: 0, len: 10]
+    B --&gt; C[addr: 20, len: 10]
+    C --&gt; NULL</code></pre>
+<p>尽管整个堆完全空闲，但被分割成了三个<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>字节的区域，如果此时用户请求<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>字节的空间，简单遍历空闲空间会找不到这样的空闲块，因此返回失败。</p>
+<p>为了避免这个问题，分配程序会在释放一块内存时合并可用空间。</p>
+<p>在归还一块空闲内存时，如果新归还的空间与一个（或两个）原有空闲块相邻，就将它们合并为一个较大的空闲块。</p>
+<p>最后得到这样的空闲列表：</p>
+<pre class="mermaid"><code>graph LR;
+    HEAD --&gt; A[addr: 0, len: 30]
+    A --&gt; NULL</code></pre>
+<h3 id="_2">追踪已分配空间的大小<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><code class="highlight"><span class="n">free</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">)</span></code> 接口没有块大小的参数，因此它假定对于给定的指针，内存分配库可以很快确定要释放空间的大小。</p>
+<p>大多数分配程序都会在头块<span class="heti-skip"><span class="heti-spacing"> </span>(header)<span class="heti-spacing"> </span></span>中保存一点额外信息，通常就放置在返回的内存块之前。</p>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">header_t</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">magic</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">header_t</span><span class="p">;</span>
+</code></pre></div>
+<p>库会通过简单的指针运算得到头块的位置：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">free</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">header_t</span><span class="w"> </span><span class="o">*</span><span class="n">hptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">header_t</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>hptr --&gt; +----------------+ 
+         | size:  20      |
+         |----------------| Header Chunk
+         | magic: 1234567 |
+ptr  --&gt; +----------------+ 
+         |                | Data Chunk (20 byte)
+         +----------------+
+</code></pre></div>
+<p>获得头块的指针后，库可以很容易地确定幻数是否符合预期的值，作为正常性检查<span><span class="heti-spacing"> </span>(</span><code class="highlight"><span class="n">assert</span><span class="p">(</span><span class="n">hprt</span><span class="o">-&gt;</span><span class="n">magic</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1234567</span><span class="p">)</span></code><span><span class="heti-spacing"> </span>)</span>，并简单计算要释放的空间大小（即头块的大小加区域长度<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>如果用户请求<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>字节的内存，就不再是寻找大小为<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>的空闲块，而是寻找<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>加上头块大小的空闲块。</p>
+<h3 id="_3">嵌入空闲列表<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>难过的事实：没法在创建空闲列表时使用 <code class="highlight"><span class="n">malloc</span></code>，尽管这是在内存分配库中。</p>
+<p>假设需要管理一个<span class="heti-skip"><span class="heti-spacing"> </span>4096<span class="heti-spacing"> </span></span>字节的内存块（即堆是<span><span class="heti-spacing"> </span>4 KB</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>为了将它作为一个空闲列表来管理，首先需要初始化。</p>
+<p>以下是节点定义：</p>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">node_t</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">node_t</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">node_t</span><span class="p">;</span>
+</code></pre></div>
+<p>使用 <code class="highlight"><span class="n">mmap</span></code> 系统调用，映射一片内存。</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">mmap</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">prot</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">offset</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">node_t</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mmap</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_READ</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PORT_WRITE</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">MAP_ANON</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">MAP_PRIVATE</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="n">head</span><span class="o">-&gt;</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">node_t</span><span class="p">);</span>
+<span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+</code></pre></div>
+<p>执行这段代码之后，列表只有一个条目，记录大小为<span><span class="heti-spacing"> </span>4088</span>。</p>
+<div class="highlight"><pre><span></span><code>head --&gt; +----------------+ [virtual address: 16 KB]
+         | size:  4088    | Header: size field
+         |----------------| 
+         | next:  0       | Header: next field (NULL is 0)
+         +----------------+ 
+         |                |
+         |                | the rest of the 4 KB chunk
+         |                |
+         +----------------+
+</code></pre></div>
+<p>假设有一个<span class="heti-skip"><span class="heti-spacing"> </span>100<span class="heti-spacing"> </span></span>字节的内存请求，库选中唯一的<span class="heti-skip"><span class="heti-spacing"> </span>4088<span class="heti-spacing"> </span></span>字节的块，将其分割。</p>
+<div class="highlight"><pre><span></span><code>         +----------------+ [virtual address: 16 KB]
+         | size:  100     |
+         |----------------| 
+         | magic: 1234567 |
+ptr  --&gt; +----------------+ 
+         |                |
+         |                | The 100 bytes now allocated
+         |                |
+head --&gt; +----------------+
+         | size:  3980    |
+         |----------------| 
+         | next:  0       |
+         +----------------+
+         |                |
+         |                | The free 3980 byte chunk
+         |                |
+         +----------------+
+</code></pre></div>
+<p>库从原有的一个空闲块中分配了<span class="heti-skip"><span class="heti-spacing"> </span>108<span class="heti-spacing"> </span></span>字节，返回指向它的一个指针 <code>ptr</code>，并在其之前连续的<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>字节中记录头块信息，供未来的 <code class="highlight"><span class="n">free</span></code> 函数使用，同时将列表中的空闲节点缩小为<span class="heti-skip"><span class="heti-spacing"> </span>3980<span class="heti-spacing"> </span></span>字节。</p>
+<p>重复两次上述操作。</p>
+<p>此时用户调用 <code class="highlight"><span class="n">free</span><span class="p">(</span><span class="mi">16500</span><span class="p">)</span></code>，归还了中间的一块已分配空间（内存块的起始地址<span class="heti-skip"><span class="heti-spacing"> </span>16384<span class="heti-spacing"> </span></span>加上前一块<span class="heti-skip"><span class="heti-spacing"> </span>108<span class="heti-spacing"> </span></span>和这一块的头块的<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>字节，得到了<span><span class="heti-spacing"> </span>16500</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，这个值用 <code class="highlight"><span class="n">sptr</span></code> 表示。</p>
+<div class="highlight"><pre><span></span><code>         +----------------+ [virtual address: 16 KB]
+         | size:  100     |
+         |----------------| 
+         | magic: 1234567 |
+         +----------------+ 
+         |                |
+         |                | 100 bytes still allocated
+         |                |
+         +----------------+
+         | size:  100     |
+         |----------------| 
+         | magic: 1234567 |
+sptr --&gt; +----------------+ 
+         |                |
+         |                | 100 bytes still allocated (but about to be freed)
+         |                |
+         +----------------+
+         | size:  100     |
+         |----------------| 
+         | magic: 1234567 |
+         +----------------+
+         |                |
+         |                | 100 bytes still allocated
+         |                |
+head --&gt; +----------------+
+         | size:  3764    |
+         |----------------| 
+         | next:  0       |
+         +----------------+
+         |                |
+         |                | The free 3764-byte chunk 
+         |                |
+         +----------------+
+</code></pre></div>
+<p>库通过头块信息弄清楚了要释放的大小，并将空闲块加回空闲列表，假设将它插入空闲列表的头位置。</p>
+<div class="highlight"><pre><span></span><code>         +----------------+ [virtual address: 16 KB]
+         | size:  100     |
+         |----------------| 
+         | magic: 1234567 |
+         +----------------+ 
+         |                |
+         |                | 100 bytes still allocated
+         |                |
+head --&gt; +----------------+
+         | size:  100     |
+         |----------------| 
+         | magic: 16708   | --------------------------------+
+sptr --&gt; +----------------+                                 |
+         |                |                                 |
+         |                | (now a free chunk of memory)    |
+         |                |                                 |
+         +----------------+                                 |
+         | size:  100     |                                 |
+         |----------------|                                 |
+         | magic: 1234567 |                                 |
+         +----------------+                                 |
+         |                |                                 |
+         |                | 100 bytes still allocated       |
+         |                |                                 |
+         +----------------+ &lt;-------------------------------+
+         | size:  3764    |
+         |----------------| 
+         | next:  0       |
+         +----------------+
+         |                |
+         |                | The free 3764-byte chunk 
+         |                |
+         +----------------+
+</code></pre></div>
+<p>是的，它不会“销毁”任何内容，只是在空闲列表中将它认为是“空闲的”，原有的数据还在。</p>
+<p>假设剩余的两块已分配空间也被释放，没有合并，空闲列表将非常破碎：</p>
+<div class="highlight"><pre><span></span><code>         +----------------+ &lt;-------------------------------+
+         | size:  100     |                                 |
+         |----------------|                                 |
+         | magic: 1234567 | ------------------------------+ |
+         +----------------+                               | |
+         |                |                               | |
+         |                | (now a free chunk of memory)  | |
+         |                |                               | |
+         +----------------+ &lt;-----------------------------+ |
+         | size:  100     |                                 |
+         |----------------|                                 |
+         | magic: 16708   | --------------------------------|-+
+         +----------------+                                 | |
+         |                |                                 | |
+         |                | (now a free chunk of memory)    | |
+         |                |                                 | |
+head --&gt; +----------------+                                 | |
+         | size:  100     |                                 | |
+         |----------------|                                 | |
+         | magic: 16384   | --------------------------------+ |
+         +----------------+                                   |
+         |                |                                   |
+         |                | (now a free chunk of memory)      |
+         |                |                                   |
+         +----------------+ &lt;---------------------------------+
+         | size:  3764    |
+         |----------------| 
+         | next:  0       |
+         +----------------+
+         |                |
+         |                | The free 3764-byte chunk 
+         |                |
+         +----------------+
+</code></pre></div>
+<p>解决方案很简单：遍历列表，合并相邻块，完成之后，堆又成了一个整体。</p>
+<h3 id="_4">让堆增长<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>如果堆中的内存耗尽，可以使用<span class="heti-skip"><span class="heti-spacing"> </span>sbrk<span class="heti-spacing"> </span></span>系统调用增加堆的大小，这样用户的请求就不会是直接返回<span class="heti-skip"><span class="heti-spacing"> </span>NULL<span class="heti-spacing"> </span></span>了。</p>
+<h2 id="173"><span>17.3<span class="heti-spacing"> </span></span>基本策略<a class="headerlink" href="#173" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="best-fit">最优匹配<span><span class="heti-spacing"> </span>(best-fit)</span><a class="headerlink" href="#best-fit" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>遍历整个空闲列表，找到大小符合的空闲块，然后返回其中最小的一块，所以它也可以被称为最小匹配。</p>
+<p>遍历查找正确空闲块时，要付出较高性能代价。</p>
+<h3 id="worst-fit">最差匹配<span><span class="heti-spacing"> </span>(worst-fit)</span><a class="headerlink" href="#worst-fit" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>尝试找到最大块，分割并将剩余的块加入空闲列表。</p>
+<p>最差匹配尝试在空闲列表中保留较大的块，以此来尝试不留下难以利用的小块。</p>
+<p>但它同样需要遍历整个空闲列表，并且大多数研究表明它的表现非常差，导致过量的碎片，同时还有很高的开销。</p>
+<h3 id="first-fit">首次匹配<span><span class="heti-spacing"> </span>(first-fit)</span><a class="headerlink" href="#first-fit" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>找到第一个足够大的块就分割给用户。</p>
+<p>首次匹配有速度优势，不需要遍历空闲块，但有时会让空闲列表开头的部分有很多小块。</p>
+<p>因此，分配程序如何管理空闲列表的顺序就变得很重要。一种方式是基于地址排序。通过保持空闲块按内存地址有序，合并操作会很容易，从而减少了内存碎片。</p>
+<h3 id="next-fit">下次匹配<span><span class="heti-spacing"> </span>(next-fit)</span><a class="headerlink" href="#next-fit" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>下次匹配多维护一个指针，指向上次查找结束的位置。</p>
+<p>其想法是将对空闲空间的查找操作扩散到整个列表中去，避免对列表开头频繁的分割。</p>
+<p>这种策略的性能与首次匹配很接它，同样避免了遍历查找。</p>
+<h3 id="_5">例子<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<pre class="mermaid"><code>graph LR;
+    HEAD --&gt; A[10]
+    A --&gt; B[30]
+    B --&gt; C[20]
+    C --&gt; NULL</code></pre>
+<p>假设此时有个<span class="heti-skip"><span class="heti-spacing"> </span>15<span class="heti-spacing"> </span></span>字节的内存请求，最优匹配会遍历整个空闲列表，发现<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>字节是最优匹配，结果空闲列表变为：</p>
+<pre class="mermaid"><code>graph LR;
+    HEAD --&gt; A[10]
+    A --&gt; B[30]
+    B --&gt; C[50]
+    C --&gt; NULL</code></pre>
+<p>本例中发生的情况，在最优匹配中常常发生，现在留下了一个小空闲块。</p>
+<p>最差匹配类似，但会选择最大的空闲块进行分割，在本例中是<span><span class="heti-spacing"> </span>30</span>。结果空闲列表变为：</p>
+<pre class="mermaid"><code>graph LR;
+    HEAD --&gt; A[10]
+    A --&gt; B[15]
+    B --&gt; C[20]
+    C --&gt; NULL</code></pre>
+<p>在这个例子中，首次匹配会和最差匹配一样，也发现满足请求的第一个空闲块。不同的是查找开销，最优匹配和最差匹配都需要遍历整个列表，而首次匹配只找到第一个满足需求的块即可，因此减少了查找开销。</p>
+<h2 id="174"><span>17.4<span class="heti-spacing"> </span></span>其他方式<a class="headerlink" href="#174" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月12日 09:20:43</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月22日 09:54:39</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月12日 09:20:43</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月22日 09:54:39</span>
 </span>
 </aside>
 </article>
@@ -769,7 +1251,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="上一页: 09.Lottery Scheduling" class="md-footer__link md-footer__link--prev" href="09lottery_scheduling.html">
+<a aria-label="上一页: 16.Segmentation" class="md-footer__link md-footer__link--prev" href="16segmentation.html">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -778,17 +1260,17 @@
                 上一页
               </span>
 <div class="md-ellipsis">
-                09.Lottery Scheduling
+                16.Segmentation
               </div>
 </div>
 </a>
-<a aria-label="下一页: 13.Address Spaces" class="md-footer__link md-footer__link--next" href="13address_spaces.html">
+<a aria-label="下一页: MIT 6.1810" class="md-footer__link md-footer__link--next" href="../mit6.1810.html">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 下一页
               </span>
 <div class="md-ellipsis">
-                13.Address Spaces
+                MIT 6.1810
               </div>
 </div>
 <div class="md-footer__button md-icon">
