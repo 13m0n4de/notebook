@@ -22,3 +22,4 @@
 - [14.Memory API](./14memory_api.md)
 - [15.Address Translation](./15address_translation.md)
 - [16.Segmentation](./16segmentation.md)
+- [17.Free Space Management](./17free_space_management.md)
