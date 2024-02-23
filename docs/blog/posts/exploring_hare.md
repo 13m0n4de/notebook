@@ -4,7 +4,7 @@ categories:
   - Programming Language
 ---
 
-# 探索 Hare 语言
+# Exploring the Hare Programming Language: Part 1
 
 这篇依旧是跟屁虫系列。
 
@@ -58,7 +58,7 @@ Hare/
 
 QBE 是一个编译器后端，旨在用 10% 的代码提供 工业优化编译器 70% 的性能。
 
-不同于其他“现代 C 语言”，Hare 可能真的想 Simple 到底。（Zig 使用了 LLVM）
+不同于其他“现代 C 语言”，Hare 可能真的想 Simple 到底。（Zig 使用了 LLVM，但它们正在迁移，想要摆脱 LLVM）
 
 如果我以后又想造点什么玩具，也会优先考虑 QBE 的。
 
@@ -391,6 +391,8 @@ crypto
 fmt
 net
 ```
+
+（其实官方推荐 `use` 语句按字母顺序排列，但不强制）
 
 就算没有用到，只是 `use` 了，依然会编译并链接进二进制文件。
 
@@ -789,14 +791,7 @@ release + strip，这个文件只有不到 11 KB，挺好。
 
 这也许就是为什么视频中他遇到了 `Error: Output path 'hare' already exists, but isn't an executable file`
 
-## 安全特性
-
-todo!()
-
-## WIP...
-
 ## 参考
 
 - Hare: [harelang.org](https://harelang.org/)
 - Hare .note.GNU-stack ticket: [~sircmpwn/hare#748](https://todo.sr.ht/~sircmpwn/hare/748)
-- Safety features of the Hare programming language: [harelang.org/blog/2022-06-21-safety-features/](https://harelang.org/blog/2022-06-21-safety-features/)

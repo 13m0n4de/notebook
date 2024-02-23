@@ -13,12 +13,12 @@
           href: cs/os/ostep/16segmentation.html
   - "2024-02-18":
     - newpage:
-          text: Blog > 探索 Hare 语言
-          href: blog/2024/02/18/探索-hare-语言.html
+          text: Blog > Exploring the Hare Programming Language
+          href: blog/2024/02/18/exploring-the-hare-programming-language-part-1.html
   - "2024-02-17":
     - newpage:
-          text: Blog > 通过 HTTPS 包含头文件
-          href: blog/2024/02/17/通过-https-包含头文件.html
+          text: Blog > Including C File Over HTTPS
+          href: blog/2024/02/17/including-c-file-over-https.html
   - "2024-02-16":
     - newpage:
           text: CS > OS > OSTEP > 15.Address Translation
@@ -43,8 +43,8 @@
           href: writeups/dicectf2024_quals.html
   - "2024-02-07":
     - newpage:
-          text: Blog > Checkpoint 筛选 2024-02-07
-          href: blog/2024/02/07/checkpoint-筛选-2024-02-07.html
+          text: Blog > Evaluating and Selecting SD Models
+          href: blog/2024/02/07/evaluating-and-selecting-sd-models.html
   - "2024-02-05":
     - newpage:
           text: Writeups > DiceCTF 2024 Quals

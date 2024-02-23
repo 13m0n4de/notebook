@@ -4,7 +4,7 @@ categories:
   - Programming Language
 ---
 
-# 通过 HTTPS 包含头文件
+# Including C File Over HTTPS
 
 实现了一个有意思的效果，让 C 语言可以从互联网上 `#!c #include` 头文件。
 
