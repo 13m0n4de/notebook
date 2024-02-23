@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-02-24":
+    - newpage:
+          text: CS > OS > OSTEP > 18.Introduction to Paging
+          href: cs/os/ostep/18introduction_to_paging.html
   - "2024-02-22":
     - newpage:
           text: CS > OS > OSTEP > 17.Free Space Management

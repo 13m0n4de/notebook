@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://13m0n4de.vercel.app/cs/os/ostep/04processes.html" rel="canonical"/>
-<link href="02introduction.html" rel="prev"/>
-<link href="05process_api.html" rel="next"/>
+<link href="https://13m0n4de.vercel.app/cs/os/ostep/18introduction_to_paging.html" rel="canonical"/>
+<link href="17free_space_management.html" rel="prev"/>
+<link href="../mit6.1810.html" rel="next"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-9.5.7" name="generator"/>
-<title>04.Processes - 13m0n4de's notebook</title>
+<title>18.Introduction to Paging - 13m0n4de's notebook</title>
 <link href="../../../assets/stylesheets/main.f2e4d321.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/iframe-worker/shim"></script>
@@ -37,7 +37,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#4">
+<a class="md-skip" href="#18">
           跳转至
         </a>
 </div>
@@ -61,7 +61,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              04.Processes
+              18.Introduction to Paging
             
           </span>
 </div>
@@ -384,34 +384,12 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-<span class="md-ellipsis">
-    04.Processes
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="04processes.html">
-<span class="md-ellipsis">
-    04.Processes
-  </span>
-</a>
-<nav aria-label="目录" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#_1">
+<a class="md-nav__link" href="04processes.html">
 <span class="md-ellipsis">
-      作业
-    </span>
+    04.Processes
+  </span>
 </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="05process_api.html">
@@ -490,12 +468,62 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="18introduction_to_paging.html">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    18.Introduction to Paging
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="18introduction_to_paging.html">
 <span class="md-ellipsis">
     18.Introduction to Paging
   </span>
 </a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#181">
+<span class="md-ellipsis">
+      18.1 一个简单例子
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#182">
+<span class="md-ellipsis">
+      18.2 页表存在哪里
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#183">
+<span class="md-ellipsis">
+      18.3 页表中究竟有什么
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#184">
+<span class="md-ellipsis">
+      18.4 分页：也很慢
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      作业
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -770,6 +798,34 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#181">
+<span class="md-ellipsis">
+      18.1 一个简单例子
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#182">
+<span class="md-ellipsis">
+      18.2 页表存在哪里
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#183">
+<span class="md-ellipsis">
+      18.3 页表中究竟有什么
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#184">
+<span class="md-ellipsis">
+      18.4 分页：也很慢
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#_1">
 <span class="md-ellipsis">
       作业
@@ -783,218 +839,258 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="4">第<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>章 抽象：进程<a class="headerlink" href="#4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
-<p>这章介绍了进程的概念，为了虚拟化<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>做铺垫。</p>
-<p>进程是一个正在运行的程序，既然正在运行，那就肯定有状态，包括程序的寄存器值以及用到的内存值，操作系统需要分配一些内存将它们需要保存下来。</p>
-<p>保存是为了切换，切换是因为需要调度，调度是为了最大化利用系统资源。</p>
-<p>为了实现任意切换的“无限”多<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>的假象，我们需要 <strong>虚拟化<span><span class="heti-spacing"> </span>CPU</span></strong> 和 <strong>上下文切换</strong>，这是后面章节的内容。</p>
-<p>本章末尾作业框架模拟的是一个支持类似“多道程序”的协作式操作系统。</p>
-<p>摘一下<a href="https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter3/3multiprogramming.html"><span class="heti-skip"><span class="heti-spacing"> </span>rCore<span class="heti-spacing"> </span></span>多道程序与协作式调度</a> 的内容：</p>
-<blockquote>
-<p>多道程序的思想在于：内核同时管理多个应用。<br/>
-如果外设处理 I/O 的时间足够长，那我们可以先进行任务切换去执行其他应用；在某次切换回来之后，应用再次读取设备寄存器，发现 I/O 请求已经处理完毕了，那么就可以根据返回的 I/O 结果继续向下执行了。<br/>
-这样的话，只要同时存在的应用足够多，就能一定程度上隐藏 I/O 外设处理相对于 CPU 的延迟，保证 CPU 不必浪费时间在等待外设上，而是几乎一直在进行计算。</p>
-</blockquote>
-<p>为了实现任意切换的“无限”多<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>的假象，我们需要 <strong>虚拟化<span><span class="heti-spacing"> </span>CPU</span></strong> 和 <strong>上下文切换</strong> 。</p>
+<h1 id="18">第<span class="heti-skip"><span class="heti-spacing"> </span>18<span class="heti-spacing"> </span></span>章 分页：介绍<a class="headerlink" href="#18" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<p>十六章尝试使用分段来解决空间管理问题，十七章尝试使用各种空闲空间管理策略来减少分段带来的碎片问题。</p>
+<p>另一种方式叫做 <strong>分页<span><span class="heti-spacing"> </span>(Paging)</span></strong> ，采用了固定长度的分片，从根本上避免了碎片（外部碎片<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<h2 id="181"><span>18.1<span class="heti-spacing"> </span></span>一个简单例子<a class="headerlink" href="#181" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>以下例子展示了一个只有<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>字节的小地址空间，有<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>字节的页。</p>
+<div class="highlight"><pre><span></span><code> 0 +------------+
+   |            | page 0 of the address space
+16 +------------+
+   |            | page 1
+32 +------------+
+   |            | page 2
+48 +------------+
+   |            | page 3
+64 +------------+
+</code></pre></div>
+<p>物理内存也由一组固定大小的槽子块组成吗，下面的例子中有<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>个 页帧，虚拟地址空间的页放在物理内存的不同位置。</p>
+<div class="highlight"><pre><span></span><code> 0  +-----------------+
+    | reserved for OS | page frame 0 of physical memory
+16  +-----------------+
+    |     (unused)    | page frame 1
+32  +-----------------+
+    |   page 3 of AS  | page frame 2
+48  +-----------------+
+    |   page 0 of AS  | page frame 3
+64  +-----------------+
+    |     (unused)    | page frame 4
+80  +-----------------+
+    |   page 2 of AS  | page frame 5
+96  +-----------------+
+    |     (unused)    | page frame 6
+112 +-----------------+
+    |   page 1 of AS  | page frame 7
+128 +-----------------+
+</code></pre></div>
+<p>分页有许多有点，最大的改进就是 <strong>灵活性</strong>：通过完善的分页方法，操作系统能够高效地提供地址空间的抽象，不管进程如何使用地址空间。例如，我们不会假定堆和栈的增长方向，以及它们如何使用。</p>
+<p>另一个优点是 <strong>空闲空间管理的简单性</strong>，如果操作系统希望将<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>字节的小地址空间放到<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>页的物理地址空间中，它只要找到<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>个空闲页。</p>
+<p>为了记录地址空间的每个虚拟页放在物理内存中的位置，操作系统通常为 <strong>每个进程</strong> 保存一个数据结构，称为 <strong>页表<span><span class="heti-spacing"> </span>(pasge table)</span></strong>。</p>
+<p>页表的作用是为地址空间的每个虚拟页面保存地址转换<span><span class="heti-spacing"> </span>(address translation)</span>，从而让我们知道每个页在物理内存中的位置。</p>
+<p>在上面的例子中，页表具有以下条目：</p>
+<ul>
+<li>VP 0 -&gt; PF 3 (Virtual Page 0 -&gt; Physical Frame 3)</li>
+<li>VP 1 -&gt; PF 7</li>
+<li>VP 2 -&gt; PF 5</li>
+<li>VP 3 -&gt; PF 2</li>
+</ul>
+<p>假设此时该进程正在访问内存：</p>
+<div class="highlight"><pre><span></span><code><span class="nf">movl</span><span class="w"> </span><span class="err">&lt;</span><span class="no">virtual</span><span class="w"> </span><span class="no">address</span><span class="err">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nv">%eax</span>
+</code></pre></div>
+<p>为了转换该虚拟地址，必须首先将它分为两个组件：</p>
+<ul>
+<li>虚拟页面号<span><span class="heti-spacing"> </span>(virtual page number, VPN)</span></li>
+<li>页内偏移量<span><span class="heti-spacing"> </span>(offset)</span></li>
+</ul>
+<p>对于这个例子，因为进程的虚拟地址空间是<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>字节，我们的虚拟地址总共需要<span class="heti-skip"><span class="heti-spacing"> </span>6<span class="heti-spacing"> </span></span>位<span><span class="heti-spacing"> </span>($ 2^{6} = 64 $)</span>：</p>
+<div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+
+| Va5 | Va4 | Va3 | Va2 | Va1 | Va0 |
++-----+-----+-----+-----+-----+-----+
+</code></pre></div>
+<p>其中 <code>Va5</code> 是虚拟地址的最高位，<code>Va0</code> 是最低位。因为我们知道页的大小（<span>16<span class="heti-spacing"> </span></span>字节<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，所以可以进一步划分虚拟地址：</p>
+<div class="highlight"><pre><span></span><code>     VPN                OFFSET
+      |                   |
++-----+-----+ +-----+-----+-----+-----+
+| Va5 | Va4 | | Va3 | Va2 | Va1 | Va0 |
++-----+-----+ +-----+-----+-----+-----+
+</code></pre></div>
+<p>页面大小为<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>字节，位于<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>字节的地址空间，因此需要四个虚拟页面号。</p>
+<p>地址的前两位表示虚拟页面号，后四位表示该页的偏移量。</p>
+<p>假设刚刚的汇编加载的是虚拟地址 <code>21</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="nf">movl</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="nv">%eax</span>
+</code></pre></div>
+<p>将 <code>21</code> 的二进制形式 <code>010101</code>：</p>
+<div class="highlight"><pre><span></span><code>   VPN          OFFSET
+    |             |
++---+---+ +---+---+---+---+
+| 0 | 1 | | 0 | 1 | 0 | 1 |
++---+---+ +---+---+---+---+
+</code></pre></div>
+<p>虚拟地址 <code>21</code> 在虚拟页 <code>01</code> 的第五 <code>0101</code> 个字节处。</p>
+<p>我们先通过<span class="heti-skip"><span class="heti-spacing"> </span>VPN<span class="heti-spacing"> </span></span>找到虚拟页<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>所在物理帧，在上面的例子中，物理帧号<span class="heti-skip"><span class="heti-spacing"> </span>(PFN)<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>7</span>（二进制 <code>111</code><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>通过将<span class="heti-skip"><span class="heti-spacing"> </span>VPN<span class="heti-spacing"> </span></span>替换为<span class="heti-skip"><span class="heti-spacing"> </span>PFN<span class="heti-spacing"> </span></span>来转换虚拟地址：</p>
+<div class="highlight"><pre><span></span><code>        +---+---+---+---+---+---+
+VA      | 0 | 1 | 0 | 1 | 0 | 1 |
+        +---+---+---+---+---+---+
+          |   |   |   |   |   |
+   +-------------+|   |   |   |
+   |   Address   ||   |   |   |
+   | Translation ||   |   |   |
+   +-------------+|   |   |   |
+      |   |   |   |   |   |   |
+    +---+---+---+---+---+---+---+
+PA  | 1 | 1 | 1 | 0 | 1 | 0 | 1 |
+    +---+---+---+---+---+---+---+
+</code></pre></div>
+<p>得到最终的物理地址 <code>11110101</code> 十进制 <code>117</code>。</p>
+<h2 id="182"><span>18.2<span class="heti-spacing"> </span></span>页表存在哪里<a class="headerlink" href="#182" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>页表可以存储在操作系统的虚拟内存中：</p>
+<div class="highlight"><pre><span></span><code> 0  +-----------------+
+    |    page table   | page frame 0 of physical memory
+    |     3 7 5 2     |
+16  +-----------------+
+    |     (unused)    | page frame 1
+32  +-----------------+
+    |   page 3 of AS  | page frame 2
+48  +-----------------+
+    |   page 0 of AS  | page frame 3
+64  +-----------------+
+    |     (unused)    | page frame 4
+80  +-----------------+
+    |   page 2 of AS  | page frame 5
+96  +-----------------+
+    |     (unused)    | page frame 6
+112 +-----------------+
+    |   page 1 of AS  | page frame 7
+128 +-----------------+
+</code></pre></div>
+<p>但这种简单结构的页表可能会非常大，让操作系统占用巨大的内存。</p>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>例如，想象一个典型的<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位地址空间，带有<span class="heti-skip"><span class="heti-spacing"> </span>4KB<span class="heti-spacing"> </span></span>的页。这个虚拟地址分成<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>位的<span class="heti-skip"><span class="heti-spacing"> </span>VPN<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>12<span class="heti-spacing"> </span></span>位的偏移量（回想一下，<span>1KB<span class="heti-spacing"> </span></span>的页面大小需要<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>位，只需增加两位即可达到<span><span class="heti-spacing"> </span>4KB</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>一个<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>位的<span class="heti-skip"><span class="heti-spacing"> </span>VPN<span class="heti-spacing"> </span></span>意味着，操作系统必须为每个进程管理<span class="heti-skip"><span class="heti-spacing"> </span>$ 2^{20} $<span class="heti-spacing"> </span></span>个地址转换（大约一百万<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>假设每个页表格条目（PTE）需要<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>个字节，来保存物理地址转换和任何其他有用的东西，每个页表就需要巨大的<span class="heti-skip"><span class="heti-spacing"> </span>4MB<span class="heti-spacing"> </span></span>内存！这非常大。</p>
+<p>现在想象一下有<span class="heti-skip"><span class="heti-spacing"> </span>100<span class="heti-spacing"> </span></span>个进程在运行：这意味着操作系统会需要<span class="heti-skip"><span class="heti-spacing"> </span>400MB<span class="heti-spacing"> </span></span>内存，只是为了所有这些地址转换！</p>
+</div>
+<h2 id="183"><span>18.3<span class="heti-spacing"> </span></span>页表中究竟有什么<a class="headerlink" href="#183" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>页表可以是很多数据结构，最简单的形式成为线性页表，就是一个数组。</p>
+<p>这是<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>的示例页表项<span><span class="heti-spacing"> </span>(PTE)</span>：</p>
+<div class="highlight"><pre><span></span><code>+-----------+-----------+---+-----+---+---+-----+-----+-----+-----+---+
+| 31.....12 | 11......9 | 8 |  7  | 6 | 5 |  4  |  3  |  2  |  1  | 0 |
++-----------+-----------+---+-----+---+---+-----+-----+-----+-----+---+
+|    PFN    | Available | G | PAT | D | A | PCD | PWT | U/S | R/W | P |
++-----------+-----------+---+-----+---+---+-----+-----+-----+-----+---+
+</code></pre></div>
+<ul>
+<li>31.....12 - PFN (Page Frame Number)：页面帧号，表示物理内存中页面的实际地址。</li>
+<li>11......9 - Available：这些位未被硬件使用，可以由操作系统用于其他目的。</li>
+<li>8 - G (Global)：全局页标志，如果设置，表明该页表项对所有进程都是可见的，可以避免在任务切换时清除<span><span class="heti-spacing"> </span>TLB</span>。</li>
+<li>7 - PAT (Page Attribute Table)：页属性表，与<span class="heti-skip"><span class="heti-spacing"> </span>PWT<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>PCD<span class="heti-spacing"> </span></span>位结合使用，提供更详细的内存缓存控制。</li>
+<li>6 - D (Dirty)：脏位，如果设置，表示该页已被写入，即页面内容已被修改。</li>
+<li>5 - A (Accessed)：访问位，如果设置，表示该页已被访问或读取。</li>
+<li>4 - PCD (Page Cache Disable)：禁用页缓存，如果设置，表示不缓存该页面的内容。</li>
+<li>3 - PWT (Page Write Through)：写通位，控制页面的写缓存策略。</li>
+<li>2 - U/S (User / Supervisor)：用户<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>超级用户位，决定页面是否可以被用户模式的进程访问。</li>
+<li>1 - R/W (Read / Write)：读<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>写位，如果设置，页面可以被读写；否则，页面仅为只读。</li>
+<li>0 - P (Present)：存在位，如果设置，表示页面在物理内存中；否则，表示页面不在物理内存中，可能触发页面错误。</li>
+</ul>
+<h2 id="184"><span>18.4<span class="heti-spacing"> </span></span>分页：也很慢<a class="headerlink" href="#184" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>页表不但可能变很大，还可能会让速度变慢。</p>
+<p><code class="highlight"><span class="nf">movl</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="nv">%eax</span></code> 的例子中，系统必须从进程的页表中提取适当的页表项，执行转换，将虚拟地址 <code>21</code> 转换为正确的物理地址 <code>117</code>。</p>
+<p>为此，硬件必须知道进程页表的位置。现在假设一个页表基址寄存器<span class="heti-skip"><span class="heti-spacing"> </span>(page-table base register)<span class="heti-spacing"> </span></span>包含页表的起始位置的物理地址，为了找到想要的<span><span class="heti-spacing"> </span>PTE</span>，硬件将执行以下操作：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Extract the VPN from the virtual address</span>
+<span class="n">VPN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">VirtualAddress</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">VPN_MASK</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">SHIFT</span>
+
+<span class="c1">// Form the address of the page-table entry (PTE)</span>
+<span class="n">PTEAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PTBR</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">VPN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">PTE</span><span class="p">))</span>
+
+<span class="c1">// Fetch the PTE</span>
+<span class="n">PTE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccessMemory</span><span class="p">(</span><span class="n">PTEAddr</span><span class="p">)</span>
+
+<span class="c1">// Check if process can access the page</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">PTE</span><span class="p">.</span><span class="n">Valid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">False</span><span class="p">)</span>
+<span class="w">    </span><span class="n">RaiseException</span><span class="p">(</span><span class="n">SEGMENTATION_FAULT</span><span class="p">)</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CanAccess</span><span class="p">(</span><span class="n">PTE</span><span class="p">.</span><span class="n">ProtectBits</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">False</span><span class="p">)</span>
+<span class="w">    </span><span class="n">RaiseException</span><span class="p">(</span><span class="n">PROTECTION_FAULT</span><span class="p">)</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="c1">// Access OK: form physical address and fetch it</span>
+<span class="w">    </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VirtualAddress</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">OFFSET_MASK</span>
+<span class="w">    </span><span class="n">PhysAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">PTE</span><span class="p">.</span><span class="n">PFN</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">PFN_SHIFT</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">offset</span>
+<span class="w">    </span><span class="n">Register</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccessMemory</span><span class="p">(</span><span class="n">PhysAddr</span><span class="p">)</span>
+</code></pre></div>
+<p>对于每个内存引用，分页都需要我们执行两个内存引用：</p>
+<ul>
+<li>一个到页表查找指令所在的物理帧</li>
+<li>另一个到指令本身将其获取到<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>进行处理</li>
+</ul>
 <h2 id="_1">作业<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<p>1．用以下标志运行程序：./process-run.py -l 5:100,5:100。<span>CPU<span class="heti-spacing"> </span></span>利用率（<span>CPU<span class="heti-spacing"> </span></span>使用时间的百分比）应该是多少？为什么你知道这一点？利用<span class="heti-skip"><span class="heti-spacing"> </span>-c<span class="heti-spacing"> </span></span>标记查看你的答案是否正确。</p>
+<p>1．在做地址转换之前，让我们用模拟器来研究线性页表在给定不同参数的情况下如何改变大小。在不同参数变化时，计算线性页表的大小。一些建议输入如下，通过使用<span class="heti-skip"><span class="heti-spacing"> </span>-v<span class="heti-spacing"> </span></span>标志，你可以看到填充了多少个页表项。</p>
+<p>首先，要理解线性页表大小如何随着地址空间的增长而变化：</p>
+<div class="highlight"><pre><span></span><code>paging-linear-translate.py -P 1k -a 1m -p 512m -v -n 0
+paging-linear-translate.py -P 1k -a 2m -p 512m -v -n 0
+paging-linear-translate.py -P 1k -a 4m -p 512m -v -n 0
+</code></pre></div>
+<p>然后，理解线性页面大小如何随页大小的增长而变化：</p>
+<div class="highlight"><pre><span></span><code>paging-linear-translate.py -P 1k -a 1m -p 512m -v -n 0
+paging-linear-translate.py -P 2k -a 1m -p 512m -v -n 0
+paging-linear-translate.py -P 4k -a 1m -p 512m -v -n 0
+</code></pre></div>
+<p>在运行这些命令之前，请试着想想预期的趋势。页表大小如何随地址空间的增长而改变？随着页大小的增长呢？为什么一般来说，我们不应该使用很大的页呢？</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Answer</p>
-<p><code>5</code> 是指令数量，<code>100</code> 是 <strong>不切换</strong> <span>IO<span class="heti-spacing"> </span></span>的机率，所以这是两个五条指令的纯<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>程序，它们应该会一直使用<span><span class="heti-spacing"> </span>CPU</span> ，利用率为<span><span class="heti-spacing"> </span>100%</span> 。</p>
-<div class="highlight"><span class="filename">python process-run.py -l 5:100,5:100 -c</span><pre><span></span><code>Time        PID: 0        PID: 1           CPU           IOs
-  1        RUN:cpu         READY             1
-  2        RUN:cpu         READY             1
-  3        RUN:cpu         READY             1
-  4        RUN:cpu         READY             1
-  5        RUN:cpu         READY             1
-  6           DONE       RUN:cpu             1
-  7           DONE       RUN:cpu             1
-  8           DONE       RUN:cpu             1
-  9           DONE       RUN:cpu             1
- 10           DONE       RUN:cpu             1
-</code></pre></div>
+<p><code>page-table size = address space / page size</code></p>
+<p>使用很大的页的话，会产生较大的内部碎片，同时页无法细致地控制内存分配。</p>
 </div>
+<hr/>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<p>2．现在用这些标志运行：./process-run.py -l 4:100,1:0。这些标志指定了一个包含<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>条指令的进程（都要使用<span><span class="heti-spacing"> </span>CPU</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，并且只是简单地发出<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>并等待它完成。完成这两个进程需要多长时间？利用<span class="heti-skip"><span class="heti-spacing"> </span>-c<span class="heti-spacing"> </span></span>检查你的答案是否正确。</p>
+<p>2．现在让我们做一些地址转换。从一些小例子开始，使用<span class="heti-skip"><span class="heti-spacing"> </span>-u<span class="heti-spacing"> </span></span>标志更改分配给地址空间的页数。例如：</p>
+<div class="highlight"><pre><span></span><code>paging-linear-translate.py -P 1k -a 16k -p 32k -v -u 0
+paging-linear-translate.py -P 1k -a 16k -p 32k -v -u 25
+paging-linear-translate.py -P 1k -a 16k -p 32k -v -u 50
+paging-linear-translate.py -P 1k -a 16k -p 32k -v -u 75
+paging-linear-translate.py -P 1k -a 16k -p 32k -v -u 100
+</code></pre></div>
+<p>如果增加每个地址空间中的页的百分比，会发生什么？</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Answer</p>
-<p><span>IO<span class="heti-spacing"> </span></span>操作时长默认值是 <code>5</code> ，所以一共需要 <code>4 + 7 = 11</code> 个时间单位，因为 <code>io</code> 和 <code>io_done</code> 操作也占用时间，所以是 <code>7</code> 不是 <code>5</code> 。</p>
-<div class="highlight"><span class="filename">python process-run.py -l 4:100,1:0 -c</span><pre><span></span><code>Time        PID: 0        PID: 1           CPU           IOs
-  1        RUN:cpu         READY             1
-  2        RUN:cpu         READY             1
-  3        RUN:cpu         READY             1
-  4        RUN:cpu         READY             1
-  5           DONE        RUN:io             1
-  6           DONE       BLOCKED                           1
-  7           DONE       BLOCKED                           1
-  8           DONE       BLOCKED                           1
-  9           DONE       BLOCKED                           1
- 10           DONE       BLOCKED                           1
- 11*          DONE   RUN:io_done             1
-</code></pre></div>
+<p>更多被利用的页，空闲空间越来越少。</p>
 </div>
+<hr/>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<p>3．现在交换进程的顺序：./process-run.py -l 1:0,4:100。现在发生了什么？交换顺序是否重要？为什么？同样，用<span class="heti-skip"><span class="heti-spacing"> </span>-c<span class="heti-spacing"> </span></span>看看你的答案是否正确。</p>
+<p>3．现在让我们尝试一些不同的随机种子，以及一些不同的（有时相当疯狂的）地址空间参数：</p>
+<div class="highlight"><pre><span></span><code>paging-linear-translate.py -P 8 -a 32 -p 1024 -v -s 1
+paging-linear-translate.py -P 8k -a 32k -p 1m -v -s 2
+paging-linear-translate.py -P 1m -a 256m -p 512m -v -s 3
+</code></pre></div>
+<p>哪些参数组合是不现实的？为什么？</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Answer</p>
-<p>如果先 <code>RUN:io</code> 的话，就会节省很多时间，因为之前程序<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>结束了才开始<span><span class="heti-spacing"> </span>IO</span> ，浪费了一些。</p>
-<div class="highlight"><span class="filename">python process-run.py -l 1:0,4:100 -c</span><pre><span></span><code>Time        PID: 0        PID: 1           CPU           IOs
-  1         RUN:io         READY             1
-  2        BLOCKED       RUN:cpu             1             1
-  3        BLOCKED       RUN:cpu             1             1
-  4        BLOCKED       RUN:cpu             1             1
-  5        BLOCKED       RUN:cpu             1             1
-  6        BLOCKED          DONE                           1
-  7*   RUN:io_done          DONE             1
-</code></pre></div>
+<p>第三个页表太大。</p>
 </div>
+<hr/>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<p>4．现在探索另一些标志。一个重要的标志是<span><span class="heti-spacing"> </span>-S</span>，它决定了当进程发出<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>时系统如何反应。将标志设置为<span><span class="heti-spacing"> </span>SWITCH_ON_END</span>，在进程进行<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>操作时，系统将不会切换到另一个进程，而是等待进程完成。当你运行以下两个进程时，会发生什么情况？一个执行<span><span class="heti-spacing"> </span>I/O</span>，另一个执行<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>工作<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（-l 1:0,4:100 -c -S SWITCH_ON_END）</p>
+<p>4．利用该程序尝试其他一些问题。你能找到让程序无法工作的限制吗？例如，如果地址空间大小大于物理内存，会发生什么情况？</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Answer</p>
-<p>如果在<span class="heti-skip"><span class="heti-spacing"> </span>IO<span class="heti-spacing"> </span></span>操作的程序不让出<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>的话，其他程序只能一直等待了。</p>
-<div class="highlight"><span class="filename">python process-run.py -l 1:0,4:100 -c -S SWITCH_ON_END</span><pre><span></span><code>Time        PID: 0        PID: 1           CPU           IOs
-  1         RUN:io         READY             1
-  2        BLOCKED         READY                           1
-  3        BLOCKED         READY                           1
-  4        BLOCKED         READY                           1
-  5        BLOCKED         READY                           1
-  6        BLOCKED         READY                           1
-  7*   RUN:io_done         READY             1
-  8           DONE       RUN:cpu             1
-  9           DONE       RUN:cpu             1
- 10           DONE       RUN:cpu             1
- 11           DONE       RUN:cpu             1
-</code></pre></div>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>5．现在，运行相同的进程，但切换行为设置，在等待<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>时切换到另一个进程（-l 1:0,4:100-c -S SWITCH_ON_IO<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。现在会发生什么？利用<span class="heti-skip"><span class="heti-spacing"> </span>-c<span class="heti-spacing"> </span></span>来确认你的答案是否正确。</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Answer</p>
-<p><code>SWITCH_ON_IO</code> 就是默认的参数，所以和上上次运行结果不会有差别。</p>
-<div class="highlight"><span class="filename">python process-run.py -l 1:0,4:100 -c -S SWITCH_ON_IO</span><pre><span></span><code>Time        PID: 0        PID: 1           CPU           IOs
-  1         RUN:io         READY             1
-  2        BLOCKED       RUN:cpu             1             1
-  3        BLOCKED       RUN:cpu             1             1
-  4        BLOCKED       RUN:cpu             1             1
-  5        BLOCKED       RUN:cpu             1             1
-  6        BLOCKED          DONE                           1
-  7*   RUN:io_done          DONE             1
-</code></pre></div>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>6．另一个重要的行为是<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>完成时要做什么。利用<span><span class="heti-spacing"> </span>-I IO_RUN_LATER</span>，当<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>完成时，发出它的进程不一定马上运行。相反，当时运行的进程一直运行。当你运行这个进程组合时会发生什么<heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（./process-run.py -l 3:0,5:100,5:100,5:100 -S SWITCH_ON_IO -I IO_RUN_LATER -c -p）系统资源是否被有效利用？</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Answer</p>
-<p>程序<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>运行完不会立马运行，会切到 <code>READY</code> 状态，等待其他程序交出<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>使用权。<br/>
-浪费了一些系统资源，程序 2 和 3 一直占用着 CPU 导致程序 1 没法进行下一个 IO 操作，如果 IO 操作 与 CPU 操作一起执行就会更节省。</p>
-<div class="highlight"><span class="filename">python process-run.py -l 3:0,5:100,5:100,5:100 -S SWITCH_ON_IO -I IO_RUN_LATER -c -p</span><pre><span></span><code>Time        PID: 0        PID: 1        PID: 2        PID: 3           CPU           IOs
-  1         RUN:io         READY         READY         READY             1
-  2        BLOCKED       RUN:cpu         READY         READY             1             1
-  3        BLOCKED       RUN:cpu         READY         READY             1             1
-  4        BLOCKED       RUN:cpu         READY         READY             1             1
-  5        BLOCKED       RUN:cpu         READY         READY             1             1
-  6        BLOCKED       RUN:cpu         READY         READY             1             1
-  7*         READY          DONE       RUN:cpu         READY             1
-  8          READY          DONE       RUN:cpu         READY             1
-  9          READY          DONE       RUN:cpu         READY             1
- 10          READY          DONE       RUN:cpu         READY             1
- 11          READY          DONE       RUN:cpu         READY             1
- 12          READY          DONE          DONE       RUN:cpu             1
- 13          READY          DONE          DONE       RUN:cpu             1
- 14          READY          DONE          DONE       RUN:cpu             1
- 15          READY          DONE          DONE       RUN:cpu             1
- 16          READY          DONE          DONE       RUN:cpu             1
- 17    RUN:io_done          DONE          DONE          DONE             1
- 18         RUN:io          DONE          DONE          DONE             1
- 19        BLOCKED          DONE          DONE          DONE                           1
- 20        BLOCKED          DONE          DONE          DONE                           1
- 21        BLOCKED          DONE          DONE          DONE                           1
- 22        BLOCKED          DONE          DONE          DONE                           1
- 23        BLOCKED          DONE          DONE          DONE                           1
- 24*   RUN:io_done          DONE          DONE          DONE             1
- 25         RUN:io          DONE          DONE          DONE             1
- 26        BLOCKED          DONE          DONE          DONE                           1
- 27        BLOCKED          DONE          DONE          DONE                           1
- 28        BLOCKED          DONE          DONE          DONE                           1
- 29        BLOCKED          DONE          DONE          DONE                           1
- 30        BLOCKED          DONE          DONE          DONE                           1
- 31*   RUN:io_done          DONE          DONE          DONE             1
-
-Stats: Total Time 31
-Stats: CPU Busy 21 (67.74%)
-Stats: IO Busy  15 (48.39%)
-</code></pre></div>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>7．现在运行相同的进程，但使用<span class="heti-skip"><span class="heti-spacing"> </span>-I IO_RUN_IMMEDIATE<span class="heti-spacing"> </span></span>设置，该设置立即运行发出<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>的进程。这种行为有何不同？为什么运行一个刚刚完成<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>的进程会是一个好主意？</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Answer</p>
-<p><span>I/O<span class="heti-spacing"> </span></span>完成，一般意味着进程已经获得了执行所需的资源。立即运行这样的进程可以减少在准备状态下的等待时间。<br/>
-当然这里因为它只有 IO 操作，所以一直运行它总没错。</p>
-<div class="highlight"><span class="filename">python process-run.py -l 3:0,5:100,5:100,5:100 -S SWITCH_ON_IO -I IO_RUN_IMMEDIATE -c -p</span><pre><span></span><code>Time        PID: 0        PID: 1        PID: 2        PID: 3           CPU           IOs
-  1         RUN:io         READY         READY         READY             1
-  2        BLOCKED       RUN:cpu         READY         READY             1             1
-  3        BLOCKED       RUN:cpu         READY         READY             1             1
-  4        BLOCKED       RUN:cpu         READY         READY             1             1
-  5        BLOCKED       RUN:cpu         READY         READY             1             1
-  6        BLOCKED       RUN:cpu         READY         READY             1             1
-  7*   RUN:io_done          DONE         READY         READY             1
-  8         RUN:io          DONE         READY         READY             1
-  9        BLOCKED          DONE       RUN:cpu         READY             1             1
- 10        BLOCKED          DONE       RUN:cpu         READY             1             1
- 11        BLOCKED          DONE       RUN:cpu         READY             1             1
- 12        BLOCKED          DONE       RUN:cpu         READY             1             1
- 13        BLOCKED          DONE       RUN:cpu         READY             1             1
- 14*   RUN:io_done          DONE          DONE         READY             1
- 15         RUN:io          DONE          DONE         READY             1
- 16        BLOCKED          DONE          DONE       RUN:cpu             1             1
- 17        BLOCKED          DONE          DONE       RUN:cpu             1             1
- 18        BLOCKED          DONE          DONE       RUN:cpu             1             1
- 19        BLOCKED          DONE          DONE       RUN:cpu             1             1
- 20        BLOCKED          DONE          DONE       RUN:cpu             1             1
- 21*   RUN:io_done          DONE          DONE          DONE             1
-
-Stats: Total Time 21
-Stats: CPU Busy 21 (100.00%)
-Stats: IO Busy  15 (71.43%)
-</code></pre></div>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>8．现在运行一些随机生成的进程，例如<span><span class="heti-spacing"> </span>-s 1 -l 3:50,3:50, -s 2 -l 3:50,3:50, -s 3 -l 3:50,3:50</span>。看看你是否能预测追踪记录会如何变化？当你使用<span class="heti-skip"><span class="heti-spacing"> </span>-I IO_RUN_IMMEDIATE<span class="heti-spacing"> </span></span>与<span class="heti-skip"><span class="heti-spacing"> </span>-I IO_RUN_LATER<span class="heti-spacing"> </span></span>时会发生什么？当你使用<span class="heti-skip"><span class="heti-spacing"> </span>-S SWITCH_ON_IO<span class="heti-spacing"> </span></span>与<span class="heti-skip"><span class="heti-spacing"> </span>-S SWITCH_ON_END<span class="heti-spacing"> </span></span>时会发生什么？</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Answer</p>
-<p>累了，测不动了。</p>
+<p>该程序在以下情况下不起作用：</p>
+<ul>
+<li>物理内存大小<span class="heti-skip"><span class="heti-spacing"> </span>&gt;<span class="heti-spacing"> </span></span>地址空间大小；</li>
+<li>页大小<span class="heti-skip"><span class="heti-spacing"> </span>&gt;<span class="heti-spacing"> </span></span>地址空间大小；</li>
+<li>地址空间不是页大小的倍数；</li>
+<li>大小为零或为负。</li>
+</ul>
 </div>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月19日 23:32:34</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月24日 06:28:36</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月16日 07:01:43</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月24日 06:28:36</span>
 </span>
 </aside>
 </article>
@@ -1008,7 +1104,7 @@ Stats: IO Busy  15 (71.43%)
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="上一页: 02.Introduction" class="md-footer__link md-footer__link--prev" href="02introduction.html">
+<a aria-label="上一页: 17.Free Space Management" class="md-footer__link md-footer__link--prev" href="17free_space_management.html">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -1017,17 +1113,17 @@ Stats: IO Busy  15 (71.43%)
                 上一页
               </span>
 <div class="md-ellipsis">
-                02.Introduction
+                17.Free Space Management
               </div>
 </div>
 </a>
-<a aria-label="下一页: 05.Process API" class="md-footer__link md-footer__link--next" href="05process_api.html">
+<a aria-label="下一页: MIT 6.1810" class="md-footer__link md-footer__link--next" href="../mit6.1810.html">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 下一页
               </span>
 <div class="md-ellipsis">
-                05.Process API
+                MIT 6.1810
               </div>
 </div>
 <div class="md-footer__button md-icon">
