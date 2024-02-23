@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://13m0n4de.vercel.app/blog/2024/02/07/checkpoint-%E7%AD%9B%E9%80%89-2024-02-07.html" rel="canonical"/>
-<link href="../17/%E9%80%9A%E8%BF%87-https-%E5%8C%85%E5%90%AB%E5%A4%B4%E6%96%87%E4%BB%B6.html" rel="next"/>
+<link href="https://13m0n4de.vercel.app/blog/2024/02/07/evaluating-and-selecting-sd-models.html" rel="canonical"/>
+<link href="../17/including-c-file-over-https.html" rel="next"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-9.5.7" name="generator"/>
-<title>Checkpoint 筛选 2024-02-07 - 13m0n4de's notebook</title>
+<title>Evaluating and Selecting SD Models - 13m0n4de's notebook</title>
 <link href="../../../../assets/stylesheets/main.f2e4d321.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/iframe-worker/shim"></script>
@@ -36,7 +36,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#checkpoint-2024-02-07">
+<a class="md-skip" href="#evaluating-and-selecting-sd-models">
           跳转至
         </a>
 </div>
@@ -60,7 +60,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Checkpoint 筛选 2024-02-07
+              Evaluating and Selecting SD Models
             
           </span>
 </div>
@@ -1047,13 +1047,7 @@
 </div>
 </div>
 <article class="md-content__inner md-typeset">
-<h1 id="checkpoint-2024-02-07"><span>Checkpoint<span class="heti-spacing"> </span></span>筛选<span><span class="heti-spacing"> </span>2024-02-07</span><a class="headerlink" href="#checkpoint-2024-02-07" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>由于<span><span class="heti-spacing"> </span>CFG</span>、Ksampler、<span>Steps<span class="heti-spacing"> </span></span>关联性强，不太适合拆开分析，所以 <code>Ksampler &amp; Steps</code> 小节里，固定<span class="heti-skip"><span class="heti-spacing"> </span>CFG<span class="heti-spacing"> </span></span>值，变动采样器和和步数的方式，并不能完全完全体现采样器在模型上的工作情况<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（有的采样器需要特殊的<span><span class="heti-spacing"> </span>CFG</span> ，不同的<span class="heti-skip"><span class="heti-spacing"> </span>CFG<span class="heti-spacing"> </span></span>也需要不同的步数来配合）</p>
-<p>所以现在认为此部分内容不太具有分析意义，在下次筛选时会制作<span class="heti-skip"><span class="heti-spacing"> </span>X/Y/Z<span class="heti-spacing"> </span></span>图表，将三个参数都纳作变量。</p>
-<p>不过，还是在过程中还是发现了各个模型的问题和特性。</p>
-</div>
+<h1 id="evaluating-and-selecting-sd-models">Evaluating and Selecting SD Models<a class="headerlink" href="#evaluating-and-selecting-sd-models" title="Permanent link">¶</a></h1>
 <p>这次筛选是用于虚拟小说的原型设计，基本需求有：</p>
 <ul>
 <li>干净的人物立绘（与背景区别明显，便于抠图）</li>
@@ -1065,6 +1059,12 @@
 <li>室内室外、不同时间段的场景</li>
 </ul>
 <!-- more -->
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>由于<span><span class="heti-spacing"> </span>CFG</span>、Ksampler、<span>Steps<span class="heti-spacing"> </span></span>关联性强，不太适合拆开分析，所以 <code>Ksampler &amp; Steps</code> 小节里，固定<span class="heti-skip"><span class="heti-spacing"> </span>CFG<span class="heti-spacing"> </span></span>值，变动采样器和和步数的方式，并不能完全完全体现采样器在模型上的工作情况<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（有的采样器需要特殊的<span><span class="heti-spacing"> </span>CFG</span> ，不同的<span class="heti-skip"><span class="heti-spacing"> </span>CFG<span class="heti-spacing"> </span></span>也需要不同的步数来配合）</p>
+<p>所以现在认为此部分内容不太具有分析意义，在下次筛选时会制作<span class="heti-skip"><span class="heti-spacing"> </span>X/Y/Z<span class="heti-spacing"> </span></span>图表，将三个参数都纳作变量。</p>
+<p>不过，还是在过程中还是发现了各个模型的问题和特性。</p>
+</div>
 <p>初选的五个模型（画风在<span class="heti-skip"><span class="heti-spacing"> </span>2D ~ 2.5D<span class="heti-spacing"> </span></span>之间<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
 <ul>
 <li><a href="https://civitai.com/models/4468/counterfeit-v30">Counterfeit-V3.0</a></li>
@@ -1399,7 +1399,7 @@
 <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../../../assets/images/blog/checkpoint_selection_2024-02-07/aom3_xy_cfg_girl_1.png"><img alt="aom3_xy_cfg_girl_1" src="../../../../assets/images/blog/checkpoint_selection_2024-02-07/aom3_xy_cfg_girl_1.png"/></a></p>
 <p><code>1girl</code> -&gt; <code>1boy</code>，<code>maid</code> -&gt; <code>maid dress</code></p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../../../assets/images/blog/checkpoint_selection_2024-02-07/aom3_xy_cfg_boy.png"><img alt="aom3_xy_cfg_boy" src="../../../../assets/images/blog/checkpoint_selection_2024-02-07/aom3_xy_cfg_boy.png"/></a></p>
-<p><del>（好幼）</del></p>
+<p>~<sub>（好幼）~</sub></p>
 <p>还好算不上画女硬说男。</p>
 <p>在<span class="heti-skip"><span class="heti-spacing"> </span>CFG<span class="heti-spacing"> </span></span>低于 <code>7.0</code> 时，一些特征出不来，比如狼耳、雀斑。</p>
 <p>而且有时会出现背景复杂的情况。</p>
@@ -1962,7 +1962,7 @@
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月15日 12:13:32</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月24日 06:38:27</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
@@ -1982,13 +1982,13 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="下一页: 通过 HTTPS 包含头文件" class="md-footer__link md-footer__link--next" href="../17/%E9%80%9A%E8%BF%87-https-%E5%8C%85%E5%90%AB%E5%A4%B4%E6%96%87%E4%BB%B6.html">
+<a aria-label="下一页: Including C File Over HTTPS" class="md-footer__link md-footer__link--next" href="../17/including-c-file-over-https.html">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 下一页
               </span>
 <div class="md-ellipsis">
-                通过 HTTPS 包含头文件
+                Including C File Over HTTPS
               </div>
 </div>
 <div class="md-footer__button md-icon">
