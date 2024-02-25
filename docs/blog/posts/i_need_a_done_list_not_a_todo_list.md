@@ -6,7 +6,7 @@ categories:
 
 # I Need a Done List, Not a Todo List
 
-笔记本有个 [Todo List](../../todo.md)，记录着许多待办事项。
+笔记本有个 Todo List，记录着许多待办事项。
 
 然后它们就一直待办。
 
