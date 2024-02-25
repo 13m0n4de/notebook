@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-02-25":
+    - newpage:
+          text: Blog > I Need a Done List, Not a Todo List 
+          href: blog/2024/02/25/i-need-a-done-list-not-a-todo-list.html
   - "2024-02-24":
     - newpage:
           text: CS > OS > OSTEP > 18.Introduction to Paging
