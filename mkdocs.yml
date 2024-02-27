@@ -149,6 +149,7 @@ nav:
         - 17.Free Space Management: cs/os/ostep/17free_space_management.md
         - 18.Introduction to Paging: cs/os/ostep/18introduction_to_paging.md
         - 19.Translation Lookaside Buffers: cs/os/ostep/19translation_lookaside_buffers.md
+        - 20.Advanced Page Tables: cs/os/ostep/20advanced_page_tables.md
       - MIT 6.1810: cs/os/mit6.1810.md
       - rCore: cs/os/rcore.md
     - Compiler:
