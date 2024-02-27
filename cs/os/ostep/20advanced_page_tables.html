@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://13m0n4de.vercel.app/cs/os/ostep/16segmentation.html" rel="canonical"/>
-<link href="15address_translation.html" rel="prev"/>
-<link href="17free_space_management.html" rel="next"/>
+<link href="https://13m0n4de.vercel.app/cs/os/ostep/20advanced_page_tables.html" rel="canonical"/>
+<link href="19translation_lookaside_buffers.html" rel="prev"/>
+<link href="../mit6.1810.html" rel="next"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-9.5.7" name="generator"/>
-<title>16.Segmentation - 13m0n4de's notebook</title>
+<title>20.Advanced Page Tables - 13m0n4de's notebook</title>
 <link href="../../../assets/stylesheets/main.f2e4d321.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/iframe-worker/shim"></script>
@@ -37,7 +37,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#16">
+<a class="md-skip" href="#20">
           跳转至
         </a>
 </div>
@@ -61,7 +61,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              16.Segmentation
+              20.Advanced Page Tables
             
           </span>
 </div>
@@ -454,76 +454,12 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-<span class="md-ellipsis">
-    16.Segmentation
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="16segmentation.html">
+<li class="md-nav__item">
+<a class="md-nav__link" href="16segmentation.html">
 <span class="md-ellipsis">
     16.Segmentation
   </span>
 </a>
-<nav aria-label="目录" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#161">
-<span class="md-ellipsis">
-      16.1 分段：泛化的基址/界限
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#162">
-<span class="md-ellipsis">
-      16.2 我们引用哪个段
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#163">
-<span class="md-ellipsis">
-      16.3 栈怎么办
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#164">
-<span class="md-ellipsis">
-      16.4 支持共享
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#165">
-<span class="md-ellipsis">
-      16.5 细粒度与粗粒度的分段
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#166">
-<span class="md-ellipsis">
-      16.6 操作系统支持
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_1">
-<span class="md-ellipsis">
-      作业
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="17free_space_management.html">
@@ -546,12 +482,94 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="20advanced_page_tables.html">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    20.Advanced Page Tables
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="20advanced_page_tables.html">
 <span class="md-ellipsis">
     20.Advanced Page Tables
   </span>
 </a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#201">
+<span class="md-ellipsis">
+      20.1 简单的解决方案：更大的页
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#202">
+<span class="md-ellipsis">
+      20.2 混合方法：分页和分段
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#203">
+<span class="md-ellipsis">
+      20.3 多级页表
+    </span>
+</a>
+<nav aria-label="20.3 多级页表" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      详细的多级示例
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      超过两级
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tlb">
+<span class="md-ellipsis">
+      地址转换过程：记住 TLB
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#204-inverted-page-table">
+<span class="md-ellipsis">
+      20.4 反向页表 (inverted page table)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#205">
+<span class="md-ellipsis">
+      20.5 将页表交换到磁盘
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      作业
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -833,49 +851,67 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#161">
+<a class="md-nav__link" href="#201">
 <span class="md-ellipsis">
-      16.1 分段：泛化的基址/界限
+      20.1 简单的解决方案：更大的页
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#162">
+<a class="md-nav__link" href="#202">
 <span class="md-ellipsis">
-      16.2 我们引用哪个段
+      20.2 混合方法：分页和分段
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#163">
+<a class="md-nav__link" href="#203">
 <span class="md-ellipsis">
-      16.3 栈怎么办
+      20.3 多级页表
     </span>
 </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#164">
-<span class="md-ellipsis">
-      16.4 支持共享
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#165">
-<span class="md-ellipsis">
-      16.5 细粒度与粗粒度的分段
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#166">
-<span class="md-ellipsis">
-      16.6 操作系统支持
-    </span>
-</a>
-</li>
+<nav aria-label="20.3 多级页表" class="md-nav">
+<ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      详细的多级示例
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      超过两级
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tlb">
+<span class="md-ellipsis">
+      地址转换过程：记住 TLB
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#204-inverted-page-table">
+<span class="md-ellipsis">
+      20.4 反向页表 (inverted page table)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#205">
+<span class="md-ellipsis">
+      20.5 将页表交换到磁盘
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
 <span class="md-ellipsis">
       作业
     </span>
@@ -888,441 +924,236 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="16">第<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>章 分段<a class="headerlink" href="#16" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
-<p>之前一直将所有进程的地址空间完整地加载到内存中，栈和堆之间，有一大块“空闲”空间。</p>
-<p>另外，如果剩余的物理内存无法提供连续区域来放置完整的地址空间，进程便无法运行。</p>
-<p>这章讲的就是如何使用 <strong>分段<span><span class="heti-spacing"> </span>(Segmentation)</span></strong> 解决它们。</p>
-<h2 id="161"><span>16.1<span class="heti-spacing"> </span></span>分段：泛化的基址<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>界限<a class="headerlink" href="#161" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>分段<span class="heti-skip"><span class="heti-spacing"> </span>(segmentation)<span class="heti-spacing"> </span></span>指的是将地址空间分为多个逻辑段<span><span class="heti-spacing"> </span>(segment)</span>，给每个逻辑段都引入一对基址<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>界限寄存器。</p>
-<p>一个段只是地址空间里的一个 <strong>连续定长</strong> 的区域，在典型的地址空间中有三个逻辑不同的段：代码、栈、和堆<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（实际更多）</p>
-<table>
-<thead>
-<tr>
-<th>Virtual Address</th>
-<th>Data</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0 KB - 2 KB</td>
-<td>Code</td>
-</tr>
-<tr>
-<td>2 KB - 4 KB</td>
-<td>(free)</td>
-</tr>
-<tr>
-<td>4 KB - 7 KB</td>
-<td>Heap ↓</td>
-</tr>
-<tr>
-<td>7 KB - 14 KB</td>
-<td>(free)</td>
-</tr>
-<tr>
-<td>14 KB - 16 KB</td>
-<td>Stack ↑</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Physics Address</th>
-<th>Data</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0 KB - 16 KB</td>
-<td>OS</td>
-</tr>
-<tr>
-<td>16 KB - 26 KB</td>
-<td>(not in use)</td>
-</tr>
-<tr>
-<td>26 KB - 28 KB</td>
-<td>Stack ↑</td>
-</tr>
-<tr>
-<td>28 KB - 32 KB</td>
-<td>(not in use)</td>
-</tr>
-<tr>
-<td>32 KB - 34 KB</td>
-<td>Code</td>
-</tr>
-<tr>
-<td>34 KB - 37 KB</td>
-<td>Heap ↓</td>
-</tr>
-<tr>
-<td>37 KB - 64 KB</td>
-<td>(not in use)</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Segment</th>
-<th>Base</th>
-<th>Size</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Code</td>
-<td>32 KB</td>
-<td>2 KB</td>
-</tr>
-<tr>
-<td>Heap</td>
-<td>34 KB</td>
-<td>3 KB</td>
-</tr>
-<tr>
-<td>Stack</td>
-<td>28 KB</td>
-<td>2 KB</td>
-</tr>
-</tbody>
-</table>
-<p>假设现在要引用虚拟地址<span><span class="heti-spacing"> </span>100</span>（在代码段中<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<span>MMU<span class="heti-spacing"> </span></span>将基址值加上偏移量<span class="heti-skip"><span class="heti-spacing"> </span>(100)<span class="heti-spacing"> </span></span>得到实际的物理地址：100 + 32 KB = 32868。</p>
-<p>然后它会检查该地址是否在界限内（<span>100<span class="heti-spacing"> </span></span>小于<span><span class="heti-spacing"> </span>2 KB</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，发现是的，于是发起对物理地址<span class="heti-skip"><span class="heti-spacing"> </span>32868<span class="heti-spacing"> </span></span>的引用。</p>
-<p>如果是虚拟地址<span><span class="heti-spacing"> </span>4200</span>，它在堆上，不应该用它直接加上基址<span><span class="heti-spacing"> </span>34 KB</span>，而是应该首先减去堆的偏移量，即该地址指的是这个段中的哪个字节。</p>
-<p>因为堆从虚拟地址<span class="heti-skip"><span class="heti-spacing"> </span>4 K (4096)<span class="heti-spacing"> </span></span>开始，<span>4200<span class="heti-spacing"> </span></span>的偏移量实际上是<span><span class="heti-spacing"> </span>4200 - 4096 = 104</span>，然后用这个偏移量<span><span class="heti-spacing"> </span>(104)</span>，加上基址寄存器中的物理地址<span><span class="heti-spacing"> </span>(34 KB)</span>，得到真正的物理地址<span><span class="heti-spacing"> </span>34920</span>。</p>
-<h2 id="162"><span>16.2<span class="heti-spacing"> </span></span>我们引用哪个段<a class="headerlink" href="#162" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>硬件在地址转换时使用段寄存器。</p>
+<h1 id="20">第<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>章 分页：较小的表<a class="headerlink" href="#20" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<p>上章解决了速度问题，这章解决内存问题。</p>
+<p>总之就是三种方案：</p>
 <ul>
-<li>它如何知道段内的偏移量？</li>
-<li>它如何知道地址引用哪个段？</li>
+<li>使用更大的页，页更大，页表就更小；</li>
+<li>使用分段和分页混合，减少一些无效区域；</li>
+<li>改进页表的结构，从线性改为树或其他结构。</li>
 </ul>
-<p>显式<span class="heti-skip"><span class="heti-spacing"> </span>(explicit)<span class="heti-spacing"> </span></span>方式：用虚拟地址的开头几位标识不同的段。</p>
-<div class="highlight"><pre><span></span><code>13 12 11 10 09 08 07 06 05 04 03 02 01 00
-^   ^ ^                                 ^
-+---+ +---------------------------------+
-  段                偏移量
-</code></pre></div>
-<p>在之前的例子中，如果前两位是 <code>00</code> 硬件就知道是属于代码段的地址，如果前两位是 <code>01</code> 则是堆地址。</p>
-<p>虚拟地址<span class="heti-skip"><span class="heti-spacing"> </span>4200<span class="heti-spacing"> </span></span>的二进制形式如下：</p>
-<div class="highlight"><pre><span></span><code>13 12 11 10 09 08 07 06 05 04 03 02 01 00
- 0  1  0  0  0  0  0  1  1  0  1  0  0  0
- ^  ^  ^                                ^
- +--+  +--------------------------------+
-  段                偏移量
-</code></pre></div>
-<p>隐式<span class="heti-skip"><span class="heti-spacing"> </span>(implicit)<span class="heti-spacing"> </span></span>方式：硬件通过地址产生的方式来确定段。例如，地址由程序计数产生，那么它在代码段。如果是基于栈或基址指针，它一定在栈段。其他地址则在堆段。</p>
-<p>听着就好不靠谱啊。</p>
-<h2 id="163"><span>16.3<span class="heti-spacing"> </span></span>栈怎么办<a class="headerlink" href="#163" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>栈比较特殊，它反向增长，硬件需要额外保存段的增长方向。</p>
-<table>
-<thead>
-<tr>
-<th>Segment</th>
-<th>Base</th>
-<th>Size (max 4 K)</th>
-<th>Grows Positive?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Code <code>00</code></td>
-<td>32 KB</td>
-<td>2 KB</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Heap <code>01</code></td>
-<td>34 KB</td>
-<td>3 KB</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Stack <code>11</code></td>
-<td>28 KB</td>
-<td>2 KB</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<p>假设要访问虚拟地址<span><span class="heti-spacing"> </span>15 KB</span>，它应该映射到物理地址<span><span class="heti-spacing"> </span>27 KB</span>。</p>
-<p>该虚拟地址的二进制形式是：<code>11 1100 0000 0000</code>。</p>
-<p>前两位 <code>11</code> 指定栈段，后几位 <code>1100 0000 0000</code> 指定偏移量<span><span class="heti-spacing"> </span>3 KB</span>。</p>
-<p>为了得到正确的反向偏移，需要用<span class="heti-skip"><span class="heti-spacing"> </span>3 KB<span class="heti-spacing"> </span></span>减去最大段地址<span><span class="heti-spacing"> </span>4 KB</span>，得到反向偏移量<span><span class="heti-spacing"> </span>-1 KB</span>。</p>
-<p>再用反向偏移量加上基址，得到正确的物理地址<span><span class="heti-spacing"> </span>-1 KB + 28 KB = 27 KB</span>。</p>
-<h2 id="164"><span>16.4<span class="heti-spacing"> </span></span>支持共享<a class="headerlink" href="#164" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>在一些地址空间之间共享某些内存段可以节省内存。</p>
-<p>为了支持共享，需要添加新的功能，保护位<span><span class="heti-spacing"> </span>(protection bit)</span>，用于标识程序能否读写该段，或执行其中代码。</p>
-<p>通过将代码段标记为可读可执行，同样的代码可以被多个进程共享，而不用担心破坏隔离。</p>
-<table>
-<thead>
-<tr>
-<th>Segment</th>
-<th>Base</th>
-<th>Size (max 4 K)</th>
-<th>Grows Positive?</th>
-<th>Protection</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Code <code>00</code></td>
-<td>32 KB</td>
-<td>2 KB</td>
-<td>1</td>
-<td>Read-Excute</td>
-</tr>
-<tr>
-<td>Heap <code>01</code></td>
-<td>34 KB</td>
-<td>3 KB</td>
-<td>1</td>
-<td>Read-Write</td>
-</tr>
-<tr>
-<td>Stack <code>11</code></td>
-<td>28 KB</td>
-<td>2 KB</td>
-<td>0</td>
-<td>Read-Write</td>
-</tr>
-</tbody>
-</table>
-<p>现在，除了需要检查虚拟地址是否越界，还需要检查特定访问是否允许（符合权限<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
-<h2 id="165"><span>16.5<span class="heti-spacing"> </span></span>细粒度与粗粒度的分段<a class="headerlink" href="#165" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<div class="admonition quote">
-<p class="admonition-title">Quote</p>
-<p>目前为止，我们的例子大多针对只有很少的几个段的系统（即代码、栈、堆<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。
-我们可以认为这种分段是粗粒度的（coarse-grained），因为它将地址空间分成较大的、粗粒度的块。
-但是，一些早期系统（如 Multics）更灵活，允许将地址空间划分为大量较小的段，这被称为细粒度（fine-grained）分段。</p>
-<p>支持许多段需要进一步的硬件支持，并在内存中保存某种段表（segment table<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。
-这种段表通常支持创建非常多的段，因此系统使用段的方式，可以比之前讨论的方式更灵活。
-例如，像 Burroughs B5000 这样的早期机器可以支持成千上万的段，有了操作系统和硬件的支持，编译器可以将代码段和数据段划分为许多不同的部分。
-当时的考虑是，通过更细粒度的段，操作系统可以更好地了解哪些段在使用哪些没有，从而可以更高效地利用内存。</p>
-</div>
-<h2 id="166"><span>16.6<span class="heti-spacing"> </span></span>操作系统支持<a class="headerlink" href="#166" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>分段给操作系统带来了一些新任务：</p>
-<ul>
-<li>在上下文切换时需要保存各个段寄存器内容；</li>
-<li>管理物理内存的空闲空间，操作系统需要为新建的地址空间找到物理内存中的空闲位置。</li>
-</ul>
-<p>第二个任务会遇到一个问题：物理内存很快就充满了许多空闲空间的小洞，因而很难分配给新的段，或扩大已有的段。这种问题被成为外部碎片<span><span class="heti-spacing"> </span>(external fragmentation)</span>。</p>
-<p>非紧凑物理内存：</p>
-<table>
-<thead>
-<tr>
-<th>Address</th>
-<th>Data</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0 kB - 16 kB</td>
-<td>OS</td>
-</tr>
-<tr>
-<td>16 kB - 24 kB</td>
-<td>(not in use)</td>
-</tr>
-<tr>
-<td>24 kB - 32 kB</td>
-<td>Allocated</td>
-</tr>
-<tr>
-<td>32 kB - 40 kB</td>
-<td>(not in use)</td>
-</tr>
-<tr>
-<td>40 kB - 48 kB</td>
-<td>Allocated</td>
-</tr>
-<tr>
-<td>48 kB - 56 kB</td>
-<td>(not in use)</td>
-</tr>
-<tr>
-<td>56 kB - 64 kB</td>
-<td>Allocated</td>
-</tr>
-</tbody>
-</table>
-<p>紧凑物理内存：</p>
-<table>
-<thead>
-<tr>
-<th>Address</th>
-<th>Data</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0 kB - 16 kB</td>
-<td>OS</td>
-</tr>
-<tr>
-<td>16 kB - 40 kB</td>
-<td>Allocated</td>
-</tr>
-<tr>
-<td>40 kB - 64 kB</td>
-<td>(not in use)</td>
-</tr>
-</tbody>
-</table>
-<p>紧凑物理内存会重新安排原有的段，终止相关进程，再将它们的数据复制到连续的内存区域中去，改变它们的段寄存器中的值，指向新的物理地址。</p>
-<p>但是内存紧凑成本很高，因为拷贝段是内存密集型的，会占用大量的处理器时间。</p>
-<p>一种更简单的做法是利用空闲列表管理算法，试图保留大的内存块用于分配。</p>
-<p>相关算法有成百上千种：</p>
-<ul>
-<li>best-fit</li>
-<li>worst-fit</li>
-<li>first-fit</li>
-<li>buddy</li>
-</ul>
-<div class="admonition quote">
-<p class="admonition-title">提示：如果有一千个解决方案，就没有特别好的</p>
-<p>存在如此多不同的算法来尝试减少外部碎片，正说明了解决这个问题没有最好的办法。
-因此我们满足于找到一个合理的足够好的方案。
-唯一真正的解决办法就是（我们会在后续章节看到），完全避免这个问题，永远不要分配不同大小的内存块。</p>
-</div>
-<h2 id="_1">作业<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>1．先让我们用一个小地址空间来转换一些地址。这里有一组简单的参数和几个不同的随机种子。你可以转换这些地址吗？</p>
-<div class="highlight"><pre><span></span><code>segmentation.py -a 128 -p 512 -b 0 -l 20 -B 512 -L 20 -s 0
-segmentation.py -a 128 -p 512 -b 0 -l 20 -B 512 -L 20 -s 1
-segmentation.py -a 128 -p 512 -b 0 -l 20 -B 512 -L 20 -s 2
-</code></pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Answer</p>
-<div class="highlight"><span class="filename">./segmentation.py -a 128 -p 512 -b 0 -l 20 -B 512 -L 20 -s 0</span><pre><span></span><code>ARG seed 0
-ARG address space size 128
-ARG phys mem size 512
-
-Segment register information:
-
-  Segment 0 base  (grows positive) : 0x00000000 (decimal 0)
-  Segment 0 limit                  : 20
-
-  Segment 1 base  (grows negative) : 0x00000200 (decimal 512)
-  Segment 1 limit                  : 20
-
-Virtual Address Trace
-  VA  0: 0x0000006c (decimal:  108) --&gt; PA or segmentation violation?
-  VA  1: 0x00000061 (decimal:   97) --&gt; PA or segmentation violation?
-  VA  2: 0x00000035 (decimal:   53) --&gt; PA or segmentation violation?
-  VA  3: 0x00000021 (decimal:   33) --&gt; PA or segmentation violation?
-  VA  4: 0x00000041 (decimal:   65) --&gt; PA or segmentation violation?
-</code></pre></div>
-<p><code>0x0000006c</code> -&gt; <code>1101100</code>，最高位为 <code>1</code>，128 - 108 = 20，20 = 20，正好在界限内，所以<span class="heti-skip"><span class="heti-spacing"> </span>VA 0<span class="heti-spacing"> </span></span>合法。
-<code>0x00000061</code> -&gt; <code>1100001</code>，最高位为 <code>1</code>，128 - 97 = 23，23 &gt; 20，超过了界限，VA 1 不合法。
-<code>0x00000035</code> -&gt; <code>0110101</code>，最高位为 <code>0</code>，53 &gt; 20，超过了界限，VA 2 不合法。</p>
-<p>以此类推。</p>
-</div>
-<hr/>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
+<h2 id="201"><span>20.1<span class="heti-spacing"> </span></span>简单的解决方案：更大的页<a class="headerlink" href="#201" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>很简单的思路，页更大，表就更小。</p>
+<p>但这种方法之前的作业里就发现了有问题，大内存页会导致每页内的浪费，称为内部碎片<span><span class="heti-spacing"> </span>(internal fragmentation)</span>。</p>
+<p>所以大多数系统在常见的情况下使用相对较小的页大小：<span>4 KB<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>8 KB</span>。</p>
+<h2 id="202"><span>20.2<span class="heti-spacing"> </span></span>混合方法：分页和分段<a class="headerlink" href="#202" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>就我的个人感受，任何事情最悲哀的情况都是在两种方案中找折中，两害相权。</p>
+<p>混合的方法不能完美地解决一件事情，却总是带来双倍的复杂度。</p>
+<p>这节说的混合方法就是为进程的每个逻辑分段提供一个页表，而非为整个地址空间提供一个页表。</p>
+<p>因为不是所有分段的页表都会同时活跃，通过精细控制哪些分段被加载和映射，可以减少页表的总体大小<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（比如栈和堆之间未分配的页不再占用页表中的空间）</p>
+<p>但是，分段的缺点被带了进来，外部碎片再次出现，也让原先的分页机制变得不够灵活。</p>
+<h2 id="203"><span>20.3<span class="heti-spacing"> </span></span>多级页表<a class="headerlink" href="#203" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>这种方法不依赖分段，但也试图解决相同的问题：<strong>如何去掉页表中的所有无效区域，而不是将它们全部保留在内存中？</strong></p>
+<p>多级页表<span><span class="heti-spacing"> </span>(multi-level page table)</span>，将线性页表变成了类似树的东西。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../../assets/images/cs/os/ostep/20-2.png"><img alt="20-2" src="../../../assets/images/cs/os/ostep/20-2.png"/></a></p>
+<p class="annotate">多级页表是有成本的，当<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中时，需要从内存加载两次<span><span class="heti-spacing"> </span>(1)</span>，才能从页表中获取正确的地址转换信息（一次用于页目录，另一次用于<span class="heti-skip"><span class="heti-spacing"> </span>PTE<span class="heti-spacing"> </span></span>用于页目录，另一次用于<span class="heti-skip"><span class="heti-spacing"> </span>PTE<span class="heti-spacing"> </span></span>本身<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <ol>
-<li>现在，让我们看看是否理解了这个构建的小地址空间（使用上面问题的参数<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。段<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>中最高的合法虚拟地址是什么？段<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>中最低的合法虚拟地址是什么？在整个地址空间中，最低和最高的非法地址是什么？最后，如何运行带有<span class="heti-skip"><span class="heti-spacing"> </span>-A<span class="heti-spacing"> </span></span>标志的<span class="heti-skip"><span class="heti-spacing"> </span>segmentation.py<span class="heti-spacing"> </span></span>来测试你是否正确？</li>
+<li>这就是为什么<a href="https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter4/3sv39-implementation-1.html#tlb"><span class="heti-skip"><span class="heti-spacing"> </span>rCore<span class="heti-spacing"> </span></span>里关于<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>的部分</a> 说“将一个虚拟地址转化为物理地址需要访问<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>次物理内存”，它指的是多级页表的情况，而<span class="heti-skip"><span class="heti-spacing"> </span>OSTEP<span class="heti-spacing"> </span></span>前几章节说的都是线性页表，只有<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>次。</li>
 </ol>
+<p>因此，多级表是一个时间——空间折中<span class="heti-skip"><span class="heti-spacing"> </span>(time-space trade-off)<span class="heti-spacing"> </span></span>的例子，得到更小的表的同时，也付出了代价。</p>
+<div class="admonition quote">
+<p class="admonition-title">提示：理解时空折中</p>
+<p>在构建数据结构时，应始终考虑时间和空间的折中<span><span class="heti-spacing"> </span>(time-space trade-off)</span>。
+通常，如果你希望更快地访问特定的数据结构，就必须为该结构付出空间的代价。</p>
+</div>
+<p>另一个明显的缺点是复杂性，但只要得到的收益远高过成本，这些复杂性就是可接受的。</p>
+<h3 id="_1">详细的多级示例<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><span>16 KB<span class="heti-spacing"> </span></span>的地址空间和<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>字节的页：</p>
+<div class="highlight"><pre><span></span><code>          +--------+
+0000 0000 |  code  |
+          +--------+
+0000 0001 |  code  |
+          +--------+
+0000 0010 | (free) |
+          +--------+
+0000 0011 | (free) |
+          +--------+
+0000 0100 |  heap  |
+          +--------+
+0000 0101 |  heap  |
+          +--------+
+0000 0110 | (free) |
+          +--------+
+0000 0111 | (free) |
+          +--------+
+.... ....  all free
+          +--------+
+1111 1100 | (free) |
+          +--------+
+1111 1101 | (free) |
+          +--------+
+1111 1110 | stack  |
+          +--------+
+1111 1111 | stack  |
+          +--------+
+</code></pre></div>
+<p>我们需要<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>位的<span><span class="heti-spacing"> </span>VPN</span>，其中前四位用来索引目录，后四位用来索引页表。</p>
+<div class="highlight"><pre><span></span><code>           VPN                offset
++-----------------------+-----------------+
+|13|12|11|10|09|08|07|06|05|04|03|02|01|00|
++-----------+-----------+
+      |           |
+      |           +------ Page Table Index
+      |
+
+Page Directory Index
+</code></pre></div>
+<p>我们可以通过简单的计算来找到页目录项<span class="heti-skip"><span class="heti-spacing"> </span>(PDE)<span class="heti-spacing"> </span></span>的地址，再通过 <code class="highlight"><span class="n">PDEAddr</span></code> 和 <code class="highlight"><span class="n">PTIndex</span></code> 计算得到<span class="heti-skip"><span class="heti-spacing"> </span>PTE<span class="heti-spacing"> </span></span>的地址：</p>
+<div class="highlight"><pre><span></span><code><span class="n">PDEAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PageDirBase</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">PDIndex</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">PDE</span><span class="p">))</span>
+<span class="n">PTEAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">PDE</span><span class="p">.</span><span class="n">PFN</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">SHIFT</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">PTIndex</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">PTE</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="_2">超过两级<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>页目录太大时，我们很可能得构建更深层次的多级页表。</p>
+<p>拓展<span class="heti-skip"><span class="heti-spacing"> </span>VPN<span class="heti-spacing"> </span></span>的位数，成为<code>PDIndex[0]</code><span><span class="heti-spacing"> </span>+</span><code>PDIndex[1]</code><span><span class="heti-spacing"> </span>+</span> <code>PTIndex</code>。</p>
+<p>先使用 <code>PDIndex[0]</code> 索引第一级目录，再使用 <code>PDIndex[1]</code> 索引第二级目录，继而得到<span class="heti-skip"><span class="heti-spacing"> </span>PTE<span class="heti-spacing"> </span></span>地址。</p>
+<h3 id="tlb">地址转换过程：记住<span><span class="heti-spacing"> </span>TLB</span><a class="headerlink" href="#tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>在任何复杂的多级页表访问发生之前，硬件首先检查<span><span class="heti-spacing"> </span>TLB</span>。在命中时，物理地址直接形成，而不像之前一样访问页表。</p>
+<p>只有在<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中时，硬件才需要执行完整的多级查找。在这条路径上，可以看到传统的两级页表的成本：两次额外的内存访问来查找有效的转换映射。</p>
+<div class="highlight"><pre><span></span><code><span class="n">VPN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">VirtualAddress</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">VPN_MASK</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">SHIFT</span>
+<span class="p">(</span><span class="n">Success</span><span class="p">,</span><span class="w"> </span><span class="n">TlbEntry</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TLB_Lookup</span><span class="p">(</span><span class="n">VPN</span><span class="p">)</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Success</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">True</span><span class="p">)</span><span class="w"> </span><span class="c1">// TLB Hit</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CanAccess</span><span class="p">(</span><span class="n">TlbEntry</span><span class="p">.</span><span class="n">ProtectBits</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">True</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VirtualAddress</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">OFFSET_MASK</span>
+<span class="w">        </span><span class="n">PhysAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TlbEntry</span><span class="p">.</span><span class="n">PFN</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">SHIFT</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Offset</span>
+<span class="w">        </span><span class="n">Register</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccessMemory</span><span class="p">(</span><span class="n">PhysAddr</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">RaiseException</span><span class="p">(</span><span class="n">PROTECTION_FAULT</span><span class="p">)</span>
+<span class="k">else</span><span class="w"> </span><span class="c1">// TLB Miss</span>
+<span class="w">    </span><span class="c1">// first, get page directory entry</span>
+<span class="w">    </span><span class="n">PDIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">VPN</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">PD_MASK</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">PD_SHIFT</span>
+<span class="w">    </span><span class="n">PDEAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDBR</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">PDIndex</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">PDE</span><span class="p">))</span>
+<span class="w">    </span><span class="n">PDE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccessMemory</span><span class="p">(</span><span class="n">PDEAddr</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">PDE</span><span class="p">.</span><span class="n">Valid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">False</span><span class="p">)</span>
+<span class="w">        </span><span class="n">RaiseException</span><span class="p">(</span><span class="n">SEGMENTATION_FAULT</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="c1">// PDE is valid: now fetch PTE from page table</span>
+<span class="w">        </span><span class="n">PTIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">VPN</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">PT_MASK</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">PT_SHIFT</span>
+<span class="w">        </span><span class="n">PTEAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">PDE</span><span class="p">.</span><span class="n">PFN</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">SHIFT</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">PTIndex</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">PTE</span><span class="p">))</span>
+<span class="w">        </span><span class="n">PTE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccessMemory</span><span class="p">(</span><span class="n">PTEAddr</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">PTE</span><span class="p">.</span><span class="n">Valid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">False</span><span class="p">)</span>
+<span class="w">            </span><span class="n">RaiseException</span><span class="p">(</span><span class="n">SEGMENTATION_FAULT</span><span class="p">)</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CanAccess</span><span class="p">(</span><span class="n">PTE</span><span class="p">.</span><span class="n">ProtectBits</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">False</span><span class="p">)</span>
+<span class="w">            </span><span class="n">RaiseException</span><span class="p">(</span><span class="n">PROTECTION_FAULT</span><span class="p">)</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="n">TLB_Insert</span><span class="p">(</span><span class="n">VPN</span><span class="p">,</span><span class="w"> </span><span class="n">PTE</span><span class="p">.</span><span class="n">PFN</span><span class="p">,</span><span class="w"> </span><span class="n">PTE</span><span class="p">.</span><span class="n">ProtectBits</span><span class="p">)</span>
+<span class="w">            </span><span class="n">RetryInstruction</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="204-inverted-page-table"><span>20.4<span class="heti-spacing"> </span></span>反向页表<span><span class="heti-spacing"> </span>(inverted page table)</span><a class="headerlink" href="#204-inverted-page-table" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>这种设计中直接维护一个全局的页表，直接索引物理内存页，用于所有进程，以此减少页表大小。</p>
+<p>缺点是查找需要遍历整个表，导致搜索更慢，所以有时在基础结构上建立散列表，以加速查找。</p>
+<p>而由于是全局的，维护成本更大。</p>
+<h2 id="205"><span>20.5<span class="heti-spacing"> </span></span>将页表交换到磁盘<a class="headerlink" href="#205" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>即使我们可以通过各种技巧减小页表的大小，但是它仍然有可能是太大而无法一次装入内存。</p>
+<p>因此，在系统内存压力较大时，可以将这些页表的一部分交换<span class="heti-skip"><span class="heti-spacing"> </span>(swap)<span class="heti-spacing"> </span></span>到磁盘。</p>
+<p>这是下几章的内容了。</p>
+<h2 id="_3">作业<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>1．对于线性页表，你需要一个寄存器来定位页表，假设硬件在<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中时进行查找。你需要多少个寄存器才能找到两级页表？三级页表呢？</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Answer</p>
-<p>基于上题第一条命令，段<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>最高合法虚拟地址是 <code>0x19</code>，段<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>最低合法虚拟地址是 <code>0x6c</code></p>
-<div class="highlight"><span class="filename">./segmentation.py -a 128 -p 512 -b 0 -l 20 -B 512 -L 20 -s 1 -A 19,108,20,107 -c</span><pre><span></span><code>ARG seed 1
-ARG address space size 128
-ARG phys mem size 512
-
-Segment register information:
-
-  Segment 0 base  (grows positive) : 0x00000000 (decimal 0)
-  Segment 0 limit                  : 20
-
-  Segment 1 base  (grows negative) : 0x00000200 (decimal 512)
-  Segment 1 limit                  : 20
-
-Virtual Address Trace
-  VA  0: 0x00000013 (decimal:   19) --&gt; VALID in SEG0: 0x00000013 (decimal:   19)
-  VA  1: 0x0000006c (decimal:  108) --&gt; VALID in SEG1: 0x000001ec (decimal:  492)
-  VA  2: 0x00000014 (decimal:   20) --&gt; SEGMENTATION VIOLATION (SEG0)
-  VA  3: 0x0000006b (decimal:  107) --&gt; SEGMENTATION VIOLATION (SEG1)
-</code></pre></div>
+<p>只需要一个顶级页目录的基地址寄存器。</p>
 </div>
 <hr/>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<p>3．假设我们在一个<span class="heti-skip"><span class="heti-spacing"> </span>128<span class="heti-spacing"> </span></span>字节的物理内存中有一个很小的<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>字节地址空间。你会设置什么样的基址和界限，以便让模拟器为指定的地址流生成以下转换结果：有效，有效，违规，违反，有效，有效？假设用以下参数：</p>
-<div class="highlight"><pre><span></span><code>segmentation.py -a 16 -p 128
--A 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
---b0 ? --l0 ? --b1 ? --l1 ?
-</code></pre></div>
+<p>2．使用模拟器对随机种子<span><span class="heti-spacing"> </span>0</span>、<span>1<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>执行翻译，并使用<span class="heti-skip"><span class="heti-spacing"> </span>-c<span class="heti-spacing"> </span></span>标志检查你的答案。需要多少内存引用来执行每次查找？</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Answer</p>
-<div class="highlight"><span class="filename">./segmentation.py -a 16 -p 128 -A 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 --b0 0 --l0 2 --b1 16 --l1 2 -c</span><pre><span></span><code>ARG seed 0
-ARG address space size 16
-ARG phys mem size 128
-
-Segment register information:
-
-  Segment 0 base  (grows positive) : 0x00000000 (decimal 0)
-  Segment 0 limit                  : 2
-
-  Segment 1 base  (grows negative) : 0x00000010 (decimal 16)
-  Segment 1 limit                  : 2
-
-Virtual Address Trace
-  VA  0: 0x00000000 (decimal:    0) --&gt; VALID in SEG0: 0x00000000 (decimal:    0)
-  VA  1: 0x00000001 (decimal:    1) --&gt; VALID in SEG0: 0x00000001 (decimal:    1)
-  VA  2: 0x00000002 (decimal:    2) --&gt; SEGMENTATION VIOLATION (SEG0)
-  VA  3: 0x00000003 (decimal:    3) --&gt; SEGMENTATION VIOLATION (SEG0)
-  VA  4: 0x00000004 (decimal:    4) --&gt; SEGMENTATION VIOLATION (SEG0)
-  VA  5: 0x00000005 (decimal:    5) --&gt; SEGMENTATION VIOLATION (SEG0)
-  VA  6: 0x00000006 (decimal:    6) --&gt; SEGMENTATION VIOLATION (SEG0)
-  VA  7: 0x00000007 (decimal:    7) --&gt; SEGMENTATION VIOLATION (SEG0)
-  VA  8: 0x00000008 (decimal:    8) --&gt; SEGMENTATION VIOLATION (SEG1)
-  VA  9: 0x00000009 (decimal:    9) --&gt; SEGMENTATION VIOLATION (SEG1)
-  VA 10: 0x0000000a (decimal:   10) --&gt; SEGMENTATION VIOLATION (SEG1)
-  VA 11: 0x0000000b (decimal:   11) --&gt; SEGMENTATION VIOLATION (SEG1)
-  VA 12: 0x0000000c (decimal:   12) --&gt; SEGMENTATION VIOLATION (SEG1)
-  VA 13: 0x0000000d (decimal:   13) --&gt; SEGMENTATION VIOLATION (SEG1)
-  VA 14: 0x0000000e (decimal:   14) --&gt; VALID in SEG1: 0x0000000e (decimal:   14)
-  VA 15: 0x0000000f (decimal:   15) --&gt; VALID in SEG1: 0x0000000f (decimal:   15)
+<p>一运行直接黑客帝国，字符冲进眼睛里把我本就容量不足的脑袋整宕机了。</p>
+<p>简单计算一个吧，<code>0x611c</code>，页目录在 <code>page 108</code>：</p>
+<table>
+<thead>
+<tr>
+<th>PDIndex</th>
+<th>PTIndex</th>
+<th>OFFSET</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11000</td>
+<td>01000</td>
+<td>11100</td>
+</tr>
+<tr>
+<td>24</td>
+<td>8</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><span class="filename">page 108</span><pre><span></span><code>83 fe e0 da 7f d4 7f eb be 9e d5 ad e4 ac 90 d6 92 d8 c1 f8 9f e1 ed e9 a1 e8 c7 c2 a9 d1 db ff
+                                                                        ^^
+                                                                        PDE
 </code></pre></div>
+<p><code>0xa1</code> 首位是有效位：</p>
+<table>
+<thead>
+<tr>
+<th>Valid</th>
+<th>PDE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0100001</td>
+</tr>
+<tr>
+<td></td>
+<td>33</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><span class="filename">page 33</span><pre><span></span><code>7f 7f 7f 7f 7f 7f 7f 7f b5 7f 9d 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f f6 b1 7f 7f 7f 7f
+                        ^^
+                        PTE
+</code></pre></div>
+<p><code>b5</code> 首位是有效位：</p>
+<table>
+<thead>
+<tr>
+<th>Valid</th>
+<th>PFN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0110101</td>
+</tr>
+</tbody>
+</table>
+<p>所以最终地址是 <code>PFN + OFFSET</code> 为 <code>011010111100</code>，也就是 <code>0x6bc</code></p>
 </div>
 <hr/>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<p>4．假设我们想要生成一个问题，其中大约<span class="heti-skip"><span class="heti-spacing"> </span>90%<span class="heti-spacing"> </span></span>的随机生成的虚拟地址是有效的（即不产生段异常<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。你应该如何配置模拟器来做到这一点？哪些参数很重要？</p>
+<p>3．根据你对缓存内存的工作原理的理解，你认为对页表的内存引用如何在缓存中工作？它们是否会导致大量的缓存命中（并导致快速访问）或者很多未命中（并导致访问缓慢<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>？</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Answer</p>
-<p>界限调整到地址空间的<span><span class="heti-spacing"> </span>90%</span>：<code>-l</code> = 0.9 * <code>-a</code>。</p>
-</div>
-<hr/>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>5．你可以运行模拟器，使所有虚拟地址无效吗？怎么做到？</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Answer</p>
-<p>把界限调成<span><span class="heti-spacing"> </span>0</span>，<code>-l 0 -L 0</code></p>
+<p>顶级页目录表适合时间局部性，因为它在每次<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中时被访问。</p>
+<p>页条目表适合空间局部性。</p>
 </div>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月21日 10:10:00</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月27日 17:32:26</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月21日 10:10:00</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月27日 17:32:26</span>
 </span>
 </aside>
 </article>
@@ -1336,7 +1167,7 @@ Virtual Address Trace
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="上一页: 15.Address Translation" class="md-footer__link md-footer__link--prev" href="15address_translation.html">
+<a aria-label="上一页: 19.Translation Lookaside Buffers" class="md-footer__link md-footer__link--prev" href="19translation_lookaside_buffers.html">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -1345,17 +1176,17 @@ Virtual Address Trace
                 上一页
               </span>
 <div class="md-ellipsis">
-                15.Address Translation
+                19.Translation Lookaside Buffers
               </div>
 </div>
 </a>
-<a aria-label="下一页: 17.Free Space Management" class="md-footer__link md-footer__link--next" href="17free_space_management.html">
+<a aria-label="下一页: MIT 6.1810" class="md-footer__link md-footer__link--next" href="../mit6.1810.html">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 下一页
               </span>
 <div class="md-ellipsis">
-                17.Free Space Management
+                MIT 6.1810
               </div>
 </div>
 <div class="md-footer__button md-icon">
