@@ -4,9 +4,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://13m0n4de.vercel.app/cs/os/ostep/19translation_lookaside_buffers.html" rel="canonical"/>
+<link href="18introduction_to_paging.html" rel="prev"/>
+<link href="../mit6.1810.html" rel="next"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-9.5.7" name="generator"/>
-<title>第 19 章 分页：快速地址转换（TLB） - 13m0n4de's notebook</title>
+<title>19.Translation Lookaside Buffers - 13m0n4de's notebook</title>
 <link href="../../../assets/stylesheets/main.f2e4d321.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/iframe-worker/shim"></script>
@@ -59,7 +61,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              第 19 章 分页：快速地址转换（TLB）
+              19.Translation Lookaside Buffers
             
           </span>
 </div>
@@ -133,7 +135,7 @@
 
         </a>
 </li>
-<li class="md-tabs__item">
+<li class="md-tabs__item md-tabs__item--active">
 <a class="md-tabs__link" href="../../index.html">
           
   
@@ -254,8 +256,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
 <a class="md-nav__link" href="../../index.html">
 <span class="md-ellipsis">
@@ -266,7 +268,7 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_2">
 <span class="md-nav__icon md-icon"></span>
             Computer Science
@@ -339,8 +341,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
 <a class="md-nav__link" href="../index.html">
 <span class="md-ellipsis">
@@ -351,14 +353,14 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_2_3">
 <span class="md-nav__icon md-icon"></span>
             Operating System
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
 <a class="md-nav__link" href="index.html">
 <span class="md-ellipsis">
@@ -369,7 +371,7 @@
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-expanded="false" aria-labelledby="__nav_2_3_2_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="true" aria-labelledby="__nav_2_3_2_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_2_3_2">
 <span class="md-nav__icon md-icon"></span>
             OSTEP
@@ -472,6 +474,84 @@
     18.Introduction to Paging
   </span>
 </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    19.Translation Lookaside Buffers
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="19translation_lookaside_buffers.html">
+<span class="md-ellipsis">
+    19.Translation Lookaside Buffers
+  </span>
+</a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#191-tlb">
+<span class="md-ellipsis">
+      19.1 TLB 的基本算法
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#192">
+<span class="md-ellipsis">
+      19.2 示例：访问数组
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#193-tlb">
+<span class="md-ellipsis">
+      19.3 谁来处理 TLB 未命中
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#194-tlb">
+<span class="md-ellipsis">
+      19.4 TLB 的内容
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#195-tlb">
+<span class="md-ellipsis">
+      19.5 上下文切换时对 TLB 的处理
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#196-tlb">
+<span class="md-ellipsis">
+      19.6 TLB 替换策略
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#197-tlb">
+<span class="md-ellipsis">
+      19.7 实际系统的 TLB 表项
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      作业
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -747,25 +827,456 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#191-tlb">
+<span class="md-ellipsis">
+      19.1 TLB 的基本算法
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#192">
+<span class="md-ellipsis">
+      19.2 示例：访问数组
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#193-tlb">
+<span class="md-ellipsis">
+      19.3 谁来处理 TLB 未命中
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#194-tlb">
+<span class="md-ellipsis">
+      19.4 TLB 的内容
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#195-tlb">
+<span class="md-ellipsis">
+      19.5 上下文切换时对 TLB 的处理
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#196-tlb">
+<span class="md-ellipsis">
+      19.6 TLB 替换策略
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#197-tlb">
+<span class="md-ellipsis">
+      19.7 实际系统的 TLB 表项
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      作业
+    </span>
+</a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="19-tlb">第<span class="heti-skip"><span class="heti-spacing"> </span>19<span class="heti-spacing"> </span></span>章 分页：快速地址转换（TLB）<a class="headerlink" href="#19-tlb" title="Permanent link">¶</a></h1>
+<h1 id="19-tlb">第<span class="heti-skip"><span class="heti-spacing"> </span>19<span class="heti-spacing"> </span></span>章 分页：快速地址转换<span><span class="heti-spacing"> </span>(TLB)</span><a class="headerlink" href="#19-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<p>在分页中，每次指令获取、加载和保存，都要额外读一次内存，慢得无法接受。</p>
+<p>这一章介绍了硬件———— <strong>地址转换旁路缓冲器<span><span class="heti-spacing"> </span>(translation-lookaside-buffer)</span></strong>，每次内存访问时，硬件先检查<span><span class="heti-spacing"> </span>TLB</span>，如果存在匹配的映射，就直接完成转换，不用访问页表。</p>
+<p>叫这个名称是历史原因，更好的名称是 <strong>地址转换缓存<span><span class="heti-spacing"> </span>(address-translation cache)</span></strong>，当然也可以叫 <strong>快表</strong>，我喜欢快表这个简短的名字。</p>
+<p>与<span class="heti-skip"><span class="heti-spacing"> </span>CPU L1 L2 L3 Cache<span class="heti-spacing"> </span></span>的缓存不同，<span>TLB<span class="heti-spacing"> </span></span>仅拥有映射，不会复制内容。</p>
+<h2 id="191-tlb"><span>19.1 TLB<span class="heti-spacing"> </span></span>的基本算法<a class="headerlink" href="#191-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">VPN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">VirtualAddress</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">VPN_MASK</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">SHIFT</span>
+<span class="p">(</span><span class="n">Success</span><span class="p">,</span><span class="w"> </span><span class="n">TlbEntry</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TLB_Lookup</span><span class="p">(</span><span class="n">VPN</span><span class="p">)</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Success</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">True</span><span class="p">)</span><span class="w"> </span><span class="c1">// TLB Hit</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CanAccess</span><span class="p">(</span><span class="n">TlbEntry</span><span class="p">.</span><span class="n">ProtectBits</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">True</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VirtualAddress</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">OFFSET_MASK</span>
+<span class="w">        </span><span class="n">PhysAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TlbEntry</span><span class="p">.</span><span class="n">PFN</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">SHIFT</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Offset</span>
+<span class="w">        </span><span class="n">AccessMemory</span><span class="p">(</span><span class="n">PhysAddr</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">RaiseException</span><span class="p">(</span><span class="n">PROTECTION_FAULT</span><span class="p">)</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="n">PTEAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PTBR</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">VPN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">PTE</span><span class="p">))</span>
+<span class="w">    </span><span class="n">PTE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccessMemory</span><span class="p">(</span><span class="n">PTEAddr</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">PTE</span><span class="p">.</span><span class="n">Valid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">False</span><span class="p">)</span>
+<span class="w">        </span><span class="n">RaiseException</span><span class="p">(</span><span class="n">SEGMENTATION_FAULT</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CanAccess</span><span class="p">(</span><span class="n">PTE</span><span class="p">.</span><span class="n">ProtectBits</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">False</span><span class="p">)</span>
+<span class="w">        </span><span class="n">RaiseException</span><span class="p">(</span><span class="n">PROTECTION_FAULT</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">TLB_Insert</span><span class="p">(</span><span class="n">VPN</span><span class="p">,</span><span class="w"> </span><span class="n">PTE</span><span class="p">.</span><span class="n">PFN</span><span class="p">,</span><span class="w"> </span><span class="n">PTE</span><span class="p">.</span><span class="n">ProtectBits</span><span class="p">)</span>
+<span class="w">        </span><span class="n">RetryInstruction</span><span class="p">()</span>
+</code></pre></div>
+<p>缓存命中时，直接取出<span class="heti-skip"><span class="heti-spacing"> </span>PFN<span class="heti-spacing"> </span></span><code class="highlight"><span class="n">TlbEntry</span><span class="p">.</span><span class="n">PFN</span></code>与虚拟地址中的 <code class="highlight"><span class="n">Offset</span></code> 组成物理地址 <code>#c! PhysAddr</code>。</p>
+<p>缓存没有命中时，就得从庞大的页表中查询了，所以我们希望尽可能避免<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中。</p>
+<h2 id="192"><span>19.2<span class="heti-spacing"> </span></span>示例：访问数组<a class="headerlink" href="#192" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>小地址空间中的一个数组：</p>
+<div class="highlight"><pre><span></span><code>         00     04     08     12     16
+         +------+------+------+------+
+VPN = 00 |                           |
+         +---------------------------+
+VPN = 01 |                           |
+         +---------------------------+
+VPN = 02 |                           |
+         +---------------------------+
+VPN = 03 |                           |
+         +---------------------------+
+VPN = 04 |                           |
+         +---------------------------+
+VPN = 05 |                           |
+         +---------------------------+
+VPN = 06 |      | a[0] | a[1] | a[2] |
+         +---------------------------+
+VPN = 07 | a[3] | a[4] | a[5] | a[6] |
+         +---------------------------+
+VPN = 08 | a[7] | a[8] | a[9] |      |
+         +---------------------------+
+VPN = 09 |                           |
+         +---------------------------+
+VPN = 10 |                           |
+         +---------------------------+
+VPN = 11 |                           |
+         +---------------------------+
+VPN = 12 |                           |
+         +---------------------------+
+VPN = 13 |                           |
+         +---------------------------+
+VPN = 14 |                           |
+         +---------------------------+
+VPN = 15 |                           |
+         +---------------------------+
+</code></pre></div>
+<p>遍历数组的过程：</p>
+<ul>
+<li><code>a[0]</code>：提取<span class="heti-skip"><span class="heti-spacing"> </span>VPN<span class="heti-spacing"> </span></span><code>06</code>检查<span><span class="heti-spacing"> </span>TLB</span>，未命中；</li>
+<li><code>a[1]</code>：与 <code>a[0]</code> 在同一页，<span>TLB<span class="heti-spacing"> </span></span>命中；</li>
+<li><code>a[2]</code>：同上，<span>TLB<span class="heti-spacing"> </span></span>命中；</li>
+<li><code>a[3]</code>：<span>TLB<span class="heti-spacing"> </span></span>未命中；</li>
+<li><code>a[4]</code>：<span>TLB<span class="heti-spacing"> </span></span>命中；</li>
+<li><code>a[5]</code>：<span>TLB<span class="heti-spacing"> </span></span>命中；</li>
+<li><code>a[6]</code>：<span>TLB<span class="heti-spacing"> </span></span>命中；</li>
+<li><code>a[7]</code>：<span>TLB<span class="heti-spacing"> </span></span>未命中；</li>
+<li><code>a[8]</code>：<span>TLB<span class="heti-spacing"> </span></span>命中；</li>
+<li><code>a[9]</code>：<span>TLB<span class="heti-spacing"> </span></span>命中。</li>
+</ul>
+<p>命中率为<span><span class="heti-spacing"> </span>70%</span>，已经提升不少了，如果页大小变得更大，数组访问遇到的未命中就更少。</p>
+<p>典型页的大小一般为<span><span class="heti-spacing"> </span>4 KB</span>，这种情况下，密集的、基于数组的访问会实现极好的<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>性能。</p>
+<p>缓存是计算机系统中最基本的性能改进技术之一，一次又一次地用于让“常见的情况更快”，硬件缓存背后的思想是利用指令和数据引用的局部性<span><span class="heti-spacing"> </span>(locality)</span>。</p>
+<p>通常有两种局部性：
+时间局部性 (temporal locality)：
+: 最近访问过的指令或数据项可能很快会再次访问。想想循环中的循环变量或指令，它们被多次反复访问。</p>
+<dl>
+<dt>空间局部性<span><span class="heti-spacing"> </span>(spatial locality)</span>：</dt>
+<dd>程序访问内存地址<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>时，可能很快会访问邻近<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>的内存。想想遍历某种数组，访问一个接一个的元素。</dd>
+</dl>
+<h2 id="193-tlb"><span>19.3<span class="heti-spacing"> </span></span>谁来处理<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中<a class="headerlink" href="#193-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<dl>
+<dt>硬件处理：</dt>
+<dd>通过页表基址寄存器记录页表地址，发生<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中时直接遍历页表。</dd>
+<dt>软件（操作系统）处理：</dt>
+<dd>发生<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中时系统抛出一个异常，将特权级提升至内核态，跳转至陷阱处理程序<span><span class="heti-spacing"> </span>(trap handler)</span>。</dd>
+<dd>这个陷阱处理程序会查找页表中的转换映射，然后更新<span><span class="heti-spacing"> </span>TLB</span>，并从陷阱返回。此时，硬件会重试该指令（导致<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>命中<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</dd>
+</dl>
+<p>现代操作系统中大多都是软件处理。</p>
+<p>这里的陷阱返回稍不同于系统调用时的陷阱返回，后者继续执行陷入操作系统之后的那条指令，但前者必须从导致陷入的指令继续执行，这次重试会命中<span><span class="heti-spacing"> </span>TLB</span>。</p>
+<p>因此，根据陷阱或异常的原因，系统在陷入内核时必须保存不同的程序计数器。</p>
+<p>在运行<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中处理代码时，需要格外小心避免引起<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中的无限递归。有很多解决方案，例如：</p>
+<ul>
+<li>把<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中陷阱处理程序直接放到物理内存中（它们没有映射过，不用经过地址转换<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；</li>
+<li>在<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>中保留一些项，记录永久有效的地址转换，并将其中一些永久地址转换槽块留给处理代码本身，这些被监听的地址转换总是会命中<span><span class="heti-spacing"> </span>TLB</span>。</li>
+</ul>
+<p>软件管理的方法，有两个主要优势：</p>
+<ul>
+<li><strong>灵活性</strong>：操作系统可以用任意数据结构来实现页表，不需要改变硬件；</li>
+<li><strong>简单性</strong>：从<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>控制流中可以看出，硬件不需要做太多工作，它抛出异常，操作系统的处理程序会负责剩下工作。</li>
+</ul>
+<h2 id="194-tlb"><span>19.4 TLB<span class="heti-spacing"> </span></span>的内容<a class="headerlink" href="#194-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="highlight"><pre><span></span><code>VPN | PFN | other bits
+</code></pre></div>
+<p><span>VPN<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>PFN<span class="heti-spacing"> </span></span>同时存在于<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>中，因为一条地址映射可能出现在任意位置（用硬件的术语，<span>TLB<span class="heti-spacing"> </span></span>被称为全相联的<span class="heti-skip"><span class="heti-spacing"> </span>(fully-associative)<span class="heti-spacing"> </span></span>缓存<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，硬件可以并行地查找这些项。</p>
+<div class="admonition quote">
+<p class="admonition-title">补充：<span>TLB<span class="heti-spacing"> </span></span>的有效位<span class="heti-skip"><span class="heti-spacing"> </span>!=<span class="heti-spacing"> </span></span>页表的有效位</p>
+<p>常见的错误是混淆<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>的有效位和页表的有效位。
+在页表中，如果一个页表项（PTE）被标记为无效，就意味着该页并没有被进程申请使用，正常运行的程序不应该访问该地址。
+当程序试图访问这样的页时，就会陷入操作系统，操作系统会杀掉该进程。</p>
+<p><span>TLB<span class="heti-spacing"> </span></span>的有效位不同，只是指出<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>项是不是有效的地址映射。
+例如，系统启动时，所有的 TLB 项通常被初始化为无效状态，因为还没有地址转换映射被缓存在这里。
+一旦启用虚拟内存，当程序开始运行，访问自己的虚拟地址，TLB 就会慢慢地被填满，因此有效的项很快会充满 TLB。</p>
+<p><span>TLB<span class="heti-spacing"> </span></span>有效位在系统上下文切换时起到了很重要的作用，后面我们会进一步讨论。
+通过将所有 TLB项设置为无效，系统可以确保将要运行的进程不会错误地使用前一个进程的虚拟到物理地址转换映射。</p>
+</div>
+<h2 id="195-tlb"><span>19.5<span class="heti-spacing"> </span></span>上下文切换时对<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>的处理<a class="headerlink" href="#195-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>示例<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>的内容：</p>
+<table>
+<thead>
+<tr>
+<th>VPN</th>
+<th>PFN</th>
+<th>valid</th>
+<th>prot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>100</td>
+<td>1</td>
+<td>rwx</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>10</td>
+<td>100</td>
+<td>1</td>
+<td>rwx</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>0</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>缓存了两个进程的地址映射，都是<span><span class="heti-spacing"> </span>10 -&gt; 100</span>，硬件分不清哪项属于哪个进程。</p>
+<p>解决问题：<strong>如果发生进程间上下文切换，上一个进程在<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>中的地址映射对于即将运行的进程是无意义，硬件或操作系统应该如何管理<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>的内容呢？</strong></p>
+<ul>
+<li>方案一：在上下文切换时，简单地清空<span><span class="heti-spacing"> </span>TLB</span>，会有一定开销；</li>
+<li>方案二：添加硬件支持，实现跨上下文切换的<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>共享。</li>
+</ul>
+<p>比如有的系统在<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>中添加一个地址空间标识符<span><span class="heti-spacing"> </span>(Address Space Identifier, ASID)</span>，可以把<span class="heti-skip"><span class="heti-spacing"> </span>ASID<span class="heti-spacing"> </span></span>看作是进程标识符，但通常比<span class="heti-skip"><span class="heti-spacing"> </span>PID<span class="heti-spacing"> </span></span>位数少。</p>
+<table>
+<thead>
+<tr>
+<th>VPN</th>
+<th>PFN</th>
+<th>valid</th>
+<th>prot</th>
+<th>ASID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>100</td>
+<td>1</td>
+<td>rwx</td>
+<td>1</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>0</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>100</td>
+<td>1</td>
+<td>rwx</td>
+<td>2</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>0</td>
+<td>-</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>当然，硬件也需要知道当前是哪个进程正在运行，因此操作系统在上下文切换时，必须将某个特权寄存器设置为当前进程的<span><span class="heti-spacing"> </span>ASID</span>。</p>
+<h2 id="196-tlb"><span>19.6 TLB<span class="heti-spacing"> </span></span>替换策略<a class="headerlink" href="#196-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p><span>TLB<span class="heti-spacing"> </span></span>和其他缓存一样，还有一个问题要考虑，即缓存替换<span><span class="heti-spacing"> </span>(cache replacement)</span>。</p>
+<p>具体来说，向<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>中插入新项时，会替换<span class="heti-skip"><span class="heti-spacing"> </span>(replace)<span class="heti-spacing"> </span></span>一个旧项，这样问题就来了：应该替换那一个？</p>
+<ul>
+<li>策略一：替换最近最少使用的项，尝试利用局部性；</li>
+<li>策略二：随机，避免极端情况。</li>
+</ul>
+<h2 id="197-tlb"><span>19.7<span class="heti-spacing"> </span></span>实际系统的<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>表项<a class="headerlink" href="#197-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>真实的<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>案例，来自<span><span class="heti-spacing"> </span>MISP R4000</span>：</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../../assets/images/cs/os/ostep/19-7.png"><img alt="19-7" src="../../../assets/images/cs/os/ostep/19-7.png"/></a></p>
+<p><span>MIPS R4000<span class="heti-spacing"> </span></span>支持<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位的地址空间，页大小为<span><span class="heti-spacing"> </span>4 KB</span>，在典型的虚拟地址中，理应看到<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>位的<span class="heti-skip"><span class="heti-spacing"> </span>VPN<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>12<span class="heti-spacing"> </span></span>位的偏移量。</p>
+<p>但是，实际的<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>中只有<span class="heti-skip"><span class="heti-spacing"> </span>19<span class="heti-spacing"> </span></span>位的<span><span class="heti-spacing"> </span>VPN</span>。事实上，用户地址只占地址空间的一半（剩下的留给内核<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，所以只需要<span class="heti-skip"><span class="heti-spacing"> </span>19<span class="heti-spacing"> </span></span>位的<span><span class="heti-spacing"> </span>VPN</span>。</p>
+<p><span>VPN<span class="heti-spacing"> </span></span>转换成最大<span class="heti-skip"><span class="heti-spacing"> </span>24<span class="heti-spacing"> </span></span>位的<span><span class="heti-spacing"> </span>PFN</span>，因此可以支持最多有<span class="heti-skip"><span class="heti-spacing"> </span>64 GB<span class="heti-spacing"> </span></span>的物理内存的系统。</p>
+<p><span>MIPS TLB<span class="heti-spacing"> </span></span>还有一些有趣的标志位：</p>
+<ul>
+<li>全局位<span><span class="heti-spacing"> </span>(Global, G)</span>：用来指示这个页是不是所有进程全局共享的，如果为<span><span class="heti-spacing"> </span>1</span>，就会忽略<span><span class="heti-spacing"> </span>ASID</span>；</li>
+<li>一致性位<span><span class="heti-spacing"> </span>(Coherence, C)</span>：决定硬件如何缓存该页；</li>
+<li>脏位<span><span class="heti-spacing"> </span>(Dirty, D)</span>：表示该页是否被写入新数据；</li>
+<li>有效位<span><span class="heti-spacing"> </span>(Valid, V)</span>：告诉硬件该项的地址映射是否有效；</li>
+</ul>
+<h2 id="_1">作业<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>最不想写作业的一次。</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>1．为了计时，可能需要一个计时器，例如<span class="heti-skip"><span class="heti-spacing"> </span>gettimeofday()<span class="heti-spacing"> </span></span>提供的。这种计时器的精度如何？操作要花多少时间，才能让你对它精确计时<heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（这有助于确定需要循环多少次，反复访问内存页，才能对它成功计时<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>）</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<div class="highlight"><span class="filename">man gettimeofday</span><pre><span></span><code>DESCRIPTION
+       The gettimeofday() function shall obtain the current time, expressed as seconds and microseconds since the Epoch, and  store  it in the timeval structure pointed to by tp.  The resolution of the system clock is unspecified.
+</code></pre></div>
+<p>说是最低微秒，想要获得纳秒级精度的结果需要重复测量计算平均值。</p>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>2．写一个程序，命名为<span><span class="heti-spacing"> </span>tlb.c</span>，大体测算一下每个页的平均访问时间。程序的输入参数有：页的数目和尝试的次数。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>没有具体实现思路，搬了<a href="https://github.com/xxyzz/ostep-hw/blob/master/19/tlb.c"><span><span class="heti-spacing"> </span>https://github.com/xxyzz/ostep-hw/blob/master/19/tlb.c</span></a>。</p>
+<div class="highlight"><span class="filename">tlb.c</span><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1">   // printf, fprintf</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="c1">  // exit, calloc, free</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span><span class="c1">    // clock_gettime</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span><span class="c1">  // sysconf</span>
+
+<span class="cp">#define handle_error(msg)   \</span>
+<span class="cp">    do {                    \</span>
+<span class="cp">        perror(msg);        \</span>
+<span class="cp">        exit(EXIT_FAILURE); \</span>
+<span class="cp">    } while (0)</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">"Usage: %s pages trials</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">PAGESIZE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sysconf</span><span class="p">(</span><span class="n">_SC_PAGESIZE</span><span class="p">);</span><span class="w">  </span><span class="c1">// 4096</span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">jump</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PAGESIZE</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span><span class="w">     </span><span class="c1">// 1024</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">pages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">trials</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pages</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">trials</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">"Invalid input</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calloc</span><span class="p">(</span><span class="n">pages</span><span class="p">,</span><span class="w"> </span><span class="n">PAGESIZE</span><span class="p">);</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">timespec</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">clock_gettime</span><span class="p">(</span><span class="n">CLOCK_PROCESS_CPUTIME_ID</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span>
+<span class="w">        </span><span class="n">handle_error</span><span class="p">(</span><span class="s">"clock_gettime"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">trials</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pages</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">jump</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">jump</span><span class="p">)</span>
+<span class="w">            </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">clock_gettime</span><span class="p">(</span><span class="n">CLOCK_PROCESS_CPUTIME_ID</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span>
+<span class="w">        </span><span class="n">handle_error</span><span class="p">(</span><span class="s">"clock_gettime"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// nanoseconds</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Jump%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+<span class="w">           </span><span class="p">((</span><span class="n">end</span><span class="p">.</span><span class="n">tv_sec</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">.</span><span class="n">tv_sec</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1E9</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">end</span><span class="p">.</span><span class="n">tv_nsec</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">.</span><span class="n">tv_nsec</span><span class="p">)</span><span class="w"> </span><span class="o">/</span>
+<span class="w">               </span><span class="p">(</span><span class="n">trials</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pages</span><span class="p">));</span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>3．用你喜欢的脚本语言（csh、<span>Python<span class="heti-spacing"> </span></span>等）写一段脚本来运行这个程序，当访问页面从<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>增长到几千，也许每次迭代都乘<span><span class="heti-spacing"> </span>2</span>。在不同的机器上运行这段脚本，同时收集相应数据。需要试多少次才能获得可信的测量结果？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>我能写个<span><span class="heti-spacing"> </span>Fish</span>、<span>Bash<span class="heti-spacing"> </span></span>什么的，但我没法在各种设备上测试。</p>
+<div class="highlight"><pre><span></span><code><span class="k">set</span> num <span class="nv">$argv</span><span class="o">[</span>1<span class="o">]</span>
+
+<span class="k">set</span> p 1
+<span class="k">for</span> i <span class="k">in</span> <span class="o">(</span>seq <span class="m">1</span> <span class="nv">$num</span><span class="o">)</span>
+    ./tlb <span class="nv">$p</span> 1000
+    <span class="k">set</span> p <span class="o">(</span><span class="nb">math</span> <span class="nv">$p</span> <span class="se">\*</span> 2<span class="o">)</span>
+<span class="k">end</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">fish test.fish 13</span><pre><span></span><code>Jump     1 pages | time    3.2 nanoseconds
+Jump     2 pages | time    3.3 nanoseconds
+Jump     4 pages | time    2.7 nanoseconds
+Jump     8 pages | time    2.7 nanoseconds
+Jump    16 pages | time    5.6 nanoseconds
+Jump    32 pages | time    6.1 nanoseconds
+Jump    64 pages | time    8.4 nanoseconds
+Jump   128 pages | time    6.7 nanoseconds
+Jump   256 pages | time    7.7 nanoseconds
+Jump   512 pages | time    7.6 nanoseconds
+Jump  1024 pages | time    6.3 nanoseconds
+Jump  2048 pages | time    7.9 nanoseconds
+Jump  4096 pages | time    7.0 nanoseconds
+</code></pre></div>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>4．接下来，将结果绘图，类似于上图。可以用<span class="heti-skip"><span class="heti-spacing"> </span>ploticus<span class="heti-spacing"> </span></span>这样的好工具画图。可视化使数据更容易理解，你认为是什么原因？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>我真的不想再写图表代码了，不擅长这个。</p>
+<p>参考这个吧：<a href="https://github.com/xxyzz/ostep-hw/blob/master/19/plot.py">https://github.com/xxyzz/ostep-hw/blob/master/19/plot.py</a></p>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>5．要注意编译器优化带来的影响。编译器做各种聪明的事情，包括优化掉循环，如果循环中增加的变量后续没有使用。如何确保编译器不优化掉你写的<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>大小测算程序的主循环？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>关闭编译器的优化选项，比如<span class="heti-skip"><span class="heti-spacing"> </span>GCC<span class="heti-spacing"> </span></span>可以使用 <code>-O0</code></p>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>6．还有一个需要注意的地方，今天的计算机系统大多有多个<span><span class="heti-spacing"> </span>CPU</span>，每个<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>当然有自己的<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>结构。为了得到准确的测量数据，我们需要只在一个<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>上运行程序，避免调度器把进程从一个<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>调度到另一个去运行。如何做到<heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（提示：在<span class="heti-skip"><span class="heti-spacing"> </span>Google<span class="heti-spacing"> </span></span>上搜索“pinning a thread”相关的信息）如果没有这样做，代码从一个<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>移到了另一个，会发生什么情况？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>在<a href="06direct_execution.html#_5">第六章的作业</a>中写过。</p>
+<p>可以使用 <code class="highlight"><span class="n">sched_setaffinity</span></code>、<code class="highlight"><span class="n">pthread_setaffinity_np</span></code> 等。</p>
+</div>
+<hr/>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>7．另一个可能发生的问题与初始化有关。如果在访问数组<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>之前没有初始化，第一次访问将非常耗时，由于初始访问开销，比如要求置<span><span class="heti-spacing"> </span>0</span>。这会影响你的代码及其计时吗？如何抵消这些潜在的开销？</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Answer</p>
+<p>使用 <code class="highlight"><span class="n">calloc</span></code> 初始化数组。</p>
+</div>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月25日 09:14:49</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月27日 11:39:15</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月25日 09:14:49</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月27日 11:39:15</span>
 </span>
 </aside>
 </article>
@@ -778,6 +1289,34 @@
 </button>
 </main>
 <footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: 18.Introduction to Paging" class="md-footer__link md-footer__link--prev" href="18introduction_to_paging.html">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                上一页
+              </span>
+<div class="md-ellipsis">
+                18.Introduction to Paging
+              </div>
+</div>
+</a>
+<a aria-label="下一页: MIT 6.1810" class="md-footer__link md-footer__link--next" href="../mit6.1810.html">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                下一页
+              </span>
+<div class="md-ellipsis">
+                MIT 6.1810
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">

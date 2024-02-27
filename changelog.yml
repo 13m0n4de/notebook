@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-02-27":
+    - newpage:
+          text: CS > OS > OSTEP > 19.Translation Lookaside Buffers
+          href: cs/os/ostep/19translation_lookaside_buffers.html
   - "2024-02-25":
     - newpage:
           text: Blog > I Need a Done List, Not a Todo List
