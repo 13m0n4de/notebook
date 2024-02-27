@@ -148,6 +148,7 @@ nav:
         - 16.Segmentation: cs/os/ostep/16segmentation.md
         - 17.Free Space Management: cs/os/ostep/17free_space_management.md
         - 18.Introduction to Paging: cs/os/ostep/18introduction_to_paging.md
+        - 19.Translation Lookaside Buffers: cs/os/ostep/19translation_lookaside_buffers.md
       - MIT 6.1810: cs/os/mit6.1810.md
       - rCore: cs/os/rcore.md
     - Compiler:

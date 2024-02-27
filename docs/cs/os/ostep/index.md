@@ -24,3 +24,4 @@
 - [16.Segmentation](./16segmentation.md)
 - [17.Free Space Management](./17free_space_management.md)
 - [18.Introduction to Paging](./18introduction_to_paging.md)
+- [19.Translation Lookaside Buffers](./19translation_lookaside_buffers.md)
