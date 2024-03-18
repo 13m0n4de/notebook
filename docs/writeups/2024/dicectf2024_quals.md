@@ -4,7 +4,7 @@
     - **比赛平台** : [ctf.dicega.ng](https://ctf.dicega.ng/)
     - **比赛时间** : 2024-02-03 05:00:00 - 2024-02-05 05:00:00 UTC+8
     - **CTFtime** : [ctftime.org/event/2217/tasks/](https://ctftime.org/event/2217/tasks/)
-    - **附件归档** : [github.com/sajjadium/ctf-archives](https://github.com/sajjadium/ctf-archives/tree/main/ctfs/DiceCTF/2024/Quals)
+    - **官方仓库** : [github.com/dicegang/dicectf-quals-2024-challenges](https://github.com/dicegang/dicectf-quals-2024-challenges)
 
 太困了，找个比赛玩一下，越做越不对劲，发现原来是 JavaScript 大礼包。
 
@@ -569,6 +569,8 @@ info: setting *0x55a3cdfecee0 to 0x1312d00...
 龙成群结队飞过去还挺酷，想知道代码怎么写的。
 
 Flag: `dice{your_flag_is_not_in_another_castle}`
+
+官方仓库出来了，这题的源代码：[github.com/dicegang/dicectf-quals-2024-challenges/tree/main/rev/dicequest](https://github.com/dicegang/dicectf-quals-2024-challenges/tree/main/rev/dicequest)
 
 ## Misc
 

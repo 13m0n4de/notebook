@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-03-18":
+     - pageupdate:
+          text: Writeups > 2024 > DiceCTF 2024 Quals
+          href: writeups/2024/dicectf2024_quals.html
   - "2024-02-27":
     - newpage:
           text: CS > OS > OSTEP > 20.Advanced Page Tables
@@ -51,16 +55,16 @@
           href: cs/os/ostep/09lottery_scheduling.html
   - "2024-02-11":
     - pageupdate:
-          text: Writeups > DiceCTF 2024 Quals
-          href: writeups/dicectf2024_quals.html
+          text: Writeups > 2024 > DiceCTF 2024 Quals
+          href: writeups/2024/dicectf2024_quals.html
   - "2024-02-07":
     - newpage:
           text: Blog > Evaluating and Selecting SD Models
           href: blog/2024/02/07/evaluating-and-selecting-sd-models.html
   - "2024-02-05":
     - newpage:
-          text: Writeups > DiceCTF 2024 Quals
-          href: writeups/dicectf2024_quals.html
+          text: Writeups > 2024 > DiceCTF 2024 Quals
+          href: writeups/2024/dicectf2024_quals.html
   - "2024-02-03":
     - newpage:
           text: CS > OS > OSTEP > 08.Multi-level Feedback
@@ -79,10 +83,6 @@
     - newpage:
           text: CS > OS > OSTEP > 06.Direct Execution
           href: cs/os/ostep/06direct_execution.html
-  - "2024-01-23":
-    - newpage:
-          text: CS > Programming Language & ISA > C > Including C Files Over HTTPS
-          href: cs/pl/c/including_c_files_over_https.html
   - "2024-01-17":
     - newpage:
           text: CS > OS > OSTEP > 05.Process API
