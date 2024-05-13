@@ -78,6 +78,7 @@ plugins:
   - heti # 优化中文排版
   - toc
   - blog
+  - mkdocs-video
 
 markdown_extensions:
   - abbr
@@ -151,7 +152,8 @@ nav:
         - 19.Translation Lookaside Buffers: cs/os/ostep/19translation_lookaside_buffers.md
         - 20.Advanced Page Tables: cs/os/ostep/20advanced_page_tables.md
       - MIT 6.1810: cs/os/mit6.1810.md
-      - rCore: cs/os/rcore.md
+      - rCore:
+        - cs/os/rcore/index.md
     - Compiler:
       - cs/compiler/index.md
   - Security:
