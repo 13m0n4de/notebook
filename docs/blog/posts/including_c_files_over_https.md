@@ -1,7 +1,7 @@
 ---
 date: 2024-02-17
 categories:
-  - Programming Language
+  - Scientific Witchery
 ---
 
 # Including C File Over HTTPS
