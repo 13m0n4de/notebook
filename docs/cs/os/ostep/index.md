@@ -26,3 +26,12 @@
 - [18.Introduction to Paging](./18introduction_to_paging.md)
 - [19.Translation Lookaside Buffers](./19translation_lookaside_buffers.md)
 - [20.Advanced Page Tables](./20advanced_page_tables.md)
+- todo!()
+
+### Concurrency
+
+- todo!()
+
+### Persistence
+
+- todo!()
