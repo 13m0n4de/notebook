@@ -21,6 +21,7 @@ theme:
     - navigation.footer
     - search.suggest
     - content.code.annotate
+    - content.code.copy
     - content.footnote.tooltips
 
   palette:
