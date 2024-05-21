@@ -1,6 +1,14 @@
 - "2024":
+  - "2024-05-20":
+    - newpage:
+        text: Blog > Wireworld Simulator Using the Raylib
+        href: blog/2024/05/20/wireworld-simulator-using-the-raylib.html
+  - "2024-05-12":
+    - newpage:
+        text: Blog > Bad Apple!! on LemonCore
+        href: blog/2024/05/12/bad-apple-on-lemoncore.html
   - "2024-03-18":
-     - pageupdate:
+    - pageupdate:
           text: Writeups > 2024 > DiceCTF 2024 Quals
           href: writeups/2024/dicectf2024_quals.html
   - "2024-02-27":
