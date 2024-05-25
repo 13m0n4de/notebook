@@ -1,8 +1,12 @@
 - "2024":
+  - "2024-05-23":
+    - newpage:
+        text: "Blog > Wireworld Simulator Using the Raylib: Part2"
+        href: blog/2024/05/23/wireworld-simulator-using-the-raylib-part2.html
   - "2024-05-20":
     - newpage:
-        text: Blog > Wireworld Simulator Using the Raylib
-        href: blog/2024/05/20/wireworld-simulator-using-the-raylib.html
+        text: "Blog > Wireworld Simulator Using the Raylib: Part1"
+        href: blog/2024/05/20/wireworld-simulator-using-the-raylib-part1.html
   - "2024-05-12":
     - newpage:
         text: Blog > Bad Apple!! on LemonCore

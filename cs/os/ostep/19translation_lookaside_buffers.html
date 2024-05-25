@@ -918,7 +918,7 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<div><h1 id="19-tlb">第<span class="heti-skip"><span class="heti-spacing"> </span>19<span class="heti-spacing"> </span></span>章 分页：快速地址转换<span><span class="heti-spacing"> </span>(TLB)</span><a class="headerlink" href="#19-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<h1 id="19-tlb">第<span class="heti-skip"><span class="heti-spacing"> </span>19<span class="heti-spacing"> </span></span>章 分页：快速地址转换<span><span class="heti-spacing"> </span>(TLB)</span><a class="headerlink" href="#19-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
 <p>在分页中，每次指令获取、加载和保存，都要额外读一次内存，慢得无法接受。</p>
 <p>这一章介绍了硬件———— <strong>地址转换旁路缓冲器<span><span class="heti-spacing"> </span>(translation-lookaside-buffer)</span></strong>，每次内存访问时，硬件先检查<span><span class="heti-spacing"> </span>TLB</span>，如果存在匹配的映射，就直接完成转换，不用访问页表。</p>
 <p>叫这个名称是历史原因，更好的名称是 <strong>地址转换缓存<span><span class="heti-spacing"> </span>(address-translation cache)</span></strong>，当然也可以叫 <strong>快表</strong>，我喜欢快表这个简短的名字。</p>
@@ -1287,7 +1287,7 @@ Jump  4096 pages | time    7.0 nanoseconds
 <div class="admonition note">
 <p class="admonition-title">Answer</p>
 <p>使用 <code class="highlight"><span class="n">calloc</span></code> 初始化数组。</p>
-</div></div>
+</div>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
