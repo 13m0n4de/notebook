@@ -262,6 +262,71 @@ void DrawVisibleCells(void) {
 }
 ```
 
-## 缩放
+## 视图缩放
 
-todo!()
+最初实验了使用相机的 `zoom` 字段完成缩放，但发现效果不怎么好，缩得太小时网格线会变得不清晰甚至消失，并且给许多计算引入了新变量。
+
+所以，最终还是使用了调整细胞大小 `cellSize` 的方案，以此模拟“视图的缩放”。
+
+滚动鼠标滚轮时，调整细胞大小和网格位置，确保网格会以鼠标指针所在的位置为中心进行缩放，使得鼠标指针所指的网格单元在缩放前后保持不变：
+
+```c
+void HandleZoom(void) {
+    float wheel = GetMouseWheelMove();
+    if (wheel != 0) {
+        int newCellSize = cellSize + wheel * zoomSpeed;
+        if (newCellSize >= minCellSize && newCellSize <= maxCellSize) {
+            Vector2 mousePos = GetScreenToWorld2D(GetMousePosition(), camera);
+            Vector2 gridPos =
+                Vector2Divide(Vector2Subtract(mousePos, grid.position),
+                              (Vector2){cellSize, cellSize});
+
+            cellSize = newCellSize;
+
+            grid.position = Vector2Subtract(
+                mousePos,
+                Vector2Multiply(gridPos, (Vector2){cellSize, cellSize}));
+        }
+    }
+}
+```
+
+拓展网格在视图的移动和缩放结束后进行：
+
+```c
+void HandleCameraMovement(void) {
+    if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT)) {
+        Vector2 delta = GetMouseDelta();
+        delta = Vector2Scale(delta, -1.0f / camera.zoom);
+        camera.target = Vector2Add(camera.target, delta);
+    }
+}
+
+void HandleUserInput(void) {
+    HandleCellPlacements();
+    HandleButtonClicks();
+    HandleShortcuts();
+    HandleCameraMovement();
+    HandleZoom();
+
+    Vector2 cameraOffset = Vector2Subtract(camera.target, grid.position);
+    if (cameraOffset.x < 0) {
+        ExpandGrid(LEFT);
+    }
+    if (cameraOffset.y < 0) {
+        ExpandGrid(UP);
+    }
+    if (cameraOffset.x + screenWidth > grid.position.x + grid.cols * cellSize) {
+        ExpandGrid(RIGHT);
+    }
+    if (cameraOffset.y + screenHeight >
+        grid.position.y + grid.rows * cellSize) {
+        ExpandGrid(DOWN);
+    }
+}
+```
+
+<video width="1600" height="1200" controls>
+  <source src="/assets/images/blog/wireworld_simulator_using_the_raylib/zoom.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
