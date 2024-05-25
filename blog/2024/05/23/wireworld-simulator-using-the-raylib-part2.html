@@ -839,7 +839,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_7">
 <span class="md-ellipsis">
-      缩放
+      视图缩放
     </span>
 </a>
 </li>
@@ -1104,14 +1104,71 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="_7">缩放<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>todo!()</p>
+<h2 id="_7">视图缩放<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>最初实验了使用相机的 <code>zoom</code> 字段完成缩放，但发现效果不怎么好，缩得太小时网格线会变得不清晰甚至消失，并且给许多计算引入了新变量。</p>
+<p>所以，最终还是使用了调整细胞大小 <code>cellSize</code> 的方案，以此模拟“视图的缩放”。</p>
+<p>滚动鼠标滚轮时，调整细胞大小和网格位置，确保网格会以鼠标指针所在的位置为中心进行缩放，使得鼠标指针所指的网格单元在缩放前后保持不变：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">HandleZoom</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">wheel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetMouseWheelMove</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">wheel</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">newCellSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cellSize</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">wheel</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">zoomSpeed</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">newCellSize</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">minCellSize</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">newCellSize</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">maxCellSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Vector2</span><span class="w"> </span><span class="n">mousePos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetScreenToWorld2D</span><span class="p">(</span><span class="n">GetMousePosition</span><span class="p">(),</span><span class="w"> </span><span class="n">camera</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Vector2</span><span class="w"> </span><span class="n">gridPos</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                </span><span class="n">Vector2Divide</span><span class="p">(</span><span class="n">Vector2Subtract</span><span class="p">(</span><span class="n">mousePos</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">.</span><span class="n">position</span><span class="p">),</span>
+<span class="w">                              </span><span class="p">(</span><span class="n">Vector2</span><span class="p">){</span><span class="n">cellSize</span><span class="p">,</span><span class="w"> </span><span class="n">cellSize</span><span class="p">});</span>
+
+<span class="w">            </span><span class="n">cellSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newCellSize</span><span class="p">;</span>
+
+<span class="w">            </span><span class="n">grid</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector2Subtract</span><span class="p">(</span>
+<span class="w">                </span><span class="n">mousePos</span><span class="p">,</span>
+<span class="w">                </span><span class="n">Vector2Multiply</span><span class="p">(</span><span class="n">gridPos</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">Vector2</span><span class="p">){</span><span class="n">cellSize</span><span class="p">,</span><span class="w"> </span><span class="n">cellSize</span><span class="p">}));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>拓展网格在视图的移动和缩放结束后进行：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">HandleCameraMovement</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsMouseButtonDown</span><span class="p">(</span><span class="n">MOUSE_BUTTON_RIGHT</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Vector2</span><span class="w"> </span><span class="n">delta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetMouseDelta</span><span class="p">();</span>
+<span class="w">        </span><span class="n">delta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector2Scale</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">camera</span><span class="p">.</span><span class="n">zoom</span><span class="p">);</span>
+<span class="w">        </span><span class="n">camera</span><span class="p">.</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector2Add</span><span class="p">(</span><span class="n">camera</span><span class="p">.</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">delta</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">HandleUserInput</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">HandleCellPlacements</span><span class="p">();</span>
+<span class="w">    </span><span class="n">HandleButtonClicks</span><span class="p">();</span>
+<span class="w">    </span><span class="n">HandleShortcuts</span><span class="p">();</span>
+<span class="w">    </span><span class="n">HandleCameraMovement</span><span class="p">();</span>
+<span class="w">    </span><span class="n">HandleZoom</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">Vector2</span><span class="w"> </span><span class="n">cameraOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector2Subtract</span><span class="p">(</span><span class="n">camera</span><span class="p">.</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">.</span><span class="n">position</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cameraOffset</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ExpandGrid</span><span class="p">(</span><span class="n">LEFT</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cameraOffset</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ExpandGrid</span><span class="p">(</span><span class="n">UP</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cameraOffset</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">screenWidth</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">grid</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">grid</span><span class="p">.</span><span class="n">cols</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cellSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ExpandGrid</span><span class="p">(</span><span class="n">RIGHT</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cameraOffset</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">screenHeight</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="w">        </span><span class="n">grid</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">grid</span><span class="p">.</span><span class="n">rows</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cellSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ExpandGrid</span><span class="p">(</span><span class="n">DOWN</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<video controls="" height="1200" width="1600">
+<source src="/assets/images/blog/wireworld_simulator_using_the_raylib/zoom.webm" type="video/webm">
+Your browser does not support the video tag.
+</source></video>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年5月26日 05:31:02</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年5月26日 06:37:49</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
