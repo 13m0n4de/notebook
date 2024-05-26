@@ -474,7 +474,10 @@ SetTargetFPS(5);
 
 运行效果如图，一个时钟发射器：
 
-![clock_generator](../../assets/images/blog/wireworld_simulator_using_the_raylib/clock_generator.gif)
+<video width="800" height="460" autoplay loop muted>
+  <source src="/assets/images/blog/wireworld_simulator_using_the_raylib/clock_generator.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
 
 ??? example "当前完整代码" 
     ```c linenums="1"
@@ -840,7 +843,11 @@ DrawRectangleLines(mouseXGridPos * cellSize, mouseYGridPos * cellSize,
 
 为了避免与红黄蓝细胞颜色相近，高亮色选了纯白，正好也和网格边框颜色形成对比。
 
-![mouse_pick](../../assets/images/blog/wireworld_simulator_using_the_raylib/mouse_pick.gif)
+<video width="800" height="460" autoplay loop muted>
+  <source src="/assets/images/blog/wireworld_simulator_using_the_raylib/mouse_pick.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
+
 
 ## 创建细胞
 
@@ -892,7 +899,10 @@ if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
 }
 ```
 
-![put_cell1](../../assets/images/blog/wireworld_simulator_using_the_raylib/put_cell1.gif)
+<video width="800" height="460" autoplay loop muted>
+  <source src="/assets/images/blog/wireworld_simulator_using_the_raylib/put_cell1.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
 
 这种方案不能手动放置电子尾。
 
@@ -1162,7 +1172,11 @@ void DrawIndicators(void) {
 
 效果如下：
 
-![put_cell2](../../assets/images/blog/wireworld_simulator_using_the_raylib/put_cell2.gif)
+<video width="800" height="460" autoplay loop muted>
+  <source src="/assets/images/blog/wireworld_simulator_using_the_raylib/put_cell2.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
+
 
 ??? example "方案二完整代码"
     ```c linenums="1"
@@ -1388,7 +1402,10 @@ if (isPlaying) {
 }
 ```
 
-![play_button](../../assets/images/blog/wireworld_simulator_using_the_raylib/play_button.gif)
+<video width="800" height="460" autoplay loop muted>
+  <source src="/assets/images/blog/wireworld_simulator_using_the_raylib/play_button.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
 
 ## 整理代码
 
@@ -1850,7 +1867,10 @@ if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) &&
 }
 ```
 
-![mouse_click_button](../../assets/images/blog/wireworld_simulator_using_the_raylib/mouse_click_button.gif)
+<video width="800" height="460" autoplay loop muted>
+  <source src="/assets/images/blog/wireworld_simulator_using_the_raylib/mouse_click_button.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
 
 ## 单次迭代
 
@@ -1916,7 +1936,10 @@ if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) &&
 }
 ```
 
-![next_button](../../assets/images/blog/wireworld_simulator_using_the_raylib/next_button.gif)
+<video width="800" height="460" autoplay loop muted>
+  <source src="/assets/images/blog/wireworld_simulator_using_the_raylib/next_button.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
 
 ??? example "当前完整代码"
     ```c linenums="1"
