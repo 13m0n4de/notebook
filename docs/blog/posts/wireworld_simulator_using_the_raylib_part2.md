@@ -6,7 +6,9 @@ categories:
 
 # Wireworld Simulator Using the Raylib: Part2
 
-继续[上一部分](./wireworld_simulator_using_the_raylib_part1.md)。这部分主要实现 **无限画布** 的功能。
+继续[上一部分](./wireworld_simulator_using_the_raylib_part1.md)。
+
+这部分主要实现 **无限画布** 的功能，包含视角移动、网格自动拓展、视图缩放，
 
 <!-- more -->
 
@@ -118,7 +120,10 @@ void HandleUserInput(void) {
 }
 ```
 
-![canvas_panning](../../assets/images/blog/wireworld_simulator_using_the_raylib/canvas_panning.gif)
+<video width="800" height="460" controls>
+  <source src="/assets/images/blog/wireworld_simulator_using_the_raylib/panning.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
 
 ## 网格拓展
 
@@ -229,7 +234,10 @@ void ExpandGrid(Direction direction) {
 
 算得上是无限画布了。
 
-![expand_grid3](../../assets/images/blog/wireworld_simulator_using_the_raylib/expand_grid3.gif)
+<video width="800" height="460" controls>
+  <source src="/assets/images/blog/wireworld_simulator_using_the_raylib/expand_grid.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
 
 ## 仅绘制可见部分
 
@@ -326,7 +334,7 @@ void HandleUserInput(void) {
 }
 ```
 
-<video width="1600" height="1200" controls>
+<video width="800" height="460" controls>
   <source src="/assets/images/blog/wireworld_simulator_using_the_raylib/zoom.webm" type="video/webm">
 Your browser does not support the video tag.
 </video>
