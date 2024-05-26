@@ -8,7 +8,9 @@ categories:
 
 继续[上一部分](./wireworld_simulator_using_the_raylib_part1.md)。
 
-这部分主要实现 **无限画布** 的功能，包含视角移动、网格自动拓展、视图缩放，
+这部分主要实现 **无限画布** 的功能，包含视角移动、视图缩放、网格自动拓展。
+
+项目地址：[github.com/13m0n4de/wireworld](https://github.com/13m0n4de/wireworld)
 
 <!-- more -->
 
@@ -338,3 +340,12 @@ void HandleUserInput(void) {
   <source src="/assets/images/blog/wireworld_simulator_using_the_raylib/zoom.webm" type="video/webm">
 Your browser does not support the video tag.
 </video>
+
+## 总结
+
+最终代码见 [github.com/13m0n4de/wireworld/blob/main/main.c](https://github.com/13m0n4de/wireworld/blob/main/main.c)。
+
+下一步计划：
+
+- 导入导出
+- 设置页面
