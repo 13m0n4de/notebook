@@ -14,9 +14,12 @@ categories:
 
 <!-- more -->
 
-预览效果（这张 GIF 只有 10 FPS，所以看起来卡卡的，实际可以 60 FPS）：
+预览效果：
 
-![Bad Apple!!](../../assets/images/blog/bad_apple_on_lemon_core/ba.gif)
+<video width="2516" height="1518" controls>
+  <source src="/assets/images/blog/bad_apple_on_lemon_core/ba.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
 
 ## 视频取摸
 
