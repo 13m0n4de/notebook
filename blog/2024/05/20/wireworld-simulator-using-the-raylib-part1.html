@@ -751,6 +751,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../../category/racketrank.html">
+<span class="md-ellipsis">
+    RacketRank
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../../category/random-ramblings.html">
 <span class="md-ellipsis">
     Random Ramblings
@@ -1022,8 +1029,7 @@ tar<span class="w"> </span>zxvf<span class="w"> </span>raylib-5.0_linux_amd64.ta
 <span class="p">}</span>
 </code></pre></div>
 <p>编译它需要指定头文件路径和静态库文件路径：</p>
-<div class="highlight"><pre><span></span><code>gcc<span class="w"> </span>main.c<span class="w"> </span>-o<span class="w"> </span>main<span class="w"> </span>-Wall<span class="w"> </span>-Wextra<span class="w"> </span>-pedantic<span class="w"> </span>-I<span class="w"> </span>raylib-5.0_linux_amd64/include/<span class="w"> </span>-L<span class="w"> </span>raylib-5.0_linux_
-amd64/lib/<span class="w"> </span>-l:libraylib.a<span class="w"> </span>-lm<span class="w"> </span>
+<div class="highlight"><pre><span></span><code>gcc<span class="w"> </span>main.c<span class="w"> </span>-o<span class="w"> </span>main<span class="w"> </span>-Wall<span class="w"> </span>-Wextra<span class="w"> </span>-pedantic<span class="w"> </span>-I<span class="w"> </span>raylib-5.0_linux_amd64/include/<span class="w"> </span>-L<span class="w"> </span>raylib-5.0_linux_amd64/lib/<span class="w"> </span>-l:libraylib.a<span class="w"> </span>-lm
 </code></pre></div>
 <p>这样得到的文件只依赖<span class="heti-skip"><span class="heti-spacing"> </span>libc<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>libm</span>，<span>Raylib<span class="heti-spacing"> </span></span>的部分被静态链接进去：</p>
 <div class="highlight"><span class="filename">ldd main</span><pre><span></span><code>linux-vdso.so.1<span class="w"> </span><span class="o">(</span>0x00007fff0e317000<span class="o">)</span>
