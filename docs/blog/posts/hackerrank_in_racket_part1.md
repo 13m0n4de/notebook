@@ -49,7 +49,7 @@ categories:
 函数签名：
 
 ```racket
-(: replicate-elements (-> Integer (Listof Integer) (Listof Integer)))
+replicate-elements : Integer (Listof Integer) -> (Listof Integer)
 ```
 
 利用 `append-map` 和 `make-list` 创建元素重复的新列表。
@@ -57,10 +57,9 @@ categories:
 ```racket title="solution"
 #lang racket
 
-;; (: replicate-elements (-> Integer (Listof Integer) (Listof Integer)))
+;; replicate-elements : Integer (Listof Integer) -> (Listof Integer)
 (define (replicate-elements n lst)
   (append-map (lambda (num) (make-list n num)) lst))
-
 
 (define (read-list)
   (let read-list-helper ([acc '()])
@@ -68,7 +67,6 @@ categories:
       (if (eof-object? x)
           (reverse acc)
           (read-list-helper (cons x acc))))))
-
 
 (let* ([input (read-list)]
        [n (car input)]
@@ -83,7 +81,7 @@ categories:
 函数签名：
 
 ```racket
-(: filter-less-than (-> Integer (Listof Integer) (Listof Integer)))
+filter-less-than : Integer (Listof Integer) -> (Listof Integer)
 ```
 
 使用 `filter` 过滤出小于 `delim` 元素。
@@ -91,10 +89,9 @@ categories:
 ```racket title="solution"
 #lang racket
 
-;; (: filter-less-than (-> Integer (Listof Integer) (Listof Integer)))
+;; filter-less-than : Integer (Listof Integer) -> (Listof Integer)
 (define (filter-less-than delim lst)
   (filter (lambda (num) (< num delim)) lst))
-
 
 (define (read-list)
   (let read-list-helper ([acc '()])
@@ -102,7 +99,6 @@ categories:
       (if (eof-object? x)
           (reverse acc)
           (read-list-helper (cons x acc))))))
-
 
 (let* ([input (read-list)]
        [n (car input)]
@@ -115,7 +111,7 @@ categories:
 函数签名：
 
 ```racket
-(: remove-odd (-> (Listof Integer) (Listof Integer)))
+remove-odd : (Listof Integer) -> (Listof Integer)
 ```
 
 `remove-odd-helper` 函数检测当前元素位置 `index` 是否为奇数：
@@ -128,7 +124,7 @@ categories:
 ```racket title="solution"
 #lang racket
 
-;; (: remove-odd (-> (Listof Integer) (Listof Integer)))
+;; remove-odd : (Listof Integer) -> (Listof Integer)
 (define (remove-odd lst)
   (let remove-odd-helper ([lst lst] [index 0] [acc '()])
     (cond
@@ -136,14 +132,12 @@ categories:
       [(odd? index) (remove-odd-helper (cdr lst) (+ index 1) acc)]
       [else (remove-odd-helper (cdr lst) (+ index 1) (cons (car lst) acc))])))
 
-
 (define (read-list)
   (let read-list-helper ([acc '()])
     (let ([x (read)])
       (if (eof-object? x)
           (reverse acc)
           (read-list-helper (cons x acc))))))
-
 
 (let* ([input (read-list)]
        [lst (cdr input)])
@@ -173,7 +167,7 @@ categories:
 函数签名：
 
 ```racket
-(: reverse-list (-> (Listof Integer) (Listof Integer)))
+reverse-list : (Listof Integer) -> (Listof Integer)
 ```
 
 递归地从列表头部开始，每次将列表的第一个元素添加到累积结果的前面，直到列表为空，这样就实现了列表的翻转。
@@ -181,7 +175,7 @@ categories:
 ```racket title="solution"
 #lang racket
 
-;; (: reverse-list (-> (Listof Integer) (Listof Integer)))
+;; reverse-list : (Listof Integer) -> (Listof Integer)
 (define (reverse-list lst)
   (let reverse-list-helper ([lst lst] [acc '()])
     (cond
@@ -191,14 +185,12 @@ categories:
         (cdr lst)
         (cons (car lst) acc))])))
 
-
 (define (read-list)
   (let read-list-helper ([acc '()])
     (let ([x (read)])
       (if (eof-object? x)
           (reverse acc)
           (read-list-helper (cons x acc))))))
-
 
 (for-each displayln (reverse-list (read-list)))
 ```
@@ -215,7 +207,7 @@ categories:
 函数签名：
 
 ```racket
-(: sum-odd (-> (Listof Integer) Integer))
+sum-odd : (Listof Integer) -> Integer
 ```
 
 手动递归版：
@@ -223,7 +215,7 @@ categories:
 ```racket title="solution"
 #lang racket
 
-;; (: sum-odd (-> (Listof Integer) Integer))
+;; sum-odd : (Listof Integer) -> Integer
 (define (sum-odd lst)
   (let sum-odd-helper ([lst lst] [acc 0])
     (cond
@@ -234,14 +226,12 @@ categories:
            (sum-odd-helper (cdr lst) (+ acc x))
            (sum-odd-helper (cdr lst) acc))])))
 
-
 (define (read-list)
   (let read-list-helper ([acc '()])
     (let ([x (read)])
       (if (eof-object? x)
           (reverse acc)
           (read-list-helper (cons x acc))))))
-
 
 (displayln (sum-odd (read-list)))
 ```
@@ -258,42 +248,45 @@ categories:
 函数签名：
 
 ```racket
-(: count-elements (-> (Listof Integer) Integer))
+list-length (Listof Integer) -> Integer
 ```
 
 ```racket title="solution"
 #lang racket
 
-;; (: list-length (-> (Listof Integer) Integer))
+;; list-length (Listof Integer) -> Integer
 (define (list-length lst)
   (let list-length-helper ([lst lst] [acc 0])
     (if (empty? lst)
         acc
         (list-length-helper (cdr lst) (+ acc 1)))))
 
-
 (define (read-list)
   (let read-list-helper ([acc '()])
     (let ([x (read)])
       (if (eof-object? x)
           (reverse acc)
           (read-list-helper (cons x acc))))))
-
 
 (displayln (list-length (read-list)))
 ```
 
 ## 10-Update List
 
+函数签名：
+
+```racket
+update-list : (Listof Integer) -> (Listof Integer)
+```
+
 `map` + `abs`。
 
 ```racket title="solution"
 #lang racket
 
-;; (: update-list (-> (Listof Integer) (Listof Integer)))
+;; update-list : (Listof Integer) -> (Listof Integer)
 (define (update-list lst)
   (map abs lst))
-
 
 (define (read-list)
   (let read-list-helper ([acc '()])
@@ -301,7 +294,6 @@ categories:
       (if (eof-object? x)
           (reverse acc)
           (read-list-helper (cons x acc))))))
-
 
 (for-each displayln (update-list (read-list)))
 ```
