@@ -5,6 +5,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://13m0n4de.vercel.app/blog/2024/06/11/hackerrank-in-racket-part-1.html" rel="canonical"/>
 <link href="../../05/23/wireworld-simulator-using-the-raylib-part2.html" rel="prev"/>
+<link href="../12/hackerrank-in-racket-part-2.html" rel="next"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-9.5.22" name="generator"/>
 <title>HackerRank in Racket: Part 1 - 13m0n4de's notebook</title>
@@ -956,15 +957,14 @@
 </code></pre></div>
 <h2 id="03-list-replication">03-List Replication<a class="headerlink" href="#03-list-replication" title="Permanent link">¶</a></h2>
 <p>函数签名：</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">:</span><span class="w"> </span><span class="n">replicate-elements</span><span class="w"> </span><span class="p">(</span><span class="k">-&gt;</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="n">replicate-elements</span><span class="w"> </span><span class="n">:</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="k">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span>
 </code></pre></div>
 <p>利用 <code>append-map</code> 和 <code>make-list</code> 创建元素重复的新列表。</p>
 <div class="highlight"><span class="filename">solution</span><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
 
-<span class="c1">;; (: replicate-elements (-&gt; Integer (Listof Integer) (Listof Integer)))</span>
+<span class="c1">;; replicate-elements : Integer (Listof Integer) -&gt; (Listof Integer)</span>
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">replicate-elements</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="nb">append-map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">make-list</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">num</span><span class="p">))</span><span class="w"> </span><span class="n">lst</span><span class="p">))</span>
-
 
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">read-list</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="n">read-list-helper</span><span class="w"> </span><span class="p">([</span><span class="n">acc</span><span class="w"> </span><span class="o">'</span><span class="p">()])</span>
@@ -972,7 +972,6 @@
 <span class="w">      </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">eof-object?</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
 <span class="w">          </span><span class="p">(</span><span class="nb">reverse</span><span class="w"> </span><span class="n">acc</span><span class="p">)</span>
 <span class="w">          </span><span class="p">(</span><span class="n">read-list-helper</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">acc</span><span class="p">))))))</span>
-
 
 <span class="p">(</span><span class="k">let*</span><span class="w"> </span><span class="p">([</span><span class="n">input</span><span class="w"> </span><span class="p">(</span><span class="n">read-list</span><span class="p">)]</span>
 <span class="w">       </span><span class="p">[</span><span class="n">n</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="n">input</span><span class="p">)]</span>
@@ -982,15 +981,14 @@
 <p>（<span>HackerRank<span class="heti-spacing"> </span></span>居然不支持 <code>typed/racket</code>）</p>
 <h2 id="04-filter-array">04-Filter Array<a class="headerlink" href="#04-filter-array" title="Permanent link">¶</a></h2>
 <p>函数签名：</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">:</span><span class="w"> </span><span class="n">filter-less-than</span><span class="w"> </span><span class="p">(</span><span class="k">-&gt;</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="n">filter-less-than</span><span class="w"> </span><span class="n">:</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="k">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span>
 </code></pre></div>
 <p>使用 <code>filter</code> 过滤出小于 <code>delim</code> 元素。</p>
 <div class="highlight"><span class="filename">solution</span><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
 
-<span class="c1">;; (: filter-less-than (-&gt; Integer (Listof Integer) (Listof Integer)))</span>
+<span class="c1">;; filter-less-than : Integer (Listof Integer) -&gt; (Listof Integer)</span>
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">filter-less-than</span><span class="w"> </span><span class="n">delim</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="n">delim</span><span class="p">))</span><span class="w"> </span><span class="n">lst</span><span class="p">))</span>
-
 
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">read-list</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="n">read-list-helper</span><span class="w"> </span><span class="p">([</span><span class="n">acc</span><span class="w"> </span><span class="o">'</span><span class="p">()])</span>
@@ -999,7 +997,6 @@
 <span class="w">          </span><span class="p">(</span><span class="nb">reverse</span><span class="w"> </span><span class="n">acc</span><span class="p">)</span>
 <span class="w">          </span><span class="p">(</span><span class="n">read-list-helper</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">acc</span><span class="p">))))))</span>
 
-
 <span class="p">(</span><span class="k">let*</span><span class="w"> </span><span class="p">([</span><span class="n">input</span><span class="w"> </span><span class="p">(</span><span class="n">read-list</span><span class="p">)]</span>
 <span class="w">       </span><span class="p">[</span><span class="n">n</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="n">input</span><span class="p">)]</span>
 <span class="w">       </span><span class="p">[</span><span class="n">lst</span><span class="w"> </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="n">input</span><span class="p">)])</span>
@@ -1007,7 +1004,7 @@
 </code></pre></div>
 <h2 id="05-filter-positions-in-a-list">05-Filter Positions in a List<a class="headerlink" href="#05-filter-positions-in-a-list" title="Permanent link">¶</a></h2>
 <p>函数签名：</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">:</span><span class="w"> </span><span class="n">remove-odd</span><span class="w"> </span><span class="p">(</span><span class="k">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="n">remove-odd</span><span class="w"> </span><span class="n">:</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="k">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span>
 </code></pre></div>
 <p><code>remove-odd-helper</code> 函数检测当前元素位置 <code>index</code> 是否为奇数：</p>
 <ul>
@@ -1017,7 +1014,7 @@
 <p>列表处理完毕时，返回累加器 <code>acc</code> 的倒序。</p>
 <div class="highlight"><span class="filename">solution</span><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
 
-<span class="c1">;; (: remove-odd (-&gt; (Listof Integer) (Listof Integer)))</span>
+<span class="c1">;; remove-odd : (Listof Integer) -&gt; (Listof Integer)</span>
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">remove-odd</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="n">remove-odd-helper</span><span class="w"> </span><span class="p">([</span><span class="n">lst</span><span class="w"> </span><span class="n">lst</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">index</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">acc</span><span class="w"> </span><span class="o">'</span><span class="p">()])</span>
 <span class="w">    </span><span class="p">(</span><span class="k">cond</span>
@@ -1025,14 +1022,12 @@
 <span class="w">      </span><span class="p">[(</span><span class="nb">odd?</span><span class="w"> </span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">remove-odd-helper</span><span class="w"> </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">acc</span><span class="p">)]</span>
 <span class="w">      </span><span class="p">[</span><span class="k">else</span><span class="w"> </span><span class="p">(</span><span class="n">remove-odd-helper</span><span class="w"> </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span><span class="w"> </span><span class="n">acc</span><span class="p">))])))</span>
 
-
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">read-list</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="n">read-list-helper</span><span class="w"> </span><span class="p">([</span><span class="n">acc</span><span class="w"> </span><span class="o">'</span><span class="p">()])</span>
 <span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="nb">read</span><span class="p">)])</span>
 <span class="w">      </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">eof-object?</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
 <span class="w">          </span><span class="p">(</span><span class="nb">reverse</span><span class="w"> </span><span class="n">acc</span><span class="p">)</span>
 <span class="w">          </span><span class="p">(</span><span class="n">read-list-helper</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">acc</span><span class="p">))))))</span>
-
 
 <span class="p">(</span><span class="k">let*</span><span class="w"> </span><span class="p">([</span><span class="n">input</span><span class="w"> </span><span class="p">(</span><span class="n">read-list</span><span class="p">)]</span>
 <span class="w">       </span><span class="p">[</span><span class="n">lst</span><span class="w"> </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="n">input</span><span class="p">)])</span>
@@ -1052,12 +1047,12 @@
 <h2 id="07-reverse-a-list">07-Reverse a List<a class="headerlink" href="#07-reverse-a-list" title="Permanent link">¶</a></h2>
 <p>要求不能使用 <code>reverse</code> 函数。</p>
 <p>函数签名：</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">:</span><span class="w"> </span><span class="n">reverse-list</span><span class="w"> </span><span class="p">(</span><span class="k">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="n">reverse-list</span><span class="w"> </span><span class="n">:</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="k">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span>
 </code></pre></div>
 <p>递归地从列表头部开始，每次将列表的第一个元素添加到累积结果的前面，直到列表为空，这样就实现了列表的翻转。</p>
 <div class="highlight"><span class="filename">solution</span><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
 
-<span class="c1">;; (: reverse-list (-&gt; (Listof Integer) (Listof Integer)))</span>
+<span class="c1">;; reverse-list : (Listof Integer) -&gt; (Listof Integer)</span>
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">reverse-list</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="n">reverse-list-helper</span><span class="w"> </span><span class="p">([</span><span class="n">lst</span><span class="w"> </span><span class="n">lst</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">acc</span><span class="w"> </span><span class="o">'</span><span class="p">()])</span>
 <span class="w">    </span><span class="p">(</span><span class="k">cond</span>
@@ -1067,14 +1062,12 @@
 <span class="w">        </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span>
 <span class="w">        </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span><span class="w"> </span><span class="n">acc</span><span class="p">))])))</span>
 
-
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">read-list</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="n">read-list-helper</span><span class="w"> </span><span class="p">([</span><span class="n">acc</span><span class="w"> </span><span class="o">'</span><span class="p">()])</span>
 <span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="nb">read</span><span class="p">)])</span>
 <span class="w">      </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">eof-object?</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
 <span class="w">          </span><span class="p">(</span><span class="nb">reverse</span><span class="w"> </span><span class="n">acc</span><span class="p">)</span>
 <span class="w">          </span><span class="p">(</span><span class="n">read-list-helper</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">acc</span><span class="p">))))))</span>
-
 
 <span class="p">(</span><span class="nb">for-each</span><span class="w"> </span><span class="nb">displayln</span><span class="w"> </span><span class="p">(</span><span class="n">reverse-list</span><span class="w"> </span><span class="p">(</span><span class="n">read-list</span><span class="p">)))</span>
 </code></pre></div>
@@ -1084,12 +1077,12 @@
 </code></pre></div>
 <h2 id="08-sum-of-odd-elements">08-Sum of Odd Elements<a class="headerlink" href="#08-sum-of-odd-elements" title="Permanent link">¶</a></h2>
 <p>函数签名：</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">:</span><span class="w"> </span><span class="n">sum-odd</span><span class="w"> </span><span class="p">(</span><span class="k">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="n">Integer</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="n">sum-odd</span><span class="w"> </span><span class="n">:</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="k">-&gt;</span><span class="w"> </span><span class="n">Integer</span>
 </code></pre></div>
 <p>手动递归版：</p>
 <div class="highlight"><span class="filename">solution</span><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
 
-<span class="c1">;; (: sum-odd (-&gt; (Listof Integer) Integer))</span>
+<span class="c1">;; sum-odd : (Listof Integer) -&gt; Integer</span>
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">sum-odd</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="n">sum-odd-helper</span><span class="w"> </span><span class="p">([</span><span class="n">lst</span><span class="w"> </span><span class="n">lst</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">acc</span><span class="w"> </span><span class="mi">0</span><span class="p">])</span>
 <span class="w">    </span><span class="p">(</span><span class="k">cond</span>
@@ -1100,14 +1093,12 @@
 <span class="w">           </span><span class="p">(</span><span class="n">sum-odd-helper</span><span class="w"> </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">acc</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
 <span class="w">           </span><span class="p">(</span><span class="n">sum-odd-helper</span><span class="w"> </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span><span class="w"> </span><span class="n">acc</span><span class="p">))])))</span>
 
-
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">read-list</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="n">read-list-helper</span><span class="w"> </span><span class="p">([</span><span class="n">acc</span><span class="w"> </span><span class="o">'</span><span class="p">()])</span>
 <span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="nb">read</span><span class="p">)])</span>
 <span class="w">      </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">eof-object?</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
 <span class="w">          </span><span class="p">(</span><span class="nb">reverse</span><span class="w"> </span><span class="n">acc</span><span class="p">)</span>
 <span class="w">          </span><span class="p">(</span><span class="n">read-list-helper</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">acc</span><span class="p">))))))</span>
-
 
 <span class="p">(</span><span class="nb">displayln</span><span class="w"> </span><span class="p">(</span><span class="n">sum-odd</span><span class="w"> </span><span class="p">(</span><span class="n">read-list</span><span class="p">)))</span>
 </code></pre></div>
@@ -1117,36 +1108,36 @@
 </code></pre></div>
 <h2 id="09-list-length">09-List Length<a class="headerlink" href="#09-list-length" title="Permanent link">¶</a></h2>
 <p>函数签名：</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">:</span><span class="w"> </span><span class="n">count-elements</span><span class="w"> </span><span class="p">(</span><span class="k">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="n">Integer</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="n">list-length</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="k">-&gt;</span><span class="w"> </span><span class="n">Integer</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">solution</span><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
 
-<span class="c1">;; (: list-length (-&gt; (Listof Integer) Integer))</span>
+<span class="c1">;; list-length (Listof Integer) -&gt; Integer</span>
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">list-length</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="n">list-length-helper</span><span class="w"> </span><span class="p">([</span><span class="n">lst</span><span class="w"> </span><span class="n">lst</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">acc</span><span class="w"> </span><span class="mi">0</span><span class="p">])</span>
 <span class="w">    </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">empty?</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span>
 <span class="w">        </span><span class="n">acc</span>
 <span class="w">        </span><span class="p">(</span><span class="n">list-length-helper</span><span class="w"> </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">acc</span><span class="w"> </span><span class="mi">1</span><span class="p">)))))</span>
 
-
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">read-list</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="n">read-list-helper</span><span class="w"> </span><span class="p">([</span><span class="n">acc</span><span class="w"> </span><span class="o">'</span><span class="p">()])</span>
 <span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="nb">read</span><span class="p">)])</span>
 <span class="w">      </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">eof-object?</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
 <span class="w">          </span><span class="p">(</span><span class="nb">reverse</span><span class="w"> </span><span class="n">acc</span><span class="p">)</span>
 <span class="w">          </span><span class="p">(</span><span class="n">read-list-helper</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">acc</span><span class="p">))))))</span>
-
 
 <span class="p">(</span><span class="nb">displayln</span><span class="w"> </span><span class="p">(</span><span class="n">list-length</span><span class="w"> </span><span class="p">(</span><span class="n">read-list</span><span class="p">)))</span>
 </code></pre></div>
 <h2 id="10-update-list">10-Update List<a class="headerlink" href="#10-update-list" title="Permanent link">¶</a></h2>
+<p>函数签名：</p>
+<div class="highlight"><pre><span></span><code><span class="n">update-list</span><span class="w"> </span><span class="n">:</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="k">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">Listof</span><span class="w"> </span><span class="n">Integer</span><span class="p">)</span>
+</code></pre></div>
 <p><code>map</code> + <code>abs</code>。</p>
 <div class="highlight"><span class="filename">solution</span><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
 
-<span class="c1">;; (: update-list (-&gt; (Listof Integer) (Listof Integer)))</span>
+<span class="c1">;; update-list : (Listof Integer) -&gt; (Listof Integer)</span>
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">update-list</span><span class="w"> </span><span class="n">lst</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="nb">abs</span><span class="w"> </span><span class="n">lst</span><span class="p">))</span>
-
 
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">read-list</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="n">read-list-helper</span><span class="w"> </span><span class="p">([</span><span class="n">acc</span><span class="w"> </span><span class="o">'</span><span class="p">()])</span>
@@ -1154,7 +1145,6 @@
 <span class="w">      </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">eof-object?</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
 <span class="w">          </span><span class="p">(</span><span class="nb">reverse</span><span class="w"> </span><span class="n">acc</span><span class="p">)</span>
 <span class="w">          </span><span class="p">(</span><span class="n">read-list-helper</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">acc</span><span class="p">))))))</span>
-
 
 <span class="p">(</span><span class="nb">for-each</span><span class="w"> </span><span class="nb">displayln</span><span class="w"> </span><span class="p">(</span><span class="n">update-list</span><span class="w"> </span><span class="p">(</span><span class="n">read-list</span><span class="p">)))</span>
 </code></pre></div>
@@ -1163,7 +1153,7 @@
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年6月11日 13:39:43</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年6月12日 12:31:08</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
@@ -1194,6 +1184,19 @@
 <div class="md-ellipsis">
                 Wireworld Simulator Using the Raylib: Part2
               </div>
+</div>
+</a>
+<a aria-label="下一页: HackerRank in Racket: Part 2" class="md-footer__link md-footer__link--next" href="../12/hackerrank-in-racket-part-2.html">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                下一页
+              </span>
+<div class="md-ellipsis">
+                HackerRank in Racket: Part 2
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
 </div>
 </a>
 </nav>
