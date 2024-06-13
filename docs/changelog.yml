@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-06-13":
+    - newpage:
+        text: "Blog > HackerRank in Racket: Part 2"
+        href: blog/2024/06/11/hackerrank-in-racket-part-2.html
   - "2024-06-11":
     - newpage:
         text: "Blog > HackerRank in Racket: Part 1"
