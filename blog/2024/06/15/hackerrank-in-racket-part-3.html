@@ -3,12 +3,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://13m0n4de.vercel.app/blog/2024/04/07/search-engines-in-2024-will-spaces-still-matter.html" rel="canonical"/>
-<link href="../../02/25/i-need-a-done-list-not-a-todo-list.html" rel="prev"/>
-<link href="../../05/12/bad-apple-on-lemoncore.html" rel="next"/>
+<link href="https://13m0n4de.vercel.app/blog/2024/06/15/hackerrank-in-racket-part-3.html" rel="canonical"/>
+<link href="../13/hackerrank-in-racket-part-2.html" rel="prev"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-9.5.22" name="generator"/>
-<title>Search Engines in 2024: Will Spaces Still Matter? - 13m0n4de's notebook</title>
+<title>HackerRank in Racket: Part 3 - 13m0n4de's notebook</title>
 <link href="../../../../assets/stylesheets/main.732c4fb1.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/iframe-worker/shim"></script>
@@ -35,7 +34,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#search-engines-in-2024-will-spaces-still-matter">
+<a class="md-skip" href="#hackerrank-in-racket-part-3">
           跳转至
         </a>
 </div>
@@ -59,7 +58,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Search Engines in 2024: Will Spaces Still Matter?
+              HackerRank in Racket: Part 3
             
           </span>
 </div>
@@ -792,37 +791,9 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#_1">
+<a class="md-nav__link" href="#22-functions-or-not">
 <span class="md-ellipsis">
-      搜索结果有什么不同？
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_2">
-<span class="md-ellipsis">
-      为什么中文搜索需要分词？
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_3">
-<span class="md-ellipsis">
-      现代搜索引擎已经不需要手动分词了吗？
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#llm-llm">
-<span class="md-ellipsis">
-      LLM 分词器，LLM 如何理解自然语言？
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_4">
-<span class="md-ellipsis">
-      参考
+      22-Functions or Not?
     </span>
 </a>
 </li>
@@ -858,7 +829,7 @@
 <li class="md-nav__item">
 <div class="md-nav__link">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"></path></svg>
-<time class="md-ellipsis" datetime="2024-04-07 00:00:00">2024年4月7日</time>
+<time class="md-ellipsis" datetime="2024-06-15 00:00:00">2024年6月15日</time>
 </div>
 </li>
 <li class="md-nav__item">
@@ -867,7 +838,7 @@
 <span class="md-ellipsis">
                             分类于
                             
-                              <a href="../../../category/random-ramblings.html">Random Ramblings</a></span>
+                              <a href="../../../category/hackerrank.html">HackerRank</a></span>
 </div>
 </li>
 <li class="md-nav__item">
@@ -889,37 +860,66 @@
 </div>
 </div>
 <article class="md-content__inner md-typeset">
-<h1 id="search-engines-in-2024-will-spaces-still-matter">Search Engines in 2024: Will Spaces Still Matter?<a class="headerlink" href="#search-engines-in-2024-will-spaces-still-matter" title="Permanent link">¶</a></h1>
-<p>小的时候，第一次学会上网搜索内容，人们告诉我：</p>
-<p>「把你的中文词语用空格分开」</p>
-<p>我记到现在，甚至有点“强迫”。</p>
+<nav class="md-tags">
+<a class="md-tag" href="../../../tags.html#hackerrank">HackerRank</a>
+<a class="md-tag" href="../../../tags.html#racket">Racket</a>
+<a class="md-tag" href="../../../tags.html#lisp">Lisp</a>
+<a class="md-tag" href="../../../tags.html#functional-programming">Functional Programming</a>
+</nav>
+<h1 id="hackerrank-in-racket-part-3">HackerRank in Racket: Part 3<a class="headerlink" href="#hackerrank-in-racket-part-3" title="Permanent link">¶</a></h1>
 <!-- more -->
-<p>比如，写下这篇文章前做了些简单的搜索<heti-adjacent class="heti-adjacent-half">，</heti-adjacent>「空格」和「分词」被无意分开了。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../../../assets/images/blog/search_engines_in_2024_will_spaces_still_mater/search_spaces.png"><img alt="search_spaces" src="../../../../assets/images/blog/search_engines_in_2024_will_spaces_still_mater/search_spaces.png"/></a></p>
-<p>我习惯性地认为「空格」和「分词」是两个词语，结果中不一定会将它们连起来使用，也就是不希望网页中只有「空格分词」索引出的结果。</p>
-<p>当然搜索引擎不笨，它聪明到至少会知道怎么处理「空格分词<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，就算不分开依旧能搜到些什么。</p>
-<h2 id="_1">搜索结果有什么不同？<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>todo!()</p>
-<h2 id="_2">为什么中文搜索需要分词？<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>todo!()</p>
-<h2 id="_3">现代搜索引擎已经不需要手动分词了吗？<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p>todo!()</p>
-<h2 id="llm-llm"><span>LLM<span class="heti-spacing"> </span></span>分词器，<span>LLM<span class="heti-spacing"> </span></span>如何理解自然语言？<a class="headerlink" href="#llm-llm" title="Permanent link">¶</a></h2>
-<p>todo!()</p>
-<h2 id="_4">参考<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>todo!()</p>
+<h2 id="22-functions-or-not">22-Functions or Not?<a class="headerlink" href="#22-functions-or-not" title="Permanent link">¶</a></h2>
+<p>数学中函数的定义为：</p>
+<blockquote>
+<p>对于每个定义域中的元素（<span>x<span class="heti-spacing"> </span></span>值<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，有唯一的值域元素（<span>y<span class="heti-spacing"> </span></span>值）与之对应。</p>
+</blockquote>
+<p>如果测试用例中所有<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>值都唯一地映射到<span class="heti-skip"><span class="heti-spacing"> </span>y<span class="heti-spacing"> </span></span>值，那么这些关系可以代表一个有效的函数。</p>
+<p>函数签名：</p>
+<div class="highlight"><pre><span></span><code><span class="n">valid-function?</span><span class="w"> </span><span class="n">:</span><span class="w"> </span><span class="n">Listof</span><span class="p">(</span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="k">-&gt;</span><span class="w"> </span><span class="n">Boolean</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">solution</span><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
+
+<span class="c1">;; valid-function? : Listof(Integer) -&gt; Boolean</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">valid-function?</span><span class="w"> </span><span class="n">pairs</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">mapping</span><span class="w"> </span><span class="p">(</span><span class="nb">make-vector</span><span class="w"> </span><span class="mi">501</span><span class="w"> </span><span class="mi">-1</span><span class="p">))</span>
+<span class="w">  </span><span class="p">(</span><span class="k">for/and</span><span class="w"> </span><span class="p">([</span><span class="n">pair</span><span class="w"> </span><span class="n">pairs</span><span class="p">])</span>
+<span class="w">    </span><span class="p">(</span><span class="k">match-let</span><span class="w"> </span><span class="p">([(</span><span class="nb">list</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">pair</span><span class="p">])</span>
+<span class="w">      </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">([</span><span class="n">mapped-y</span><span class="w"> </span><span class="p">(</span><span class="nb">vector-ref</span><span class="w"> </span><span class="n">mapping</span><span class="w"> </span><span class="n">x</span><span class="p">)])</span>
+<span class="w">        </span><span class="p">(</span><span class="k">cond</span>
+<span class="w">          </span><span class="p">[(</span><span class="nb">=</span><span class="w"> </span><span class="n">mapped-y</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span>
+<span class="w">           </span><span class="p">(</span><span class="nb">vector-set!</span><span class="w"> </span><span class="n">mapping</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+<span class="w">           </span><span class="no">#t</span><span class="p">]</span>
+<span class="w">          </span><span class="p">[(</span><span class="nb">=</span><span class="w"> </span><span class="n">mapped-y</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="no">#t</span><span class="p">]</span>
+<span class="w">          </span><span class="p">[</span><span class="k">else</span><span class="w"> </span><span class="no">#f</span><span class="p">])))))</span>
+
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">read-test-case</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="k">for/list</span><span class="w"> </span><span class="p">([</span><span class="k">_</span><span class="w"> </span><span class="p">(</span><span class="nb">in-range</span><span class="w"> </span><span class="p">(</span><span class="nb">read</span><span class="p">))])</span>
+<span class="w">    </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="p">(</span><span class="nb">read</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">read</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">read-test-cases</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="k">for/list</span><span class="w"> </span><span class="p">([</span><span class="k">_</span><span class="w"> </span><span class="p">(</span><span class="nb">in-range</span><span class="w"> </span><span class="p">(</span><span class="nb">read</span><span class="p">))])</span>
+<span class="w">    </span><span class="p">(</span><span class="n">read-test-case</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">test-cases</span><span class="w"> </span><span class="p">(</span><span class="n">read-test-cases</span><span class="p">))</span>
+<span class="p">(</span><span class="k">for</span><span class="w"> </span><span class="p">([</span><span class="n">test-case</span><span class="w"> </span><span class="n">test-cases</span><span class="p">])</span>
+<span class="w">  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">valid-function?</span><span class="w"> </span><span class="n">test-case</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nb">displayln</span><span class="w"> </span><span class="s2">"YES"</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nb">displayln</span><span class="w"> </span><span class="s2">"NO"</span><span class="p">)))</span>
+</code></pre></div>
+<p><code>for/and</code> 会在条件失败时短路。</p>
+<p>读取时用 <code>read-line</code> 会比较麻烦，因为测试用例中带有 <code>\r</code>，需要指定 <code>'return-linefeed</code>。用 <code>read</code> 简单些。</p>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年5月14日 04:43:36</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年6月15日 10:07:40</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年5月14日 04:43:36</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年6月15日 10:07:40</span>
 </span>
 </aside>
 </article>
@@ -933,7 +933,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="上一页: I Need a Done List, Not a Todo List" class="md-footer__link md-footer__link--prev" href="../../02/25/i-need-a-done-list-not-a-todo-list.html">
+<a aria-label="上一页: HackerRank in Racket: Part 2" class="md-footer__link md-footer__link--prev" href="../13/hackerrank-in-racket-part-2.html">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -942,21 +942,8 @@
                 上一页
               </span>
 <div class="md-ellipsis">
-                I Need a Done List, Not a Todo List
+                HackerRank in Racket: Part 2
               </div>
-</div>
-</a>
-<a aria-label="下一页: Bad Apple!! on LemonCore" class="md-footer__link md-footer__link--next" href="../../05/12/bad-apple-on-lemoncore.html">
-<div class="md-footer__title">
-<span class="md-footer__direction">
-                下一页
-              </span>
-<div class="md-ellipsis">
-                Bad Apple!! on LemonCore
-              </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
 </div>
 </a>
 </nav>
