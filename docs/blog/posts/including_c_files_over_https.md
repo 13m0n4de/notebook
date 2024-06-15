@@ -2,6 +2,9 @@
 date: 2024-02-17
 categories:
   - Scientific Witchery
+tags:
+  - C
+  - Compiler
 ---
 
 # Including C File Over HTTPS

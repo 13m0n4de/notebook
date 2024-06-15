@@ -2,6 +2,10 @@
 date: 2024-05-20
 categories:
   - Scientific Witchery
+tags:
+  - C
+  - Raylib
+  - Game
 ---
 
 # Wireworld Simulator Using the Raylib: Part1
@@ -57,12 +61,10 @@ int main(void) {
 }
 ```
 
-
 编译它需要指定头文件路径和静态库文件路径：
 
 ```bash
-gcc main.c -o main -Wall -Wextra -pedantic -I raylib-5.0_linux_amd64/include/ -L raylib-5.0_linux_
-amd64/lib/ -l:libraylib.a -lm 
+gcc main.c -o main -Wall -Wextra -pedantic -I raylib-5.0_linux_amd64/include/ -L raylib-5.0_linux_amd64/lib/ -l:libraylib.a -lm
 ```
 
 这样得到的文件只依赖 libc 和 libm，Raylib 的部分被静态链接进去：
@@ -293,7 +295,7 @@ while (!WindowShouldClose()) {
 }
 ```
 
-??? example "当前完整代码" 
+??? example "当前完整代码"
     ```c linenums="1"
     #include "raylib.h"
 
@@ -479,7 +481,7 @@ SetTargetFPS(5);
 Your browser does not support the video tag.
 </video>
 
-??? example "当前完整代码" 
+??? example "当前完整代码"
     ```c linenums="1"
     #include <string.h>
     #include "raylib.h"
@@ -848,7 +850,6 @@ DrawRectangleLines(mouseXGridPos * cellSize, mouseYGridPos * cellSize,
 Your browser does not support the video tag.
 </video>
 
-
 ## 创建细胞
 
 ### 方案一
@@ -1176,7 +1177,6 @@ void DrawIndicators(void) {
   <source src="/assets/images/blog/wireworld_simulator_using_the_raylib/put_cell2.webm" type="video/webm">
 Your browser does not support the video tag.
 </video>
-
 
 ??? example "方案二完整代码"
     ```c linenums="1"

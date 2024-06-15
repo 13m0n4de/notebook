@@ -2,6 +2,8 @@
 date: 2024-02-18
 categories:
   - Programming Language
+tags:
+  - Hare
 ---
 
 # Exploring the Hare Programming Language: Part 1

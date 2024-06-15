@@ -79,7 +79,8 @@ plugins:
   - heti # 优化中文排版
   - toc
   - blog
-  - mkdocs-video
+  - tags:
+      tags_file: blog/tags.md
 
 markdown_extensions:
   - abbr

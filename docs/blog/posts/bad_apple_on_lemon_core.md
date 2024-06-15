@@ -2,6 +2,11 @@
 date: 2024-05-12
 categories:
   - Scientific Witchery
+tags:
+  - OS
+  - Kernel
+  - Rust
+  - RISC-V
 ---
 
 # Bad Apple!! on LemonCore

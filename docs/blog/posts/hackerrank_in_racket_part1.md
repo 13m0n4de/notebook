@@ -1,7 +1,12 @@
 ---
 date: 2024-06-11
 categories:
-  - RacketRank
+  - HackerRank
+tags:
+  - HackerRank
+  - Racket
+  - Lisp
+  - Functional Programming
 ---
 
 # HackerRank in Racket: Part 1

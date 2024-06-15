@@ -2,6 +2,10 @@
 date: 2024-05-23
 categories:
   - Scientific Witchery
+tags:
+  - C
+  - Raylib
+  - Game
 ---
 
 # Wireworld Simulator Using the Raylib: Part2
