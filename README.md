@@ -1,9 +1,11 @@
-<div align="center">
-
 # 13m0n4de's Notebook
 
-</div>
+[![CC BY-NC 4.0][cc-by-nc-shield]][cc-by-nc]
 
-## 许可证
+## License
 
-该项目采用 CC BY-NC 4.0 许可证 - 查看 [LICENSE](LICENSE) 文件了解更多细节。
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial 4.0 International License][cc-by-nc].
+
+[cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/
+[cc-by-nc-shield]: https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg
