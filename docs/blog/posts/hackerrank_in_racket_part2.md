@@ -62,10 +62,10 @@ eval-ex : Real -> Real
 函数签名：
 
 ```racket
-polynomial : Real Listof(Real) Listof(Real) -> Real
-integrate : Real Real Real Listof(Real) Listof(Real) (Real Real -> Real) -> Real
-trapezoidal-area : Real Real Real Listof(Real) Listof(Real) -> Real
-disk-method-volume : Real Real Real Listof(Real) Listof(Real) -> Real
+polynomial : Real (Listof Real) (Listof Real) -> Real
+integrate : Real Real Real (Listof Real) (Listof Real) (Real Real -> Real) -> Real
+trapezoidal-area : Real Real Real (Listof Real) (Listof Real) -> Real
+disk-method-volume : Real Real Real (Listof Real) (Listof Real) -> Real
 ```
 
 计算多项式：
@@ -169,14 +169,14 @@ $$
 ```racket title="solution"
 #lang racket
 
-;; polynomial : Real Listof(Real) Listof(Real) -> Real
+;; polynomial : Real (Listof Real) (Listof Real) -> Real
 (define (polynomial x coefficients powers)
   (for/fold ([acc 0])
             ([coefficient coefficients]
              [power powers])
     (+ acc (* coefficient (expt x power)))))
 
-;; integrate : Real Real Real Listof(Real) Listof(Real) (Real Real -> Real) -> Real
+;; integrate : Real Real Real (Listof Real) (Listof Real) (Real Real -> Real) -> Real
 (define (integrate a b delta-x coefficients powers integrand-fn)
   (let integrate-helper ([current-x a]
                          [current-y (polynomial a coefficients powers)]
@@ -190,13 +190,13 @@ $$
                 [value (integrand-fn current-y next-y)])
            (integrate-helper next-x next-y (+ acc value)))]))))
 
-;; trapezoidal-area : Real Real Real Listof(Real) Listof(Real) -> Real
+;; trapezoidal-area : Real Real Real (Listof Real) (Listof Real) -> Real
 (define (trapezoidal-area a b delta-x coefficients powers)
   (integrate a b delta-x coefficients powers
              (lambda (current-y next-y)
                (* delta-x (/ (+ current-y next-y) 2)))))
 
-;; disk-method-volume : Real Real Real Listof(Real) Listof(Real) -> Real
+;; disk-method-volume : Real Real Real (Listof Real) (Listof Real) -> Real
 (define (disk-method-volume a b delta-x coefficients powers)
   (integrate a b delta-x coefficients powers
              (lambda (current-y next-y)
