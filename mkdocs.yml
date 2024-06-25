@@ -79,6 +79,8 @@ plugins:
   - heti # 优化中文排版
   - toc
   - blog
+  - rss:
+      match_path: "blog/posts"
   - tags:
       tags_file: blog/tags.md
 
