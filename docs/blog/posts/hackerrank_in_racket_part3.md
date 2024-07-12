@@ -106,6 +106,95 @@ perimeter : (Listof (Listof Integer)) -> Number
 
 ## 24-Compute the Area of a Polygon
 
+计算多边形面积的[鞋带公式 (Shoelace formula)](https://en.wikipedia.org/wiki/Shoelace_formula)：
+
 $$
 S={\frac {1}{2}}{\begin{vmatrix}x_{1}&x_{2}&x_{3}&{...}&x_{n}\\y_{1}&y_{2}&y_{3}&{...}&y_{n}\end{vmatrix}}={\frac {1}{2}}\left({\begin{vmatrix}x_{1}&x_{2}\\y_{1}&{y_{2}}\end{vmatrix}}+{\begin{vmatrix}x_{2}&x_{3}\\y_{2}&{y_{3}}\end{vmatrix}}+...+{\begin{vmatrix}x_{n-1}&x_{n}\\y_{n-1}&{y_{n}}\end{vmatrix}}+{\begin{vmatrix}x_{n}&x_{1}\\y_{n}&{y_{1}}\end{vmatrix}}\right)
 $$
+
+函数签名：
+
+```racket
+cross-product : (Listof Integer) (Listof Integer) -> Number
+area : (Listof (Listof Integer)) -> Number
+```
+
+```racket title="solution"
+#lang racket
+
+;; cross-product : (Listof Integer) (Listof Integer) -> Number
+(define (cross-product point-a point-b)
+  (let ([ax (first point-a)]
+        [ay (second point-a)]
+        [bx (first point-b)]
+        [by (second point-b)])
+    (- (* ax by) (* bx ay))))
+
+;; area : (Listof (Listof Integer)) -> Number
+(define (area points)
+  (define first-point (first points))
+  (let shoelace ([acc 0.0]
+                 [remaining-points (cdr points)]
+                 [prev-point first-point])
+    (if (empty? remaining-points)
+        (/ (abs (+ acc (cross-product prev-point first-point))) 2)
+        (shoelace (+ acc (cross-product prev-point (first remaining-points)))
+                  (cdr remaining-points)
+                  (first remaining-points)))))
+
+(define (read-points)
+  (for/list ([_ (in-range (read))])
+    (list (read) (read))))
+
+(displayln (area (read-points)))
+```
+
+和计算周长时差不多，在每次计算时更新前后点和剩余点，并保存第一个点用于最后一个叉乘项的计算。
+
+## 25-Computing the GCD
+
+改进版的欧几里得算法：[Euclidean_algorithm](https://en.wikipedia.org/wiki/Greatest_common_divisor?oldformat=true#Euclidean_algorithm)
+
+函数签名：
+
+```racket
+gcd : Integer Integer -> Integer
+```
+
+```racket title="solution"
+#lang racket
+
+;; gcd : Integer Integer -> Integer
+(define (gcd x y)
+  (let [(r (remainder x y))]
+    (if (= r 0)
+        y
+        (gcd y r))))
+
+(displayln (gcd (read) (read)))
+```
+
+## 26-Fibonacci Numbers
+
+函数签名：
+
+```racket
+fibonacci : Integer -> Integer
+```
+
+```racket title="solution"
+#lang racket
+
+;; fibonacci : Integer -> Integer
+(define (fibonacci n)
+  (define (fib-helper a b count)
+    (if (= count 3)
+        (+ a b)
+        (fib-helper b (+ a b) (- count 1))))
+  (cond
+    [(= n 1) 0]
+    [(= n 2) 1]
+    [else (fib-helper 0 1 n)]))
+
+(displayln (fibonacci (read)))
+```
