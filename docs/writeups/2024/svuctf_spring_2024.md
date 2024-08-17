@@ -10,8 +10,6 @@ toc_depth: 3
 
 前几天才把这次 SVUCTF 的题解写完，拖延症晚期。这里相比官方仓库里的题解没太多变化，只是做了一些格式修改。
 
-当然你也可以顺带看看[幕后花絮](../../blog/posts/behind_the_svuctf_spring_2024.md)。
-
 ![poster](../../assets/images/writeups/2024/svuctf_spring_2024/poster.png)
 
 ## Misc
