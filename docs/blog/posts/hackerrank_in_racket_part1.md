@@ -11,7 +11,15 @@ tags:
 
 # HackerRank in Racket: Part 1
 
+这里是使用 Racket 完成 HackerRank 函数式编程题目的第一章，包含基础函数和列表操作（0 - 10 题）。
+
 <!-- more -->
+
+仓库：[13m0n4de/HackerRank-FP-Solutions](https://github.com/13m0n4de/HackerRank-FP-Solutions)
+
+- [Part 1: Problem 00 - 10](./hackerrank_in_racket_part1.md)
+- [Part 2: Problem 11 - 21](./hackerrank_in_racket_part2.md)
+- [Part 3: Problem 22 - 26](./hackerrank_in_racket_part3.md)
 
 ## 00-Solve Me First FP
 

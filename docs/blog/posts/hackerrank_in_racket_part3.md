@@ -11,7 +11,15 @@ tags:
 
 # HackerRank in Racket: Part 3
 
+这里是使用 Racket 完成 HackerRank 函数式编程题目的第三章，包含函数关系和几何计算（22 - 26 题）。
+
 <!-- more -->
+
+仓库：[13m0n4de/HackerRank-FP-Solutions](https://github.com/13m0n4de/HackerRank-FP-Solutions)
+
+- [Part 1: Problem 00 - 10](./hackerrank_in_racket_part1.md)
+- [Part 2: Problem 11 - 21](./hackerrank_in_racket_part2.md)
+- [Part 3: Problem 22 - 26](./hackerrank_in_racket_part3.md)
 
 ## 22-Functions or Not?
 
