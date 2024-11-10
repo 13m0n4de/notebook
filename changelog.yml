@@ -1,4 +1,8 @@
 - "2024":
+  - "2024-11-09":
+    - newpage:
+        text: "Blog > Coffee and Random Thoughts: Hackergame 2024"
+        href: blog/2024/11/09/coffee-and-random-thoughts-hackergame-2024-.html
   - "2024-08-11":
     - newpage:
         text: "Writeups > 2024 > SVUCTF SPRING 2024"
