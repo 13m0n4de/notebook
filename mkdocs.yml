@@ -12,172 +12,175 @@ theme:
   custom_dir: overrides
   font: false
   features:
-    - navigation.instant
-    - navigation.instant.progress
-    - navigation.tracking
-    - navigation.indexes
-    - navigation.top
-    - navigation.tabs
-    - navigation.footer
-    - search.suggest
-    - content.code.annotate
-    - content.code.copy
-    - content.footnote.tooltips
+  - navigation.instant
+  - navigation.instant.progress
+  - navigation.tracking
+  - navigation.indexes
+  - navigation.top
+  - navigation.tabs
+  - navigation.footer
+  - search.suggest
+  - content.code.annotate
+  - content.code.copy
+  - content.footnote.tooltips
 
   palette:
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-      primary: custom
-      accent: custom
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    toggle:
+      icon: material/brightness-4
+      name: Switch to light mode
+    primary: custom
+    accent: custom
 
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      toggle:
-        icon: material/brightness-7 
-        name: Switch to dark mode
-      primary: custom
-      accent: custom
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+    primary: custom
+    accent: custom
 
 extra:
   social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/13m0n4de/
-    - icon: fontawesome/solid/blog
-      link: https://13m0n4de.vercel.app/blog/
-    - icon: fontawesome/solid/house
-      link: https://13m0n4de.vercel.app
+  - icon: fontawesome/brands/github
+    link: https://github.com/13m0n4de/
+  - icon: fontawesome/solid/blog
+    link: https://13m0n4de.vercel.app/blog/
+  - icon: fontawesome/solid/house
+    link: https://13m0n4de.vercel.app
 
 extra_css:
-  # - https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css
-  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css
-  - https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css
-  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
-  
-  - stylesheets/custom.css
+# - https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css
+- https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css
+- https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css
+- https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+
+- stylesheets/custom.css
 
 extra_javascript:
-  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
-  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+- https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+- https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
 
-  - javascripts/katex.js
+- javascripts/katex.js
 
 plugins:
-  - search # 搜索
-  - offline # 离线搜索
-  - glightbox # 图片点击放大
-  - git-revision-date-localized: # 最后修改页面日期
-      type: datetime
-      timezone: Asia/Shanghai
-      locale: zh
-      enable_creation_date: true
-      exclude:
-        - index.md
-  - changelog # changelog 时间轴
-  - heti # 优化中文排版
-  - toc
-  - blog
-  - rss:
-      match_path: "blog/posts"
-      date_from_meta:
-        as_creation: "date" # means from page.meta.date
-        as_update: "git" # means from git log
-        datetime_format: "%Y-%m-%d"
-  - tags:
-      tags_file: blog/tags.md
+- search # 搜索
+- offline # 离线搜索
+- glightbox # 图片点击放大
+- git-revision-date-localized: # 最后修改页面日期
+    type: datetime
+    timezone: Asia/Shanghai
+    locale: zh
+    enable_creation_date: true
+    exclude:
+    - index.md
+- changelog # changelog 时间轴
+- heti # 优化中文排版
+- toc
+- blog
+- rss:
+    match_path: "blog/posts"
+    date_from_meta:
+      as_creation: "date" # means from page.meta.date
+      as_update: "git" # means from git log
+      datetime_format: "%Y-%m-%d"
+- tags:
+    tags_file: blog/tags.md
 
 markdown_extensions:
-  - abbr
-  - admonition
-  - attr_list
-  - def_list
-  - footnotes
-  - md_in_html
-  - toc:
-      permalink: true
-      toc_depth: 4
-  
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.caret
-  - pymdownx.details
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
-  - pymdownx.keys
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
+- abbr
+- admonition
+- attr_list
+- def_list
+- footnotes
+- md_in_html
+- toc:
+    permalink: true
+    toc_depth: 4
+
+- pymdownx.arithmatex:
+    generic: true
+- pymdownx.betterem:
+    smart_enable: all
+- pymdownx.caret
+- pymdownx.details
+- pymdownx.emoji:
+    emoji_index: !!python/name:material.extensions.emoji.twemoji
+    emoji_generator: !!python/name:material.extensions.emoji.to_svg
+- pymdownx.highlight
+- pymdownx.inlinehilite
+- pymdownx.keys
+- pymdownx.mark
+- pymdownx.smartsymbols
+- pymdownx.superfences:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:pymdownx.superfences.fence_code_format
+- pymdownx.tabbed:
+    alternate_style: true
+- pymdownx.tasklist:
+    custom_checkbox: true
+- pymdownx.tilde
+
+not_in_nav: |
+  blog/tags.md
 
 nav:
-  - Home:
-    - index.md
-    - Timeline: changelog.md
-    - Done List: done.md
-  - Computer Science:
-    - cs/index.md
-    - Programming Language & ISA:
-      - cs/pl/index.md
-      - C:
-        - cs/pl/c/index.md
-      - Python: cs/pl/python/index.md
-      - Racket: cs/pl/racket/index.md
-      - RISC-V ISA: cs/pl/riscv/index.md
-      - Rust: cs/pl/rust/index.md
-    - Operating System:
-      - cs/os/index.md
-      - OSTEP:
-        - cs/os/ostep/index.md
-        - 02.Introduction: cs/os/ostep/02introduction.md
-        - 04.Processes: cs/os/ostep/04processes.md
-        - 05.Process API: cs/os/ostep/05process_api.md
-        - 06.Direct Execution: cs/os/ostep/06direct_execution.md
-        - 07.CPU Scheduling: cs/os/ostep/07cpu_scheduling.md
-        - 08.Multi-level Feedback: cs/os/ostep/08multi_level_feedback.md
-        - 09.Lottery Scheduling: cs/os/ostep/09lottery_scheduling.md
-        - 10.Multi-CPU Scheduling: cs/os/ostep/10multi_cpu_scheduling.md
-        - 13.Address Spaces: cs/os/ostep/13address_spaces.md
-        - 14.Memory API: cs/os/ostep/14memory_api.md
-        - 15.Address Translation: cs/os/ostep/15address_translation.md
-        - 16.Segmentation: cs/os/ostep/16segmentation.md
-        - 17.Free Space Management: cs/os/ostep/17free_space_management.md
-        - 18.Introduction to Paging: cs/os/ostep/18introduction_to_paging.md
-        - 19.Translation Lookaside Buffers: cs/os/ostep/19translation_lookaside_buffers.md
-        - 20.Advanced Page Tables: cs/os/ostep/20advanced_page_tables.md
-      - MIT 6.1810: cs/os/mit6.1810.md
-      - rCore:
-        - cs/os/rcore/index.md
-    - Compiler:
-      - cs/compiler/index.md
-  - Security:
-    - sec/index.md
-  - CTF:
-    - ctf/index.md
-  - Writeups:
-    - writeups/index.md
-    - 2024:
-      - DiceCTF 2024 Quals: writeups/2024/dicectf2024_quals.md
-      - SVUCTF SPRING 2024: writeups/2024/svuctf_spring_2024.md
-  - GameDev:
-    - gamedev/index.md
-    - AI:
-      - gamedev/ai/index.md
-      - Stable Diffusion:
-        - gamedev/ai/sd/index.md
-  - Blog:
-    - blog/index.md
+- Home:
+  - index.md
+  - Timeline: changelog.md
+  - Done List: done.md
+- Computer Science:
+  - cs/index.md
+  - Programming Language & ISA:
+    - cs/pl/index.md
+    - C:
+      - cs/pl/c/index.md
+    - Python: cs/pl/python/index.md
+    - Racket: cs/pl/racket/index.md
+    - RISC-V ISA: cs/pl/riscv/index.md
+    - Rust: cs/pl/rust/index.md
+  - Operating System:
+    - cs/os/index.md
+    - OSTEP:
+      - cs/os/ostep/index.md
+      - 02.Introduction: cs/os/ostep/02introduction.md
+      - 04.Processes: cs/os/ostep/04processes.md
+      - 05.Process API: cs/os/ostep/05process_api.md
+      - 06.Direct Execution: cs/os/ostep/06direct_execution.md
+      - 07.CPU Scheduling: cs/os/ostep/07cpu_scheduling.md
+      - 08.Multi-level Feedback: cs/os/ostep/08multi_level_feedback.md
+      - 09.Lottery Scheduling: cs/os/ostep/09lottery_scheduling.md
+      - 10.Multi-CPU Scheduling: cs/os/ostep/10multi_cpu_scheduling.md
+      - 13.Address Spaces: cs/os/ostep/13address_spaces.md
+      - 14.Memory API: cs/os/ostep/14memory_api.md
+      - 15.Address Translation: cs/os/ostep/15address_translation.md
+      - 16.Segmentation: cs/os/ostep/16segmentation.md
+      - 17.Free Space Management: cs/os/ostep/17free_space_management.md
+      - 18.Introduction to Paging: cs/os/ostep/18introduction_to_paging.md
+      - 19.Translation Lookaside Buffers: cs/os/ostep/19translation_lookaside_buffers.md
+      - 20.Advanced Page Tables: cs/os/ostep/20advanced_page_tables.md
+    - MIT 6.1810: cs/os/mit6.1810.md
+    - rCore:
+      - cs/os/rcore/index.md
+  - Compiler:
+    - cs/compiler/index.md
+- Security:
+  - sec/index.md
+- CTF:
+  - ctf/index.md
+- Writeups:
+  - writeups/index.md
+  - 2024:
+    - DiceCTF 2024 Quals: writeups/2024/dicectf2024_quals.md
+    - SVUCTF SPRING 2024: writeups/2024/svuctf_spring_2024.md
+- GameDev:
+  - gamedev/index.md
+  - AI:
+    - gamedev/ai/index.md
+    - Stable Diffusion:
+      - gamedev/ai/sd/index.md
+- Blog:
+  - blog/index.md

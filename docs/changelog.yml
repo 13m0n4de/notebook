@@ -37,104 +37,104 @@
         href: blog/2024/05/12/bad-apple-on-lemoncore.html
   - "2024-03-18":
     - pageupdate:
-          text: Writeups > 2024 > DiceCTF 2024 Quals
-          href: writeups/2024/dicectf2024_quals.html
+        text: Writeups > 2024 > DiceCTF 2024 Quals
+        href: writeups/2024/dicectf2024_quals.html
   - "2024-02-27":
     - newpage:
-          text: CS > OS > OSTEP > 20.Advanced Page Tables
-          href: cs/os/ostep/20advanced_page_tables.html
+        text: CS > OS > OSTEP > 20.Advanced Page Tables
+        href: cs/os/ostep/20advanced_page_tables.html
   - "2024-02-27":
     - newpage:
-          text: CS > OS > OSTEP > 19.Translation Lookaside Buffers
-          href: cs/os/ostep/19translation_lookaside_buffers.html
+        text: CS > OS > OSTEP > 19.Translation Lookaside Buffers
+        href: cs/os/ostep/19translation_lookaside_buffers.html
   - "2024-02-25":
     - newpage:
-          text: Blog > I Need a Done List, Not a Todo List
-          href: blog/2024/02/25/i-need-a-done-list-not-a-todo-list.html
+        text: Blog > I Need a Done List, Not a Todo List
+        href: blog/2024/02/25/i-need-a-done-list-not-a-todo-list.html
   - "2024-02-24":
     - newpage:
-          text: CS > OS > OSTEP > 18.Introduction to Paging
-          href: cs/os/ostep/18introduction_to_paging.html
+        text: CS > OS > OSTEP > 18.Introduction to Paging
+        href: cs/os/ostep/18introduction_to_paging.html
   - "2024-02-22":
     - newpage:
-          text: CS > OS > OSTEP > 17.Free Space Management
-          href: cs/os/ostep/17free_space_management.html
+        text: CS > OS > OSTEP > 17.Free Space Management
+        href: cs/os/ostep/17free_space_management.html
   - "2024-02-21":
     - newpage:
-          text: CS > OS > OSTEP > 16.Segmentation
-          href: cs/os/ostep/16segmentation.html
+        text: CS > OS > OSTEP > 16.Segmentation
+        href: cs/os/ostep/16segmentation.html
   - "2024-02-18":
     - newpage:
-          text: Blog > Exploring the Hare Programming Language
-          href: blog/2024/02/18/exploring-the-hare-programming-language-part-1.html
+        text: Blog > Exploring the Hare Programming Language
+        href: blog/2024/02/18/exploring-the-hare-programming-language-part-1.html
   - "2024-02-17":
     - newpage:
-          text: Blog > Including C File Over HTTPS
-          href: blog/2024/02/17/including-c-file-over-https.html
+        text: Blog > Including C File Over HTTPS
+        href: blog/2024/02/17/including-c-file-over-https.html
   - "2024-02-16":
     - newpage:
-          text: CS > OS > OSTEP > 15.Address Translation
-          href: cs/os/ostep/15address_translation.html
+        text: CS > OS > OSTEP > 15.Address Translation
+        href: cs/os/ostep/15address_translation.html
   - "2024-02-16":
     - newpage:
-          text: CS > OS > OSTEP > 14.Memory API
-          href: cs/os/ostep/14memory_api.html
+        text: CS > OS > OSTEP > 14.Memory API
+        href: cs/os/ostep/14memory_api.html
   - "2024-02-15":
     - newpage:
-          text: CS > OS > OSTEP > 13.Address Spaces
-          href: cs/os/ostep/13address_spaces.html
+        text: CS > OS > OSTEP > 13.Address Spaces
+        href: cs/os/ostep/13address_spaces.html
   - "2024-02-15":
     - function: 添加 Blog，将部分文章移动到 Blog
   - "2024-02-12":
     - newpage:
-          text: CS > OS > OSTEP > 09.Lottery Scheduling
-          href: cs/os/ostep/09lottery_scheduling.html
+        text: CS > OS > OSTEP > 09.Lottery Scheduling
+        href: cs/os/ostep/09lottery_scheduling.html
   - "2024-02-11":
     - pageupdate:
-          text: Writeups > 2024 > DiceCTF 2024 Quals
-          href: writeups/2024/dicectf2024_quals.html
+        text: Writeups > 2024 > DiceCTF 2024 Quals
+        href: writeups/2024/dicectf2024_quals.html
   - "2024-02-07":
     - newpage:
-          text: Blog > Evaluating and Selecting SD Models
-          href: blog/2024/02/07/evaluating-and-selecting-sd-models.html
+        text: Blog > Evaluating and Selecting SD Models
+        href: blog/2024/02/07/evaluating-and-selecting-sd-models.html
   - "2024-02-05":
     - newpage:
-          text: Writeups > 2024 > DiceCTF 2024 Quals
-          href: writeups/2024/dicectf2024_quals.html
+        text: Writeups > 2024 > DiceCTF 2024 Quals
+        href: writeups/2024/dicectf2024_quals.html
   - "2024-02-03":
     - newpage:
-          text: CS > OS > OSTEP > 08.Multi-level Feedback
-          href: cs/os/ostep/08multi_level_feedback.html
+        text: CS > OS > OSTEP > 08.Multi-level Feedback
+        href: cs/os/ostep/08multi_level_feedback.html
   - "2024-01-27":
     - pageupdate:
-          text: CS > OS > OSTEP > 07.CPU Scheduling
-          href: cs/os/ostep/07cpu_scheduling.html
+        text: CS > OS > OSTEP > 07.CPU Scheduling
+        href: cs/os/ostep/07cpu_scheduling.html
   - "2024-01-27":
     - function: 添加 Katex 支持
   - "2024-01-24":
     - pageupdate:
-          text: CS > OS > OSTEP > 06.Direct Execution
-          href: cs/os/ostep/06direct_execution.html
+        text: CS > OS > OSTEP > 06.Direct Execution
+        href: cs/os/ostep/06direct_execution.html
   - "2024-01-23":
     - newpage:
-          text: CS > OS > OSTEP > 06.Direct Execution
-          href: cs/os/ostep/06direct_execution.html
+        text: CS > OS > OSTEP > 06.Direct Execution
+        href: cs/os/ostep/06direct_execution.html
   - "2024-01-17":
     - newpage:
-          text: CS > OS > OSTEP > 05.Process API
-          href: /cs/os/ostep/05process_api.html
+        text: CS > OS > OSTEP > 05.Process API
+        href: /cs/os/ostep/05process_api.html
   - "2024-01-16":
     - newpage:
-          text: CS > OS > OSTEP > 04.Processes
-          href: /cs/os/ostep/04processes.html
+        text: CS > OS > OSTEP > 04.Processes
+        href: /cs/os/ostep/04processes.html
   - "2024-01-12":
     - pageupdate:
         text: CS > OS > OSTEP > 02.Introduction 添加“持久性”和“简单历史”小节
         href: /cs/os/ostep/02introduction.html
   - "2024-01-12":
     - newpage:
-          text: CS > OS > OSTEP > 02.Introduction
-          href: /cs/os/ostep/02introduction.html
+        text: CS > OS > OSTEP > 02.Introduction
+        href: /cs/os/ostep/02introduction.html
   - "2024-01-12":
     - function: 使用 Vercel 部署
   - "2024-01-12":

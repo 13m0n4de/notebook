@@ -15,7 +15,7 @@ tags:
 
 - OS：[github.com/13m0n4de/lemon-core](https://github.com/13m0n4de/lemon-core)
 - App: [gist.github.com/13m0n4de/238b13f361e0326a0e8868e00119fb2a](https://gist.github.com/13m0n4de/238b13f361e0326a0e8868e00119fb2a)
-- Video: [\[Touhou\] Bad Apple!! PV \[Shadow\]](https://www.nicovideo.jp/watch/sm8628149)
+- Video: [[Touhou] Bad Apple!! PV [Shadow]](https://www.nicovideo.jp/watch/sm8628149)
 
 <!-- more -->
 

@@ -1,5 +1,5 @@
 :root {
-  --md-text-font: "Hack", "LXGW WenKai Screen"; 
+  --md-text-font: "Hack", "LXGW WenKai Screen";
   --md-code-font: "Hack";
 }
 
@@ -11,10 +11,10 @@
   --md-default-bg-color--lighter: #1F222A;
   --md-default-bg-color--lightest: #1F222A;
 
-  --md-default-fg-color: rgba(255,255,255,0.9);
-  --md-default-fg-color--light: rgba(255,255,255,0.85);
-  --md-default-fg-color--lighter: rgba(255,255,255,0.8);
-  --md-default-fg-color--lightest: rgba(255,255,255,0.6);
+  --md-default-fg-color: rgba(255, 255, 255, 0.9);
+  --md-default-fg-color--light: rgba(255, 255, 255, 0.85);
+  --md-default-fg-color--lighter: rgba(255, 255, 255, 0.8);
+  --md-default-fg-color--lightest: rgba(255, 255, 255, 0.6);
 
   --md-primary-fg-color: #1F222A;
   --md-primary-fg-color--dark: #1F222A;
@@ -36,10 +36,10 @@
   --md-default-bg-color--lighter: #EFEFEF;
   --md-default-bg-color--lightest: #EFEFEF;
 
-  --md-default-fg-color: rgba(0,0,0,0.9);
-  --md-default-fg-color--light: rgba(0,0,0,0.85);
-  --md-default-fg-color--lighter: rgba(0,0,0,0.8);
-  --md-default-fg-color--lightest: rgba(0,0,0,0.6);
+  --md-default-fg-color: rgba(0, 0, 0, 0.9);
+  --md-default-fg-color--light: rgba(0, 0, 0, 0.85);
+  --md-default-fg-color--lighter: rgba(0, 0, 0, 0.8);
+  --md-default-fg-color--lightest: rgba(0, 0, 0, 0.6);
 
   --md-primary-fg-color: #efefef;
   --md-primary-fg-color--dark: #efefef;
@@ -64,11 +64,11 @@ input.md-search__input::placeholder {
 }
 
 .md-search-result__meta {
-    background-color: var(--md-default-bg-color--light);
+  background-color: var(--md-default-bg-color--light);
 }
 
 .md-copyright {
-    font-size: .55rem;
+  font-size: .55rem;
 }
 
 /* nord */
