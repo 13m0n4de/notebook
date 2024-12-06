@@ -1,0 +1,15 @@
+[project]
+name = "notebook"
+version = "0.1.0"
+description = "13m0n4de's Notebook"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "mkdocs-changelog-plugin>=0.1.3",
+    "mkdocs-git-revision-date-localized-plugin>=1.3.0",
+    "mkdocs-glightbox>=0.4.0",
+    "mkdocs-heti-plugin>=0.1.6",
+    "mkdocs-material>=9.5.47",
+    "mkdocs-rss-plugin>=1.17.0",
+    "rich>=13.9.4",
+]
