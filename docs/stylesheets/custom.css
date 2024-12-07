@@ -1,59 +1,128 @@
 :root {
-  --md-text-font: "Hack", "LXGW WenKai Screen";
+  --md-text-font: "LXGW WenKai Screen";
   --md-code-font: "Hack";
 }
 
-[data-md-color-scheme="slate"] {
-  --md-accent-fg-color: rgb(120, 226, 160);
+[data-md-color-scheme="catppuccin-macchiato"] {
+  color-scheme: dark;
 
-  --md-default-bg-color: #1F222A;
-  --md-default-bg-color--light: #1F222A;
-  --md-default-bg-color--lighter: #1F222A;
-  --md-default-bg-color--lightest: #1F222A;
+  /* Default color shades */
+  /* Text */
+  --md-default-fg-color: hsl(227, 68%, 88%);
+  /* Subtext1 */
+  --md-default-fg-color--light: hsl(228, 39%, 80%);
+  /* Subtext0 */
+  --md-default-fg-color--lighter: hsl(227, 27%, 72%);
+  /* Overlay2 */
+  --md-default-fg-color--lightest: hsl(228, 20%, 65%);
+  /* Base */
+  --md-default-bg-color: hsl(232, 23%, 18%);
+  /* Base */
+  --md-default-bg-color--light: hsl(232, 23%, 18%);
+  /* Base */
+  --md-default-bg-color--lighter: hsl(232, 23%, 18%);
+  /* Base */
+  --md-default-bg-color--lightest: hsl(232, 23%, 18%);
 
-  --md-default-fg-color: rgba(255, 255, 255, 0.9);
-  --md-default-fg-color--light: rgba(255, 255, 255, 0.85);
-  --md-default-fg-color--lighter: rgba(255, 255, 255, 0.8);
-  --md-default-fg-color--lightest: rgba(255, 255, 255, 0.6);
+  /* Primary color shades */
+  /* Mantle */
+  --md-primary-fg-color: hsl(233, 23%, 15%);
+  /* Mantle */
+  --md-primary-fg-color--light: hsl(233, 23%, 15%);
+  /* Crust */
+  --md-primary-fg-color--dark: hsl(236, 23%, 12%);
+  /* Text */
+  --md-primary-bg-color: hsl(227, 68%, 88%);
+  /* Text */
+  --md-primary-bg-color--light: hsl(227, 68%, 88%);
 
-  --md-primary-fg-color: #1F222A;
-  --md-primary-fg-color--dark: #1F222A;
+  /* Accent color shades */
+  /* Teal */
+  --md-accent-fg-color: hsl(171, 47%, 69%);
+  /* Teal */
+  --md-accent-fg-color--transparent: hsl(171, 47%, 69%, 0.1);
+  /* Text */
+  --md-accent-bg-color: hsl(227, 68%, 88%);
+  /* Text */
+  --md-accent-bg-color--light: hsl(227, 68%, 88%);
 
-  --md-typeset-a-color: rgb(120, 226, 160);
+  /* Code color shades */
+  /* Text */
+  --md-code-fg-color: hsl(227, 68%, 88%);
+  /* Surface0 */
+  --md-code-bg-color: hsl(233deg, 23%, 15%);
+  /* Teal */
+  --md-code-hl-color: hsl(171, 47%, 69%);
+  /* Teal */
+  --md-code-hl-color--light: hsl(171, 47%, 69%, 0.1);
 
-  --md-footer-fg-color: #fff;
-  --md-footer-bg-color: #1F222A;
-  --md-footer-bg-color--dark: #1F222A;
-  --md-footer-fg-color--light: #fff;
-  --md-footer-fg-color--lighter: #fff;
+  /* Code highlighting color shades */
+  /* Peach */
+  --md-code-hl-number-color: hsl(21, 86%, 73%);
+  /* Blue */
+  --md-code-hl-special-color: hsl(220, 83%, 75%);
+  /* Mauve */
+  --md-code-hl-function-color: hsl(267, 83%, 80%);
+  /* Yellow */
+  --md-code-hl-constant-color: hsl(40, 70%, 78%);
+  /* Blue */
+  --md-code-hl-keyword-color: hsl(220, 83%, 75%);
+  /* Green */
+  --md-code-hl-string-color: hsl(105, 48%, 72%);
+  /* Sky */
+  --md-code-hl-name-color: hsl(189, 59%, 73%);
+  /* Text */
+  --md-code-hl-operator-color: hsl(227, 68%, 88%);
+  /* Text */
+  --md-code-hl-punctuation-color: hsl(227, 68%, 88%);
+  /* Overlay0 */
+  --md-code-hl-comment-color: hsl(230, 12%, 49%);
+  /* Text */
+  --md-code-hl-generic-color: hsl(227, 68%, 88%);
+  /* Pink */
+  --md-code-hl-variable-color: hsl(316, 74%, 85%);
+
+  /* Typeset color shades */
+  --md-typeset-color: var(--md-default-fg-color);
+  /* Teal */
+  --md-typeset-a-color: hsl(171, 47%, 69%);
+  /* Text */
+  --md-typeset-kbd-color: hsl(227, 68%, 88%);
+  /* Text */
+  --md-typeset-kbd-accent-color: hsl(227, 68%, 88%);
+  /* Base */
+  --md-typeset-kbd-border-color: hsl(232, 23%, 18%);
+  /* Teal */
+  --md-typeset-mark-color: hsl(171, 47%, 69%);
+  /* Text */
+  --md-typeset-table-color: hsl(227, 68%, 88%);
+  /* Text */
+  --md-typeset-table-color--light: hsl(227, 68%, 88%, 0.1);
+
+  /* Admonition color shades */
+  --md-admonition-fg-color: var(--md-default-fg-color);
+  --md-admonition-bg-color: var(--md-default-bg-color);
+
+  /* Footer color shades */
+  /* Text */
+  --md-footer-fg-color: hsl(227, 68%, 88%);
+  /* Subtext1 */
+  --md-footer-fg-color--light: hsl(228, 39%, 80%);
+  /* Subtext0 */
+  --md-footer-fg-color--lighter: hsl(227, 27%, 72%);
+  /* Mantle */
+  --md-footer-bg-color: hsl(233, 23%, 15%);
+  /* Crust */
+  --md-footer-bg-color--dark: hsl(236, 23%, 12%);
+
+  /* Shadow depth */
+  --md-shadow-z1: 0 0.2rem 0.5rem hsla(0, 0%, 0%, 0.05),
+    0 0 0.05rem hsla(0, 0%, 0%, 0.1);
+  --md-shadow-z2: 0 0.2rem 0.5rem hsla(0, 0%, 0%, 0.25),
+    0 0 0.05rem hsla(0, 0%, 0%, 0.25);
+  --md-shadow-z3: 0 0.2rem 0.5rem hsla(0, 0%, 0%, 0.4),
+    0 0 0.05rem hsla(0, 0%, 0%, 0.35);
 }
-
-[data-md-color-scheme="default"] {
-  --md-accent-fg-color: rgb(45, 139, 81);
-
-  --md-default-bg-color: #EFEFEF;
-  --md-default-bg-color--light: #EFEFEF;
-  --md-default-bg-color--lighter: #EFEFEF;
-  --md-default-bg-color--lightest: #EFEFEF;
-
-  --md-default-fg-color: rgba(0, 0, 0, 0.9);
-  --md-default-fg-color--light: rgba(0, 0, 0, 0.85);
-  --md-default-fg-color--lighter: rgba(0, 0, 0, 0.8);
-  --md-default-fg-color--lightest: rgba(0, 0, 0, 0.6);
-
-  --md-primary-fg-color: #efefef;
-  --md-primary-fg-color--dark: #efefef;
-  --md-primary-bg-color: #000000;
-
-  --md-typeset-a-color: rgb(45, 139, 81);
-
-  --md-footer-fg-color: #000000;
-  --md-footer-bg-color: #efefef;
-  --md-footer-bg-color--dark: #efefef;
-  --md-footer-fg-color--light: #000000;
-  --md-footer-fg-color--lighter: #000000;
-}
-
 
 input.md-search__input {
   background-color: var(--md-default-bg-color);
@@ -71,44 +140,56 @@ input.md-search__input::placeholder {
   font-size: .55rem;
 }
 
-/* nord */
-[data-md-color-scheme="slate"] {
-  --md-code-fg-color: var(--md-default-fg-color);
-  --md-code-bg-color: #2E3440;
-  --md-code-hl-color: var(--md-accent-fg-color);
-  --md-code-hl-color--light: rgba(136, 192, 208, 0.1);
+/* Hide images for light mode */
+[data-md-color-scheme="catppuccin-macchiato"] {
 
-  --md-code-hl-number-color: #B48EAD;
-  --md-code-hl-special-color: #81A1C1;
-  --md-code-hl-function-color: #D8DEE9;
-  --md-code-hl-constant-color: #8FBCBB;
-  --md-code-hl-keyword-color: #81A1C1;
-  --md-code-hl-string-color: #A3BE8C;
-  --md-code-hl-name-color: #8FBCBB;
-  --md-code-hl-operator-color: #81A1C1;
-  --md-code-hl-punctuation-color: #D8DEE9;
-  --md-code-hl-comment-color: #4C566A;
-  --md-code-hl-generic-color: #D8DEE9;
-  --md-code-hl-variable-color: #88C0D0;
+  img[src$="#only-light"],
+  img[src$="#gh-light-mode-only"] {
+    display: none;
+  }
 }
 
-/* One Light */
-[data-md-color-scheme="default"] {
-  --md-code-fg-color: var(--md-default-fg-color);
-  --md-code-bg-color: #FAFAFA;
-  --md-code-hl-color: var(--md-accent-fg-color);
-  --md-code-hl-color--light: rgba(136, 192, 208, 0.2);
+[data-md-color-scheme="catppuccin-macchiato"] .md-tag {
+  /* Surface0 */
+  background-color: hsl(230, 19%, 26%);
+  /* Text */
+  color: hsl(227, 68%, 88%);
+}
 
-  --md-code-hl-number-color: #986801;
-  --md-code-hl-special-color: #383A42;
-  --md-code-hl-function-color: #4078F2;
-  --md-code-hl-constant-color: #E06C75;
-  --md-code-hl-keyword-color: #A626A4;
-  --md-code-hl-string-color: #50A14F;
-  --md-code-hl-name-color: #E06C75;
-  --md-code-hl-operator-color: #0184BC;
-  --md-code-hl-punctuation-color: #383A42;
-  --md-code-hl-comment-color: #A0A1A7;
-  --md-code-hl-generic-color: #383A42;
-  --md-code-hl-variable-color: #E06C75;
+[data-md-color-scheme="catppuccin-macchiato"] .md-tag:hover,
+[data-md-color-scheme="catppuccin-macchiato"] .md-tag[href]:hover {
+  /* Surface1 */
+  background-color: hsl(231, 16%, 34%);
+}
+
+[data-md-color-scheme="catppuccin-macchiato"] .md-top {
+  /* Surface0 */
+  background-color: hsl(230, 19%, 26%);
+  /* Text */
+  color: hsl(227, 68%, 88%);
+  /* Surface0 */
+  border-color: hsl(230, 19%, 26%);
+}
+
+[data-md-color-scheme="catppuccin-macchiato"] .md-top:hover {
+  /* Surface1 */
+  background-color: hsl(231, 16%, 34%);
+  /* Surface1 */
+  border-color: hsl(231, 16%, 34%);
+}
+
+[data-md-color-scheme="catppuccin-macchiato"] .md-button {
+  /* Surface0 */
+  background-color: hsl(230, 19%, 26%);
+  /* Text */
+  color: hsl(227, 68%, 88%);
+  /* Surface0 */
+  border-color: hsl(230, 19%, 26%);
+}
+
+[data-md-color-scheme="catppuccin-macchiato"] .md-button:hover {
+  /* Surface1 */
+  background-color: hsl(231, 16%, 34%);
+  /* Surface1 */
+  border-color: hsl(231, 16%, 34%);
 }

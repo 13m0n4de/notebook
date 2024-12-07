@@ -25,21 +25,7 @@ theme:
   - content.footnote.tooltips
 
   palette:
-  - media: "(prefers-color-scheme: dark)"
-    scheme: slate
-    toggle:
-      icon: material/brightness-4
-      name: Switch to light mode
-    primary: custom
-    accent: custom
-
-  - media: "(prefers-color-scheme: light)"
-    scheme: default
-    toggle:
-      icon: material/brightness-7
-      name: Switch to dark mode
-    primary: custom
-    accent: custom
+    scheme: catppuccin-macchiato
 
 extra:
   social:
