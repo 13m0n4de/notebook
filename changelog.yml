@@ -1,4 +1,10 @@
 - "2024":
+  - "2024-12-06":
+    - newpage:
+        text: "Blog > Ricing My Arch Linux"
+        href: blog/2024/12/06/ricing-my-arch-linux.html
+  - "2024-12-06":
+    - function: 更新网站主题配色
   - "2024-11-09":
     - newpage:
         text: "Blog > Coffee and Random Thoughts: Hackergame 2024"
