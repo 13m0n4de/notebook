@@ -5,7 +5,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://13m0n4de.vercel.app/sec/vulns/pngcheck/index.html" rel="canonical"/>
 <link href="../../index.html" rel="prev"/>
-<link href="cve-2020-27818.html" rel="next"/>
+<link href="vulns-3.0.1.html" rel="next"/>
 <link href="../../../feed_rss_created.xml" rel="alternate" title="RSS 订阅" type="application/rss+xml"/>
 <link href="../../../feed_rss_updated.xml" rel="alternate" title="已更新内容的 RSS 订阅" type="application/rss+xml"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
@@ -581,6 +581,34 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="vulns-3.0.1.html">
+<span class="md-ellipsis">
+    vulns-3.0.1
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="vulns-3.0.0.html">
+<span class="md-ellipsis">
+    vulns-3.0.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="vulns-2.4.0.html">
+<span class="md-ellipsis">
+    vulns-2.4.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="cve-2020-35511.html">
+<span class="md-ellipsis">
+    CVE-2020-35511
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="cve-2020-27818.html">
 <span class="md-ellipsis">
     CVE-2020-27818
@@ -759,6 +787,13 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../../blog/archive/2025.html">
+<span class="md-ellipsis">
+    2025
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../../blog/archive/2024.html">
 <span class="md-ellipsis">
     2024
@@ -782,6 +817,13 @@
             分类
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../blog/category/cve-roulette.html">
+<span class="md-ellipsis">
+    CVE Roulette
+  </span>
+</a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../blog/category/chaos.html">
 <span class="md-ellipsis">
@@ -832,19 +874,118 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cve">
+<span class="md-ellipsis">
+            CVE 漏洞
+        </span>
+</a>
+<!-- Table of contents list -->
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+            其他漏洞
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="其他漏洞" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pngcheck-240">
+<span class="md-ellipsis">
+            pngcheck 2.4.0
+        </span>
+</a>
+<!-- Table of contents list -->
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pngcheck-300">
+<span class="md-ellipsis">
+            pngcheck 3.0.0
+        </span>
+</a>
+<!-- Table of contents list -->
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pngcheck-301">
+<span class="md-ellipsis">
+            pngcheck 3.0.1
+        </span>
+</a>
+<!-- Table of contents list -->
+</li> </ul>
+</nav>
+</li>
+</ul>
 </nav>
 </div>
 </div>
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
+<nav class="md-tags">
+<a class="md-tag" href="../../../blog/tags.html#out-of-bounds-read">Out-of-bounds Read</a>
+<a class="md-tag" href="../../../blog/tags.html#null-pointer-dereference">Null-pointer dereference</a>
+</nav>
 <h1 id="pngcheck">pngcheck<a class="headerlink" href="#pngcheck" title="Permanent link">¶</a></h1>
+<p><a href="http://www.libpng.org/pub/png/apps/pngcheck.html"><span>pngcheck<span class="heti-spacing"> </span></span></a>是一个用于验证<span class="heti-skip"><span class="heti-spacing"> </span>PNG / JNG / MNG<span class="heti-spacing"> </span></span>文件格式的命令行工具。本系列文章记录了对<span class="heti-skip"><span class="heti-spacing"> </span>pngcheck<span class="heti-spacing"> </span></span>不同版本历史漏洞的分析。</p>
+<h2 id="cve"><span>CVE<span class="heti-spacing"> </span></span>漏洞<a class="headerlink" href="#cve" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>CVE ID</th>
+<th>CWE ID</th>
+<th>漏洞类型</th>
+<th>分析文章</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CVE-2020-35511</td>
+<td>CWE-126</td>
+<td>Buffer Over-read</td>
+<td><a href="cve-2020-35511.html">详细分析</a></td>
+</tr>
+<tr>
+<td>CVE-2020-27818</td>
+<td>CWE-125</td>
+<td>Out-of-bounds Read</td>
+<td><a href="cve-2020-27818.html">详细分析</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_1">其他漏洞<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="pngcheck-240">pngcheck 2.4.0<a class="headerlink" href="#pngcheck-240" title="Permanent link">¶</a></h3>
+<ul>
+<li>多处<span class="heti-skip"><span class="heti-spacing"> </span>Out-of-bounds Read<span class="heti-spacing"> </span></span>漏洞（<span>MNG<span class="heti-spacing"> </span></span>块处理）<ul>
+<li>受影响的<span class="heti-skip"><span class="heti-spacing"> </span>MNG<span class="heti-spacing"> </span></span>块<span><span class="heti-spacing"> </span>: DBYK, DISC, DROP, LOOP, nEED, ORDR, PAST, PPLT, SAVE, SEEK</span></li>
+</ul>
+</li>
+<li><span>NULL<span class="heti-spacing"> </span></span>指针解引用漏洞（<span>sCAL<span class="heti-spacing"> </span></span>块处理）</li>
+</ul>
+<p><a href="vulns-2.4.0.html">详细分析</a></p>
+<h3 id="pngcheck-300">pngcheck 3.0.0<a class="headerlink" href="#pngcheck-300" title="Permanent link">¶</a></h3>
+<ul>
+<li><span>Out-of-bounds Read<span class="heti-spacing"> </span></span>漏洞（<span>MNG PPLT<span class="heti-spacing"> </span></span>块处理）</li>
+</ul>
+<p><a href="vulns-3.0.0.html">详细分析</a></p>
+<h3 id="pngcheck-301">pngcheck 3.0.1<a class="headerlink" href="#pngcheck-301" title="Permanent link">¶</a></h3>
+<ul>
+<li><span>Out-of-bounds Read<span class="heti-spacing"> </span></span>漏洞（<span>MNG LOOP<span class="heti-spacing"> </span></span>块处理）</li>
+</ul>
+<p><a href="vulns-3.0.1.html">详细分析</a></p>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年1月10日 03:55:12</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年2月18日 16:02:33</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
@@ -877,13 +1018,13 @@
               </div>
 </div>
 </a>
-<a aria-label="下一页: CVE-2020-27818" class="md-footer__link md-footer__link--next" href="cve-2020-27818.html">
+<a aria-label="下一页: vulns-3.0.1" class="md-footer__link md-footer__link--next" href="vulns-3.0.1.html">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 下一页
               </span>
 <div class="md-ellipsis">
-                CVE-2020-27818
+                vulns-3.0.1
               </div>
 </div>
 <div class="md-footer__button md-icon">

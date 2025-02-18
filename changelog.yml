@@ -1,5 +1,21 @@
 - "2024":
-  - "2024-01-10":
+  - "2025-01-29":
+    - newpage:
+        text: "Sec > Vulns > pngcheck > Vulns in pngcheck 3.0.1"
+        href: sec/vulns/pngcheck/vulns-3.0.1.html
+  - "2025-01-29":
+    - newpage:
+        text: "Sec > Vulns > pngcheck > Vulns in pngcheck 3.0.0"
+        href: sec/vulns/pngcheck/vulns-3.0.0.html
+  - "2025-01-29":
+    - newpage:
+        text: "Sec > Vulns > pngcheck > Vulns in pngcheck 2.4.0"
+        href: sec/vulns/pngcheck/vulns-2.4.0.html
+  - "2025-01-29":
+    - newpage:
+        text: "Sec > Vulns > pngcheck > CVE-2020-35511"
+        href: sec/vulns/pngcheck/cve-2020-35511.html
+  - "2025-01-10":
     - newpage:
         text: "Sec > Vulns > pngcheck > CVE-2020-27818"
         href: sec/vulns/pngcheck/cve-2020-27818.html
