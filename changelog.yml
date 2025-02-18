@@ -1,4 +1,8 @@
 - "2025":
+  - "2025-02-18":
+    - newpage:
+        text: "Writeups > 2024 > USTC Hackergame 2024"
+        href: writeups/2024/hackergame2024.html
   - "2025-01-30":
     - newpage:
         text: "Blog > CVE Roulette #1: pngcheck"

