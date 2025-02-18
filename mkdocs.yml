@@ -168,6 +168,7 @@ nav:
 - Writeups:
   - writeups/index.md
   - 2024:
+    - USTC Hackergame 2024: writeups/2024/hackergame2024.md
     - DiceCTF 2024 Quals: writeups/2024/dicectf2024_quals.md
     - SVUCTF SPRING 2024: writeups/2024/svuctf_spring_2024.md
 - GameDev:
