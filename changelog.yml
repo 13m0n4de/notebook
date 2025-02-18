@@ -1,4 +1,8 @@
-- "2024":
+- "2025":
+  - "2025-01-30":
+    - newpage:
+        text: "Blog > CVE Roulette #1: pngcheck"
+        href: blog/2025/01/30/cve-roulette-1-pngcheck.html
   - "2025-01-29":
     - newpage:
         text: "Sec > Vulns > pngcheck > Vulns in pngcheck 3.0.1"
@@ -19,6 +23,7 @@
     - newpage:
         text: "Sec > Vulns > pngcheck > CVE-2020-27818"
         href: sec/vulns/pngcheck/cve-2020-27818.html
+- "2024":
   - "2024-12-06":
     - newpage:
         text: "Blog > Ricing My Arch Linux"
