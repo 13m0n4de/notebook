@@ -158,6 +158,10 @@ nav:
   - 漏洞分析与复现:
     - pngcheck:
       - sec/vulns/pngcheck/index.md
+      - vulns-3.0.1: sec/vulns/pngcheck/vulns-3.0.1.md
+      - vulns-3.0.0: sec/vulns/pngcheck/vulns-3.0.0.md
+      - vulns-2.4.0: sec/vulns/pngcheck/vulns-2.4.0.md
+      - CVE-2020-35511: sec/vulns/pngcheck/cve-2020-35511.md
       - CVE-2020-27818: sec/vulns/pngcheck/cve-2020-27818.md
 - CTF:
   - ctf/index.md
