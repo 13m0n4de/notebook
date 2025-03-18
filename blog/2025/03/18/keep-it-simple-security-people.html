@@ -3,26 +3,25 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://13m0n4de.vercel.app/blog/index.html" rel="canonical"/>
-<link href="../gamedev/ai/sd/index.html" rel="prev"/>
-<link href="category/cve-roulette.html" rel="next"/>
-<link href="../feed_rss_created.xml" rel="alternate" title="RSS 订阅" type="application/rss+xml"/>
-<link href="../feed_rss_updated.xml" rel="alternate" title="已更新内容的 RSS 订阅" type="application/rss+xml"/>
-<link href="../assets/images/favicon.png" rel="icon"/>
+<link href="https://13m0n4de.vercel.app/blog/2025/03/18/keep-it-simple-security-people.html" rel="canonical"/>
+<link href="../../01/30/cve-roulette-1-pngcheck.html" rel="prev"/>
+<link href="../../../../feed_rss_created.xml" rel="alternate" title="RSS 订阅" type="application/rss+xml"/>
+<link href="../../../../feed_rss_updated.xml" rel="alternate" title="已更新内容的 RSS 订阅" type="application/rss+xml"/>
+<link href="../../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.5.47" name="generator"/>
-<title>Blog - 13m0n4de's notebook</title>
-<link href="../assets/stylesheets/main.6f8fc17f.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<title>Keep It Simple, Security People - 13m0n4de's notebook</title>
+<link href="../../../../assets/stylesheets/main.6f8fc17f.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/iframe-worker/shim"></script>
-<link href="../css/toc_extra.css" rel="stylesheet"/>
-<link href="../css/heti.css" rel="stylesheet"/>
-<link href="../css/timeline.css" rel="stylesheet"/>
+<link href="../../../../css/toc_extra.css" rel="stylesheet"/>
+<link href="../../../../css/heti.css" rel="stylesheet"/>
+<link href="../../../../css/timeline.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css" rel="stylesheet"/>
-<link href="../stylesheets/custom.css" rel="stylesheet"/>
-<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+<link href="../../../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -31,13 +30,13 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="catppuccin-macchiato" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#blog">
+<a class="md-skip" href="#keep-it-simple-security-people">
           跳转至
         </a>
 </div>
@@ -45,7 +44,7 @@
 </div>
 <header class="md-header" data-md-component="header">
 <nav aria-label="页眉" class="md-header__inner md-grid">
-<a aria-label="13m0n4de's notebook" class="md-header__button md-logo" data-md-component="logo" href=".." title="13m0n4de's notebook">
+<a aria-label="13m0n4de's notebook" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="13m0n4de's notebook">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"></path></svg>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -61,7 +60,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Blog
+              Keep It Simple, Security People
             
           </span>
 </div>
@@ -115,7 +114,7 @@
 <div class="md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../index.html">
+<a class="md-tabs__link" href="../../../../index.html">
           
   
     
@@ -125,7 +124,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../cs/index.html">
+<a class="md-tabs__link" href="../../../../cs/index.html">
           
   
     
@@ -135,7 +134,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../sec/index.html">
+<a class="md-tabs__link" href="../../../../sec/index.html">
           
   
     
@@ -145,7 +144,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../ctf/index.html">
+<a class="md-tabs__link" href="../../../../ctf/index.html">
           
   
     
@@ -155,7 +154,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../writeups/index.html">
+<a class="md-tabs__link" href="../../../../writeups/index.html">
           
   
     
@@ -165,7 +164,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../gamedev/index.html">
+<a class="md-tabs__link" href="../../../../gamedev/index.html">
           
   
     
@@ -175,7 +174,7 @@
         </a>
 </li>
 <li class="md-tabs__item md-tabs__item--active">
-<a class="md-tabs__link" href="index.html">
+<a class="md-tabs__link" href="../../../index.html">
           
   
     
@@ -189,12 +188,12 @@
 </nav>
 <main class="md-main" data-md-component="main">
 <div class="md-main__inner md-grid">
-<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="13m0n4de's notebook" class="md-nav__button md-logo" data-md-component="logo" href=".." title="13m0n4de's notebook">
+<a aria-label="13m0n4de's notebook" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="13m0n4de's notebook">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"></path></svg>
 </a>
     13m0n4de's notebook
@@ -213,7 +212,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../index.html">
+<a class="md-nav__link" href="../../../../index.html">
 <span class="md-ellipsis">
     Home
   </span>
@@ -229,7 +228,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../changelog.html">
+<a class="md-nav__link" href="../../../../changelog.html">
 <span class="md-ellipsis">
     Timeline
   </span>
@@ -241,7 +240,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/index.html">
+<a class="md-nav__link" href="../../../../cs/index.html">
 <span class="md-ellipsis">
     Computer Science
   </span>
@@ -259,7 +258,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/pl/index.html">
+<a class="md-nav__link" href="../../../../cs/pl/index.html">
 <span class="md-ellipsis">
     Programming Language &amp; ISA
   </span>
@@ -277,7 +276,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_2_2_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/pl/c/index.html">
+<a class="md-nav__link" href="../../../../cs/pl/c/index.html">
 <span class="md-ellipsis">
     C
   </span>
@@ -293,28 +292,28 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/python/index.html">
+<a class="md-nav__link" href="../../../../cs/pl/python/index.html">
 <span class="md-ellipsis">
     Python
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/racket/index.html">
+<a class="md-nav__link" href="../../../../cs/pl/racket/index.html">
 <span class="md-ellipsis">
     Racket
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/riscv/index.html">
+<a class="md-nav__link" href="../../../../cs/pl/riscv/index.html">
 <span class="md-ellipsis">
     RISC-V ISA
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/rust/index.html">
+<a class="md-nav__link" href="../../../../cs/pl/rust/index.html">
 <span class="md-ellipsis">
     Rust
   </span>
@@ -326,7 +325,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/os/index.html">
+<a class="md-nav__link" href="../../../../cs/os/index.html">
 <span class="md-ellipsis">
     Operating System
   </span>
@@ -344,7 +343,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_2_3_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/os/ostep/index.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/index.html">
 <span class="md-ellipsis">
     OSTEP
   </span>
@@ -360,112 +359,112 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/02introduction.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/02introduction.html">
 <span class="md-ellipsis">
     02.Introduction
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/04processes.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/04processes.html">
 <span class="md-ellipsis">
     04.Processes
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/05process_api.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/05process_api.html">
 <span class="md-ellipsis">
     05.Process API
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/06direct_execution.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/06direct_execution.html">
 <span class="md-ellipsis">
     06.Direct Execution
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/07cpu_scheduling.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/07cpu_scheduling.html">
 <span class="md-ellipsis">
     07.CPU Scheduling
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/08multi_level_feedback.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/08multi_level_feedback.html">
 <span class="md-ellipsis">
     08.Multi-level Feedback
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/09lottery_scheduling.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/09lottery_scheduling.html">
 <span class="md-ellipsis">
     09.Lottery Scheduling
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/10multi_cpu_scheduling.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/10multi_cpu_scheduling.html">
 <span class="md-ellipsis">
     10.Multi-CPU Scheduling
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/13address_spaces.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/13address_spaces.html">
 <span class="md-ellipsis">
     13.Address Spaces
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/14memory_api.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/14memory_api.html">
 <span class="md-ellipsis">
     14.Memory API
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/15address_translation.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/15address_translation.html">
 <span class="md-ellipsis">
     15.Address Translation
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/16segmentation.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/16segmentation.html">
 <span class="md-ellipsis">
     16.Segmentation
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/17free_space_management.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/17free_space_management.html">
 <span class="md-ellipsis">
     17.Free Space Management
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/18introduction_to_paging.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/18introduction_to_paging.html">
 <span class="md-ellipsis">
     18.Introduction to Paging
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/19translation_lookaside_buffers.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/19translation_lookaside_buffers.html">
 <span class="md-ellipsis">
     19.Translation Lookaside Buffers
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/ostep/20advanced_page_tables.html">
+<a class="md-nav__link" href="../../../../cs/os/ostep/20advanced_page_tables.html">
 <span class="md-ellipsis">
     20.Advanced Page Tables
   </span>
@@ -475,7 +474,7 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/os/mit6.1810.html">
+<a class="md-nav__link" href="../../../../cs/os/mit6.1810.html">
 <span class="md-ellipsis">
     MIT 6.1810
   </span>
@@ -484,7 +483,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_2_3_4" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/os/rcore/index.html">
+<a class="md-nav__link" href="../../../../cs/os/rcore/index.html">
 <span class="md-ellipsis">
     rCore
   </span>
@@ -505,7 +504,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../cs/compiler/index.html">
+<a class="md-nav__link" href="../../../../cs/compiler/index.html">
 <span class="md-ellipsis">
     Compiler
   </span>
@@ -526,7 +525,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../sec/index.html">
+<a class="md-nav__link" href="../../../../sec/index.html">
 <span class="md-ellipsis">
     Security
   </span>
@@ -558,7 +557,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_3_2_1" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../sec/vulns/pngcheck/index.html">
+<a class="md-nav__link" href="../../../../sec/vulns/pngcheck/index.html">
 <span class="md-ellipsis">
     pngcheck
   </span>
@@ -574,35 +573,35 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../sec/vulns/pngcheck/vulns-3.0.1.html">
+<a class="md-nav__link" href="../../../../sec/vulns/pngcheck/vulns-3.0.1.html">
 <span class="md-ellipsis">
     vulns-3.0.1
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../sec/vulns/pngcheck/vulns-3.0.0.html">
+<a class="md-nav__link" href="../../../../sec/vulns/pngcheck/vulns-3.0.0.html">
 <span class="md-ellipsis">
     vulns-3.0.0
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../sec/vulns/pngcheck/vulns-2.4.0.html">
+<a class="md-nav__link" href="../../../../sec/vulns/pngcheck/vulns-2.4.0.html">
 <span class="md-ellipsis">
     vulns-2.4.0
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../sec/vulns/pngcheck/cve-2020-35511.html">
+<a class="md-nav__link" href="../../../../sec/vulns/pngcheck/cve-2020-35511.html">
 <span class="md-ellipsis">
     CVE-2020-35511
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../sec/vulns/pngcheck/cve-2020-27818.html">
+<a class="md-nav__link" href="../../../../sec/vulns/pngcheck/cve-2020-27818.html">
 <span class="md-ellipsis">
     CVE-2020-27818
   </span>
@@ -620,7 +619,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../ctf/index.html">
+<a class="md-nav__link" href="../../../../ctf/index.html">
 <span class="md-ellipsis">
     CTF
   </span>
@@ -638,7 +637,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../writeups/index.html">
+<a class="md-nav__link" href="../../../../writeups/index.html">
 <span class="md-ellipsis">
     Writeups
   </span>
@@ -668,21 +667,21 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/2024/hackergame2024.html">
+<a class="md-nav__link" href="../../../../writeups/2024/hackergame2024.html">
 <span class="md-ellipsis">
     USTC Hackergame 2024
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/2024/dicectf2024_quals.html">
+<a class="md-nav__link" href="../../../../writeups/2024/dicectf2024_quals.html">
 <span class="md-ellipsis">
     DiceCTF 2024 Quals
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/2024/svuctf_spring_2024.html">
+<a class="md-nav__link" href="../../../../writeups/2024/svuctf_spring_2024.html">
 <span class="md-ellipsis">
     SVUCTF SPRING 2024
   </span>
@@ -697,7 +696,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../gamedev/index.html">
+<a class="md-nav__link" href="../../../../gamedev/index.html">
 <span class="md-ellipsis">
     GameDev
   </span>
@@ -715,7 +714,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_6_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../gamedev/ai/index.html">
+<a class="md-nav__link" href="../../../../gamedev/ai/index.html">
 <span class="md-ellipsis">
     AI
   </span>
@@ -733,7 +732,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" id="__nav_6_2_2" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link" href="../gamedev/ai/sd/index.html">
+<a class="md-nav__link" href="../../../../gamedev/ai/sd/index.html">
 <span class="md-ellipsis">
     Stable Diffusion
   </span>
@@ -757,12 +756,12 @@
 <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
 <input checked="" class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
 <div class="md-nav__link md-nav__container">
-<a class="md-nav__link md-nav__link--active" href="index.html">
+<a class="md-nav__link" href="../../../index.html">
 <span class="md-ellipsis">
     Blog
   </span>
 </a>
-<label class="md-nav__link md-nav__link--active" for="__nav_7" id="__nav_7_label" tabindex="">
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
@@ -787,14 +786,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="archive/2025.html">
+<a class="md-nav__link" href="../../../archive/2025.html">
 <span class="md-ellipsis">
     2025
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="archive/2024.html">
+<a class="md-nav__link" href="../../../archive/2024.html">
 <span class="md-ellipsis">
     2024
   </span>
@@ -818,42 +817,42 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="category/cve-roulette.html">
+<a class="md-nav__link" href="../../../category/cve-roulette.html">
 <span class="md-ellipsis">
     CVE Roulette
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="category/chaos.html">
+<a class="md-nav__link" href="../../../category/chaos.html">
 <span class="md-ellipsis">
     Chaos
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="category/hackerrank.html">
+<a class="md-nav__link" href="../../../category/hackerrank.html">
 <span class="md-ellipsis">
     HackerRank
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="category/programming-language.html">
+<a class="md-nav__link" href="../../../category/programming-language.html">
 <span class="md-ellipsis">
     Programming Language
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="category/random-ramblings.html">
+<a class="md-nav__link" href="../../../category/random-ramblings.html">
 <span class="md-ellipsis">
     Random Ramblings
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="category/scientific-witchery.html">
+<a class="md-nav__link" href="../../../category/scientific-witchery.html">
 <span class="md-ellipsis">
     Scientific Witchery
   </span>
@@ -878,31 +877,70 @@
 </div>
 </div>
 </div>
-<div class="md-content" data-md-component="content">
-<div class="md-content__inner">
-<header class="md-typeset">
-<h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">¶</a></h1>
-</header>
-<article class="md-post md-post--excerpt">
-<header class="md-post__header">
-<div class="md-post__meta md-meta">
-<ul class="md-meta__list">
-<li class="md-meta__item">
-<time datetime="2025-03-18 00:00:00+00:00">2025年3月18日</time></li>
-<li class="md-meta__item">
-            分类于
-            
-              <a class="md-meta__link" href="category/random-ramblings.html">Random Ramblings</a></li>
-<li class="md-meta__item">
-            
-              需要 1 分钟阅读时间
-            
-          </li>
-</ul>
+<div class="md-content md-content--post" data-md-component="content">
+<div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner md-post">
+<nav class="md-nav md-nav--primary">
+<div class="md-post__back">
+<div class="md-nav__title md-nav__container">
+<a class="md-nav__link" href="../../../index.html">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+<span class="md-ellipsis">
+                    回到主页
+                  </span>
+</a>
 </div>
-</header>
-<div class="md-post__content md-typeset">
-<h2 id="keep-it-simple-security-people"><a class="toclink" href="2025/03/18/keep-it-simple-security-people.html">Keep It Simple, Security People</a></h2>
+</div>
+<ul class="md-post__meta md-nav__list">
+<li class="md-nav__item md-nav__item--section">
+<div class="md-post__title">
+<span class="md-ellipsis">
+                    元数据
+                  </span>
+</div>
+<nav class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<div class="md-nav__link">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"></path></svg>
+<time class="md-ellipsis" datetime="2025-03-18 00:00:00+00:00">2025年3月18日</time>
+</div>
+</li>
+<li class="md-nav__item">
+<div class="md-nav__link">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"></path></svg>
+<span class="md-ellipsis">
+                            分类于
+                            
+                              <a href="../../../category/random-ramblings.html">Random Ramblings</a></span>
+</div>
+</li>
+<li class="md-nav__item">
+<div class="md-nav__link">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"></path></svg>
+<span class="md-ellipsis">
+                            
+                              需要 1 分钟阅读时间
+                            
+                          </span>
+</div>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<article class="md-content__inner md-typeset">
+<nav class="md-tags">
+<a class="md-tag" href="../../../tags.html#security">Security</a>
+<a class="md-tag" href="../../../tags.html#poc">PoC</a>
+<a class="md-tag" href="../../../tags.html#exploit">Exploit</a>
+</nav>
+<h1 id="keep-it-simple-security-people">Keep It Simple, Security People<a class="headerlink" href="#keep-it-simple-security-people" title="Permanent link">¶</a></h1>
 <p>如果你不知道的话，我建了个仓库<a href="https://github.com/13m0n4de/my-exploits"><span><span class="heti-spacing"> </span>13m0n4de/my-exploits</span></a>，存放个人开发的各种漏洞利用脚本。</p>
 <p>只是平常要用，用得上就写，写了就完善一下传上去，尽量保证它简单好用，就这样而已。网上的<span class="heti-skip"><span class="heti-spacing"> </span>Exploit<span class="heti-spacing"> </span></span>又多又全，没奢望比得过别人。</p>
 <p>问题在于，网络上更多是收集<span class="heti-skip"><span class="heti-spacing"> </span>Exploit<span class="heti-spacing"> </span></span>的仓库，从互联网各个垃圾堆里搜刮。而网络安全领域人们的编码水平又不是非常好，或者该说是非常不好（很讽刺的是他们找到的很大一部分漏洞建立在编码者的水平问题上<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
@@ -911,277 +949,21 @@
 <p>但很多人不这么想，认为扫描支持的漏洞越多越好，旨在量大；扫描完了感觉要是能顺带漏洞利用就好了，又写了一堆利用模块；接着，如果能隐藏痕迹免杀就完美了；最后，来都来了，搞点后渗透的东西。</p>
 <p>于是一坨什么也做不好的极其耦合的“无敌一键安全工具”诞生了，几乎即用即弃，并在日后某一天被收录到漏洞利用工具的集合里（还是直接放二进制文件<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <p>我也不知道为什么，可能因为这是个封闭且浮躁的行业，我的偏见。</p>
-</div>
+<aside class="md-source-file">
+<span class="md-source-file__fact">
+<span class="md-icon" title="最后更新">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年3月18日 21:38:35</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="创建日期">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年3月18日 21:38:35</span>
+</span>
+</aside>
 </article>
-<article class="md-post md-post--excerpt">
-<header class="md-post__header">
-<div class="md-post__meta md-meta">
-<ul class="md-meta__list">
-<li class="md-meta__item">
-<time datetime="2025-01-30 00:00:00+00:00">2025年1月30日</time></li>
-<li class="md-meta__item">
-            分类于
-            
-              <a class="md-meta__link" href="category/cve-roulette.html">CVE Roulette</a></li>
-<li class="md-meta__item">
-            
-              需要 1 分钟阅读时间
-            
-          </li>
-</ul>
-</div>
-</header>
-<div class="md-post__content md-typeset">
-<h2 id="cve-roulette-1-pngcheck"><a class="toclink" href="2025/01/30/cve-roulette-1-pngcheck.html">CVE Roulette #1: pngcheck</a></h2>
-<p>这是<span class="heti-skip"><span class="heti-spacing"> </span>CVE Roulette<span class="heti-spacing"> </span></span>系列的第一篇文章。抽到了<span><span class="heti-spacing"> </span>CVE-2020-27818</span>，研究着研究着就顺手把<span class="heti-skip"><span class="heti-spacing"> </span>pngcheck<span class="heti-spacing"> </span></span>的历史漏洞都看了个遍<span><span class="heti-spacing"> </span>:)</span></p>
-<nav class="md-post__action">
-<a href="2025/01/30/cve-roulette-1-pngcheck.html">
-          继续阅读
-        </a>
-</nav>
-</div>
-</article>
-<article class="md-post md-post--excerpt">
-<header class="md-post__header">
-<div class="md-post__meta md-meta">
-<ul class="md-meta__list">
-<li class="md-meta__item">
-<time datetime="2024-12-06 00:00:00+00:00">2024年12月6日</time></li>
-<li class="md-meta__item">
-            分类于
-            
-              <a class="md-meta__link" href="category/random-ramblings.html">Random Ramblings</a></li>
-<li class="md-meta__item">
-            
-              需要 3 分钟阅读时间
-            
-          </li>
-</ul>
-</div>
-</header>
-<div class="md-post__content md-typeset">
-<h2 id="ricing-my-arch-linux"><a class="toclink" href="2024/12/06/ricing-my-arch-linux.html">Ricing My Arch Linux</a></h2>
-<p>花了点时间从<span class="heti-skip"><span class="heti-spacing"> </span>i3<span class="heti-spacing"> </span></span>迁移到<span><span class="heti-spacing"> </span>Hyprland</span>，终于把凌乱的<span class="heti-skip"><span class="heti-spacing"> </span>Dotfiles<span class="heti-spacing"> </span></span>整理好了。</p>
-<p>这次除了整理配置文件，还将整体配色方案从<span class="heti-skip"><span class="heti-spacing"> </span>Nord<span class="heti-spacing"> </span></span>切换到了<span><span class="heti-spacing"> </span>Catppuccin Macchiato</span>，并且统一了包括网站在内的所有主题。</p>
-<p><span>Dotfiles<span class="heti-spacing"> </span></span>仓库：<a href="https://github.com/13m0n4de/dotfiles">github.com/13m0n4de/dotfiles</a></p>
-<nav class="md-post__action">
-<a href="2024/12/06/ricing-my-arch-linux.html">
-          继续阅读
-        </a>
-</nav>
-</div>
-</article>
-<article class="md-post md-post--excerpt">
-<header class="md-post__header">
-<div class="md-post__meta md-meta">
-<ul class="md-meta__list">
-<li class="md-meta__item">
-<time datetime="2024-11-09 00:00:00+00:00">2024年11月9日</time></li>
-<li class="md-meta__item">
-            分类于
-            
-              <a class="md-meta__link" href="category/random-ramblings.html">Random Ramblings</a></li>
-<li class="md-meta__item">
-            
-              需要 2 分钟阅读时间
-            
-          </li>
-</ul>
-</div>
-</header>
-<div class="md-post__content md-typeset">
-<h2 id="coffee-and-random-thoughts-hackergame-2024"><a class="toclink" href="2024/11/09/coffee-and-random-thoughts-hackergame-2024-.html">Coffee and Random Thoughts: Hackergame 2024 ☕</a></h2>
-<p>猜猜是谁一周没出门阴暗地打<a href="https://hack.lug.ustc.edu.cn/"><span><span class="heti-spacing"> </span>Hackergame</span></a>。</p>
-<p>今年的题目依旧有难度有意思，题解想写细致一点，加上最近事情很多，估计进度会很慢。</p>
-<p>题解仓库：<a href="https://github.com/13m0n4de/hackergame2024-writeups">13m0n4de/hackergame2024-writeups</a></p>
-<nav class="md-post__action">
-<a href="2024/11/09/coffee-and-random-thoughts-hackergame-2024-.html">
-          继续阅读
-        </a>
-</nav>
-</div>
-</article>
-<article class="md-post md-post--excerpt">
-<header class="md-post__header">
-<div class="md-post__meta md-meta">
-<ul class="md-meta__list">
-<li class="md-meta__item">
-<time datetime="2024-06-16 00:00:00+00:00">2024年6月16日</time></li>
-<li class="md-meta__item">
-            分类于
-            
-              <a class="md-meta__link" href="category/hackerrank.html">HackerRank</a></li>
-<li class="md-meta__item">
-            
-              需要 3 分钟阅读时间
-            
-          </li>
-</ul>
-</div>
-</header>
-<div class="md-post__content md-typeset">
-<h2 id="hackerrank-in-racket-part-3"><a class="toclink" href="2024/06/16/hackerrank-in-racket-part-3.html">HackerRank in Racket: Part 3</a></h2>
-<p>这里是使用<span class="heti-skip"><span class="heti-spacing"> </span>Racket<span class="heti-spacing"> </span></span>完成<span class="heti-skip"><span class="heti-spacing"> </span>HackerRank<span class="heti-spacing"> </span></span>函数式编程题目的第三章，包含函数关系和几何计算（<span>22 - 26<span class="heti-spacing"> </span></span>题<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
-<nav class="md-post__action">
-<a href="2024/06/16/hackerrank-in-racket-part-3.html">
-          继续阅读
-        </a>
-</nav>
-</div>
-</article>
-<article class="md-post md-post--excerpt">
-<header class="md-post__header">
-<div class="md-post__meta md-meta">
-<ul class="md-meta__list">
-<li class="md-meta__item">
-<time datetime="2024-06-13 00:00:00+00:00">2024年6月13日</time></li>
-<li class="md-meta__item">
-            分类于
-            
-              <a class="md-meta__link" href="category/hackerrank.html">HackerRank</a></li>
-<li class="md-meta__item">
-            
-              需要 5 分钟阅读时间
-            
-          </li>
-</ul>
-</div>
-</header>
-<div class="md-post__content md-typeset">
-<h2 id="hackerrank-in-racket-part-2"><a class="toclink" href="2024/06/13/hackerrank-in-racket-part-2.html">HackerRank in Racket: Part 2</a></h2>
-<p>这里是使用<span class="heti-skip"><span class="heti-spacing"> </span>Racket<span class="heti-spacing"> </span></span>完成<span class="heti-skip"><span class="heti-spacing"> </span>HackerRank<span class="heti-spacing"> </span></span>函数式编程题目的第二章，包含数学函数和<span class="heti-skip"><span class="heti-spacing"> </span>Lambda<span class="heti-spacing"> </span></span>演算（<span>11 - 21<span class="heti-spacing"> </span></span>题<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
-<nav class="md-post__action">
-<a href="2024/06/13/hackerrank-in-racket-part-2.html">
-          继续阅读
-        </a>
-</nav>
-</div>
-</article>
-<article class="md-post md-post--excerpt">
-<header class="md-post__header">
-<div class="md-post__meta md-meta">
-<ul class="md-meta__list">
-<li class="md-meta__item">
-<time datetime="2024-06-11 00:00:00+00:00">2024年6月11日</time></li>
-<li class="md-meta__item">
-            分类于
-            
-              <a class="md-meta__link" href="category/hackerrank.html">HackerRank</a></li>
-<li class="md-meta__item">
-            
-              需要 3 分钟阅读时间
-            
-          </li>
-</ul>
-</div>
-</header>
-<div class="md-post__content md-typeset">
-<h2 id="hackerrank-in-racket-part-1"><a class="toclink" href="2024/06/11/hackerrank-in-racket-part-1.html">HackerRank in Racket: Part 1</a></h2>
-<p>这里是使用<span class="heti-skip"><span class="heti-spacing"> </span>Racket<span class="heti-spacing"> </span></span>完成<span class="heti-skip"><span class="heti-spacing"> </span>HackerRank<span class="heti-spacing"> </span></span>函数式编程题目的第一章，包含基础函数和列表操作（<span>0 - 10<span class="heti-spacing"> </span></span>题<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
-<nav class="md-post__action">
-<a href="2024/06/11/hackerrank-in-racket-part-1.html">
-          继续阅读
-        </a>
-</nav>
-</div>
-</article>
-<article class="md-post md-post--excerpt">
-<header class="md-post__header">
-<div class="md-post__meta md-meta">
-<ul class="md-meta__list">
-<li class="md-meta__item">
-<time datetime="2024-05-23 00:00:00+00:00">2024年5月23日</time></li>
-<li class="md-meta__item">
-            分类于
-            
-              <a class="md-meta__link" href="category/scientific-witchery.html">Scientific Witchery</a></li>
-<li class="md-meta__item">
-            
-              需要 4 分钟阅读时间
-            
-          </li>
-</ul>
-</div>
-</header>
-<div class="md-post__content md-typeset">
-<h2 id="wireworld-simulator-using-the-raylib-part2"><a class="toclink" href="2024/05/23/wireworld-simulator-using-the-raylib-part2.html">Wireworld Simulator Using the Raylib: Part2</a></h2>
-<p>继续<a href="2024/05/20/wireworld-simulator-using-the-raylib-part1.html">上一部分</a>。</p>
-<p>这部分主要实现 <strong>无限画布</strong> 的功能，包含视角移动、视图缩放、网格自动拓展。</p>
-<p>项目地址：<a href="https://github.com/13m0n4de/wireworld">github.com/13m0n4de/wireworld</a></p>
-<nav class="md-post__action">
-<a href="2024/05/23/wireworld-simulator-using-the-raylib-part2.html">
-          继续阅读
-        </a>
-</nav>
-</div>
-</article>
-<article class="md-post md-post--excerpt">
-<header class="md-post__header">
-<div class="md-post__meta md-meta">
-<ul class="md-meta__list">
-<li class="md-meta__item">
-<time datetime="2024-05-20 00:00:00+00:00">2024年5月20日</time></li>
-<li class="md-meta__item">
-            分类于
-            
-              <a class="md-meta__link" href="category/scientific-witchery.html">Scientific Witchery</a></li>
-<li class="md-meta__item">
-            
-              需要 27 分钟阅读时间
-            
-          </li>
-</ul>
-</div>
-</header>
-<div class="md-post__content md-typeset">
-<h2 id="wireworld-simulator-using-the-raylib-part1"><a class="toclink" href="2024/05/20/wireworld-simulator-using-the-raylib-part1.html">Wireworld Simulator Using the Raylib: Part1</a></h2>
-<p>用<span class="heti-skip"><span class="heti-spacing"> </span>Raylib<span class="heti-spacing"> </span></span>写个<span class="heti-skip"><span class="heti-spacing"> </span>Wireworld<span class="heti-spacing"> </span></span>模拟器，试试自己能不能用<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言顺畅地做游戏。</p>
-<p>这篇文章是制作过程的详细记录，记录编码、设计的思路和步骤，标题会非常细碎。当作一个<span class="heti-skip"><span class="heti-spacing"> </span>Step by Step<span class="heti-spacing"> </span></span>教程也许可以，每个阶段都附了完整代码可以对照。</p>
-<p>项目地址：<a href="https://github.com/13m0n4de/wireworld">github.com/13m0n4de/wireworld</a></p>
-<nav class="md-post__action">
-<a href="2024/05/20/wireworld-simulator-using-the-raylib-part1.html">
-          继续阅读
-        </a>
-</nav>
-</div>
-</article>
-<article class="md-post md-post--excerpt">
-<header class="md-post__header">
-<div class="md-post__meta md-meta">
-<ul class="md-meta__list">
-<li class="md-meta__item">
-<time datetime="2024-05-12 00:00:00+00:00">2024年5月12日</time></li>
-<li class="md-meta__item">
-            分类于
-            
-              <a class="md-meta__link" href="category/scientific-witchery.html">Scientific Witchery</a></li>
-<li class="md-meta__item">
-            
-              需要 2 分钟阅读时间
-            
-          </li>
-</ul>
-</div>
-</header>
-<div class="md-post__content md-typeset">
-<h2 id="bad-apple-on-lemoncore"><a class="toclink" href="2024/05/12/bad-apple-on-lemoncore.html">Bad Apple!! on LemonCore</a></h2>
-<p>前段时间写了个操作系统，取名叫<span><span class="heti-spacing"> </span>LemonCore</span>，惯例，播放一下<span><span class="heti-spacing"> </span>BadApple</span>。</p>
-<ul>
-<li>OS：<a href="https://github.com/13m0n4de/lemon-core">github.com/13m0n4de/lemon-core</a></li>
-<li>App: <a href="https://gist.github.com/13m0n4de/238b13f361e0326a0e8868e00119fb2a">gist.github.com/13m0n4de/238b13f361e0326a0e8868e00119fb2a</a></li>
-<li>Video: <a href="https://www.nicovideo.jp/watch/sm8628149">[Touhou] Bad Apple!! PV [Shadow]</a></li>
-</ul>
-<nav class="md-post__action">
-<a href="2024/05/12/bad-apple-on-lemoncore.html">
-          继续阅读
-        </a>
-</nav>
-</div>
-</article>
-<nav class="md-pagination">
-<span class="md-pagination__current">1</span> <a class="md-pagination__link" href="page/2/index.html">2</a>
-</nav>
-</div>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
 </div>
@@ -1192,7 +974,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="上一页: Stable Diffusion" class="md-footer__link md-footer__link--prev" href="../gamedev/ai/sd/index.html">
+<a aria-label="上一页: CVE Roulette #1: pngcheck" class="md-footer__link md-footer__link--prev" href="../../01/30/cve-roulette-1-pngcheck.html">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
 </div>
@@ -1201,21 +983,8 @@
                 上一页
               </span>
 <div class="md-ellipsis">
-                Stable Diffusion
+                CVE Roulette #1: pngcheck
               </div>
-</div>
-</a>
-<a aria-label="下一页: CVE Roulette" class="md-footer__link md-footer__link--next" href="category/cve-roulette.html">
-<div class="md-footer__title">
-<span class="md-footer__direction">
-                下一页
-              </span>
-<div class="md-ellipsis">
-                CVE Roulette
-              </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
 </div>
 </a>
 </nav>
@@ -1259,11 +1028,11 @@
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <div class="md-progress" data-md-component="progress" role="progressbar"></div>
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.tabs", "navigation.footer", "search.suggest", "content.code.annotate", "content.code.copy", "content.footnote.tooltips"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-<script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.tabs", "navigation.footer", "search.suggest", "content.code.annotate", "content.code.copy", "content.footnote.tooltips"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
-<script src="../javascripts/katex.js"></script>
+<script src="../../../../javascripts/katex.js"></script>
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(() => { lightbox.reload() });
 </script></body>
