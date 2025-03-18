@@ -1,4 +1,8 @@
 - "2025":
+  - "2025-03-18":
+    - newpage:
+        text: "Blog > Keep It Simple, Security People"
+        href: blog/2025/03/18/keep-it-simple-security-people.html
   - "2025-02-18":
     - newpage:
         text: "Writeups > 2024 > USTC Hackergame 2024"
