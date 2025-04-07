@@ -1,6 +1,14 @@
 - "2025":
   - "2025-04-01":
     - newpage:
+        text: "Security > Incidents > PowerGhost"
+        href: sec/incidents/powerghost.html
+  - "2025-04-01":
+    - newpage:
+        text: "Security > Malwares > PowerGhost"
+        href: sec/malwares/powerghost.html
+  - "2025-04-01":
+    - newpage:
         text: "Blog > Malware Analysis: PowerGhost"
         href: blog/2025/04/01/malware-analysis-powerghost.html
   - "2025-03-18":

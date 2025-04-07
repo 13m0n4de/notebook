@@ -162,6 +162,10 @@ nav:
       - vulns-2.4.0: sec/vulns/pngcheck/vulns-2.4.0.md
       - CVE-2020-35511: sec/vulns/pngcheck/cve-2020-35511.md
       - CVE-2020-27818: sec/vulns/pngcheck/cve-2020-27818.md
+  - 恶意软件分析:
+    - PowerGhost: sec/malwares/powerghost.md
+  - 应急响应处置:
+    - PowerGhost: sec/incidents/powerghost.md
 - CTF:
   - ctf/index.md
 - Writeups:
