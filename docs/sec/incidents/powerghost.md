@@ -1,8 +1,12 @@
+---
+categories: [Security, Incidents]
+---
+
 # PowerGhost
 
 ## 事件背景
 
-EDR 记录多台主机频繁访问恶意域名 `auth.to0ls.com`，匹配 PowerGhost IoC。
+EDR 记录多台主机频繁访问恶意域名 `auth[.]to0ls[.]com`，匹配 PowerGhost IoC。
 
 记录命令行：
 
@@ -150,14 +154,14 @@ PSComputerName          : COMPUTERNAME
     - `netbc`
 1. 恢复电源设置
 1. 阻止连接到 C2 服务器
-    - `auth.to0ls.com`
-    - `mail.to0ls.com`
+    - `auth[.]to0ls[.]com`
+    - `mail[.]to0ls[.]com`
 
 但我这里情况特殊，只有残留计划任务和 WMI，所以我的处置方案只需要：
 
 - 删除计划任务注册表项，重启计划任务服务
 - 删除 WMI 持久化，重启 WMI 服务
-- 在 hosts 里将 `auth.to0ls.com` 映射到 `127.0.0.1`
+- 在 hosts 里将 `auth[.]to0ls[.]com` 映射到 `127.0.0.1`
 
 修改注册表需要权限，用了 [PsExec](https://docs.microsoft.com/en-us/sysinternals/downloads/psexec)。
 
