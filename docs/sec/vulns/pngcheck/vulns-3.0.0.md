@@ -1,4 +1,5 @@
 ---
+categories: [pngcheck, Vulns, Security]
 tags: [Out-of-bounds Read]
 ---
 

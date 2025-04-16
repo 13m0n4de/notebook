@@ -1,5 +1,5 @@
 ---
-categories: [Security, Incidents]
+categories: [Incidents, Security]
 ---
 
 # PowerGhost
