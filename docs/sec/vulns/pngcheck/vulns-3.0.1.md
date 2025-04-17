@@ -1,5 +1,5 @@
 ---
-categories: [pngcheck, Vulns, Security]
+nav_path_prefix: Security > Vulns > pngcheck >
 tags: [Out-of-bounds Read]
 ---
 

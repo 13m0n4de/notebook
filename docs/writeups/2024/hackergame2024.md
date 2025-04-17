@@ -1,4 +1,5 @@
 ---
+nav_path_prefix: Writeups > 2024 >
 toc_depth: 1
 ---
 
