@@ -1,5 +1,5 @@
 ---
-categories: [Incidents, Security]
+nav_path_prefix: Security > Incidents >
 ---
 
 # PowerGhost

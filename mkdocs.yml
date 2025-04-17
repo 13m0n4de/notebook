@@ -85,8 +85,8 @@ plugins:
     json_feed_enabled: false
     feeds_filenames:
       rss_created: notes_feed.xml
-    categories:
-    - categories
+    categories: # 通过分类功能配合 blog-post-workflow 实现路径前缀
+    - nav_path_prefix
 - tags:
     tags_file: blog/tags.md
 
