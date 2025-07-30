@@ -6,9 +6,7 @@
 1. 并发
 1. 持久性
 
-作者介绍的时候用了一些代码示例，其中许多函数都被刻意包装了一层，不知道是因为什么，很多包装感觉都不太必要，一些代码也没那么规范，作为示例倒是无伤大雅。
-
-一开始我不知道有附录代码，全都重新改了一遍。
+作者介绍的时候用了一些代码示例，其中许多函数都被刻意包装了一层，我不太喜欢，而且一开始我也不知道有附录代码，就全都重新改了一遍。
 
 附录代码：[github.com/remzi-arpacidusseau/ostep-code/](https://github.com/remzi-arpacidusseau/ostep-code/)
 
@@ -67,7 +65,7 @@ int main(int argc, char *argv[]) {
 $ echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
 ```
 
-如果编译时关掉 PIE ，得到的地址会更“好看”些，更接近书中内容。
+如果编译时关掉 PIE，得到的地址会更“好看”些，更接近书中内容。
 
 ```shell
 $ gcc mem.c -o mem -no-pie
@@ -91,13 +89,14 @@ $ ./mem &; ./mem & # (1)!
 
 1. `&` 符号用于在 Unix-like 系统中后台运行进程，它会启动命令然后立即返回到命令行提示符，而不是挂起直到命令完成。不同的 shell 可能实现方式不同，但行为基本一致。最终的效果就是同时运行两个 `mem` 程序。
 
-实验完尽快把 ASLR 改回去，以免对系统安全造成影响，现代 Linux 系统中 `/proc/sys/kernel/randomize_va_space` 内容一般都是 `2` ，意为更强的随机化。
+实验完尽快把 ASLR 改回去，以免对系统安全造成影响，现代 Linux 系统中 `/proc/sys/kernel/randomize_va_space` 内容一般都是 `2`，意为更强的随机化。
 
 ```shell
 $ echo 2 | sudo tee /proc/sys/kernel/randomize_va_space
 ```
 
 !!! question "关键问题：如何将资源虚拟化"
+
     我们将在本书中回答一个核心问题：操作系统如何将资源虚拟化？这是关键问题。<br>
     为什么操作系统这样做？这不是主要问题，因为答案应该很明显：它让系统更易于使用。<br>
     因此，我们关注如何虚拟化：
@@ -155,6 +154,7 @@ Final value : 129215
 ```
 
 !!! question "关键问题：如何构建正确的并发程序"
+
     如果同一个内存空间中有很多并发执行的线程，如何构建一个正确工作的程序？
 
     1. 操作系统需要什么原语？
@@ -181,6 +181,7 @@ int main(int argc, char *argv[]) {
 ```
 
 !!! question "关键问题：如何持久地存储数据"
+
     文件系统是操作系统的一部分，负责管理持久的数据。
 
     1. 持久性需要哪些技术才能正确地实现？

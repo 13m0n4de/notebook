@@ -165,7 +165,7 @@ PSComputerName          : COMPUTERNAME
 
 修改注册表需要权限，用了 [PsExec](https://docs.microsoft.com/en-us/sysinternals/downloads/psexec)。
 
-处置脚本如下，放在 `PsExec64.exe` 的同目录运行。我不是 PowerShell 高手，Claude 帮忙写的，总得来说算一个清理脚本。
+处置脚本如下，放在 `PsExec64.exe` 的同目录运行。我不是 PowerShell 高手，Claude 帮忙写的，总的来说算一个清理脚本。
 
 ```powershell title="PowerGhost-Cleanup.ps1" linenums="1"
 Write-Host "警告: 此脚本将执行以下操作：" -ForegroundColor Yellow
