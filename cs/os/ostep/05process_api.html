@@ -973,7 +973,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="5-api">第<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>章 插叙：进程<span><span class="heti-spacing"> </span>API</span><a class="headerlink" href="#5-api" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
-<p>这章只是介绍了一些有关进程的<span><span class="heti-spacing"> </span>API</span> 。</p>
+<p>这章只是介绍了一些有关进程的<span><span class="heti-spacing"> </span>API</span>。</p>
 <table>
 <thead>
 <tr>
@@ -987,14 +987,14 @@
 <tr>
 <td style="text-align: left;">fork</td>
 <td style="text-align: left;">创建子进程</td>
-<td style="text-align: left;">在父进程中返回子进程的<span><span class="heti-spacing"> </span>PID</span> ，子进程中返回 <code>0</code> ，失败时返回 <code>-1</code></td>
+<td style="text-align: left;">在父进程中返回子进程的<span><span class="heti-spacing"> </span>PID</span>，子进程中返回 <code>0</code>，失败时返回 <code>-1</code></td>
 <td style="text-align: left;">子进程会复制一份父进程的内存内容，但它们在不同的内存空间，运行 <code>mmap</code> 等不会互相影响</td>
 </tr>
 <tr>
 <td style="text-align: left;">wait</td>
 <td style="text-align: left;">等待子进程运行完毕</td>
-<td style="text-align: left;">成功时返回结束的子进程<span><span class="heti-spacing"> </span>PID</span> ，失败时返回 <code>-1</code></td>
-<td style="text-align: left;">调用 <code>wait()</code> 等于调用 <code>waitpid(-1, &amp;wstatus, 0)</code> ，会等待任意一个子进程结束</td>
+<td style="text-align: left;">成功时返回结束的子进程<span><span class="heti-spacing"> </span>PID</span>，失败时返回 <code>-1</code></td>
+<td style="text-align: left;">调用 <code>wait()</code> 等于调用 <code>waitpid(-1, &amp;wstatus, 0)</code>，会等待任意一个子进程结束</td>
 </tr>
 <tr>
 <td style="text-align: left;">exec</td>
@@ -1064,7 +1064,7 @@ Parent(13645):  x = 380
 Child(13646):   x += 100
 Parent(13645):  x += 70
 </code></pre></div>
-<p>子进程获得了父进程数据段、堆和栈的副本，意味着子进程中的 <code>x</code> 会有与父进程相同的初始值 <code>100</code> ，但父进程和子进程中的 <code>x</code> 是彼此独立的，互不影响。</p>
+<p>子进程获得了父进程数据段、堆和栈的副本，意味着子进程中的 <code>x</code> 会有与父进程相同的初始值 <code>100</code>，但父进程和子进程中的 <code>x</code> 是彼此独立的，互不影响。</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
@@ -1134,10 +1134,10 @@ Parent(13645):  x += 70
 <div class="admonition note">
 <p>变种很多，命名规则都是<code>exec</code><span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>后缀。<br/></p>
 <ul>
-<li><code>l</code> 代表<span><span class="heti-spacing"> </span>list</span> ，以可变参数的形式传递命令行参数，需要 <code class="highlight"><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="nb">NULL</span></code> 结尾</li>
-<li><code>v</code> 代表<span><span class="heti-spacing"> </span>vector</span> ，以 <code class="highlight"><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[]</span></code> 的形式传递命令行参数，需要 <code class="highlight"><span class="nb">NULL</span></code> 结尾</li>
-<li><code>e</code> 代表<span><span class="heti-spacing"> </span>environment</span> ，支持传递环境变量，需要 <code class="highlight"><span class="nb">NULL</span></code> 结尾</li>
-<li><code>p</code> 代表<span><span class="heti-spacing"> </span>path</span> ，在<span class="heti-skip"><span class="heti-spacing"> </span>PATH<span class="heti-spacing"> </span></span>环境变量中搜索可执行文件，而不需要提供完整路径</li>
+<li><code>l</code> 代表<span><span class="heti-spacing"> </span>list</span>，以可变参数的形式传递命令行参数，需要 <code class="highlight"><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="nb">NULL</span></code> 结尾</li>
+<li><code>v</code> 代表<span><span class="heti-spacing"> </span>vector</span>，以 <code class="highlight"><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[]</span></code> 的形式传递命令行参数，需要 <code class="highlight"><span class="nb">NULL</span></code> 结尾</li>
+<li><code>e</code> 代表<span><span class="heti-spacing"> </span>environment</span>，支持传递环境变量，需要 <code class="highlight"><span class="nb">NULL</span></code> 结尾</li>
+<li><code>p</code> 代表<span><span class="heti-spacing"> </span>path</span>，在<span class="heti-skip"><span class="heti-spacing"> </span>PATH<span class="heti-spacing"> </span></span>环境变量中搜索可执行文件，而不需要提供完整路径</li>
 </ul>
 <p>例如 <code>execve</code> 需要传递可执行文件的绝对路径，并使用数组传递命令行参数，且可以传递环境变量。</p>
 <p>这些变种提供了不同级别的灵活性和控制，可以根据实际情况选择合适的函数。</p>
@@ -1223,8 +1223,8 @@ Parent(13645):  x += 70
 <div class="highlight"><span class="filename">cc q5.c -o q5 -Wall -Wextra -pedantic &amp;&amp; ./q5</span><pre><span></span><code>child PID: 46008
 normal termination of child (46008), exit status: 255
 </code></pre></div>
-<p>父进程中使用 <code>wait()</code> 返回已停止子进程的<span><span class="heti-spacing"> </span>PID</span> ，还会顺带设置状态信息。<br/>
-如果在子进程（没有子进程的进程）中使用 <code>wait()</code> 会出错返回 <code>-1</code> 。</p>
+<p>父进程中使用 <code>wait()</code> 返回已停止子进程的<span><span class="heti-spacing"> </span>PID</span>，还会顺带设置状态信息。<br/>
+如果在子进程（没有子进程的进程）中使用 <code>wait()</code> 会出错返回 <code>-1</code>。</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
@@ -1352,7 +1352,7 @@ normal termination of child (46011), exit status: 255
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年12月7日 05:54:17</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年7月31日 05:57:44</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">

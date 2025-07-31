@@ -1038,7 +1038,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="18">第<span class="heti-skip"><span class="heti-spacing"> </span>18<span class="heti-spacing"> </span></span>章 分页：介绍<a class="headerlink" href="#18" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
 <p>十六章尝试使用分段来解决空间管理问题，十七章尝试使用各种空闲空间管理策略来减少分段带来的碎片问题。</p>
-<p>另一种方式叫做 <strong>分页<span><span class="heti-spacing"> </span>(Paging)</span></strong> ，采用了固定长度的分片，从根本上避免了碎片（外部碎片<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>另一种方式叫做 <strong>分页（Paging）</strong>，采用了固定长度的分片，从根本上避免了碎片（外部碎片<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <h2 id="181"><span>18.1<span class="heti-spacing"> </span></span>一个简单例子<a class="headerlink" href="#181" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>以下例子展示了一个只有<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>字节的小地址空间，有<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>字节的页。</p>
 <div class="highlight"><pre><span></span><code> 0 +------------+
@@ -1051,7 +1051,7 @@
    |            | page 3
 64 +------------+
 </code></pre></div>
-<p>物理内存也由一组固定大小的槽子块组成吗，下面的例子中有<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>个 页帧，虚拟地址空间的页放在物理内存的不同位置。</p>
+<p>物理内存也由一组固定大小的槽块组成，下面的例子中有<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>个 <strong>页帧</strong>，虚拟地址空间的页放在物理内存的不同位置。</p>
 <div class="highlight"><pre><span></span><code> 0  +-----------------+
     | reserved for OS | page frame 0 of physical memory
 16  +-----------------+
@@ -1070,10 +1070,10 @@
     |   page 1 of AS  | page frame 7
 128 +-----------------+
 </code></pre></div>
-<p>分页有许多有点，最大的改进就是 <strong>灵活性</strong>：通过完善的分页方法，操作系统能够高效地提供地址空间的抽象，不管进程如何使用地址空间。例如，我们不会假定堆和栈的增长方向，以及它们如何使用。</p>
+<p>分页有许多优点，最大的改进就是 <strong>灵活性</strong>：通过完善的分页方法，操作系统能够高效地提供地址空间的抽象，不管进程如何使用地址空间。例如，我们不会假定堆和栈的增长方向，以及它们如何使用。</p>
 <p>另一个优点是 <strong>空闲空间管理的简单性</strong>，如果操作系统希望将<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>字节的小地址空间放到<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>页的物理地址空间中，它只要找到<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>个空闲页。</p>
-<p>为了记录地址空间的每个虚拟页放在物理内存中的位置，操作系统通常为 <strong>每个进程</strong> 保存一个数据结构，称为 <strong>页表<span><span class="heti-spacing"> </span>(pasge table)</span></strong>。</p>
-<p>页表的作用是为地址空间的每个虚拟页面保存地址转换<span><span class="heti-spacing"> </span>(address translation)</span>，从而让我们知道每个页在物理内存中的位置。</p>
+<p>为了记录地址空间的每个虚拟页放在物理内存中的位置，操作系统通常为 <strong>每个进程</strong> 保存一个数据结构，称为 <strong>页表（pasge table）</strong>。</p>
+<p>页表的作用是为地址空间的每个虚拟页面保存地址转换（address translation<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，从而让我们知道每个页在物理内存中的位置。</p>
 <p>在上面的例子中，页表具有以下条目：</p>
 <ul>
 <li>VP 0 -&gt; PF 3 (Virtual Page 0 -&gt; Physical Frame 3)</li>
@@ -1086,8 +1086,8 @@
 </code></pre></div>
 <p>为了转换该虚拟地址，必须首先将它分为两个组件：</p>
 <ul>
-<li>虚拟页面号<span><span class="heti-spacing"> </span>(virtual page number, VPN)</span></li>
-<li>页内偏移量<span><span class="heti-spacing"> </span>(offset)</span></li>
+<li>虚拟页面号（virtual page number, VPN）</li>
+<li>页内偏移量（offset）</li>
 </ul>
 <p>对于这个例子，因为进程的虚拟地址空间是<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>字节，我们的虚拟地址总共需要<span class="heti-skip"><span class="heti-spacing"> </span>6<span class="heti-spacing"> </span></span>位<span><span class="heti-spacing"> </span>($ 2^{6} = 64 $)</span>：</p>
 <div class="highlight"><pre><span></span><code>+-----+-----+-----+-----+-----+-----+
@@ -1113,8 +1113,8 @@
 | 0 | 1 | | 0 | 1 | 0 | 1 |
 +---+---+ +---+---+---+---+
 </code></pre></div>
-<p>虚拟地址 <code>21</code> 在虚拟页 <code>01</code> 的第五 <code>0101</code> 个字节处。</p>
-<p>我们先通过<span class="heti-skip"><span class="heti-spacing"> </span>VPN<span class="heti-spacing"> </span></span>找到虚拟页<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>所在物理帧，在上面的例子中，物理帧号<span class="heti-skip"><span class="heti-spacing"> </span>(PFN)<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>7</span>（二进制 <code>111</code><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>虚拟地址 <code>21</code> 在虚拟页 <code>01</code> 的偏移量 <code>0101</code>（十进制 <code>5</code>）处。</p>
+<p>我们先通过<span class="heti-skip"><span class="heti-spacing"> </span>VPN<span class="heti-spacing"> </span></span>找到虚拟页<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>所在物理帧，在上面的例子中，物理帧号（PFN）为<span><span class="heti-spacing"> </span>7</span>（二进制 <code>111</code><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <p>通过将<span class="heti-skip"><span class="heti-spacing"> </span>VPN<span class="heti-spacing"> </span></span>替换为<span class="heti-skip"><span class="heti-spacing"> </span>PFN<span class="heti-spacing"> </span></span>来转换虚拟地址：</p>
 <div class="highlight"><pre><span></span><code>        +---+---+---+---+---+---+
 VA      | 0 | 1 | 0 | 1 | 0 | 1 |
@@ -1161,7 +1161,7 @@ PA  | 1 | 1 | 1 | 0 | 1 | 0 | 1 |
 </div>
 <h2 id="183"><span>18.3<span class="heti-spacing"> </span></span>页表中究竟有什么<a class="headerlink" href="#183" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>页表可以是很多数据结构，最简单的形式成为线性页表，就是一个数组。</p>
-<p>这是<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>的示例页表项<span><span class="heti-spacing"> </span>(PTE)</span>：</p>
+<p>这是<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>的示例页表项（PTE<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
 <div class="highlight"><pre><span></span><code>+-----------+-----------+---+-----+---+---+-----+-----+-----+-----+---+
 | 31.....12 | 11......9 | 8 |  7  | 6 | 5 |  4  |  3  |  2  |  1  | 0 |
 +-----------+-----------+---+-----+---+---+-----+-----+-----+-----+---+
@@ -1184,7 +1184,7 @@ PA  | 1 | 1 | 1 | 0 | 1 | 0 | 1 |
 <h2 id="184"><span>18.4<span class="heti-spacing"> </span></span>分页：也很慢<a class="headerlink" href="#184" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>页表不但可能变很大，还可能会让速度变慢。</p>
 <p><code class="highlight"><span class="nf">movl</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="nv">%eax</span></code> 的例子中，系统必须从进程的页表中提取适当的页表项，执行转换，将虚拟地址 <code>21</code> 转换为正确的物理地址 <code>117</code>。</p>
-<p>为此，硬件必须知道进程页表的位置。现在假设一个页表基址寄存器<span class="heti-skip"><span class="heti-spacing"> </span>(page-table base register)<span class="heti-spacing"> </span></span>包含页表的起始位置的物理地址，为了找到想要的<span><span class="heti-spacing"> </span>PTE</span>，硬件将执行以下操作：</p>
+<p>为此，硬件必须知道进程页表的位置。现在假设一个页表基址寄存器（page-table base register）包含页表的起始位置的物理地址，为了找到想要的<span><span class="heti-spacing"> </span>PTE</span>，硬件将执行以下操作：</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Extract the VPN from the virtual address</span>
 <span class="n">VPN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">VirtualAddress</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">VPN_MASK</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">SHIFT</span>
 
@@ -1281,7 +1281,7 @@ paging-linear-translate.py -P 1m -a 256m -p 512m -v -s 3
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月24日 06:28:36</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年7月31日 05:57:44</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">

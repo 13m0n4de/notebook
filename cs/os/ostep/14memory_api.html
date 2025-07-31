@@ -1195,12 +1195,12 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>编译器负责确保在进入 <code>func</code> 函数的时候向栈上开辟空间，并在函数退出时释放内存。</p>
-<p>需要内存长期存在，则需要把它们存在堆<span class="heti-skip"><span class="heti-spacing"> </span>(heap)<span class="heti-spacing"> </span></span>上，其中所有的申请和释放操作都由程序员显式完成。这不但麻烦，还危险。</p>
+<p>需要内存长期存在，则需要把它们存在堆（heap）上，其中所有的申请和释放操作都由程序员显式完成。这不但麻烦，还危险。</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>栈和堆的分配都发生在同一行，编译器首先看见 <code class="highlight"><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">x</span></code> 时，知道为一个整形指针分配栈空间，随后当程序调用 <code class="highlight"><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">))</span></code> 时，它会在堆上请求 <code>int</code> 大小的空间，返回此空间的地址，最终将此地址存在栈上。</p>
+<p>栈和堆的分配都发生在同一行，编译器首先看见 <code class="highlight"><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">x</span></code> 时，知道为一个整型指针分配栈空间，随后当程序调用 <code class="highlight"><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">))</span></code> 时，它会在堆上请求 <code>int</code> 大小的空间，返回此空间的地址，最终将此地址存在栈上。</p>
 <h2 id="142-malloc"><span>14.2 malloc()<span class="heti-spacing"> </span></span>调用<a class="headerlink" href="#142-malloc" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
 
@@ -1213,7 +1213,7 @@
 </ul>
 <p>关于 <code class="highlight"><span class="k">sizeof</span></code>：</p>
 <ul>
-<li>指针与所指内容大小不是一回事。使用使用 <code class="highlight"><span class="k">sizeof</span></code> 于指针时，得到的是指针本身的大小，而不是指针所指向的内存区域的大小；</li>
+<li>指针与所指内容大小不是一回事。使用 <code class="highlight"><span class="k">sizeof</span></code> 于指针时，得到的是指针本身的大小，而不是指针所指向的内存区域的大小；</li>
 <li>用于结构体时，返回值包括对齐添加的填充字节大小；</li>
 <li>用于字符串时，仔细斟酌是需要整个字符数组的大小，还是字符串的实际长度，前者使用 <code class="highlight"><span class="k">sizeof</span></code>，后者使用 <code class="highlight"><span class="n">strlen</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span></code>。</li>
 </ul>
@@ -1250,19 +1250,19 @@
 <p>正确地调用 <code>malloc()</code>，但忘记在新分配的数据类型中填写一些初始值，就会导致程序从堆里读到一些未知的东西。</p>
 <p>内存的世界是混乱的，不走运的话，读到一些随机和有害的东西也是常事。</p>
 <h3 id="_4">忘记释放内存<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>内存泄漏<span><span class="heti-spacing"> </span>(memory leak)</span>，如果忘记释放内存，它就会一直留在那里，直到程序结束。</p>
+<p>内存泄漏（memory leak<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，如果忘记释放内存，它就会一直留在那里，直到程序结束。</p>
 <p>如果你的程序是一个需要长久运行的服务器呢？它不断地、缓慢地泄漏内存，最终在某个时刻把系统的内存占满，服务崩溃了。</p>
-<p>带有垃圾回收<span class="heti-skip"><span class="heti-spacing"> </span>(GC)<span class="heti-spacing"> </span></span>的语言没什么帮助，如果仍然对某快内存存在引用，垃圾收集器就不会释放它。</p>
+<p>带有垃圾回收（GC）的语言没什么帮助，如果仍然对某块内存存在引用，垃圾收集器就不会释放它。</p>
 <h3 id="_5">在用完之前释放内存<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>悬挂指针<span><span class="heti-spacing"> </span>(dangling pointer)</span>，释放后再使用那些地址的内存，称为<span><span class="heti-spacing"> </span>Use-After-Free</span>，简称<span><span class="heti-spacing"> </span>UAF</span>，是很严重的漏洞。</p>
+<p>悬挂指针（dangling pointer<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，释放后再使用那些地址的内存，称为<span><span class="heti-spacing"> </span>Use-After-Free</span>，简称<span><span class="heti-spacing"> </span>UAF</span>，是很严重的漏洞。</p>
 <p><span>CTF<span class="heti-spacing"> </span></span>时间到……</p>
 <p><a href="https://ctf-wiki.org/pwn/linux/user-mode/heap/ptmalloc2/use-after-free/">ctf-wiki.org/pwn/linux/user-mode/heap/ptmalloc2/use-after-free/</a></p>
 <h3 id="_6">反复释放内存<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>重复释放<span><span class="heti-spacing"> </span>(double free)</span>，同样是很严重的漏洞，会破坏内存管理数据结构，导致程序崩溃或者更严重的后果。</p>
+<p>重复释放（double free<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，同样是很严重的漏洞，会破坏内存管理数据结构，导致程序崩溃或者更严重的后果。</p>
 <p><span>CTF<span class="heti-spacing"> </span></span>时间到……</p>
 <p><a href="https://ir0nstone.gitbook.io/notes/types/heap/double-free">ir0nstone.gitbook.io/notes/types/heap/double-free</a></p>
 <h3 id="free">错误地调用<span><span class="heti-spacing"> </span>free()</span><a class="headerlink" href="#free" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>无效释放<span><span class="heti-spacing"> </span>(invalid free)</span>，传入其他值（不是 <code>malloc</code> 的返回值）时，也可能被恶意利用。</p>
+<p>无效释放（invalid free<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，传入其他值（不是 <code>malloc</code> 的返回值）时，也可能被恶意利用。</p>
 <div class="admonition quote">
 <p class="admonition-title">补充：为什么在你的进程退出时没有内存泄露</p>
 <p>当你编写一个短时间运行的程序时，可能会使用<span class="heti-skip"><span class="heti-spacing"> </span>malloc()<span class="heti-spacing"> </span></span>分配一些空间。程序运行并即将完成：是否需要在退出前调用几次<span><span class="heti-spacing"> </span>free()</span>？虽然不释放似乎不对，但在真正的意义上，没有任何内存会“丢失”。</p>
@@ -1275,8 +1275,8 @@
 无论地址空间中堆的状态如何，操作系统都会在进程终止时收回所有这些页面，从而确保即使没有释放内存，也不会丢失内存。</p>
 </div>
 <h2 id="145"><span>14.5<span class="heti-spacing"> </span></span>底层操作系统支持<a class="headerlink" href="#145" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p><code>malloc</code> 和 <code>free</code> 只是库调用，其中封装的是系统调用 <code>brk</code>。它用来改变程序分断<span class="heti-skip"><span class="heti-spacing"> </span>(break)<span class="heti-spacing"> </span></span>的位置：堆结束的位置。</p>
-<p><code>mmap</code> 调用可以从操作系统获取内存。通过传入正确的参数，<code>mmap</code> 可以在程序中创建一个匿名<span class="heti-skip"><span class="heti-spacing"> </span>(anonymous)<span class="heti-spacing"> </span></span>内存区域——这个区域不与任何特定文件相关联，而是与交换空间<span class="heti-skip"><span class="heti-spacing"> </span>(swap space)<span class="heti-spacing"> </span></span>相关联。</p>
+<p><code>malloc</code> 和 <code>free</code> 只是库调用，其中封装的是系统调用 <code>brk</code>。它用来改变程序分断（break）的位置：堆结束的位置。</p>
+<p><code>mmap</code> 调用可以从操作系统获取内存。通过传入正确的参数，<code>mmap</code> 可以在程序中创建一个匿名（anonymous）内存区域——这个区域不与任何特定文件相关联，而是与交换空间（swap space）相关联。</p>
 <h2 id="146"><span>14.6<span class="heti-spacing"> </span></span>其他调用<a class="headerlink" href="#146" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <ul>
 <li><code>calloc</code><span>:<span class="heti-spacing"> </span></span>分配的同时将其置零</li>
@@ -1498,7 +1498,7 @@ fish: Job 1, './null' terminated by signal SIGABRT (Abort)
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年12月7日 05:54:17</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年7月31日 05:57:44</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">

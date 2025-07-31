@@ -525,7 +525,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#best-fit">
 <span class="md-ellipsis">
-            最优匹配 (best-fit)
+            最优匹配（best-fit）
         </span>
 </a>
 <!-- Table of contents list -->
@@ -533,7 +533,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#worst-fit">
 <span class="md-ellipsis">
-            最差匹配 (worst-fit)
+            最差匹配（worst-fit）
         </span>
 </a>
 <!-- Table of contents list -->
@@ -541,7 +541,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#first-fit">
 <span class="md-ellipsis">
-            首次匹配 (first-fit)
+            首次匹配（first-fit）
         </span>
 </a>
 <!-- Table of contents list -->
@@ -549,7 +549,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#next-fit">
 <span class="md-ellipsis">
-            下次匹配 (next-fit)
+            下次匹配（next-fit）
         </span>
 </a>
 <!-- Table of contents list -->
@@ -576,7 +576,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#segregated-list">
 <span class="md-ellipsis">
-            分离空闲列表 (segregated list)
+            分离空闲列表（segregated list）
         </span>
 </a>
 <!-- Table of contents list -->
@@ -584,7 +584,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#buddy-allocator">
 <span class="md-ellipsis">
-            伙伴系统 (buddy allocator)
+            伙伴系统（buddy allocator）
         </span>
 </a>
 <!-- Table of contents list -->
@@ -1157,7 +1157,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#best-fit">
 <span class="md-ellipsis">
-            最优匹配 (best-fit)
+            最优匹配（best-fit）
         </span>
 </a>
 <!-- Table of contents list -->
@@ -1165,7 +1165,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#worst-fit">
 <span class="md-ellipsis">
-            最差匹配 (worst-fit)
+            最差匹配（worst-fit）
         </span>
 </a>
 <!-- Table of contents list -->
@@ -1173,7 +1173,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#first-fit">
 <span class="md-ellipsis">
-            首次匹配 (first-fit)
+            首次匹配（first-fit）
         </span>
 </a>
 <!-- Table of contents list -->
@@ -1181,7 +1181,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#next-fit">
 <span class="md-ellipsis">
-            下次匹配 (next-fit)
+            下次匹配（next-fit）
         </span>
 </a>
 <!-- Table of contents list -->
@@ -1208,7 +1208,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#segregated-list">
 <span class="md-ellipsis">
-            分离空闲列表 (segregated list)
+            分离空闲列表（segregated list）
         </span>
 </a>
 <!-- Table of contents list -->
@@ -1216,7 +1216,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#buddy-allocator">
 <span class="md-ellipsis">
-            伙伴系统 (buddy allocator)
+            伙伴系统（buddy allocator）
         </span>
 </a>
 <!-- Table of contents list -->
@@ -1255,11 +1255,11 @@
 <li>内存被分配给用户，就不可以被重定位（不能进行紧凑空间的操作<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；</li>
 <li>分配程序管理的是连续的一块字节区域。</li>
 </ol>
-<p>空闲列表<span><span class="heti-spacing"> </span>(free list)</span>：在堆上管理空闲空间的数据结构，该结构包含了管理内存区域中所有空闲块的引用。</p>
+<p>空闲列表（free list<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：在堆上管理空闲空间的数据结构，该结构包含了管理内存区域中所有空闲块的引用。</p>
 <h2 id="172"><span>17.2<span class="heti-spacing"> </span></span>底层机制<a class="headerlink" href="#172" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>分配程序采用的一些通用机制。</p>
 <h3 id="_1">分割与合并<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p><strong>分割<span><span class="heti-spacing"> </span>(splitting)</span></strong></p>
+<p><strong>分割（splitting）</strong></p>
 <p>假设有下面的<span class="heti-skip"><span class="heti-spacing"> </span>30<span class="heti-spacing"> </span></span>字节的堆：</p>
 <div class="highlight"><pre><span></span><code>0      10     20     30
 ^      ^      ^      ^
@@ -1272,13 +1272,13 @@
     A --&gt; B[addr: 20, len: 10]
     B --&gt; NULL</code></pre>
 <p>此时任何大于<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>字节的分配请求都会失败（返回<span><span class="heti-spacing"> </span>NULL</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，但如果申请小于<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>字节的内存，分配程序会执行所谓的分割动作：找到一块可以满足请求的空闲空间，将其分割，第一块返回给用户，第二块留在空闲列表中。</p>
-<p>假设申请<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>字节的请求，分配程序选择使用第二块空闲空间，对 <code class="highlight"><span class="n">malloc</span><span class="p">()</span></code> 的调用会返回<span><span class="heti-spacing"> </span>20</span> （<span>1<span class="heti-spacing"> </span></span>字节分配区域的地址<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，空闲列表会变成这样：</p>
+<p>假设申请<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>字节的请求，分配程序选择使用第二块空闲空间，对 <code class="highlight"><span class="n">malloc</span><span class="p">()</span></code> 的调用会返回<span><span class="heti-spacing"> </span>20</span>（<span>1<span class="heti-spacing"> </span></span>字节分配区域的地址<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，空闲列表会变成这样：</p>
 <pre class="mermaid"><code>graph LR;
     HEAD --&gt; A[addr: 0, len: 10]
     A --&gt; B[addr: 21, len: 9]
     B --&gt; NULL</code></pre>
 <hr/>
-<p><strong>合并<span><span class="heti-spacing"> </span>(coalescing)</span></strong></p>
+<p><strong>合并（coalescing）</strong></p>
 <p>一开始的例子中，<span>10<span class="heti-spacing"> </span></span>字节的空闲空间，<span>10<span class="heti-spacing"> </span></span>字节的已分配空间，<span>10<span class="heti-spacing"> </span></span>字节的空闲空间。</p>
 <p>如果执行 <code class="highlight"><span class="n">free</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code>，归还堆中间的空间，可能得到如下结果：</p>
 <pre class="mermaid"><code>graph LR;
@@ -1295,7 +1295,7 @@
     A --&gt; NULL</code></pre>
 <h3 id="_2">追踪已分配空间的大小<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><code class="highlight"><span class="n">free</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">)</span></code> 接口没有块大小的参数，因此它假定对于给定的指针，内存分配库可以很快确定要释放空间的大小。</p>
-<p>大多数分配程序都会在头块<span class="heti-skip"><span class="heti-spacing"> </span>(header)<span class="heti-spacing"> </span></span>中保存一点额外信息，通常就放置在返回的内存块之前。</p>
+<p>大多数分配程序都会在头块（header）中保存一点额外信息，通常就放置在返回的内存块之前。</p>
 <div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">header_t</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">magic</span><span class="p">;</span>
@@ -1314,7 +1314,7 @@ ptr  --&gt; +----------------+
          |                | Data Chunk (20 byte)
          +----------------+
 </code></pre></div>
-<p>获得头块的指针后，库可以很容易地确定幻数是否符合预期的值，作为正常性检查<span><span class="heti-spacing"> </span>(</span><code class="highlight"><span class="n">assert</span><span class="p">(</span><span class="n">hprt</span><span class="o">-&gt;</span><span class="n">magic</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1234567</span><span class="p">)</span></code><span><span class="heti-spacing"> </span>)</span>，并简单计算要释放的空间大小（即头块的大小加区域长度<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>获得头块的指针后，库可以很容易地确定幻数是否符合预期的值，作为正常性检查（<code class="highlight"><span class="n">assert</span><span class="p">(</span><span class="n">hptr</span><span class="o">-&gt;</span><span class="n">magic</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1234567</span><span class="p">)</span></code><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，并简单计算要释放的空间大小（即头块的大小加区域长度<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <p>如果用户请求<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>字节的内存，就不再是寻找大小为<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>的空闲块，而是寻找<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>加上头块大小的空闲块。</p>
 <h3 id="_3">嵌入空闲列表<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>难过的事实：没法在创建空闲列表时使用 <code class="highlight"><span class="n">malloc</span></code>，尽管这是在内存分配库中。</p>
@@ -1476,18 +1476,18 @@ head --&gt; +----------------+                                 | |
 <h3 id="_4">让堆增长<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>如果堆中的内存耗尽，可以使用<span class="heti-skip"><span class="heti-spacing"> </span>sbrk<span class="heti-spacing"> </span></span>系统调用增加堆的大小，这样用户的请求就不会是直接返回<span class="heti-skip"><span class="heti-spacing"> </span>NULL<span class="heti-spacing"> </span></span>了。</p>
 <h2 id="173"><span>17.3<span class="heti-spacing"> </span></span>基本策略<a class="headerlink" href="#173" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<h3 id="best-fit">最优匹配<span><span class="heti-spacing"> </span>(best-fit)</span><a class="headerlink" href="#best-fit" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h3 id="best-fit">最优匹配（best-fit）<a class="headerlink" href="#best-fit" title="Permanent link">¶</a></h3>
 <p>遍历整个空闲列表，找到大小符合的空闲块，然后返回其中最小的一块，所以它也可以被称为最小匹配。</p>
 <p>遍历查找正确空闲块时，要付出较高性能代价。</p>
-<h3 id="worst-fit">最差匹配<span><span class="heti-spacing"> </span>(worst-fit)</span><a class="headerlink" href="#worst-fit" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h3 id="worst-fit">最差匹配（worst-fit）<a class="headerlink" href="#worst-fit" title="Permanent link">¶</a></h3>
 <p>尝试找到最大块，分割并将剩余的块加入空闲列表。</p>
 <p>最差匹配尝试在空闲列表中保留较大的块，以此来尝试不留下难以利用的小块。</p>
 <p>但它同样需要遍历整个空闲列表，并且大多数研究表明它的表现非常差，导致过量的碎片，同时还有很高的开销。</p>
-<h3 id="first-fit">首次匹配<span><span class="heti-spacing"> </span>(first-fit)</span><a class="headerlink" href="#first-fit" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h3 id="first-fit">首次匹配（first-fit）<a class="headerlink" href="#first-fit" title="Permanent link">¶</a></h3>
 <p>找到第一个足够大的块就分割给用户。</p>
 <p>首次匹配有速度优势，不需要遍历空闲块，但有时会让空闲列表开头的部分有很多小块。</p>
 <p>因此，分配程序如何管理空闲列表的顺序就变得很重要。一种方式是基于地址排序。通过保持空闲块按内存地址有序，合并操作会很容易，从而减少了内存碎片。</p>
-<h3 id="next-fit">下次匹配<span><span class="heti-spacing"> </span>(next-fit)</span><a class="headerlink" href="#next-fit" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h3 id="next-fit">下次匹配（next-fit）<a class="headerlink" href="#next-fit" title="Permanent link">¶</a></h3>
 <p>下次匹配多维护一个指针，指向上次查找结束的位置。</p>
 <p>其想法是将对空闲空间的查找操作扩散到整个列表中去，避免对列表开头频繁的分割。</p>
 <p>这种策略的性能与首次匹配很接它，同样避免了遍历查找。</p>
@@ -1512,19 +1512,19 @@ head --&gt; +----------------+                                 | |
     C --&gt; NULL</code></pre>
 <p>在这个例子中，首次匹配会和最差匹配一样，也发现满足请求的第一个空闲块。不同的是查找开销，最优匹配和最差匹配都需要遍历整个列表，而首次匹配只找到第一个满足需求的块即可，因此减少了查找开销。</p>
 <h2 id="174"><span>17.4<span class="heti-spacing"> </span></span>其他方式<a class="headerlink" href="#174" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<h3 id="segregated-list">分离空闲列表<span><span class="heti-spacing"> </span>(segregated list)</span><a class="headerlink" href="#segregated-list" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h3 id="segregated-list">分离空闲列表（segregated list）<a class="headerlink" href="#segregated-list" title="Permanent link">¶</a></h3>
 <p>如果某个应用程序经常申请一种（或几种）大小的内存空间，那就用一个独立的列表，只管理这样大小的对象。其他大小的请求都一给更通用的内存分配程序。</p>
 <p>通过拿出一部分内存专门满足某种大小的请求，碎片就不再是问题了。而且，由于没有复杂的列表查找过程，这种特定大小的内存分配和释放都很快。</p>
 <p>但是这种方式引入了新的复杂性：应该拿出多少内存来专门为某种大小的请求服务，同时剩余的内存还能用来满足一般请求？</p>
 <div class="admonition quote">
-<p class="admonition-title"><span>Solaris<span class="heti-spacing"> </span></span>系统内核的厚块分配程序<span class="heti-skip"><span class="heti-spacing"> </span>(slab allocator)<span class="heti-spacing"> </span></span>的解决方案</p>
+<p class="admonition-title"><span>Solaris<span class="heti-spacing"> </span></span>系统内核的厚块分配程序（slab allocator）的解决方案</p>
 <p>具体来说，在内核启动时，它为可能频繁请求的内核对象创建一些对象缓存（object cache<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，如锁和文件系统<span class="heti-skip"><span class="heti-spacing"> </span>inode<span class="heti-spacing"> </span></span>等。这些的对象缓存每个分离了特定大小的空闲列表，因此能够很快地响应内存请求和释放。</p>
 <p>如果某个缓存中的空闲空间快耗尽时，它就向通用内存分配程序申请一些内存厚块（slab<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>（总量是页大小和对象大小的公倍数<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <p>相反，如果给定厚块中对象的引用计数变为<span><span class="heti-spacing"> </span>0</span>，通用的内存分配程序可以从专门的分配程序中回收这些空间，这通常发生在虚拟内存系统需要更多的空间的时候。</p>
 <p>厚块分配程序比大多数分离空闲列表做得更多，它将列表中的空闲对象保持在预初始化的状态。</p>
 <p><span>Bonwick<span class="heti-spacing"> </span></span>指出，数据结构的初始化和销毁的开销很大。通过将空闲对象保持在初始化状态，厚块分配程序避免了频繁的初始化和销毁，从而显著降低了开销。</p>
 </div>
-<h3 id="buddy-allocator">伙伴系统<span><span class="heti-spacing"> </span>(buddy allocator)</span><a class="headerlink" href="#buddy-allocator" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h3 id="buddy-allocator">伙伴系统（buddy allocator）<a class="headerlink" href="#buddy-allocator" title="Permanent link">¶</a></h3>
 <p><strong>二分伙伴分配程序</strong>，空闲空间被看成为<span class="heti-skip"><span class="heti-spacing"> </span>$ 2^{N} $<span class="heti-spacing"> </span></span>的大空间，当有内存分配请求时，空闲空间被递归地一分为二，直到刚好可以满足请求大小。</p>
 <div class="highlight"><pre><span></span><code>+-------------------------------------------------------+
 |                         64 KB                         |
@@ -1542,9 +1542,9 @@ head --&gt; +----------------+                                 | |
 | 8 KB | 8 KB |
 +------+------+
 </code></pre></div>
-<p>这种分配策略只允许 分配<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>的整数次幂大小的空闲块，因此会有内部碎片<span class="heti-skip"><span class="heti-spacing"> </span>(internal fragment)<span class="heti-spacing"> </span></span>的麻烦。</p>
+<p>这种分配策略只允许 分配<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>的整数次幂大小的空闲块，因此会有内部碎片（internal fragment）的麻烦。</p>
 <p>伙伴系统释放时会检查“伙伴” <span>8 KB<span class="heti-spacing"> </span></span>是否空闲，如果是就合二为一，变成<span class="heti-skip"><span class="heti-spacing"> </span>16 KB<span class="heti-spacing"> </span></span>的块，然后检查这个<span class="heti-skip"><span class="heti-spacing"> </span>16 KB<span class="heti-spacing"> </span></span>块的伙伴是否空闲，如此递归上溯，直到合并整个内存区域，或者某个块的伙伴还没有被释放。</p>
-<p>伙伴系统运转良好的原因，在于很容易确定某个块的伙伴，每对互为伙伴的块只有一位不同也正是这一位决定了它们在整个伙伴树中的层次。</p>
+<p>伙伴系统运转良好的原因，在于很容易确定某个块的伙伴，每对互为伙伴的块只有一位不同。也正是这一位决定了它们在整个伙伴树中的层次。</p>
 <table>
 <thead>
 <tr>
@@ -1606,7 +1606,7 @@ head --&gt; +----------------+                                 | |
 </tbody>
 </table>
 <h3 id="_6">其他想法<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>上面提到的众多方法都有一个重要的问题，缺乏可扩展性<span><span class="heti-spacing"> </span>(scaling)</span>。</p>
+<p>上面提到的众多方法都有一个重要的问题，缺乏可扩展性（scaling<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <p>具体来说，就是查找列表可能很慢。因此，更先进的分配程序采用更复杂的数据结构来优化这个开销，牺牲简单性来换取性能。例子包括平衡二叉树、伸展树和偏序树。</p>
 <h2 id="_7">作业<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <div class="admonition question">
@@ -1838,7 +1838,7 @@ $ ./malloc.py -c -A +10,-0,+20,-1,+30,-2,+40,-3 -p WORST -l SIZESORT- -C
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年12月7日 05:54:17</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年7月31日 05:57:44</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">

@@ -1088,19 +1088,19 @@
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <p>比例份额（proportional-share）调度程序，有时也称为公平份额（fair-share）调度程序。</p>
-<p>比例份额算法基于一个简单的想法：调度程序的最终目标，是确保每个工作获得一定比例的<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>时间，而不是优化周转时间和响应时间，</p>
+<p>比例份额算法基于一个简单的想法：调度程序的最终目标，是确保每个工作获得一定比例的<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>时间，而不是优化周转时间和响应时间。</p>
 </div>
 <dl>
-<dt>彩票调度<span><span class="heti-spacing"> </span>(lottery scheduling)</span></dt>
+<dt>彩票调度（lottery scheduling）</dt>
 <dd>
-<p>每隔一段时间，都会举行一次彩票抽奖，以确定接下来应该运行哪个进程。越是应该频繁运行的进程，越是应该拥有更多地赢得彩票的机会。</p>
+<p>每隔一段时间，都会举行一次彩票抽奖，以确定接下来应该运行哪个进程。越是应该频繁运行的进程，越是应该拥有更多的赢得彩票的机会。</p>
 </dd>
 </dl>
 <h2 id="91"><span>9.1<span class="heti-spacing"> </span></span>基本概念：彩票数表示份额<a class="headerlink" href="#91" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>彩票数<span class="heti-skip"><span class="heti-spacing"> </span>(ticket)<span class="heti-spacing"> </span></span>代表了进程（或用户或其他）占有某个资源的份额。一个进程拥有的彩票数占总彩票数的百分比，就是它占有资源的份额。</p>
+<p>彩票数（ticket）代表了进程（或用户或其他）占有某个资源的份额。一个进程拥有的彩票数占总彩票数的百分比，就是它占有资源的份额。</p>
 <div class="admonition quote">
 <p class="admonition-title">提示：利用随机性</p>
-<p>彩票调度最精彩的地方在于利用了随机性<span><span class="heti-spacing"> </span>(randomness)</span> 。当你需要做出决定时，采用随机的方式常常是既可靠又简单的选择。</p>
+<p>彩票调度最精彩的地方在于利用了随机性（randomness<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。当你需要做出决定时，采用随机的方式常常是既可靠又简单的选择。</p>
 <p>随机方法相对于传统的决策方式，至少有<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>点优势。</p>
 <ol>
 <li>
@@ -1116,11 +1116,11 @@
 </div>
 <h2 id="92"><span>9.2<span class="heti-spacing"> </span></span>彩票机制<a class="headerlink" href="#92" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <dl>
-<dt>彩票货币<span><span class="heti-spacing"> </span>(ticket currency)</span></dt>
+<dt>彩票货币（ticket currency）</dt>
 <dd>用户可以为他们的进程或任务分配“局部彩票”，而这些局部彩票随后会根据用户的总彩票配额被转换成“全局彩票”，以此允许用户以更灵活和细粒度的方式分配系统资源。</dd>
-<dt>彩票转让<span><span class="heti-spacing"> </span>(ticket transfer)</span></dt>
+<dt>彩票转让（ticket transfer）</dt>
 <dd>进程可以将它持有的一部分或全部彩票转让给另一个进程，以便临时提高接收进程的调度优先级。在 客户端<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>服务端 模型的应用场景中，客户端请求服务端执行某项任务时，可以选择将一部分或者全部彩票转让给服务端，从而更快地完成客户端请求的任务。</dd>
-<dt>彩票通胀<span><span class="heti-spacing"> </span>(ticket inflation)</span></dt>
+<dt>彩票通胀（ticket inflation）</dt>
 <dd>进程可以临时提升或降低自己拥有的彩票数量，但在竞争环境中进程之间互相不信任，就没什么意义了。</dd>
 </dl>
 <h2 id="93"><span>9.3<span class="heti-spacing"> </span></span>实现<a class="headerlink" href="#93" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
@@ -1197,7 +1197,7 @@ A、B、C 这 3 个工作的票数分别是 100、50 和 250，我们通过用�
 比如用 10000 除以这些票数值，得到了 3 个进程的步长分别为 100、200 和 40。我们称这个值为每个进程的步长（stride）。
 每次进程运行后，我们会让它的计数器（称为行程（pass）值）增加它的步长，记录它的总体进展。</p>
 </div>
-<p>在示例中，<span>3<span class="heti-spacing"> </span></span>个进程<span class="heti-skip"><span class="heti-spacing"> </span>(A, B, C)<span class="heti-spacing"> </span></span>的步长值分别为<span><span class="heti-spacing"> </span>100</span>、<span>200<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>40</span>，初始行程值都为<span><span class="heti-spacing"> </span>0</span>。</p>
+<p>在示例中，<span>3<span class="heti-spacing"> </span></span>个进程（A, B, C）的步长值分别为<span><span class="heti-spacing"> </span>100</span>、<span>200<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>40</span>，初始行程值都为<span><span class="heti-spacing"> </span>0</span>。</p>
 <table>
 <thead>
 <tr>
@@ -1274,9 +1274,9 @@ A、B、C 这 3 个工作的票数分别是 100、50 和 250，我们通过用�
 <li>C，更新行程值为<span><span class="heti-spacing"> </span>160</span></li>
 <li>C，更新行程值为<span><span class="heti-spacing"> </span>200</span></li>
 </ol>
-<p><span>C<span class="heti-spacing"> </span></span>运行了<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>次，<span>A<span class="heti-spacing"> </span></span>运行了<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>次，<span>B<span class="heti-spacing"> </span></span>一次，正好是票数的比例———— 200、<span>100<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>50</span>。</p>
+<p><span>C<span class="heti-spacing"> </span></span>运行了<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>次，<span>A<span class="heti-spacing"> </span></span>运行了<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>次，<span>B<span class="heti-spacing"> </span></span>一次，正好是票数的比例——200、<span>100<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>50</span>。</p>
 <p>彩票调度算法只能一段时间后，在概率上实现比例，而步长调度算法可以在每个调度周期后做到完全正确。</p>
-<p>但是彩票调度有一个步长调度没有的优势————不需要全局状态。</p>
+<p>但是彩票调度有一个步长调度没有的优势——不需要全局状态。</p>
 <p>一个新的进程在执行过程中加入系统，应该怎么设置行程值？设置成<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>的话就独占<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>了。</p>
 <p>彩票算法只需要用新进程的票数更新全局的总票数就可以了，因为彩票调度算法能够更合理地处理新加入的进程。</p>
 <h2 id="97"><span>9.7<span class="heti-spacing"> </span></span>小结<a class="headerlink" href="#97" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
@@ -1336,16 +1336,12 @@ $ ./lottery.py -l 100:100,100:100 -s 5 -c | grep DONE
 <p>参考：<a href="https://github.com/xxyzz/ostep-hw/tree/master/9">github.com/xxyzz/ostep-hw/tree/master/9</a></p>
 <p>越小的量子规模越公平。</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Answer</p>
-<p>参考：<a href="https://github.com/xxyzz/ostep-hw/tree/master/9">github.com/xxyzz/ostep-hw/tree/master/9</a></p>
-</div>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年12月7日 05:54:17</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年7月31日 05:57:44</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">

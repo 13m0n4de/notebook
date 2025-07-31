@@ -1077,7 +1077,7 @@
 <h1 id="15">第<span class="heti-skip"><span class="heti-spacing"> </span>15<span class="heti-spacing"> </span></span>章 机制：地址转换<a class="headerlink" href="#15" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
 <p>这章是讲如何高效、灵活地虚拟化内存。</p>
 <p>当<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>取指令或者执行一条访存指令的时候，它都是基于虚拟地址访问属于当前正在运行的应用的地址空间。</p>
-<p>此时，<span>CPU<span class="heti-spacing"> </span></span>中的 内存管理单元<span class="heti-skip"><span class="heti-spacing"> </span>(MMU, Memory Management Unit)<span class="heti-spacing"> </span></span>自动将这个虚拟地址进行 地址转换<span class="heti-skip"><span class="heti-spacing"> </span>(Address Translation)<span class="heti-spacing"> </span></span>变为一个物理地址，即这个应用的数据<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>指令的物理内存位置。</p>
+<p>此时，<span>CPU<span class="heti-spacing"> </span></span>中的 <strong>内存管理单元（MMU, Memory Management Unit）</strong> 自动将这个虚拟地址进行 <strong>地址转换（Address Translation）</strong> 变为一个物理地址，即这个应用的数据<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>指令的物理内存位置。</p>
 <p>参考：<a href="https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter4/2address-space.html#id6"><span>rCore-Tutorial-Book-v3 #<span class="heti-spacing"> </span></span>增加硬件加速虚实地址转换</a></p>
 <h2 id="151"><span>15.1<span class="heti-spacing"> </span></span>假设<a class="headerlink" href="#151" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <details class="quote">
@@ -1100,7 +1100,7 @@
 <span class="err">132:</span><span class="w"> </span><span class="nf">addl</span><span class="w"> </span><span class="no">$0x03</span><span class="p">,</span><span class="w"> </span><span class="nv">%eax</span><span class="w"> </span><span class="c1">;add 3 to eax register</span>
 <span class="err">135:</span><span class="w"> </span><span class="nf">movl</span><span class="w"> </span><span class="nv">%eax</span><span class="p">,</span><span class="w"> </span><span class="mi">0x0</span><span class="p">(</span><span class="nv">%ebx</span><span class="p">)</span><span class="w"> </span><span class="c1">;store eax back to mem</span>
 </code></pre></div>
-<p>代码和数据都位于进程的地址口令你感觉，<span>3<span class="heti-spacing"> </span></span>条指令序列位于地址<span><span class="heti-spacing"> </span>128</span>（靠近头部的代码段<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，变量<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>的值位于地址<span><span class="heti-spacing"> </span>15 KB</span> （在靠近底部的栈中<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>代码和数据都位于进程的地址空间中，<span>3<span class="heti-spacing"> </span></span>条指令序列位于地址<span><span class="heti-spacing"> </span>128</span>（靠近头部的代码段<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，变量<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>的值位于地址<span><span class="heti-spacing"> </span>15 KB</span>（在靠近底部的栈中<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <p>如果这<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>条指令执行，从进程的角度来看，发生了以下几次内存访问：</p>
 <ul>
 <li>从地址<span class="heti-skip"><span class="heti-spacing"> </span>128<span class="heti-spacing"> </span></span>获取指令；</li>
@@ -1168,13 +1168,13 @@
 <p>书中介绍介入有点突然，介入其实指的是在不同的软件组件或硬件之间插入一个 <strong>中间层</strong> 来实现对它们之间交互的监视、修改或拓展</p>
 </div>
 <h2 id="153"><span>15.3<span class="heti-spacing"> </span></span>动态（基于硬件）重定位<a class="headerlink" href="#153" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>动态（基于硬件）重定位，最初只是一个简单的实现，称为基址加界限<span class="heti-skip"><span class="heti-spacing"> </span>(base and bound)<span class="heti-spacing"> </span></span>机制，有时又称为动态重定位<span><span class="heti-spacing"> </span>(dynamic relocation)</span>。</p>
+<p>动态（基于硬件）重定位，最初只是一个简单的实现，称为基址加界限（base and bound）机制，有时又称为动态重定位（dynamic relocation<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <p>每个<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>需要两个硬件寄存器：</p>
 <ul>
-<li>基址<span class="heti-skip"><span class="heti-spacing"> </span>(base)<span class="heti-spacing"> </span></span>寄存器</li>
-<li>界限<span class="heti-skip"><span class="heti-spacing"> </span>(bound)<span class="heti-spacing"> </span></span>寄存器，有时称为限制<span class="heti-skip"><span class="heti-spacing"> </span>(limit)<span class="heti-spacing"> </span></span>寄存器</li>
+<li>基址（base）寄存器</li>
+<li>界限（bound）寄存器，有时称为限制（limit）寄存器</li>
 </ul>
-<p>程序真正运行时，操作系统会决定其在物理内存中的实际加载地址，并将起始地址记录在基址寄存器中。进程中使用的内存引用都是虚拟地址<span><span class="heti-spacing"> </span>(virtual address)</span>，硬件将虚拟地址加上基址寄存器的值，得到物理地址<span><span class="heti-spacing"> </span>(physical address)</span>，再发给内存系统。</p>
+<p>程序真正运行时，操作系统会决定其在物理内存中的实际加载地址，并将起始地址记录在基址寄存器中。进程中使用的内存引用都是虚拟地址（virtual address<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，硬件将虚拟地址加上基址寄存器的值，得到物理地址（physical address<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，再发给内存系统。</p>
 <p>界限寄存器被用来保存虚拟地址空间的大小，如果程序访问超过这个界限或者为负数的虚拟地址，<span>CPU<span class="heti-spacing"> </span></span>将触发异常<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（界限寄存器也可以记录地址空间结束的物理地址，硬件在转化虚拟地址到物理地址之后才去检查这个界限，逻辑上是等价的<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>）</p>
 <div class="admonition quote">
 <p class="admonition-title">补充：基于软件的重定位</p>
@@ -1301,8 +1301,8 @@
 
     Note over ProgramA, Hardware: 时钟中断
     ProgramA-&gt;&gt;OS: 陷入
-    Note over OS: 将寄存器 (A) 保存到进程结构 (A) 
-    Note over OS: 从进程结构 (B) 恢复寄存器 (B)
+    Note over OS: 将寄存器（A）保存到进程结构（A）
+    Note over OS: 从进程结构（B）恢复寄存器（B）
     OS-&gt;&gt;ProgramB: 从陷入返回（进入 B）
     Note over ProgramB: 运行
     ProgramB-&gt;&gt;Hardware: 执行错误的加载
@@ -1389,7 +1389,7 @@ Virtual Address Trace
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<p>5．作为边界寄存器的值的函数，随机生成的虚拟地址的哪一部分是有效的？画一个图，使用不同随机种子运行，限制值从<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>到最大地址空间大小。</p>
+<p>5．作为界限寄存器的值的函数，随机生成的虚拟地址的哪一部分是有效的？画一个图，使用不同随机种子运行，限制值从<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>到最大地址空间大小。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Answer</p>
@@ -1428,7 +1428,7 @@ Virtual Address Trace
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年12月7日 05:54:17</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年7月31日 05:57:44</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">

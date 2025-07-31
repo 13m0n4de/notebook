@@ -1139,7 +1139,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="8">第<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>章 调度：多级反馈队列<a class="headerlink" href="#8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
-<p>多级反馈队列（Multi-level Feedback Queue，MLFQ）</p>
+<p>多级反馈队列（Multi-level Feedback Queue, MLFQ）</p>
 <h2 id="81-mlfq">8.1 MLFQ：基本规则<a class="headerlink" href="#81-mlfq" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <blockquote>
 <p><span>MLFQ<span class="heti-spacing"> </span></span>中有许多独立的队列（queue<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，每个队列有不同的优先级（priority level<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。任何时刻，一个工作只能存在于一个队列中。<span>MLFQ<span class="heti-spacing"> </span></span>总是优先执行较高优先级的工作（即在较高级队列中的工作<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
@@ -1148,7 +1148,7 @@
 </blockquote>
 <ul>
 <li>如果一个工作不断放弃<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>去等待键盘输入，这是交互型进程的可能行为，<span>MLFQ<span class="heti-spacing"> </span></span>因此会让它保持高优先级。</li>
-<li>如果一个工作长时间地占用<span><span class="heti-spacing"> </span>CPU</span> ，<span>MLFQ<span class="heti-spacing"> </span></span>会降低其优先级。</li>
+<li>如果一个工作长时间地占用<span><span class="heti-spacing"> </span>CPU</span>，<span>MLFQ<span class="heti-spacing"> </span></span>会降低其优先级。</li>
 </ul>
 <p>通过这种方式，<span>MLFQ<span class="heti-spacing"> </span></span>在进程运行过程中学习其行为，从而利用工作的历史来 <strong>预测</strong> 它未来的行为。</p>
 <p><span>MLFQ<span class="heti-spacing"> </span></span>的两条基本规则：</p>
@@ -1160,7 +1160,7 @@
 <ul>
 <li>规则<span><span class="heti-spacing"> </span>3</span>：工作进入系统时，放在最高优先级（最上层队列<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
 <li>规则<span><span class="heti-spacing"> </span>4a</span>：工作用完整个时间片后，降低其优先级（移入下一个队列<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
-<li>规则<span><span class="heti-spacing"> </span>4b</span>：如果工作在其时间片以内主动释放<span><span class="heti-spacing"> </span>CPU</span> ，则优先级不变。</li>
+<li>规则<span><span class="heti-spacing"> </span>4b</span>：如果工作在其时间片以内主动释放<span><span class="heti-spacing"> </span>CPU</span>，则优先级不变。</li>
 </ul>
 <h3 id="1">实例<span><span class="heti-spacing"> </span>1</span>：单个长工作<a class="headerlink" href="#1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>该工作首先进入最高优先级（Q2<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。执行一个<span class="heti-skip"><span class="heti-spacing"> </span>10ms<span class="heti-spacing"> </span></span>的时间片后，调度程序将工作的优先级减<span><span class="heti-spacing"> </span>1</span>，因此进入<span><span class="heti-spacing"> </span>Q1</span>。在<span class="heti-skip"><span class="heti-spacing"> </span>Q1<span class="heti-spacing"> </span></span>执行一个时间片后，最终降低优先级进入系统的最低优先级（Q0<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，一直留在那里。</p>
@@ -1202,8 +1202,8 @@ gantt
 通过这种方式，MLFQ 近似于 SJF。</p>
 </div>
 <h3 id="3-io">实例<span><span class="heti-spacing"> </span>3</span>：如果有<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>呢<a class="headerlink" href="#3-io" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>如果进程在时间片用完之前主动放弃<span><span class="heti-spacing"> </span>CPU</span> ，则不“处罚”它，保持它的优先级不变。</p>
-<p>交互型工作<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>每执行<span class="heti-skip"><span class="heti-spacing"> </span>1ms<span class="heti-spacing"> </span></span>便需要进行<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>操作，它与长时间运行的工作<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>竞争<span><span class="heti-spacing"> </span>CPU</span> 。<span>MLFQ<span class="heti-spacing"> </span></span>算法保持<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>在最高优先级，因为<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>总是让出<span><span class="heti-spacing"> </span>CPU</span> 。</p>
+<p>如果进程在时间片用完之前主动放弃<span><span class="heti-spacing"> </span>CPU</span>，则不“处罚”它，保持它的优先级不变。</p>
+<p>交互型工作<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>每执行<span class="heti-skip"><span class="heti-spacing"> </span>1ms<span class="heti-spacing"> </span></span>便需要进行<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>操作，它与长时间运行的工作<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>竞争<span><span class="heti-spacing"> </span>CPU</span>。<span>MLFQ<span class="heti-spacing"> </span></span>算法保持<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>在最高优先级，因为<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>总是让出<span><span class="heti-spacing"> </span>CPU</span>。</p>
 <pre class="mermaid"><code>---
 displayMode: compact
 ---
@@ -1260,7 +1260,7 @@ gantt
 <dl>
 <dt>“饥饿问题”</dt>
 <dd>
-<p>如果系统有“太多”交互型工作，就会不断占用<span><span class="heti-spacing"> </span>CPU</span> ，导致长工作永远无法得到<span><span class="heti-spacing"> </span>CPU</span>（它们饿死了<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>如果系统有“太多”交互型工作，就会不断占用<span><span class="heti-spacing"> </span>CPU</span>，导致长工作永远无法得到<span><span class="heti-spacing"> </span>CPU</span>（它们饿死了<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 </dd>
 <dt>愚弄调度程序（game the scheduler）</dt>
 <dd>
@@ -1476,7 +1476,7 @@ gantt
 这个提示是由资深的 OS 教授 John Ousterhout 提出的，因此称为 Ousterhout 定律（Ousterhout’s Law）。</p>
 </div>
 <p><span>Solaris<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>MLFQ<span class="heti-spacing"> </span></span>实现提供了一组表来配置调度程序，该表默认有<span class="heti-skip"><span class="heti-spacing"> </span>60<span class="heti-spacing"> </span></span>层队列，时间片长度从<span><span class="heti-spacing"> </span>20ms</span>（最高优先级<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，到几百<span><span class="heti-spacing"> </span>ms</span>（最低优先级<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，每一秒左右提升一次进程的优先级。</p>
-<p><span>FreeBSD<span class="heti-spacing"> </span></span>调度车很难过序（<span>4.3<span class="heti-spacing"> </span></span>版本）没用表，它采用数学公式来计算某个工作的优先级。</p>
+<p><span>FreeBSD<span class="heti-spacing"> </span></span>调度程序（<span>4.3<span class="heti-spacing"> </span></span>版本）没用表，它采用数学公式来计算某个工作的优先级。</p>
 <p>有些调度程序将最高优先级队列留给操作系统使用，有些系统支持用户给出优先级建议（是的只是建议<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，会略微提高优先级。</p>
 <h2 id="86-mlfq">8.6 MLFQ：小结<a class="headerlink" href="#86-mlfq" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <ul>
@@ -1484,7 +1484,7 @@ gantt
 <li>规则<span><span class="heti-spacing"> </span>2</span>：如果<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>的优先级<span class="heti-skip"><span class="heti-spacing"> </span>= B<span class="heti-spacing"> </span></span>的优先级，轮转运行<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>B</span>；</li>
 <li>规则<span><span class="heti-spacing"> </span>3</span>：工作进入系统时，放在最高优先级（最上层队列<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；</li>
 <li>规则<span><span class="heti-spacing"> </span>4</span>：一旦工作用完了其在某一层中的时间配额（无论中间主动放弃了多少次<span><span class="heti-spacing"> </span>CPU</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，就降低其优先级（移入低一级队列<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；</li>
-<li>规则<span><span class="heti-spacing"> </span>5</span>：经过一段时间<span><span class="heti-spacing"> </span><span class="arithmatex">\(S\)</span></span> ，就将系统中所有工作重新加入最高优先级队列。</li>
+<li>规则<span><span class="heti-spacing"> </span>5</span>：经过一段时间<span><span class="heti-spacing"> </span><span class="arithmatex">\(S\)</span></span>，就将系统中所有工作重新加入最高优先级队列。</li>
 </ul>
 <h2 id="_1">作业<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>好像回到了中学时代，我还是很不喜欢作业。</p>
@@ -1569,7 +1569,7 @@ $ ./mlfq.py -n 3 -l 0,200,0:50,100,9 -i 1 -c
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年12月7日 05:54:17</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年7月31日 05:57:44</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">

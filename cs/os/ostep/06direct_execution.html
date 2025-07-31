@@ -1123,8 +1123,8 @@
 <h2 id="62-1"><span>6.2<span class="heti-spacing"> </span></span>问题<span><span class="heti-spacing"> </span>1</span>：受限制的操作<a class="headerlink" href="#62-1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>通过引入新的处理器模式，可以让进程在不同程度上受限。</p>
 <p>比如在 <strong>用户模式</strong> 下进程不能发送<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>请求，会导致处理器引发异常，操作系统可能会终止进程。而 <strong>内核模式</strong> 可以做这些受限指令，操作系统内核就运行在内核模式下。</p>
-<p>如果用户希望执行某种特权操作（如从磁盘读取<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，需要执行 <strong>系统调用</strong> ，这是内核向用户程序暴露的某些关键功能，譬如访问文件系统、创建销毁进程、与其他进程通信，以及分配更多内存。</p>
-<p>如果要执行系统调用，需要执行特殊的指令，称为 陷入（Trap<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，它使程序控制流跳入内核并将特权级别提升到内核模式，如此一来就可以执行特权操作了，完成后再调用一个特殊的指令从陷入返回。</p>
+<p>如果用户希望执行某种特权操作（如从磁盘读取<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，需要执行 <strong>系统调用</strong>，这是内核向用户程序暴露的某些关键功能，譬如访问文件系统、创建销毁进程、与其他进程通信，以及分配更多内存。</p>
+<p>如果要执行系统调用，需要执行特殊的指令，称为 <strong>陷入（Trap）</strong>，它使程序控制流跳入内核并将特权级别提升到内核模式，如此一来就可以执行特权操作了，完成后再调用一个特殊的指令从陷入返回。</p>
 <p><span>OSTEP<span class="heti-spacing"> </span></span>翻译为“陷阱”，<span>rCore<span class="heti-spacing"> </span></span>翻译为“陷入”，总之<span><span class="heti-spacing"> </span>...</span><a href="https://www.youtube.com/watch?v=4F4qzPbcFiA"><em>It's A Trap!</em></a></p>
 <blockquote>
 <p>硬件通过提供不同的执行模式来协助操作系统。在用户模式（user mode）下，应用程序不能完全访问硬件资源。在内核模式（kernel mode）下，操作系统可以访问机器的全部资源。还提供了陷入（trap）内核和从陷阱返回（return-from-trap）到用户模式程序的特别说明，以及一些指令，让操作系统告诉硬件陷阱表（trap table）在内存中的位置。</p>
@@ -1163,7 +1163,7 @@
 <p>如果进程在<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>上运行，那操作系统就“没有运行”，如果操作系统没运行，它就没办法切换进程了，所以重点在于 <strong>操作系统如何重新获得<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>的控制权</strong>。</p>
 <h3 id="_1">协作式调度：等待系统调用<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>协作式调度（Cooperative Scheduling）里，操作系统相信进程会合理运行，运行一段时间就通过 <code>yield</code> 主动把<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>交回操作系统。</p>
-<p>如果某个进程无意或有意进入无限循环，不使用 <code>yield</code> ，也不进行系统调用让操作系统掌控主动权，那就我们就被永远地“困住”了。</p>
+<p>如果某个进程无意或有意进入无限循环，不使用 <code>yield</code>，也不进行系统调用让操作系统掌控主动权，那就我们就被永远地“困住”了。</p>
 <p>（当然，还有万能地解决方式———重启）</p>
 <h3 id="_2">非协作方式：操作系统进行控制<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>关于操作系统如何重获<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>的控制权，人们找到了一个答案：<strong>时钟中断（timer interrupt）</strong>。</p>
@@ -1191,25 +1191,25 @@
     OS-&gt;&gt;ProgramB: 从陷入返回，跳到 B 的程序计数器
     Note over ProgramB: 进程 B 运行</code></pre>
 <h2 id="_4">对进程调度方式的总结<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>第四章作业中的 <code>process-run.py</code> 实现了一个协作式的进程调度框架，进程在执行一定数量的指令后主动让出<span><span class="heti-spacing"> </span>CPU</span> ，或者在发起<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>操作后等待<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>完成。</p>
+<p>第四章作业中的 <code>process-run.py</code> 实现了一个协作式的进程调度框架，进程在执行一定数量的指令后主动让出<span><span class="heti-spacing"> </span>CPU</span>，或者在发起<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>操作后等待<span class="heti-skip"><span class="heti-spacing"> </span>I/O<span class="heti-spacing"> </span></span>完成。</p>
 <p>协作式调度的特点是进程自愿地让出<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>控制权，在简单易用的同时也带来了一些问题：</p>
 <ul>
 <li>一个进程崩溃或陷入无限循环可能会影响整个系统</li>
 <li>不适合处理实时交互的任务</li>
 </ul>
-<p>于是就衍生出了 <strong>抢占式调度</strong> ，运行一个进程一段时间，然后运行另一个进程，如此轮换。</p>
+<p>于是就衍生出了 <strong>抢占式调度</strong>，运行一个进程一段时间，然后运行另一个进程，如此轮换。</p>
 <p>实现起来会更加复杂，但拥有了更强的系统稳定性，更适合处理实时任务。</p>
 <p>引用<a href="https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter3/4time-sharing-system.html#id4"><span class="heti-skip"><span class="heti-spacing"> </span>rCore-Tutorial-Book<span class="heti-spacing"> </span></span>分时多任务系统的背景</a> 的介绍：</p>
 <blockquote>
-<p>从现在的眼光来看，当时的应用更多是一种 后台应用<span><span class="heti-spacing"> </span>(Background Application)</span> ，在将它加入执行队列之后我们只需定期确认它的运行状态。<br/>
-而随着技术的发展，涌现了越来越多的 交互式应用 (Interactive Application) ，它们要达成的一个重要目标就是提高用户（应用的使用者和开发者）操作的响应速度，减少 延迟 （Latency），这样才能优化应用的使用体验和开发体验。<br/></p>
+<p>从现在的眼光来看，当时的应用更多是一种 <strong>后台应用（Background Application）</strong>，在将它加入执行队列之后我们只需定期确认它的运行状态。<br/>
+而随着技术的发展，涌现了越来越多的 <strong>交互式应用（Interactive Application）</strong>，它们要达成的一个重要目标就是提高用户（应用的使用者和开发者）操作的响应速度，减少 <strong>延迟 （Latency）</strong>，这样才能优化应用的使用体验和开发体验。<br/></p>
 <p>对于这些应用而言，即使需要等待外设或某些事件，它们也不会倾向于主动<span class="heti-skip"><span class="heti-spacing"> </span>yield<span class="heti-spacing"> </span></span>交出<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>使用权，因为这样可能会带来无法接受的延迟。<br/>
 也就是说，应用之间更多的是互相竞争宝贵的硬件资源，而不是相互合作。</p>
-<p>如果应用自己很少<span><span class="heti-spacing"> </span>yield</span> ，操作系统内核就要开始收回之前下放的权力，由它自己对<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>资源进行集中管理并合理分配给各应用，这就是内核需要提供的任务调度能力。<br/>
+<p>如果应用自己很少<span><span class="heti-spacing"> </span>yield</span>，操作系统内核就要开始收回之前下放的权力，由它自己对<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>资源进行集中管理并合理分配给各应用，这就是内核需要提供的任务调度能力。<br/>
 我们可以将多道程序的调度机制分类成</p>
 <ul>
-<li>协作式调度<span><span class="heti-spacing"> </span>(Cooperative Scheduling)</span> ，因为它的特征是：只要一个应用不主动<span class="heti-skip"><span class="heti-spacing"> </span>yield<span class="heti-spacing"> </span></span>交出<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>使用权，它就会一直执行下去。</li>
-<li>与之相对， 抢占式调度<span class="heti-skip"><span class="heti-spacing"> </span>(Preemptive Scheduling)<span class="heti-spacing"> </span></span>则是应用 随时 都有被内核切换出去的可能。</li>
+<li><strong>协作式调度（Cooperative Scheduling）</strong>，因为它的特征是：只要一个应用不主动<span class="heti-skip"><span class="heti-spacing"> </span>yield<span class="heti-spacing"> </span></span>交出<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>使用权，它就会一直执行下去。</li>
+<li>与之相对，<strong>抢占式调度（Preemptive Scheduling）</strong> 则是应用 <strong>随时</strong> 都有被内核切换出去的可能。</li>
 </ul>
 </blockquote>
 <h2 id="_5">作业<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
@@ -1286,7 +1286,7 @@ the average time of context switch: 520.91 us
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月16日 20:07:40</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年7月31日 05:57:44</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">

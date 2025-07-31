@@ -1084,11 +1084,11 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="19-tlb">第<span class="heti-skip"><span class="heti-spacing"> </span>19<span class="heti-spacing"> </span></span>章 分页：快速地址转换<span><span class="heti-spacing"> </span>(TLB)</span><a class="headerlink" href="#19-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<h1 id="19-tlb">第<span class="heti-skip"><span class="heti-spacing"> </span>19<span class="heti-spacing"> </span></span>章 分页：快速地址转换（TLB）<a class="headerlink" href="#19-tlb" title="Permanent link">¶</a></h1>
 <p>在分页中，每次指令获取、加载和保存，都要额外读一次内存，慢得无法接受。</p>
-<p>这一章介绍了硬件———— <strong>地址转换旁路缓冲器<span><span class="heti-spacing"> </span>(translation-lookaside-buffer)</span></strong>，每次内存访问时，硬件先检查<span><span class="heti-spacing"> </span>TLB</span>，如果存在匹配的映射，就直接完成转换，不用访问页表。</p>
-<p>叫这个名称是历史原因，更好的名称是 <strong>地址转换缓存<span><span class="heti-spacing"> </span>(address-translation cache)</span></strong>，当然也可以叫 <strong>快表</strong>，我喜欢快表这个简短的名字。</p>
-<p>与<span class="heti-skip"><span class="heti-spacing"> </span>CPU L1 L2 L3 Cache<span class="heti-spacing"> </span></span>的缓存不同，<span>TLB<span class="heti-spacing"> </span></span>仅拥有映射，不会复制内容。</p>
+<p>这一章介绍了硬件——<strong>地址转换旁路缓冲器（translation-lookaside-buffer）</strong>，每次内存访问时，硬件先检查<span><span class="heti-spacing"> </span>TLB</span>，如果存在匹配的映射，就直接完成转换，不用访问页表。</p>
+<p>叫这个名称是历史原因，更好的名称是 <strong>地址转换缓存（address-translation cache）</strong>，当然也可以叫 <strong>快表</strong>，我喜欢快表这个简短的名字。</p>
+<p>与<span><span class="heti-spacing"> </span>CPU L1</span>、L2、<span>L3 Cache<span class="heti-spacing"> </span></span>不同，<span>TLB<span class="heti-spacing"> </span></span>仅拥有映射，不会复制内容。</p>
 <h2 id="191-tlb"><span>19.1 TLB<span class="heti-spacing"> </span></span>的基本算法<a class="headerlink" href="#191-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">VPN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">VirtualAddress</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">VPN_MASK</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">SHIFT</span>
 <span class="p">(</span><span class="n">Success</span><span class="p">,</span><span class="w"> </span><span class="n">TlbEntry</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TLB_Lookup</span><span class="p">(</span><span class="n">VPN</span><span class="p">)</span>
@@ -1112,7 +1112,7 @@
 <span class="w">        </span><span class="n">TLB_Insert</span><span class="p">(</span><span class="n">VPN</span><span class="p">,</span><span class="w"> </span><span class="n">PTE</span><span class="p">.</span><span class="n">PFN</span><span class="p">,</span><span class="w"> </span><span class="n">PTE</span><span class="p">.</span><span class="n">ProtectBits</span><span class="p">)</span>
 <span class="w">        </span><span class="n">RetryInstruction</span><span class="p">()</span>
 </code></pre></div>
-<p>缓存命中时，直接取出<span class="heti-skip"><span class="heti-spacing"> </span>PFN<span class="heti-spacing"> </span></span><code class="highlight"><span class="n">TlbEntry</span><span class="p">.</span><span class="n">PFN</span></code>与虚拟地址中的 <code class="highlight"><span class="n">Offset</span></code> 组成物理地址 <code>#c! PhysAddr</code>。</p>
+<p>缓存命中时，直接取出<span class="heti-skip"><span class="heti-spacing"> </span>PFN<span class="heti-spacing"> </span></span><code class="highlight"><span class="n">TlbEntry</span><span class="p">.</span><span class="n">PFN</span></code>与虚拟地址中的 <code class="highlight"><span class="n">Offset</span></code> 组成物理地址 <code class="highlight"><span class="n">PhysAddr</span></code>。</p>
 <p>缓存没有命中时，就得从庞大的页表中查询了，所以我们希望尽可能避免<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中。</p>
 <h2 id="192"><span>19.2<span class="heti-spacing"> </span></span>示例：访问数组<a class="headerlink" href="#192" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>小地址空间中的一个数组：</p>
@@ -1166,12 +1166,12 @@ VPN = 15 |                           |
 </ul>
 <p>命中率为<span><span class="heti-spacing"> </span>70%</span>，已经提升不少了，如果页大小变得更大，数组访问遇到的未命中就更少。</p>
 <p>典型页的大小一般为<span><span class="heti-spacing"> </span>4 KB</span>，这种情况下，密集的、基于数组的访问会实现极好的<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>性能。</p>
-<p>缓存是计算机系统中最基本的性能改进技术之一，一次又一次地用于让“常见的情况更快”，硬件缓存背后的思想是利用指令和数据引用的局部性<span><span class="heti-spacing"> </span>(locality)</span>。</p>
+<p>缓存是计算机系统中最基本的性能改进技术之一，一次又一次地用于让“常见的情况更快”，硬件缓存背后的思想是利用指令和数据引用的局部性（locality<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <dl>
 <dt>通常有两种局部性：</dt>
-<dt>时间局部性<span><span class="heti-spacing"> </span>(temporal locality)</span>：</dt>
+<dt>时间局部性（temporal locality<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</dt>
 <dd>最近访问过的指令或数据项可能很快会再次访问。想想循环中的循环变量或指令，它们被多次反复访问。</dd>
-<dt>空间局部性<span><span class="heti-spacing"> </span>(spatial locality)</span>：</dt>
+<dt>空间局部性（spatial locality<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</dt>
 <dd>程序访问内存地址<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>时，可能很快会访问邻近<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>的内存。想想遍历某种数组，访问一个接一个的元素。</dd>
 </dl>
 <h2 id="193-tlb"><span>19.3<span class="heti-spacing"> </span></span>谁来处理<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中<a class="headerlink" href="#193-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
@@ -1179,7 +1179,7 @@ VPN = 15 |                           |
 <dt>硬件处理：</dt>
 <dd>通过页表基址寄存器记录页表地址，发生<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中时直接遍历页表。</dd>
 <dt>软件（操作系统）处理：</dt>
-<dd>发生<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中时系统抛出一个异常，将特权级提升至内核态，跳转至陷阱处理程序<span><span class="heti-spacing"> </span>(trap handler)</span>。</dd>
+<dd>发生<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>未命中时系统抛出一个异常，将特权级提升至内核态，跳转至陷阱处理程序（trap handler<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</dd>
 <dd>这个陷阱处理程序会查找页表中的转换映射，然后更新<span><span class="heti-spacing"> </span>TLB</span>，并从陷阱返回。此时，硬件会重试该指令（导致<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>命中<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</dd>
 </dl>
 <p>现代操作系统中大多都是软件处理。</p>
@@ -1198,7 +1198,7 @@ VPN = 15 |                           |
 <h2 id="194-tlb"><span>19.4 TLB<span class="heti-spacing"> </span></span>的内容<a class="headerlink" href="#194-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <div class="highlight"><pre><span></span><code>VPN | PFN | other bits
 </code></pre></div>
-<p><span>VPN<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>PFN<span class="heti-spacing"> </span></span>同时存在于<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>中，因为一条地址映射可能出现在任意位置（用硬件的术语，<span>TLB<span class="heti-spacing"> </span></span>被称为全相联的<span class="heti-skip"><span class="heti-spacing"> </span>(fully-associative)<span class="heti-spacing"> </span></span>缓存<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，硬件可以并行地查找这些项。</p>
+<p><span>VPN<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>PFN<span class="heti-spacing"> </span></span>同时存在于<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>中，因为一条地址映射可能出现在任意位置（用硬件的术语，<span>TLB<span class="heti-spacing"> </span></span>被称为全相联的（fully-associative）缓存<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，硬件可以并行地查找这些项。</p>
 <div class="admonition quote">
 <p class="admonition-title">补充：<span>TLB<span class="heti-spacing"> </span></span>的有效位<span class="heti-skip"><span class="heti-spacing"> </span>!=<span class="heti-spacing"> </span></span>页表的有效位</p>
 <p>常见的错误是混淆<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>的有效位和页表的有效位。
@@ -1208,7 +1208,7 @@ VPN = 15 |                           |
 例如，系统启动时，所有的 TLB 项通常被初始化为无效状态，因为还没有地址转换映射被缓存在这里。
 一旦启用虚拟内存，当程序开始运行，访问自己的虚拟地址，TLB 就会慢慢地被填满，因此有效的项很快会充满 TLB。</p>
 <p><span>TLB<span class="heti-spacing"> </span></span>有效位在系统上下文切换时起到了很重要的作用，后面我们会进一步讨论。
-通过将所有 TLB项设置为无效，系统可以确保将要运行的进程不会错误地使用前一个进程的虚拟到物理地址转换映射。</p>
+通过将所有 TLB 项设置为无效，系统可以确保将要运行的进程不会错误地使用前一个进程的虚拟到物理地址转换映射。</p>
 </div>
 <h2 id="195-tlb"><span>19.5<span class="heti-spacing"> </span></span>上下文切换时对<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>的处理<a class="headerlink" href="#195-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>示例<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>的内容：</p>
@@ -1254,7 +1254,7 @@ VPN = 15 |                           |
 <li>方案一：在上下文切换时，简单地清空<span><span class="heti-spacing"> </span>TLB</span>，会有一定开销；</li>
 <li>方案二：添加硬件支持，实现跨上下文切换的<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>共享。</li>
 </ul>
-<p>比如有的系统在<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>中添加一个地址空间标识符<span><span class="heti-spacing"> </span>(Address Space Identifier, ASID)</span>，可以把<span class="heti-skip"><span class="heti-spacing"> </span>ASID<span class="heti-spacing"> </span></span>看作是进程标识符，但通常比<span class="heti-skip"><span class="heti-spacing"> </span>PID<span class="heti-spacing"> </span></span>位数少。</p>
+<p>比如有的系统在<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>中添加一个地址空间标识符（Address Space Identifier, ASID<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，可以把<span class="heti-skip"><span class="heti-spacing"> </span>ASID<span class="heti-spacing"> </span></span>看作是进程标识符，但通常比<span class="heti-skip"><span class="heti-spacing"> </span>PID<span class="heti-spacing"> </span></span>位数少。</p>
 <table>
 <thead>
 <tr>
@@ -1298,24 +1298,24 @@ VPN = 15 |                           |
 </table>
 <p>当然，硬件也需要知道当前是哪个进程正在运行，因此操作系统在上下文切换时，必须将某个特权寄存器设置为当前进程的<span><span class="heti-spacing"> </span>ASID</span>。</p>
 <h2 id="196-tlb"><span>19.6 TLB<span class="heti-spacing"> </span></span>替换策略<a class="headerlink" href="#196-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p><span>TLB<span class="heti-spacing"> </span></span>和其他缓存一样，还有一个问题要考虑，即缓存替换<span><span class="heti-spacing"> </span>(cache replacement)</span>。</p>
-<p>具体来说，向<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>中插入新项时，会替换<span class="heti-skip"><span class="heti-spacing"> </span>(replace)<span class="heti-spacing"> </span></span>一个旧项，这样问题就来了：应该替换那一个？</p>
+<p><span>TLB<span class="heti-spacing"> </span></span>和其他缓存一样，还有一个问题要考虑，即缓存替换（cache replacement<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>具体来说，向<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>中插入新项时，会替换（replace）一个旧项，这样问题就来了：应该替换那一个？</p>
 <ul>
 <li>策略一：替换最近最少使用的项，尝试利用局部性；</li>
 <li>策略二：随机，避免极端情况。</li>
 </ul>
 <h2 id="197-tlb"><span>19.7<span class="heti-spacing"> </span></span>实际系统的<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>表项<a class="headerlink" href="#197-tlb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>真实的<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>案例，来自<span><span class="heti-spacing"> </span>MISP R4000</span>：</p>
+<p>真实的<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>案例，来自<span><span class="heti-spacing"> </span>MIPS R4000</span>：</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../../../assets/images/cs/os/ostep/19-7.png"><img alt="19-7" src="../../../assets/images/cs/os/ostep/19-7.png"/></a></p>
 <p><span>MIPS R4000<span class="heti-spacing"> </span></span>支持<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位的地址空间，页大小为<span><span class="heti-spacing"> </span>4 KB</span>，在典型的虚拟地址中，理应看到<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>位的<span class="heti-skip"><span class="heti-spacing"> </span>VPN<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>12<span class="heti-spacing"> </span></span>位的偏移量。</p>
 <p>但是，实际的<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>中只有<span class="heti-skip"><span class="heti-spacing"> </span>19<span class="heti-spacing"> </span></span>位的<span><span class="heti-spacing"> </span>VPN</span>。事实上，用户地址只占地址空间的一半（剩下的留给内核<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，所以只需要<span class="heti-skip"><span class="heti-spacing"> </span>19<span class="heti-spacing"> </span></span>位的<span><span class="heti-spacing"> </span>VPN</span>。</p>
 <p><span>VPN<span class="heti-spacing"> </span></span>转换成最大<span class="heti-skip"><span class="heti-spacing"> </span>24<span class="heti-spacing"> </span></span>位的<span><span class="heti-spacing"> </span>PFN</span>，因此可以支持最多有<span class="heti-skip"><span class="heti-spacing"> </span>64 GB<span class="heti-spacing"> </span></span>的物理内存的系统。</p>
 <p><span>MIPS TLB<span class="heti-spacing"> </span></span>还有一些有趣的标志位：</p>
 <ul>
-<li>全局位<span><span class="heti-spacing"> </span>(Global, G)</span>：用来指示这个页是不是所有进程全局共享的，如果为<span><span class="heti-spacing"> </span>1</span>，就会忽略<span><span class="heti-spacing"> </span>ASID</span>；</li>
-<li>一致性位<span><span class="heti-spacing"> </span>(Coherence, C)</span>：决定硬件如何缓存该页；</li>
-<li>脏位<span><span class="heti-spacing"> </span>(Dirty, D)</span>：表示该页是否被写入新数据；</li>
-<li>有效位<span><span class="heti-spacing"> </span>(Valid, V)</span>：告诉硬件该项的地址映射是否有效；</li>
+<li>全局位（Global, G<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：用来指示这个页是不是所有进程全局共享的，如果为<span><span class="heti-spacing"> </span>1</span>，就会忽略<span><span class="heti-spacing"> </span>ASID</span>；</li>
+<li>一致性位（Coherence, C<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：决定硬件如何缓存该页；</li>
+<li>脏位（Dirty, D<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：表示该页是否被写入新数据；</li>
+<li>有效位（Valid, V<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：告诉硬件该项的地址映射是否有效；</li>
 </ul>
 <h2 id="_1">作业<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>最不想写作业的一次。</p>
@@ -1459,7 +1459,7 @@ Jump  4096 pages | time    7.0 nanoseconds
 <span class="md-icon" title="最后更新">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年12月7日 05:54:17</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年7月31日 05:57:44</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="创建日期">
