@@ -62,7 +62,6 @@ plugins:
     exclude:
     - index.md
 - changelog # changelog 时间轴
-- heti # 优化中文排版
 - toc
 - blog
 - rss:
