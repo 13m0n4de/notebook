@@ -1,195 +1,184 @@
 :root {
-  --md-text-font: "LXGW WenKai Screen";
-  --md-code-font: "Hack";
+    --md-text-font: "LXGW WenKai Screen";
+    --md-code-font: "Hack";
+
+    --ctp-rosewater: hsl(10, 58%, 90%);
+    --ctp-flamingo: hsl(0, 58%, 86%);
+    --ctp-pink: hsl(316, 74%, 85%);
+    --ctp-mauve: hsl(267, 83%, 80%);
+    --ctp-red: hsl(351, 74%, 73%);
+    --ctp-maroon: hsl(355, 71%, 77%);
+    --ctp-peach: hsl(21, 86%, 73%);
+    --ctp-yellow: hsl(40, 70%, 78%);
+    --ctp-green: hsl(105, 48%, 72%);
+    --ctp-teal: hsl(171, 47%, 69%);
+    --ctp-sky: hsl(189, 59%, 73%);
+    --ctp-sapphire: hsl(199, 66%, 69%);
+    --ctp-blue: hsl(220, 83%, 75%);
+    --ctp-lavender: hsl(234, 82%, 85%);
+    --ctp-text: hsl(227, 68%, 88%);
+    --ctp-subtext1: hsl(228, 39%, 80%);
+    --ctp-subtext0: hsl(227, 27%, 72%);
+    --ctp-overlay2: hsl(228, 20%, 65%);
+    --ctp-overlay1: hsl(228, 15%, 57%);
+    --ctp-overlay0: hsl(230, 12%, 49%);
+    --ctp-surface2: hsl(230, 14%, 41%);
+    --ctp-surface1: hsl(231, 16%, 34%);
+    --ctp-surface0: hsl(230, 19%, 26%);
+    --ctp-base: hsl(232, 23%, 18%);
+    --ctp-mantle: hsl(233, 23%, 15%);
+    --ctp-crust: hsl(236, 23%, 12%);
 }
 
 [data-md-color-scheme="catppuccin-macchiato"] {
-  color-scheme: dark;
+    color-scheme: dark;
 
-  /* Default color shades */
-  /* Text */
-  --md-default-fg-color: hsl(227, 68%, 88%);
-  /* Subtext1 */
-  --md-default-fg-color--light: hsl(228, 39%, 80%);
-  /* Subtext0 */
-  --md-default-fg-color--lighter: hsl(227, 27%, 72%);
-  /* Overlay2 */
-  --md-default-fg-color--lightest: hsl(228, 20%, 65%);
-  /* Base */
-  --md-default-bg-color: hsl(232, 23%, 18%);
-  /* Base */
-  --md-default-bg-color--light: hsl(232, 23%, 18%);
-  /* Base */
-  --md-default-bg-color--lighter: hsl(232, 23%, 18%);
-  /* Base */
-  --md-default-bg-color--lightest: hsl(232, 23%, 18%);
+    /* Default color shades */
+    --md-default-fg-color: var(--ctp-text);
+    --md-default-fg-color--light: var(--ctp-subtext1);
+    --md-default-fg-color--lighter: var(--ctp-subtext0);
+    --md-default-fg-color--lightest: var(--ctp-mantle);
+    --md-default-bg-color: var(--ctp-base);
+    --md-default-bg-color--light: var(--ctp-base);
+    --md-default-bg-color--lighter: var(--ctp-base);
+    --md-default-bg-color--lightest: var(--ctp-base);
 
-  /* Primary color shades */
-  /* Mantle */
-  --md-primary-fg-color: hsl(233, 23%, 15%);
-  /* Mantle */
-  --md-primary-fg-color--light: hsl(233, 23%, 15%);
-  /* Crust */
-  --md-primary-fg-color--dark: hsl(236, 23%, 12%);
-  /* Text */
-  --md-primary-bg-color: hsl(227, 68%, 88%);
-  /* Text */
-  --md-primary-bg-color--light: hsl(227, 68%, 88%);
+    /* Primary color shades */
+    --md-primary-fg-color: var(--ctp-mantle);
+    --md-primary-fg-color--light: var(--ctp-mantle);
+    --md-primary-fg-color--dark: var(--ctp-crust);
+    --md-primary-bg-color: var(--ctp-text);
+    --md-primary-bg-color--light: var(--ctp-text);
 
-  /* Accent color shades */
-  /* Teal */
-  --md-accent-fg-color: hsl(171, 47%, 69%);
-  /* Teal */
-  --md-accent-fg-color--transparent: hsl(171, 47%, 69%, 0.1);
-  /* Text */
-  --md-accent-bg-color: hsl(227, 68%, 88%);
-  /* Text */
-  --md-accent-bg-color--light: hsl(227, 68%, 88%);
+    /* Accent color shades */
+    --md-accent-fg-color: var(--ctp-teal);
+    --md-accent-fg-color--transparent: hsl(171, 47%, 69%, 0.1);
+    --md-accent-bg-color: var(--ctp-text);
+    --md-accent-bg-color--light: var(--ctp-text);
 
-  /* Code color shades */
-  /* Text */
-  --md-code-fg-color: hsl(227, 68%, 88%);
-  /* Surface0 */
-  --md-code-bg-color: hsl(233deg, 23%, 15%);
-  /* Teal */
-  --md-code-hl-color: hsl(171, 47%, 69%);
-  /* Teal */
-  --md-code-hl-color--light: hsl(171, 47%, 69%, 0.1);
+    /* Code color shades */
+    --md-code-fg-color: var(--ctp-text);
+    --md-code-bg-color: var(--ctp-mantle);
+    --md-code-hl-color: var(--ctp-teal);
+    --md-code-hl-color--light: hsl(171, 47%, 69%, 0.1);
 
-  /* Code highlighting color shades */
-  /* Peach */
-  --md-code-hl-number-color: hsl(21, 86%, 73%);
-  /* Blue */
-  --md-code-hl-special-color: hsl(220, 83%, 75%);
-  /* Mauve */
-  --md-code-hl-function-color: hsl(267, 83%, 80%);
-  /* Yellow */
-  --md-code-hl-constant-color: hsl(40, 70%, 78%);
-  /* Blue */
-  --md-code-hl-keyword-color: hsl(220, 83%, 75%);
-  /* Green */
-  --md-code-hl-string-color: hsl(105, 48%, 72%);
-  /* Sky */
-  --md-code-hl-name-color: hsl(189, 59%, 73%);
-  /* Text */
-  --md-code-hl-operator-color: hsl(227, 68%, 88%);
-  /* Text */
-  --md-code-hl-punctuation-color: hsl(227, 68%, 88%);
-  /* Overlay0 */
-  --md-code-hl-comment-color: hsl(230, 12%, 49%);
-  /* Text */
-  --md-code-hl-generic-color: hsl(227, 68%, 88%);
-  /* Pink */
-  --md-code-hl-variable-color: hsl(316, 74%, 85%);
+    /* Code highlighting color shades */
+    --md-code-hl-number-color: var(--ctp-peach);
+    --md-code-hl-special-color: var(--ctp-blue);
+    --md-code-hl-function-color: var(--ctp-mauve);
+    --md-code-hl-constant-color: var(--ctp-yellow);
+    --md-code-hl-keyword-color: var(--ctp-blue);
+    --md-code-hl-string-color: var(--ctp-green);
+    --md-code-hl-name-color: var(--ctp-sky);
+    --md-code-hl-operator-color: var(--ctp-text);
+    --md-code-hl-punctuation-color: var(--ctp-text);
+    --md-code-hl-comment-color: var(--ctp-overlay0);
+    --md-code-hl-generic-color: var(--ctp-text);
+    --md-code-hl-variable-color: var(--ctp-pink);
 
-  /* Typeset color shades */
-  --md-typeset-color: var(--md-default-fg-color);
-  /* Teal */
-  --md-typeset-a-color: hsl(171, 47%, 69%);
-  /* Text */
-  --md-typeset-kbd-color: hsl(227, 68%, 88%);
-  /* Text */
-  --md-typeset-kbd-accent-color: hsl(227, 68%, 88%);
-  /* Base */
-  --md-typeset-kbd-border-color: hsl(232, 23%, 18%);
-  /* Teal */
-  --md-typeset-mark-color: hsl(171, 47%, 69%);
-  /* Text */
-  --md-typeset-table-color: hsl(227, 68%, 88%);
-  /* Text */
-  --md-typeset-table-color--light: hsl(227, 68%, 88%, 0.1);
+    /* Typeset color shades */
+    --md-typeset-color: var(--md-default-fg-color);
+    --md-typeset-a-color: var(--ctp-teal);
+    --md-typeset-kbd-color: var(--ctp-text);
+    --md-typeset-kbd-accent-color: var(--ctp-text);
+    --md-typeset-kbd-border-color: var(--ctp-base);
+    --md-typeset-mark-color: var(--ctp-teal);
+    --md-typeset-table-color: var(--ctp-text);
+    --md-typeset-table-color--light: hsl(227, 68%, 88%, 0.1);
 
-  /* Admonition color shades */
-  --md-admonition-fg-color: var(--md-default-fg-color);
-  --md-admonition-bg-color: var(--md-default-bg-color);
+    /* Admonition color shades */
+    --md-admonition-fg-color: var(--md-default-fg-color);
+    --md-admonition-bg-color: var(--md-default-bg-color);
 
-  /* Footer color shades */
-  /* Text */
-  --md-footer-fg-color: hsl(227, 68%, 88%);
-  /* Subtext1 */
-  --md-footer-fg-color--light: hsl(228, 39%, 80%);
-  /* Subtext0 */
-  --md-footer-fg-color--lighter: hsl(227, 27%, 72%);
-  /* Mantle */
-  --md-footer-bg-color: hsl(233, 23%, 15%);
-  /* Crust */
-  --md-footer-bg-color--dark: hsl(236, 23%, 12%);
+    /* Footer color shades */
+    --md-footer-fg-color: var(--ctp-text);
+    --md-footer-fg-color--light: var(--ctp-subtext1);
+    --md-footer-fg-color--lighter: var(--ctp-subtext0);
+    --md-footer-bg-color: var(--ctp-mantle);
+    --md-footer-bg-color--dark: var(--ctp-crust);
 
-  /* Shadow depth */
-  --md-shadow-z1: 0 0.2rem 0.5rem hsla(0, 0%, 0%, 0.05),
-    0 0 0.05rem hsla(0, 0%, 0%, 0.1);
-  --md-shadow-z2: 0 0.2rem 0.5rem hsla(0, 0%, 0%, 0.25),
-    0 0 0.05rem hsla(0, 0%, 0%, 0.25);
-  --md-shadow-z3: 0 0.2rem 0.5rem hsla(0, 0%, 0%, 0.4),
-    0 0 0.05rem hsla(0, 0%, 0%, 0.35);
+    /* Shadow depth */
+    --md-shadow-z1: 0 0.2rem 0.5rem hsla(0, 0%, 0%, 0.05),
+        0 0 0.05rem hsla(0, 0%, 0%, 0.1);
+    --md-shadow-z2: 0 0.2rem 0.5rem hsla(0, 0%, 0%, 0.25),
+        0 0 0.05rem hsla(0, 0%, 0%, 0.25);
+    --md-shadow-z3: 0 0.2rem 0.5rem hsla(0, 0%, 0%, 0.4),
+        0 0 0.05rem hsla(0, 0%, 0%, 0.35);
 }
 
 input.md-search__input {
-  background-color: var(--md-default-bg-color);
+    background-color: var(--md-default-bg-color);
 }
 
 input.md-search__input::placeholder {
-  color: var(--md-default-fg-color);
+    color: var(--md-default-fg-color);
 }
 
 .md-search-result__meta {
-  background-color: var(--md-default-bg-color--light);
+    background-color: var(--md-default-bg-color--light);
 }
 
 .md-copyright {
-  font-size: .55rem;
+    font-size: .55rem;
+}
+
+[data-md-color-scheme="catppuccin-macchiato"] .md-typeset a,
+[data-md-color-scheme="catppuccin-macchiato"] .md-typeset a:hover {
+    text-decoration: underline;
+}
+
+[data-md-color-scheme="catppuccin-macchiato"] .md-typeset a.toclink,
+[data-md-color-scheme="catppuccin-macchiato"] .md-typeset a.toclink:hover {
+    text-decoration: none;
+}
+
+[data-md-color-scheme="catppuccin-macchiato"] .md-typeset .tabbed-labels a,
+[data-md-color-scheme="catppuccin-macchiato"] .md-typeset .tabbed-labels--linked a {
+    text-decoration: none;
+}
+
+[data-md-color-scheme="catppuccin-macchiato"] strong,
+[data-md-color-scheme="catppuccin-macchiato"] b {
+    color: var(--ctp-teal);
 }
 
 /* Hide images for light mode */
 [data-md-color-scheme="catppuccin-macchiato"] {
 
-  img[src$="#only-light"],
-  img[src$="#gh-light-mode-only"] {
-    display: none;
-  }
+    img[src$="#only-light"],
+    img[src$="#gh-light-mode-only"] {
+        display: none;
+    }
 }
 
 [data-md-color-scheme="catppuccin-macchiato"] .md-tag {
-  /* Surface0 */
-  background-color: hsl(230, 19%, 26%);
-  /* Text */
-  color: hsl(227, 68%, 88%);
+    background-color: var(--ctp-surface0);
+    color: var(--ctp-text);
 }
 
 [data-md-color-scheme="catppuccin-macchiato"] .md-tag:hover,
 [data-md-color-scheme="catppuccin-macchiato"] .md-tag[href]:hover {
-  /* Surface1 */
-  background-color: hsl(231, 16%, 34%);
+    background-color: var(--ctp-surface1);
 }
 
 [data-md-color-scheme="catppuccin-macchiato"] .md-top {
-  /* Surface0 */
-  background-color: hsl(230, 19%, 26%);
-  /* Text */
-  color: hsl(227, 68%, 88%);
-  /* Surface0 */
-  border-color: hsl(230, 19%, 26%);
+    background-color: var(--ctp-surface0);
+    color: var(--ctp-text);
+    border-color: var(--ctp-surface0);
 }
 
 [data-md-color-scheme="catppuccin-macchiato"] .md-top:hover {
-  /* Surface1 */
-  background-color: hsl(231, 16%, 34%);
-  /* Surface1 */
-  border-color: hsl(231, 16%, 34%);
+    background-color: var(--ctp-surface1);
+    border-color: var(--ctp-surface1);
 }
 
 [data-md-color-scheme="catppuccin-macchiato"] .md-button {
-  /* Surface0 */
-  background-color: hsl(230, 19%, 26%);
-  /* Text */
-  color: hsl(227, 68%, 88%);
-  /* Surface0 */
-  border-color: hsl(230, 19%, 26%);
+    background-color: var(--ctp-surface0);
+    color: var(--ctp-text);
+    border-color: var(--ctp-surface0);
 }
 
 [data-md-color-scheme="catppuccin-macchiato"] .md-button:hover {
-  /* Surface1 */
-  background-color: hsl(231, 16%, 34%);
-  /* Surface1 */
-  border-color: hsl(231, 16%, 34%);
+    background-color: var(--ctp-surface1);
+    border-color: var(--ctp-surface1);
 }
