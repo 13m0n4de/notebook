@@ -1,7 +1,7 @@
 ---
 date: 2025-07-20
 categories: [Scientific Witchery]
-tags: [Pandoc. Typst, Markdown]
+tags: [Pandoc, Typst, Markdown]
 ---
 
 # Markdown to PDF with Pandoc and Typst
