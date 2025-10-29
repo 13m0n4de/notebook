@@ -1,6 +1,6 @@
 ---
 date: 2025-05-28
-categories: []
+categories: [Scientific Witchery]
 tags: [Rust, Leptos, Axum, Yew, WASM, CSR, SSR]
 ---
 
@@ -8,9 +8,9 @@ tags: [Rust, Leptos, Axum, Yew, WASM, CSR, SSR]
 
 花了几天把 [NekoQuiz](https://github.com/13m0n4de/neko-quiz) 完全重构，从 Axum + Yew 到 Axum + Leptos，从 CSR 到 SSR with hydration。
 
-远在这次重构之前，我就已经没有了使用它的机会，也许这是最后一次大更新。（尽管我不愿意那么想，这样的想法会成为项目被“遗弃”的第一步）
+其实在这次重构之前，就已经很少有使用它的机会了，这也许是最后一次大更新。（尽管我不愿意这么想，这样的想法会成为项目被“遗弃”的第一步）
 
-至少能确定的是，已经到了进行总结的最佳时刻。
+不过至少，现在是个适合总结的时候。
 
 <!-- more -->
 
@@ -47,16 +47,16 @@ NekoQuiz 来源于 [USTC Hackergame](https://hack.lug.ustc.edu.cn/) 的题目“
 
 USTC 猫咪问答的形式非常简单，一个页面，几个表单框，一个提交按钮。印象中前端用了 Bootstrap，后端是 Node.js。程序上相当普通，甚至可以说“无聊”。
 
-而作为复刻项目的 NekoQuiz 乍一看不是这样：Tailwind CSS、WASM、TOML 配置、热重载（曾经）。实际上却是没差，这些花哨的词汇对 Quiz App 来说帮助不大，它们的出现是因为个人意愿超出了实际需求：
+而作为复刻项目的 NekoQuiz 乍一看复杂得多：Tailwind CSS、WASM、TOML 配置、热重载（曾经）。实际上却是没差，这些花哨的词汇对 Quiz App 来说帮助不大，它们的出现是因为个人意愿超出了实际需求：
 
 1. 校内的 CTF 比赛需要信息检索题（这是委婉的说法，确切来说是我的一厢情愿）
 1. 我想用 Rust 写 Web App
 
-我摸索着学习 Web 开发中相对新潮的事物，把它们应用进来，可能算是技术栈上狭义的“进步”，但我绝对不认为这很必要和有趣。
+我摸索着学习 Web 开发中相对新潮的事物，把它们应用进来，可能算是技术栈上狭义的“进步”，但我绝不认为这有多必要，也谈不上有趣。
 
 ## 老一套
 
-Rust 的 Web 开发体验很奇妙，总的来说体感不错。
+先说说重构前的方案。Rust 的 Web 开发体验很奇妙，总的来说体感不错。
 
 最初我使用 Yew 作为前端，它和 React 的概念很像，`#!rust #[function_component]` 对应 React 的函数组件，`#!rust use_reducer_eq` 类似 React 的 `#!javascript useReducer`。在组件挂载时通过 `#!rust use_effect_with` 获取 Quiz 数据，这和 React 的 `#!javascript useEffect` 几乎一模一样。
 
@@ -119,9 +119,11 @@ async fn run() -> AppResult<()> {
 
 ## 和新方法
 
-放出重构的代码之前，先聊聊 Web 技术的历史。
+在讲重构的具体方案之前，有必要先聊聊 Web 技术的历史。
 
 ### PHP 是 SSR 吗？
+
+从字面意义上说，是的。不过这个问题本身就很奇怪。
 
 哪怕时间倒退几年，SSR (server-side rendering) 也不是一个新概念，JSP 和 PHP 都是 SSR（至少字面意义上），只是当时并没有 SSR 的说法——没什么东西是 CSR 的。
 
@@ -178,7 +180,7 @@ CSR 带来的问题让开发者们开始怀念服务器渲染的好处：首屏�
 - **脱水（Dehydration）**：将应用状态序列化并嵌入 HTML，移除交互逻辑，输出静态但完整的页面。
 - **水合（Hydration）**：客户端 JavaScript 接管静态 HTML，恢复应用状态和交互能力。
 
-代价很明显，“浸泡”（水合）阶段需要耗时，页面要过一段时间才可交互，TTI (Time To Interactive) 上升了。
+代价很明显，“浸泡”（水合）阶段需要时间，页面要过一会才能交互，TTI (Time To Interactive) 上升了。
 
 ### 同构（Isomorphic）
 
@@ -253,7 +255,7 @@ Leptos 通过条件编译和 Server Functions 实现同构：`#!rust #[server]` 
 - 使用 `hydrate` 特性时，编译出 WASM 模块，包含水合逻辑和 server functions 的客户端存根。
 - 使用 `ssr` 特性时，编译出服务端可执行程序，包含完整的渲染逻辑和 server functions 实现。
 
-相比之前 Yew + Axum 的方案，消除了手动维护 API 接口和类型定义的重复工作，我也可以不用再写分步编译、打包的脚本了。
+这个方案消除了手动维护 API 接口和类型定义的重复工作，我也不用再写分步编译、打包的脚本了。
 
 ## 后话
 
