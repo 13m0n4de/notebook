@@ -5,11 +5,11 @@ description = "13m0n4de's Notebook"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "gitpython>=3.1.45",
     "mkdocs-changelog-plugin>=0.1.3",
-    "mkdocs-git-revision-date-localized-plugin>=1.3.0",
-    "mkdocs-glightbox>=0.4.0",
-    "mkdocs-heti-plugin>=0.1.6",
-    "mkdocs-material>=9.5.47",
-    "mkdocs-rss-plugin>=1.17.0",
-    "rich>=13.9.4",
+    "mkdocs-git-revision-date-localized-plugin>=1.4.7",
+    "mkdocs-glightbox>=0.5.2",
+    "mkdocs-material>=9.6.22",
+    "mkdocs-rss-plugin>=1.17.4",
+    "rich>=14.2.0",
 ]
