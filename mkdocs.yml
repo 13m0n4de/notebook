@@ -43,6 +43,7 @@ extra_css:
 - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
 
 - stylesheets/custom.css
+- stylesheets/toc.css
 
 extra_javascript:
 - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
@@ -62,8 +63,6 @@ plugins:
     exclude:
     - index.md
 - changelog # changelog 时间轴
-- toc
-- blog
 - rss:
     match_path: "blog/posts"
     date_from_meta:
@@ -86,8 +85,8 @@ plugins:
       rss_created: notes_feed.xml
     categories: # 通过分类功能配合 blog-post-workflow 实现路径前缀
     - nav_path_prefix
-- tags:
-    tags_file: blog/tags.md
+- tags
+- blog
 
 markdown_extensions:
 - abbr
@@ -124,6 +123,9 @@ markdown_extensions:
 - pymdownx.tasklist:
     custom_checkbox: true
 - pymdownx.tilde
+
+hooks:
+- hooks/toc.py
 
 not_in_nav: |
   blog/tags.md
