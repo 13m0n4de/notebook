@@ -2796,7 +2796,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              需要 3 分钟阅读时间
+                              需要 4 分钟阅读时间
                             
                           </span>
                         </div>
@@ -3019,6 +3019,13 @@ block(
 $ cp catppuccin.typst ~/.local/share/pandoc/templates/
 $ cp catppuccin.yaml ~/.local/share/pandoc/defaults/
 </code></pre></div>
+<p>毕竟是自用，这份模板没有做太多排版，只是模仿了 Obsidian 默认的导出样式。如果团队需要制作其他类型的文档，也可以按照这个思路创建更复杂的模板。</p>
+<p>如果需要更精细的调整，也可以先应用模板导出 <code>.typ</code> 文件，手动编辑后再使用 <code>typst compile</code> 编译成 PDF：</p>
+<div class="highlight"><pre><span></span><code>$ pandoc input.md -o output.typ \
+    --template=catppuccin.typst
+$ # Manually edit the .typ file
+$ typst compile output.typ
+</code></pre></div>
 <h2 id="_4">参考<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://pandoc.org/MANUAL.html">Pandoc User’s Guide</a></li>
@@ -3049,7 +3056,7 @@ $ cp catppuccin.yaml ~/.local/share/pandoc/defaults/
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年10月30日 07:14:53</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年10月30日 18:15:40</span>
   </span>
 
     
