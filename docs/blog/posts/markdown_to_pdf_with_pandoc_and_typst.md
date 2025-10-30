@@ -140,42 +140,48 @@ $ pandoc input.md -o output.pdf \
 样式都比较简单，唯一值得一提的是实现了 Callout 引用块的功能（[Github 叫它 Alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)）：
 
 ```typst
-show quote.where(block: true): it => {
-let content-str = repr(it.body)
-let callout-match = content-str.match(
-  regex("(?i)\[!(NOTE|INFO|TIP|SUCCESS|WARNING|CAUTION|IMPORTANT|DANGER)(\|[^\]]*)?"),
-)
-
-let border-color = if callout-match != none {
-  let callout-type = upper(callout-match.captures.at(0))
-  if callout-type in ("NOTE", "INFO") {
-    current-flavor.colors.blue.rgb
-  } else if callout-type in ("TIP", "SUCCESS") {
-    current-flavor.colors.green.rgb
-  } else if callout-type in ("WARNING", "CAUTION") {
-    current-flavor.colors.yellow.rgb
-  } else if callout-type in ("IMPORTANT", "DANGER") {
-    current-flavor.colors.red.rgb
-  } else {
-    current-flavor.colors.overlay1.rgb
+#let conf(
+  // ...
+) = {
+  // ...
+  show quote.where(block: true): it => {
+    let content-str = repr(it.body)
+    let callout-match = content-str.match(
+      regex("(?i)\[!(NOTE|INFO|TIP|SUCCESS|WARNING|CAUTION|IMPORTANT|DANGER)(\|[^\]]*)?"),
+    )
+    
+    let border-color = if callout-match != none {
+      let callout-type = upper(callout-match.captures.at(0))
+      if callout-type in ("NOTE", "INFO") {
+        current-flavor.colors.blue.rgb
+      } else if callout-type in ("TIP", "SUCCESS") {
+        current-flavor.colors.green.rgb
+      } else if callout-type in ("WARNING", "CAUTION") {
+        current-flavor.colors.yellow.rgb
+      } else if callout-type in ("IMPORTANT", "DANGER") {
+        current-flavor.colors.red.rgb
+      } else {
+        current-flavor.colors.overlay1.rgb
+      }
+    } else {
+      current-flavor.colors.overlay1.rgb
+    }
+    
+    set text(fill: current-flavor.colors.subtext0.rgb)
+    block(
+      fill: if current-flavor.identifier == "latte" { current-flavor.colors.crust.rgb } else {
+        current-flavor.colors.surface1.rgb
+      },
+      inset: (left: 1em, right: 1em, top: 0.8em, bottom: 0.8em),
+      radius: 0pt,
+      stroke: (left: 4pt + border-color, rest: none),
+      spacing: 1.2em,
+      width: 100%,
+    )[
+      #it.body
+    ]
   }
-} else {
-  current-flavor.colors.overlay1.rgb
-}
-
-set text(fill: current-flavor.colors.subtext0.rgb)
-block(
-  fill: if current-flavor.identifier == "latte" { current-flavor.colors.crust.rgb } else {
-    current-flavor.colors.surface1.rgb
-  },
-  inset: (left: 1em, right: 1em, top: 0.8em, bottom: 0.8em),
-  radius: 0pt,
-  stroke: (left: 4pt + border-color, rest: none),
-  spacing: 1.2em,
-  width: 100%,
-)[
-  #it.body
-]
+  // ...
 }
 ```
 
