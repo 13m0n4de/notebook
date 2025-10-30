@@ -240,6 +240,17 @@ $ cp catppuccin.typst ~/.local/share/pandoc/templates/
 $ cp catppuccin.yaml ~/.local/share/pandoc/defaults/
 ```
 
+毕竟是自用，这份模板没有做太多排版，只是模仿了 Obsidian 默认的导出样式。如果团队需要制作其他类型的文档，也可以按照这个思路创建更复杂的模板。
+
+如果需要更精细的调整，也可以先应用模板导出 `.typ` 文件，手动编辑后再使用 `typst compile` 编译成 PDF：
+
+```
+$ pandoc input.md -o output.typ \
+    --template=catppuccin.typst
+$ # Manually edit the .typ file
+$ typst compile output.typ
+```
+
 ## 参考
 
 - [Pandoc User’s Guide](https://pandoc.org/MANUAL.html)
