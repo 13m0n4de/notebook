@@ -37,11 +37,11 @@
     --md-default-fg-color: var(--ctp-text);
     --md-default-fg-color--light: var(--ctp-subtext1);
     --md-default-fg-color--lighter: var(--ctp-subtext0);
-    --md-default-fg-color--lightest: var(--ctp-mantle);
+    --md-default-fg-color--lightest: var(--ctp-surface1);
     --md-default-bg-color: var(--ctp-base);
-    --md-default-bg-color--light: var(--ctp-base);
-    --md-default-bg-color--lighter: var(--ctp-base);
-    --md-default-bg-color--lightest: var(--ctp-base);
+    --md-default-bg-color--light: hsl(232, 23%, 18%, 0.54);
+    --md-default-bg-color--lighter: hsl(232, 23%, 18%, 0.26);
+    --md-default-bg-color--lightest: hsl(232, 23%, 18%, 0.07);
 
     /* Primary color shades */
     --md-primary-fg-color: var(--ctp-mantle);
@@ -79,12 +79,12 @@
     /* Typeset color shades */
     --md-typeset-color: var(--md-default-fg-color);
     --md-typeset-a-color: var(--ctp-teal);
-    --md-typeset-kbd-color: var(--ctp-text);
-    --md-typeset-kbd-accent-color: var(--ctp-text);
-    --md-typeset-kbd-border-color: var(--ctp-base);
+    --md-typeset-kbd-color: var(--ctp-surface0);
+    --md-typeset-kbd-accent-color: var(--ctp-surface1);
+    --md-typeset-kbd-border-color: var(--ctp-crust);
     --md-typeset-mark-color: var(--ctp-teal);
-    --md-typeset-table-color: var(--ctp-text);
-    --md-typeset-table-color--light: hsl(227, 68%, 88%, 0.1);
+    --md-typeset-table-color: var(--ctp-surface1);
+    --md-typeset-table-color--light: hsl(231, 16%, 34%, 0.35);
 
     /* Admonition color shades */
     --md-admonition-fg-color: var(--md-default-fg-color);
@@ -181,4 +181,8 @@ input.md-search__input::placeholder {
 [data-md-color-scheme="catppuccin-macchiato"] .md-button:hover {
     background-color: var(--ctp-surface1);
     border-color: var(--ctp-surface1);
+}
+
+[data-md-color-scheme="catppuccin-macchiato"] .md-nav__link--active {
+    border-inline-start-color: var(--ctp-teal);
 }
