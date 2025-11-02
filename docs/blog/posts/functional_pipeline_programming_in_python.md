@@ -164,7 +164,7 @@ def in_cities(row: list[str], cities: list[str], geo_indices: tuple[int]) -> boo
 def main():
     cities = sys.argv[1:]
 
-    header = sys.stdin > pipe | take_first(1) | next | parse_csv_line
+    header = sys.stdin > pipe | next | parse_csv_line
     prefix_idx = header.index("Prefix")
     length_idx = header.index("Length")
     type_idx = header.index("Type")
@@ -188,8 +188,7 @@ def main():
 得益于 `sys.stdin` 实现了迭代器协议，能够遍历它返回文本流中的每一行，我可以轻松得到 CSV 的表头 `header`：
 
 1. 将 `sys.stdin` 输入到 `pipe` 中
-1. `take_first(1)` 返回包含第一行文本的列表
-1. `next` 获取列表第一项数据（输入的第一行文本）
+1. `next` 获取第一行文本
 1. `parse_csv_line` 函数将文本按照 CSV 格式解析为列表
 
 获取到必要的信息后（因为每个国家/地区的表头不同），我继续处理剩余的数据行。整个管道的流程如下：
