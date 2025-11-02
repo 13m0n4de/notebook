@@ -5,31 +5,31 @@
       
       
       
-        <link rel="canonical" href="https://13m0n4de.vercel.app/cs/os/ostep/07cpu_scheduling.html">
+        <link rel="canonical" href="https://13m0n4de.vercel.app/blog/category/security.html">
       
       
-        <link rel="prev" href="06direct_execution.html">
+        <link rel="prev" href="scientific-witchery.html">
       
       
-        <link rel="next" href="08multi_level_feedback.html">
+        <link rel="next" href="../archive/2025.html">
       
       
-        <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../../feed_rss_created.xml">
-        <link rel="alternate" type="application/rss+xml" title="已更新内容的 RSS 订阅" href="../../../feed_rss_updated.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="已更新内容的 RSS 订阅" href="../../feed_rss_updated.xml">
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>07.CPU Scheduling - 13m0n4de's notebook</title>
+        <title>Security - 13m0n4de's notebook</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../css/timeline.css">
+      <link rel="stylesheet" href="../../css/timeline.css">
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css">
     
@@ -52,18 +52,18 @@
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/toc.css">
+      <link rel="stylesheet" href="../../stylesheets/toc.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#7" class="md-skip">
+        <a href="#security" class="md-skip">
           跳转至
         </a>
       
@@ -104,7 +104,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="13m0n4de's notebook" class="md-header__button md-logo" aria-label="13m0n4de's notebook" data-md-component="logo">
+    <a href="../.." title="13m0n4de's notebook" class="md-header__button md-logo" aria-label="13m0n4de's notebook" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"></path></svg>
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              07.CPU Scheduling
+              Security
             
           </span>
         </div>
@@ -213,7 +213,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../index.html" class="md-tabs__link">
+        <a href="../../index.html" class="md-tabs__link">
           
   
   
@@ -231,13 +231,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../cs/index.html" class="md-tabs__link">
           
   
   
@@ -259,7 +257,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../sec/index.html" class="md-tabs__link">
+        <a href="../../sec/index.html" class="md-tabs__link">
           
   
   
@@ -281,7 +279,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../ctf/index.html" class="md-tabs__link">
+        <a href="../../ctf/index.html" class="md-tabs__link">
           
   
   
@@ -303,7 +301,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../writeups/index.html" class="md-tabs__link">
+        <a href="../../writeups/index.html" class="md-tabs__link">
           
   
   
@@ -325,7 +323,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../gamedev/index.html" class="md-tabs__link">
+        <a href="../../gamedev/index.html" class="md-tabs__link">
           
   
   
@@ -343,11 +341,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../blog/index.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../index.html" class="md-tabs__link">
           
   
   
@@ -383,7 +383,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="13m0n4de's notebook" class="md-nav__button md-logo" aria-label="13m0n4de's notebook" data-md-component="logo">
+    <a href="../.." title="13m0n4de's notebook" class="md-nav__button md-logo" aria-label="13m0n4de's notebook" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"></path></svg>
@@ -436,7 +436,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../index.html" class="md-nav__link ">
+            <a href="../../index.html" class="md-nav__link ">
               
   
   
@@ -471,7 +471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../changelog.html" class="md-nav__link">
+      <a href="../../changelog.html" class="md-nav__link">
         
   
   
@@ -498,8 +498,6 @@
       
   
   
-    
-  
   
   
     
@@ -519,21 +517,18 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../index.html" class="md-nav__link ">
+            <a href="../../cs/index.html" class="md-nav__link ">
               
   
   
@@ -546,13 +541,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Computer Science
@@ -599,7 +594,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../pl/index.html" class="md-nav__link ">
+            <a href="../../cs/pl/index.html" class="md-nav__link ">
               
   
   
@@ -655,7 +650,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../pl/c/index.html" class="md-nav__link ">
+            <a href="../../cs/pl/c/index.html" class="md-nav__link ">
               
   
   
@@ -693,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pl/python/index.html" class="md-nav__link">
+      <a href="../../cs/pl/python/index.html" class="md-nav__link">
         
   
   
@@ -716,7 +711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pl/racket/index.html" class="md-nav__link">
+      <a href="../../cs/pl/racket/index.html" class="md-nav__link">
         
   
   
@@ -739,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pl/riscv/index.html" class="md-nav__link">
+      <a href="../../cs/pl/riscv/index.html" class="md-nav__link">
         
   
   
@@ -762,7 +757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pl/rust/index.html" class="md-nav__link">
+      <a href="../../cs/pl/rust/index.html" class="md-nav__link">
         
   
   
@@ -790,8 +785,6 @@
                 
   
   
-    
-  
   
   
     
@@ -814,15 +807,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../index.html" class="md-nav__link ">
+            <a href="../../cs/os/index.html" class="md-nav__link ">
               
   
   
@@ -841,7 +834,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             Operating System
@@ -854,8 +847,6 @@
                 
   
   
-    
-  
   
   
     
@@ -904,15 +895,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2">
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link ">
+            <a href="../../cs/os/ostep/index.html" class="md-nav__link ">
               
   
   
@@ -931,7 +922,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3_2">
             <span class="md-nav__icon md-icon"></span>
             OSTEP
@@ -947,7 +938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02introduction.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/02introduction.html" class="md-nav__link">
         
   
   
@@ -970,7 +961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04processes.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/04processes.html" class="md-nav__link">
         
   
   
@@ -993,7 +984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05process_api.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/05process_api.html" class="md-nav__link">
         
   
   
@@ -1016,7 +1007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06direct_execution.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/06direct_execution.html" class="md-nav__link">
         
   
   
@@ -1036,32 +1027,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    07.CPU Scheduling
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="07cpu_scheduling.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../cs/os/ostep/07cpu_scheduling.html" class="md-nav__link">
         
   
   
@@ -1072,136 +1041,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-    <a href="#71" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.1 工作负载假设
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#72" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.2 调度指标
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#73-fifo" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.3 先进先出（FIFO）
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#74-sjf" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.4 最短任务优先（SJF）
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#75-stcf" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.5 最短完成时间优先（STCF）
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#76" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.6 新度量指标：响应时间
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#77" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.7 轮转
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#78-io" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.8 结合 I/O
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#79" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.9 无法预知
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#_1" class="md-nav__link">
-        <span class="md-ellipsis">
-            作业
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1214,7 +1053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08multi_level_feedback.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/08multi_level_feedback.html" class="md-nav__link">
         
   
   
@@ -1237,7 +1076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09lottery_scheduling.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/09lottery_scheduling.html" class="md-nav__link">
         
   
   
@@ -1260,7 +1099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10multi_cpu_scheduling.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/10multi_cpu_scheduling.html" class="md-nav__link">
         
   
   
@@ -1283,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="13address_spaces.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/13address_spaces.html" class="md-nav__link">
         
   
   
@@ -1306,7 +1145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="14memory_api.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/14memory_api.html" class="md-nav__link">
         
   
   
@@ -1329,7 +1168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="15address_translation.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/15address_translation.html" class="md-nav__link">
         
   
   
@@ -1352,7 +1191,7 @@
   
   
     <li class="md-nav__item">
-      <a href="16segmentation.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/16segmentation.html" class="md-nav__link">
         
   
   
@@ -1375,7 +1214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="17free_space_management.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/17free_space_management.html" class="md-nav__link">
         
   
   
@@ -1398,7 +1237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="18introduction_to_paging.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/18introduction_to_paging.html" class="md-nav__link">
         
   
   
@@ -1421,7 +1260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="19translation_lookaside_buffers.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/19translation_lookaside_buffers.html" class="md-nav__link">
         
   
   
@@ -1444,7 +1283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="20advanced_page_tables.html" class="md-nav__link">
+      <a href="../../cs/os/ostep/20advanced_page_tables.html" class="md-nav__link">
         
   
   
@@ -1475,7 +1314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mit6.1810.html" class="md-nav__link">
+      <a href="../../cs/os/mit6.1810.html" class="md-nav__link">
         
   
   
@@ -1519,7 +1358,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../rcore/index.html" class="md-nav__link ">
+            <a href="../../cs/os/rcore/index.html" class="md-nav__link ">
               
   
   
@@ -1586,7 +1425,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../compiler/index.html" class="md-nav__link ">
+            <a href="../../cs/compiler/index.html" class="md-nav__link ">
               
   
   
@@ -1658,7 +1497,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../sec/index.html" class="md-nav__link ">
+            <a href="../../sec/index.html" class="md-nav__link ">
               
   
   
@@ -1769,7 +1608,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../sec/vulns/pngcheck/index.html" class="md-nav__link ">
+            <a href="../../sec/vulns/pngcheck/index.html" class="md-nav__link ">
               
   
   
@@ -1804,7 +1643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sec/vulns/pngcheck/vulns-3.0.1.html" class="md-nav__link">
+      <a href="../../sec/vulns/pngcheck/vulns-3.0.1.html" class="md-nav__link">
         
   
   
@@ -1827,7 +1666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sec/vulns/pngcheck/vulns-3.0.0.html" class="md-nav__link">
+      <a href="../../sec/vulns/pngcheck/vulns-3.0.0.html" class="md-nav__link">
         
   
   
@@ -1850,7 +1689,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sec/vulns/pngcheck/vulns-2.4.0.html" class="md-nav__link">
+      <a href="../../sec/vulns/pngcheck/vulns-2.4.0.html" class="md-nav__link">
         
   
   
@@ -1873,7 +1712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sec/vulns/pngcheck/cve-2020-35511.html" class="md-nav__link">
+      <a href="../../sec/vulns/pngcheck/cve-2020-35511.html" class="md-nav__link">
         
   
   
@@ -1896,7 +1735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sec/vulns/pngcheck/cve-2020-27818.html" class="md-nav__link">
+      <a href="../../sec/vulns/pngcheck/cve-2020-27818.html" class="md-nav__link">
         
   
   
@@ -1980,7 +1819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sec/malwares/powerghost.html" class="md-nav__link">
+      <a href="../../sec/malwares/powerghost.html" class="md-nav__link">
         
   
   
@@ -2056,7 +1895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sec/incidents/powerghost.html" class="md-nav__link">
+      <a href="../../sec/incidents/powerghost.html" class="md-nav__link">
         
   
   
@@ -2115,7 +1954,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ctf/index.html" class="md-nav__link ">
+            <a href="../../ctf/index.html" class="md-nav__link ">
               
   
   
@@ -2175,7 +2014,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../writeups/index.html" class="md-nav__link ">
+            <a href="../../writeups/index.html" class="md-nav__link ">
               
   
   
@@ -2259,7 +2098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/2024/hackergame2024.html" class="md-nav__link">
+      <a href="../../writeups/2024/hackergame2024.html" class="md-nav__link">
         
   
   
@@ -2282,7 +2121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/2024/dicectf2024_quals.html" class="md-nav__link">
+      <a href="../../writeups/2024/dicectf2024_quals.html" class="md-nav__link">
         
   
   
@@ -2305,7 +2144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/2024/svuctf_spring_2024.html" class="md-nav__link">
+      <a href="../../writeups/2024/svuctf_spring_2024.html" class="md-nav__link">
         
   
   
@@ -2366,7 +2205,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../gamedev/index.html" class="md-nav__link ">
+            <a href="../../gamedev/index.html" class="md-nav__link ">
               
   
   
@@ -2424,7 +2263,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../gamedev/ai/index.html" class="md-nav__link ">
+            <a href="../../gamedev/ai/index.html" class="md-nav__link ">
               
   
   
@@ -2480,7 +2319,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../gamedev/ai/sd/index.html" class="md-nav__link ">
+            <a href="../../gamedev/ai/sd/index.html" class="md-nav__link ">
               
   
   
@@ -2530,6 +2369,8 @@
       
   
   
+    
+  
   
   
     
@@ -2547,18 +2388,21 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../blog/index.html" class="md-nav__link ">
+            <a href="../index.html" class="md-nav__link ">
               
   
   
@@ -2571,13 +2415,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2642,7 +2486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/archive/2025.html" class="md-nav__link">
+      <a href="../archive/2025.html" class="md-nav__link">
         
   
   
@@ -2667,7 +2511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/archive/2024.html" class="md-nav__link">
+      <a href="../archive/2024.html" class="md-nav__link">
         
   
   
@@ -2695,8 +2539,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -2723,11 +2569,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" checked>
         
           
           <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
@@ -2743,7 +2589,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_3">
             <span class="md-nav__icon md-icon"></span>
             分类
@@ -2759,7 +2605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/category/cve-roulette.html" class="md-nav__link">
+      <a href="cve-roulette.html" class="md-nav__link">
         
   
   
@@ -2784,7 +2630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/category/chaos.html" class="md-nav__link">
+      <a href="chaos.html" class="md-nav__link">
         
   
   
@@ -2809,7 +2655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/category/hackerrank.html" class="md-nav__link">
+      <a href="hackerrank.html" class="md-nav__link">
         
   
   
@@ -2834,7 +2680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/category/malware-analysis.html" class="md-nav__link">
+      <a href="malware-analysis.html" class="md-nav__link">
         
   
   
@@ -2859,7 +2705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/category/programming-language.html" class="md-nav__link">
+      <a href="programming-language.html" class="md-nav__link">
         
   
   
@@ -2884,7 +2730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/category/random-ramblings.html" class="md-nav__link">
+      <a href="random-ramblings.html" class="md-nav__link">
         
   
   
@@ -2909,7 +2755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/category/scientific-witchery.html" class="md-nav__link">
+      <a href="scientific-witchery.html" class="md-nav__link">
         
   
   
@@ -2929,12 +2775,23 @@
                 
   
   
-  
     
   
   
-    <li class="md-nav__item">
-      <a href="../../../blog/category/security.html" class="md-nav__link">
+    
+      
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="security.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2945,6 +2802,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -2985,124 +2843,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-    <a href="#71" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.1 工作负载假设
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#72" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.2 调度指标
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#73-fifo" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.3 先进先出（FIFO）
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#74-sjf" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.4 最短任务优先（SJF）
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#75-stcf" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.5 最短完成时间优先（STCF）
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#76" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.6 新度量指标：响应时间
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#77" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.7 轮转
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#78-io" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.8 结合 I/O
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#79" class="md-nav__link">
-        <span class="md-ellipsis">
-            7.9 无法预知
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
-    <a href="#_1" class="md-nav__link">
-        <span class="md-ellipsis">
-            作业
-        </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -3110,523 +2850,88 @@
             
           
           
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-
-  
-  
-
-
-<h1 id="7">第 7 章 进程调度：介绍<a class="headerlink" href="#7" title="Permanent link">¶</a></h1>
-<p><a href="06direct_execution.html">上一章</a>介绍了进程调度的底层机制（mechanism）（上下文切换），这章介绍的是上层策略（policy）。</p>
-<h2 id="71">7.1 工作负载假设<a class="headerlink" href="#71" title="Permanent link">¶</a></h2>
-<p>可能是翻译问题，对照着原文我才读明白是什么意思。</p>
-<blockquote>
-<p>let us first make a number of simplifying assumptions about the processes running in the system, sometimes collectively called the workload.</p>
-</blockquote>
-<p>可以翻译为：</p>
-<blockquote>
-<p>首先对 <strong>运行在系统中的一组进程</strong> 进行一系列简化假设，有时统称它们为工作负载。</p>
-</blockquote>
-<p>这个“它们”，我理解为指的是“运行在系统中的一组进程”，因为 <em>about the processes running in the system</em> 在句末。</p>
-<p>探讨调度策略需要先对工作负载（一组进程）做一些假设：</p>
-<ol>
-<li>每一个工作运行相同的时间。</li>
-<li>所有的工作同时到达。</li>
-<li>一旦开始，每个工作保持运行直到完成。</li>
-<li>所有的工作只是用 CPU（即它们不执行 I/O 操作）。</li>
-<li>每个工作的运行时间是已知的。</li>
-</ol>
-<p>这些假设都是不现实的，接下来几个小节会逐步放宽它们。</p>
-<h2 id="72">7.2 调度指标<a class="headerlink" href="#72" title="Permanent link">¶</a></h2>
-<p>为了比较调度策略，需要定义调度指标，目前只用一个：周转时间（turnaround time）。</p>
-<div class="arithmatex">\[
-T_{\text{turnaround}} = T_{\text{completion}} - T_{\text{arrival}}
-\]</div>
-<p>因为假设了所有任务同一时间到达，所以 $ T_{\text{arrival}} = 0 $，因此 $ T_{\text{turnaround}} = T_{\text{completion}} $</p>
-<blockquote>
-<p>周转时间是一个性能（performance）指标，这将是本章的首要关注点。另一个有趣的指标是公平（fairness），性能和公平在调度系统中往往是矛盾的。例如，调度程序可以优化性能，但代价是以阻止一些任务运行，这就降低了公平。</p>
-</blockquote>
-<h2 id="73-fifo">7.3 先进先出（FIFO）<a class="headerlink" href="#73-fifo" title="Permanent link">¶</a></h2>
-<p>先进先出（First In First Out，FIFO）</p>
-<p>假设任务 A 在 10s 时完成，B 在 20s 时完成，C 在 30s 时完成，因此这 3 个任务的平均周转时间是 20s ：</p>
-<div class="arithmatex">\[
-\bar{T_{\text{turnaround}}} = \frac{10 + 20 + 30}{3} = 20 \text{s}
-\]</div>
-<pre class="mermaid"><code>---
-displayMode: compact
----
-gantt
-    title FIFO 的简单例子
-    dateFormat s
-    axisFormat %S
-    tickInterval 10second
-
-    A   : 0,    10s
-    B   :       10s
-    C   :       10s</code></pre>
-<p>但当任务时间不同时，比如 A 需要先运行 100s，B 或 C 才有机会运行，这样时候系统的平均周转时间就变成了 110s ：</p>
-<div class="arithmatex">\[
-\bar{T_{\text{turnaround}}} = \frac{100 + 110 + 120}{3} = 110 \text{s}
-\]</div>
-<pre class="mermaid"><code>gantt
-    title 为什么 FIFO 没有那么好
-    dateFormat s
-    axisFormat %M:%S
-    tickInterval 10second
-
-    A   : 0,    100s
-    B   :       10s
-    C   :       10s</code></pre>
-<blockquote>
-<p>这个问题通常被称为护航效应（convoy effect），一些耗时较少的潜在资源消费者被排在重量级的资源消费者之后。<br>
-这个调度方案可能让你想起在杂货店只有一个排队队伍的时候，如果看到前面的人装满 3 辆购物车食品并且掏出了支票本，你感觉如何？这会等很长时间。</p>
-</blockquote>
-<h2 id="74-sjf">7.4 最短任务优先（SJF）<a class="headerlink" href="#74-sjf" title="Permanent link">¶</a></h2>
-<p>最短任务优先（Shortest Job First，SJF）</p>
-<pre class="mermaid"><code>gantt
-    title SJF 的简单例子
-    dateFormat s
-    axisFormat %M:%S
-    tickInterval 10second
-
-    B   : 0,    10s
-    C   :       10s
-    A   :       100s</code></pre>
-<div class="arithmatex">\[
-\bar{T_{\text{turnaround}}} = \frac{10 + 20 + 120}{3} = 50 \text{s}
-\]</div>
-<p>如果所有工作同时到达，SJF 就是一个最优调度算法，但这并不现实，工作往往都是随时到达的，比如 B 和 C 晚到了 10s ：</p>
-<pre class="mermaid"><code>---
-displayMode: compact
----
-gantt
-    title B 和 C 晚到时的 SJF
-    dateFormat mm:ss
-    axisFormat %M:%S
-    tickInterval 10second
-
-    A Running   : active,   00:00,  100s
-    B Waiting   : done,     00:10,  90s
-    B Running   : active,   01:40,  10s
-    C Waiting   : done,     00:10,  100s
-    C Running   : active,   01:50,  10s</code></pre>
-<p>这又会遭遇护航问题，平均周转时间变成了 <span class="arithmatex">\(\frac{100 + (100 - 10) + (120 -10)}{3} \approx 103.33s\)</span></p>
-<h2 id="75-stcf">7.5 最短完成时间优先（STCF）<a class="headerlink" href="#75-stcf" title="Permanent link">¶</a></h2>
-<p>最短完成时间优先（Shortest Time-to-Completion First，STCF）或抢占式最短作业优先（Preemptive Shortest Job First, PSJF）</p>
-<p>它基本等于向 SJF 添加抢占，每当新工作进入系统时，它就会确定剩余工作和新工作中，谁的剩余时间最少，然后调度该工作。</p>
-<pre class="mermaid"><code>---
-displayMode: compact
----
-gantt
-    title STCF 的简单例子
-    dateFormat s
-    axisFormat %M:%S
-    tickInterval 10second
-
-    A Running   : active,   0,  10s
-    A Pausing   : done,     10, 20s
-    A Running   : active,   30, 110s
-    B Running   : active,   10, 10s
-    C Waiting   : done,     10, 10s
-    C Running   : active,   20, 10s</code></pre>
-<p>STCF 将抢占 A 并运行 B 和 C 以完成，只有在它们完成后，才能调度 A 的剩余时间。</p>
-<div class="arithmatex">\[
-\bar{T_{\text{turnaround}}} = \frac{120 + 10 + 20}{3} = 50 \text{s}
-\]</div>
-<p>平均周转时间大大提高，以前一样。</p>
-<blockquote>
-<p>STCF 是抢占式的调度程序，而 SJF 是非抢占式的。</p>
-</blockquote>
-<h2 id="76">7.6 新度量指标：响应时间<a class="headerlink" href="#76" title="Permanent link">¶</a></h2>
-<blockquote>
-<p>因此，如果我们知道任务长度，而且任务只使用 CPU，而我们唯一的衡量是周转时间，STCF 将是一个很好的策略。<br>
-事实上，对于许多早期批处理系统，这些类型的调度算法有一定的意义。<br>
-然而，引入分时系统改变了这一切。现在，用户将会坐在终端前面，同时也要求系统的交互性好。<br>
-因此，一个新的度量标准诞生了：响应时间（response time）</p>
-</blockquote>
-<div class="arithmatex">\[
-T_{\text{response}} = T_{\text{firstrun}} - T_{\text{arrival}}
-\]</div>
-<p>上小节示例中，A 在 0s 到达，B 和 C 在 10s 到达，作业的响应时间如下：</p>
-<div class="arithmatex">\[
-\begin{align}
-    T_{\text{A response}} &amp;= 0s \\
-    T_{\text{B response}} &amp;= 0s \\
-    T_{\text{B response}} &amp;= 10s \\
-    \bar{T_{\text{response}}} &amp;\approx 3.33s
-\end{align}
-\]</div>
-<p>这种方法虽然有很好的周转时间，但对于响应时间和交互性是相当糟糕的。</p>
-<h2 id="77">7.7 轮转<a class="headerlink" href="#77" title="Permanent link">¶</a></h2>
-<blockquote>
-<p>为了解决这个问题，我们将介绍一种新的调度算法，通常被称为轮转（Round-Robin，RR）调度。</p>
-<p>基本思想很简单：RR 在一个时间片（time slice，有时称为调度量子，scheduling quantum）内运行一个工作，然后切换到运行队列中的下一个任务，而不是运行一个任务直到结束。它反复执行，直到所有任务完成。<br>
-因此，RR 有时被称为时间切片（time-slicing）。</p>
-<p>请注意，时间片长度必须是时钟中断周期的倍数。因此，如果时钟中断是每 10ms 中断一次，则时间片可以是 10ms、20ms 或 10ms 的任何其他倍数。</p>
-</blockquote>
-<pre class="mermaid"><code>gantt
-    title 又是 SJF（响应时间不好）
-    dateFormat s
-    axisFormat %S
-    tickInterval 5second
-
-    A   :   0,  5s
-    B   :       5s
-    C   :       5s</code></pre>
-<div class="arithmatex">\[
-\bar{T_{\text{SJF response}}} = \frac{0 + 5 + 10}{3} = 5s
-\]</div>
-<pre class="mermaid"><code>---
-displayMode: compact
----
-gantt
-    title 轮转（响应时间好）
-    dateFormat s
-    axisFormat %S
-    tickInterval 1second
-
-    section A
-        A   :   0,  1s
-        A   :   3,  1s
-        A   :   6,  1s
-        A   :   9,  1s
-        A   :   12, 1s
-
-    section B
-        B   :   1,  1s
-        B   :   4,  1s
-        B   :   7,  1s
-        B   :   10, 1s
-        B   :   13, 1s
-
-    section C
-        C   :   2,  1s
-        C   :   5,  1s
-        C   :   8,  1s
-        C   :   11,  1s
-        C   :   14,  1s</code></pre>
-<div class="arithmatex">\[
-\bar{T_{\text{RR response}}} = \frac{0 + 1 + 2}{3} = 1s
-\]</div>
-<p>时间片长度对于 RR 是至关重要的，越短，RR 在响应时间上表现越好，但太短的话会使上下文切换的成本过高。</p>
-<blockquote>
-<p>系统设计者需要权衡时间片的长度，使其足够长，以便摊销（amortize）上下文切换成本，而又不会使系统不及时响应</p>
-</blockquote>
-<div class="admonition note">
-<p class="admonition-title">提示：摊销可以减少成本</p>
-<p>当系统某些操作有固定成本时，通常会使用摊销技术（amortization）。通过减少成本的频度（即执行较少次的操作），系统的总成本就会降低。<br>
-例如，如果时间片设置为 10ms，并且上下文切换时间为 1ms，那么浪费大约 10% 的时间用于上下文切换。<br>
-如果要摊销这个成本，可以把时间片增加到 100ms。在这种情况下，不到 1% 的时间用于上下文切换，因此时间片带来的成本就被摊销了</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">上下文切换的成本不仅仅来自保存和恢复少量寄存器的操作系统操作</p>
-<p>程序运行时，它们在 CPU 高速缓存、TLB、分支预测器和其他片上硬件中建立了大量的状态。<br>
-切换到另一个工作会导致此状态被刷新，且与当前运行的作业相关的新状态被引入，这可能导致显著的性能成本</p>
-</div>
-<p>回头看看老朋友周转时间：<span class="arithmatex">\(\bar{T_{\text{RR turnaround}}} = \frac{13 + 14 + 15}{3} = 14s\)</span>，相当可怕。</p>
-<blockquote>
-<p>这并不奇怪，如果周转时间是我们的指标，那么 RR 确实是最糟糕的策略之一。<br>
-直观地说，这应该是有意义的：RR 所做的正是延伸每个工作，只运行每个工作一小段时间，就转向下一个工作。<br>
-因为周转时间只关心作业何时完成，RR 几乎是最差的，在很多情况下甚至比简单的 FIFO 更差。</p>
-<p>更一般地说，任何公平（fair）的政策（如 RR），即在小规模的时间内将 CPU 均匀分配到活动进程之间，在周转时间这类指标上表现不佳。<br>
-事实上，这是固有的权衡：如果你愿意不公平，你可以运行较短的工作直到完成，但是要以响应时间为代价。如果你重视公平性，则响应时间会较短，但会以周转时间为代价。</p>
-</blockquote>
-<h2 id="78-io">7.8 结合 I/O<a class="headerlink" href="#78-io" title="Permanent link">¶</a></h2>
-<p>假设 4：所有的工作只是用 CPU（即它们不执行 I/O 操作）。</p>
-<p>我们放宽它，假设所有程序会执行 I/O。举个例子，有两项工作 A 和 B，每项工作需要 50ms 的 CPU 时间，A 运行 10ms 后发出 I/O 请求，每个 I/O 需要 10ms，而 B 只是使用 CPU 50ms，不执行 I/O。</p>
-<pre class="mermaid"><code>---
-displayMode: compact
----
-gantt
-    title 资源的糟糕使用
-    dateFormat SSS
-    axisFormat %Lms
-    tickInterval 10millisecond
-
-    section CPU
-        A   :   active, 000,  10ms
-        A   :   active, 020,  10ms
-        A   :   active, 040,  10ms
-        A   :   active, 060,  10ms
-        A   :   active, 080,  10ms
-        B   :           100,  50ms
-
-    section 磁盘
-        A   :   active, 010,  10ms
-        A   :   active, 030,  10ms
-        A   :   active, 050,  10ms
-        A   :   active, 070,  10ms
-        A   :   active, 090,  10ms</code></pre>
-<pre class="mermaid"><code>---
-displayMode: compact
----
-gantt
-    title 重叠可以更好地使用资源
-    dateFormat SSS
-    axisFormat %Lms
-    tickInterval 10millisecond
-
-    section CPU
-        A   :   active, 000,  10ms
-        B   :           010,  10ms
-        A   :   active, 020,  10ms
-        B   :           030,  10ms
-        A   :   active, 040,  10ms
-        B   :           050,  10ms
-        A   :   active, 060,  10ms
-        B   :           070,  10ms
-        A   :   active, 080,  10ms
-        B   :           090,  10ms
-
-    section 磁盘
-        A   :   active,   010,  10ms
-        A   :   active,   030,  10ms
-        A   :   active,   050,  10ms
-        A   :   active,   070,  10ms
-        A   :   active,   090,  10ms</code></pre>
-<div class="admonition note">
-<p class="admonition-title">提示：重叠可以提高利用率</p>
-<p>如有可能，重叠（overlap）操作可以最大限度地提高系统的利用率。重叠在许多不同的领域很有用，包括执行磁盘 I/O 或将消息发送到远程机器时。<br>
-在任何一种情况下，开始操作然后切换到其他工作都是一个好主意，这也提高了系统的整体利用率和效率。</p>
-</div>
-<h2 id="79">7.9 无法预知<a class="headerlink" href="#79" title="Permanent link">¶</a></h2>
-<p>假设 5：每个工作的运行时间是已知的。</p>
-<p>但在一个通用的操作系统中，操作系统对每个作业的长度其实是知之甚少的，如何建立一个没有这种先验知识的 SJF/STCF ？</p>
-<p>答案是 <strong>多级反馈队列调度</strong>，因为我先看了 rCore，被剧透了，这其实是下一章的内容。</p>
-<h2 id="_1">作业<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>1．使用 SJF 和 FIFO 调度程序运行长度为 200 的 3 个作业时，计算响应时间和周转时间。</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Answer</p>
-<p><span class="arithmatex">\(\bar{T_{\text{SJF response}}} \approx 107.33\)</span> <span class="arithmatex">\(\bar{T_{\text{SJF turnaround}}} \approx 242.67\)</span></p>
-<p><span class="arithmatex">\(\bar{T_{\text{FIFO response}}} \approx 163.33\)</span> <span class="arithmatex">\(\bar{T_{\text{FIFO turnaround}}} \approx 298.67\)</span></p>
-<div class="highlight"><span class="filename">python scheduler.py -p SJF -j 3 -m 200 -c</span><pre><span></span><code>ARG policy SJF
-ARG jobs 3
-ARG maxlen 200
-ARG seed 0
-
-Here is the job list, with the run time of each job:
-  Job 0 ( length = 169 )
-  Job 1 ( length = 152 )
-  Job 2 ( length = 85 )
-
-** Solutions **
-
-Execution trace:
-  [ time   0 ] Run job 2 for 85.00 secs ( DONE at 85.00 )
-  [ time  85 ] Run job 1 for 152.00 secs ( DONE at 237.00 )
-  [ time 237 ] Run job 0 for 169.00 secs ( DONE at 406.00 )
-
-Final statistics:
-  Job   2 -- Response: 0.00  Turnaround 85.00  Wait 0.00
-  Job   1 -- Response: 85.00  Turnaround 237.00  Wait 85.00
-  Job   0 -- Response: 237.00  Turnaround 406.00  Wait 237.00
-
-  Average -- Response: 107.33  Turnaround 242.67  Wait 107.33
-</code></pre></div>
-<div class="highlight"><span class="filename">python scheduler.py -p FIFO -j 3 -m 200 -c</span><pre><span></span><code>ARG policy FIFO
-ARG jobs 3
-ARG maxlen 200
-ARG seed 0
-
-Here is the job list, with the run time of each job:
-  Job 0 ( length = 169 )
-  Job 1 ( length = 152 )
-  Job 2 ( length = 85 )
-
-** Solutions **
-
-Execution trace:
-  [ time   0 ] Run job 0 for 169.00 secs ( DONE at 169.00 )
-  [ time 169 ] Run job 1 for 152.00 secs ( DONE at 321.00 )
-  [ time 321 ] Run job 2 for 85.00 secs ( DONE at 406.00 )
-
-Final statistics:
-  Job   0 -- Response: 0.00  Turnaround 169.00  Wait 0.00
-  Job   1 -- Response: 169.00  Turnaround 321.00  Wait 169.00
-  Job   2 -- Response: 321.00  Turnaround 406.00  Wait 321.00
-
-  Average -- Response: 163.33  Turnaround 298.67  Wait 163.33
-</code></pre></div>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>2．现在做同样的事情，但有不同长度的作业，即 100、200 和 300。</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Answer</p>
-<p>同上，SJF 的响应时间和周转时间都要比 FIFO 少。</p>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>3．现在做同样的事情，但采用 RR 调度程序，时间片为 1。</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Answer</p>
-<p><span class="arithmatex">\(\bar{T_{\text{RR response}}} = 1\)</span> <span class="arithmatex">\(\bar{T_{\text{RR turnaround}}} = 350\)</span></p>
-<div class="highlight"><span class="filename">python scheduler.py -p RR -j 3 -m 200 -q 1 -c</span><pre><span></span><code>ARG policy RR
-ARG jobs 3
-ARG maxlen 200
-ARG seed 0
-
-Here is the job list, with the run time of each job:
-  Job 0 ( length = 169 )
-  Job 1 ( length = 152 )
-  Job 2 ( length = 85 )
-
-** Solutions **
-
-Execution trace:
-  [ time   0 ] Run job   0 for 1.00 secs
-  [ time   1 ] Run job   1 for 1.00 secs
-  [ time   2 ] Run job   2 for 1.00 secs
-  [ time   3 ] Run job   0 for 1.00 secs
-  ...
-  [ time 402 ] Run job   0 for 1.00 secs
-  [ time 403 ] Run job   0 for 1.00 secs
-  [ time 404 ] Run job   0 for 1.00 secs
-  [ time 405 ] Run job   0 for 1.00 secs ( DONE at 406.00 )
-
-Final statistics:
-  Job   0 -- Response: 0.00  Turnaround 406.00  Wait 237.00
-  Job   1 -- Response: 1.00  Turnaround 389.00  Wait 237.00
-  Job   2 -- Response: 2.00  Turnaround 255.00  Wait 170.00
-</code></pre></div>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>4．对于什么类型的工作负载，SJF 提供与 FIFO 相同的周转时间？</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Answer</p>
-<p>任务同时到达，并且短任务在前。</p>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>5．对于什么类型的工作负载和量子长度，SJF 与 RR 提供相同的响应时间？</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Answer</p>
-<p>任务长度相同且等于量子长度。</p>
-<div class="highlight"><span class="filename">python scheduler.py -p SJF -c -l 10,10,10</span><pre><span></span><code>ARG policy SJF
-ARG jlist 10,10,10
-
-Here is the job list, with the run time of each job:
-  Job 0 ( length = 10.0 )
-  Job 1 ( length = 10.0 )
-  Job 2 ( length = 10.0 )
-
-** Solutions **
-
-Execution trace:
-  [ time   0 ] Run job 0 for 10.00 secs ( DONE at 10.00 )
-  [ time  10 ] Run job 1 for 10.00 secs ( DONE at 20.00 )
-  [ time  20 ] Run job 2 for 10.00 secs ( DONE at 30.00 )
-
-Final statistics:
-  Job   0 -- Response: 0.00  Turnaround 10.00  Wait 0.00
-  Job   1 -- Response: 10.00  Turnaround 20.00  Wait 10.00
-  Job   2 -- Response: 20.00  Turnaround 30.00  Wait 20.00
-
-  Average -- Response: 10.00  Turnaround 20.00  Wait 10.00
-</code></pre></div>
-<div class="highlight"><span class="filename">python scheduler.py -p RR -q 10 -c -l 10,10,10</span><pre><span></span><code>ARG policy RR
-ARG jlist 10,10,10
-
-Here is the job list, with the run time of each job:
-  Job 0 ( length = 10.0 )
-  Job 1 ( length = 10.0 )
-  Job 2 ( length = 10.0 )
-
-** Solutions **
-
-Execution trace:
-  [ time   0 ] Run job   0 for 10.00 secs ( DONE at 10.00 )
-  [ time  10 ] Run job   1 for 10.00 secs ( DONE at 20.00 )
-  [ time  20 ] Run job   2 for 10.00 secs ( DONE at 30.00 )
-
-Final statistics:
-  Job   0 -- Response: 0.00  Turnaround 10.00  Wait 0.00
-  Job   1 -- Response: 10.00  Turnaround 20.00  Wait 10.00
-  Job   2 -- Response: 20.00  Turnaround 30.00  Wait 20.00
-
-  Average -- Response: 10.00  Turnaround 20.00  Wait 10.00
-</code></pre></div>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>6．随着工作长度的增加，SJF 的响应时间会怎样？你能使用模拟程序来展示趋势吗？</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Answer</p>
-<div class="highlight"><pre><span></span><code>$ python scheduler.py -p SJF -j 3 -m 10 -c
-$ python scheduler.py -p SJF -j 3 -m 100 -c
-$ python scheduler.py -p SJF -j 3 -m 1000 -c
-</code></pre></div>
-<p><span class="arithmatex">\(T_{\text{SJF response}}\)</span> 会不断增加。</p>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>7．随着量子长度的增加，RR 的响应时间会怎样？你能写出一个方程，计算给定 N 个工作时，最坏情况的响应时间吗？</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Answer</p>
-<p><span class="arithmatex">\(T_{\text{worst-case response}} = (N - 1) \times T_{\text{quantum}}\)</span></p>
-</div>
-
-
-
-
-
-
-
-  
-    
-  
-  
-    
-  
-
-
-  <aside class="md-source-file">
-    
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        <h1 id="security">Security<a class="headerlink" href="#security" title="Permanent link">¶</a></h1>
+      </header>
       
-  <span class="md-source-file__fact">
-    <span class="md-icon" title="最后更新">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
-    </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年7月31日 05:57:44 CST">2025年7月31日 05:57:44</span>
-  </span>
-
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
     
-    
-      
-  <span class="md-source-file__fact">
-    <span class="md-icon" title="创建日期">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
-    </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2024年1月28日 00:48:58 CST">2024年1月28日 00:48:58</span>
-  </span>
-
-    
-    
-    
-  </aside>
-
-
-
-
-
-                
-              </article>
-            </div>
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-10-23 00:00:00+00:00">2025年10月23日</time></li>
+        
+          <li class="md-meta__item">
+            分类于
+            
+              <a href="scientific-witchery.html" class="md-meta__link">Scientific Witchery</a>, 
+              <a href="security.html" class="md-meta__link">Security</a></li>
+        
+        
           
+          <li class="md-meta__item">
+            
+              需要 4 分钟阅读时间
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="functional-pipeline-programming-in-python"><a class="toclink" href="../2025/10/23/functional-pipeline-programming-in-python.html">Functional Pipeline Programming in Python</a></h2>
+<p>用 Python 写了个小工具，根据手机号段信息生成 <a href="https://github.com/hashcat/hashcat">hashcat</a> 掩码。</p>
+<p>仓库：<a href="https://github.com/13m0n4de/purrify">github.com/13m0n4de/purrify</a></p>
+<p>平平无奇？看看这个：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">purrify.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">_</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span> <span class="o">&gt;</span> <span class="p">(</span>
+    <span class="n">pipe</span>
+    <span class="o">|</span> <span class="n">foreach</span><span class="p">(</span><span class="n">parse_csv_line</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">where</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">min_length</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">where</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">type_idx</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"MOBILE"</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">where</span><span class="p">(</span><span class="n">in_cities</span><span class="p">,</span> <span class="n">geo_indices</span><span class="o">=</span><span class="n">geo_indices</span><span class="p">,</span> <span class="n">cities</span><span class="o">=</span><span class="n">cities</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">foreach</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">prefix_idx</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">length_idx</span><span class="p">])))</span>
+    <span class="o">|</span> <span class="n">foreach</span><span class="p">(</span><span class="n">as_args</span><span class="p">(</span><span class="n">purrify</span><span class="p">))</span>
+    <span class="o">|</span> <span class="n">foreach_do</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+
+    
+      <nav class="md-post__action">
+        <a href="../2025/10/23/functional-pipeline-programming-in-python.html">
+          继续阅读
+        </a>
+      </nav>
+    
+  </div>
+</article>
+      
+      
+        
+          
+
+
+
+<nav class="md-pagination">
+  
+</nav>
+        
+      
+    </div>
+  </div>
+
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -3646,7 +2951,7 @@ $ python scheduler.py -p SJF -j 3 -m 1000 -c
       <nav class="md-footer__inner md-grid" aria-label="页脚">
         
           
-          <a href="06direct_execution.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 06.Direct Execution">
+          <a href="scientific-witchery.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: Scientific Witchery">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -3656,20 +2961,20 @@ $ python scheduler.py -p SJF -j 3 -m 1000 -c
                 上一页
               </span>
               <div class="md-ellipsis">
-                06.Direct Execution
+                Scientific Witchery
               </div>
             </div>
           </a>
         
         
           
-          <a href="08multi_level_feedback.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 08.Multi-level Feedback">
+          <a href="../archive/2025.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                08.Multi-level Feedback
+                2025
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -3757,16 +3062,16 @@ $ python scheduler.py -p SJF -j 3 -m 1000 -c
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.tabs", "navigation.footer", "search.suggest", "content.code.annotate", "content.code.copy", "content.footnote.tooltips"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.tabs", "navigation.footer", "search.suggest", "content.code.annotate", "content.code.copy", "content.footnote.tooltips"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
       
-        <script src="../../../javascripts/katex.js"></script>
+        <script src="../../javascripts/katex.js"></script>
       
     
   

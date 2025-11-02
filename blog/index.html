@@ -2558,6 +2558,8 @@
       
         
       
+        
+      
     
     
     
@@ -2767,6 +2769,31 @@
 
               
             
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category/security.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2814,6 +2841,68 @@
       <header class="md-typeset">
         <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">¶</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-10-23 00:00:00+00:00">2025年10月23日</time></li>
+        
+          <li class="md-meta__item">
+            分类于
+            
+              <a href="category/scientific-witchery.html" class="md-meta__link">Scientific Witchery</a>, 
+              <a href="category/security.html" class="md-meta__link">Security</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              需要 4 分钟阅读时间
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="functional-pipeline-programming-in-python"><a class="toclink" href="2025/10/23/functional-pipeline-programming-in-python.html">Functional Pipeline Programming in Python</a></h2>
+<p>用 Python 写了个小工具，根据手机号段信息生成 <a href="https://github.com/hashcat/hashcat">hashcat</a> 掩码。</p>
+<p>仓库：<a href="https://github.com/13m0n4de/purrify">github.com/13m0n4de/purrify</a></p>
+<p>平平无奇？看看这个：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">purrify.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">_</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span> <span class="o">&gt;</span> <span class="p">(</span>
+    <span class="n">pipe</span>
+    <span class="o">|</span> <span class="n">foreach</span><span class="p">(</span><span class="n">parse_csv_line</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">where</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">min_length</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">where</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">type_idx</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"MOBILE"</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">where</span><span class="p">(</span><span class="n">in_cities</span><span class="p">,</span> <span class="n">geo_indices</span><span class="o">=</span><span class="n">geo_indices</span><span class="p">,</span> <span class="n">cities</span><span class="o">=</span><span class="n">cities</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">foreach</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">prefix_idx</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">length_idx</span><span class="p">])))</span>
+    <span class="o">|</span> <span class="n">foreach</span><span class="p">(</span><span class="n">as_args</span><span class="p">(</span><span class="n">purrify</span><span class="p">))</span>
+    <span class="o">|</span> <span class="n">foreach_do</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+
+    
+      <nav class="md-post__action">
+        <a href="2025/10/23/functional-pipeline-programming-in-python.html">
+          继续阅读
+        </a>
+      </nav>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3178,47 +3267,6 @@
     
       <nav class="md-post__action">
         <a href="2024/06/11/hackerrank-in-racket-part-1.html">
-          继续阅读
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-05-23 00:00:00+00:00">2024年5月23日</time></li>
-        
-          <li class="md-meta__item">
-            分类于
-            
-              <a href="category/scientific-witchery.html" class="md-meta__link">Scientific Witchery</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              需要 4 分钟阅读时间
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="wireworld-simulator-using-the-raylib-part2"><a class="toclink" href="2024/05/23/wireworld-simulator-using-the-raylib-part2.html">Wireworld Simulator Using the Raylib: Part2</a></h2>
-<p>继续<a href="2024/05/20/wireworld-simulator-using-the-raylib-part1.html">上一部分</a>。</p>
-<p>这部分主要实现 <strong>无限画布</strong> 的功能，包含视角移动、视图缩放、网格自动拓展。</p>
-<p>项目地址：<a href="https://github.com/13m0n4de/wireworld">github.com/13m0n4de/wireworld</a></p>
-
-    
-      <nav class="md-post__action">
-        <a href="2024/05/23/wireworld-simulator-using-the-raylib-part2.html">
           继续阅读
         </a>
       </nav>
