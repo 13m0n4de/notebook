@@ -5,7 +5,7 @@ categories:
 tags: [Djot, MkDocs, PyO3, Rust, Python]
 ---
 
-# Replacing Markdown with Djot in MkDocs
+# Using Djot instead of Markdown in MkDocs
 
 本文 Markdown 含量为 0.59 ‰，消耗咖啡液和温水共 2000 ml，合计咖啡因约 310 mg。
 
