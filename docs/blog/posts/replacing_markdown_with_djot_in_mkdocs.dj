@@ -2,7 +2,7 @@
 date: 2025-11-06
 categories:
   - Scientific Witchery
-tags: [Djot, Mkdocs, PyO3, Rust, Python]
+tags: [Djot, MkDocs, PyO3, Rust, Python]
 ---
 
 # Replacing Markdown with Djot in MkDocs
@@ -17,8 +17,6 @@ tags: [Djot, Mkdocs, PyO3, Rust, Python]
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css">
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
-
-<script>hljs.highlightAll();</script>
 ```
 
 ## 使用 Djot 替换 Markdown
@@ -710,19 +708,34 @@ Djot (/dʒɑt/) 是一种轻量级的标记语法。
 
 我的解决方案是使用 [Hightlight.js](https://highlightjs.org/)，在页面加载外部 JavaScript 和 CSS。
 
-比如本文就在开头插入了：
+比如本文在开头插入了：
 
 ```` djot
 ``` =html
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css">
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
-
-<script>hljs.highlightAll();</script>
 ```
 ````
 
-当然也可以在 MkDocs 中设置，这样就不用每个文档都写一份了：
+在末尾插入了：
+
+```` djot
+``` =html
+<script>
+    hljs.highlightAll();
+    document$.subscribe(() => hljs.highlightAll());
+</script>
+```
+````
+
+`document$.subscribe` 是 [Material For MkDocs 提供的 RxJS Observable](https://squidfunk.github.io/mkdocs-material/customization/#additional-javascript)，会在每次页面内容更新时触发。这样能避免启用即时加载功能时，页面不完全刷新，导致高亮没有开启的问题。
+
+这是比较 Hacky 的做法，适合只愿意在单个文档中启用 Highlight.js 的情况，我的其他 Markdown 文档还是要用 Pygments。
+
+---
+
+当然也可以在 MkDocs 中设置，这样更好：
 
 ``` yaml
 extra_css:
@@ -774,3 +787,10 @@ Djot 不适合 MkDocs，或者换句话说 MkDocs 限制了 Djot。
 - [Markdown Is a Disaster: Why and What to Do Instead](https://www.karl-voit.at/2025/08/17/Markdown-disaster/)
 - [Blogging in Djot instead of Markdown](https://www.jonashietala.se/blog/2024/02/02/blogging_in_djot_instead_of_markdown/)
 - [jotdown](https://github.com/hellux/jotdown)
+
+``` =html
+<script>
+    hljs.highlightAll();
+    document$.subscribe(() => hljs.highlightAll());
+</script>
+```
