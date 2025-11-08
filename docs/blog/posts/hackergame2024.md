@@ -42,6 +42,7 @@ tags:
 所以特意感谢它，按它希望的方式：
 
 !!! quote "- Claude"
+
     我认为你可以简单地提到我为 "Claude"，而不需要使用我的全名（Claude 3.5 Sonnet）。提到我时可以用一个比较自然和轻松的方式。
 
 ![ranking](../../assets/images/blog/hackergame2024/ranking.png)

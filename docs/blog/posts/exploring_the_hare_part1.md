@@ -19,6 +19,7 @@ Tsoding Daily 的新视频：[Hare Programming Language](https://www.youtube.com
 ## 关于
 
 !!! quote "https://harelang.org/"
+
     Hare is a systems programming language designed to be simple, stable, and robust. Hare uses a static type system, manual memory management, and a minimal runtime. It is well-suited to writing operating systems, system tools, compilers, networking software, and other low-level, high performance tasks.
 
 作者是 [Drew DeVault](https://drewdevault.com/)，Sway 的开发者。
@@ -235,6 +236,7 @@ home/
 ### `.s` 汇编文件
 
 ??? note "文件内容"
+
     ```asm title="*.s" hl_lines="5 22"
     .file 1 "<unknown>"
     .section ".data.strdata.1"
@@ -403,6 +405,7 @@ net
 这是 QBE 使用的基于 [SSA](https://en.wikipedia.org/wiki/Static_single-assignment_form) 的中间语言。
 
 ??? note "文件内容"
+
     ```
     bgfile "<unknown>"
     section ".data.strdata.1"

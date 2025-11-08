@@ -161,6 +161,7 @@ DrawRectangle(160, 100, cellSize, cellSize, CONDUCTOR_COLOR);
 ![elements](../../assets/images/blog/wireworld_simulator_using_the_raylib/cells.png)
 
 ??? example "当前完整代码"
+
     ```c linenums="1"
     #include "raylib.h"
 
@@ -296,6 +297,7 @@ while (!WindowShouldClose()) {
 ```
 
 ??? example "当前完整代码"
+
     ```c linenums="1"
     #include "raylib.h"
 
@@ -482,6 +484,7 @@ Your browser does not support the video tag.
 </video>
 
 ??? example "当前完整代码"
+
     ```c linenums="1"
     #include <string.h>
     #include "raylib.h"
@@ -668,6 +671,7 @@ while (!WindowShouldClose()) {
 ```
 
 ??? example "当前完整代码"
+
     ```c linenums="1"
     #include <string.h>
     #include "raylib.h"
@@ -908,6 +912,7 @@ Your browser does not support the video tag.
 这种方案不能手动放置电子尾。
 
 ??? example "方案一完整代码"
+
     ```c linenums="1"
     #include <string.h>
     #include "raylib.h"
@@ -1179,6 +1184,7 @@ Your browser does not support the video tag.
 </video>
 
 ??? example "方案二完整代码"
+
     ```c linenums="1"
     #include <string.h>
     #include "raylib.h"
@@ -1586,6 +1592,7 @@ int main(void) {
 ```
 
 ??? example "当前完整代码"
+
     ```c
     #include <stdlib.h>
     #include "raylib.h"
@@ -1942,6 +1949,7 @@ Your browser does not support the video tag.
 </video>
 
 ??? example "当前完整代码"
+
     ```c linenums="1"
     #include <stdlib.h>
     #include "raylib.h"
