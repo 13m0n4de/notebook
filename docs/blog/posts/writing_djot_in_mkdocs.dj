@@ -1,0 +1,776 @@
+---
+date: 2025-11-06
+categories:
+  - Scientific Witchery
+tags: [Djot, Mkdocs, PyO3, Rust, Python]
+---
+
+# Writing Djot in MkDocs
+
+本文 Markdown 含量为 0.59 ‰，消耗咖啡液和温水共 2000 ml，合计咖啡因约 310 mg。
+
+仓库：[github.com/13m0n4de/mkdocs-djot](https://github.com/13m0n4de/mkdocs-djot)
+
+<!-- more -->
+
+``` =html
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+```
+
+## 使用 Djot 替换 Markdown
+
+### 什么是 Djot
+
+{.admonition .quote}
+:::
+{.admonition-title}
+作者 John MacFarlane 的介绍
+
+Djot (/dʒɑt/) 是一种轻量级的标记语法。它的大部分特性源自 CommonMark，但修复了 CommonMark 语法中一些复杂且难以高效解析的问题。Djot 的功能也比 CommonMark 更加全面，支持定义列表、脚注、表格、多种新型行内格式（插入、删除、高亮、上标、下标）、数学公式、智能标点、可应用于任何元素的属性，以及用于块级、行内和原始内容的通用容器。该项目最初是为了实现我在 [Beyond Markdown](https://johnmacfarlane.net/beyond-markdown.html) 一书中提出的一些想法而发起的。
+:::
+
+John MacFarlane 同时也是 [Pandoc](https://pandoc.org/) 和 [CommonMark](https://commonmark.org/) 的作者。很显然他在试图推进 Markdown 标准化的过程中遭遇了不少阻力，最终决定创造 Djot。
+
+你可以在 [Djot](https://djot.net/) 查看更多介绍和语法说明，它在保持简洁的同时解决了许多 Markdown 的问题，功能也更加全面。
+
+![standards_2x.png](https://imgs.xkcd.com/comics/standards_2x.png)
+
+### 为什么不是 Markdown
+
+Markdown 作为最流行的[轻量级标记语言（Lightweight markup language, LML）](https://en.wikipedia.org/wiki/Lightweight_markup_language)，并没有看上去那么 Simple：
+
+1. **缺乏真正的规范**：[John Gruber 本人最初的规范](https://daringfireball.net/projects/markdown/)也包含着歧义，不同的项目有自己的解析规则
+2. **标准散乱，[变体太多][Markdown Flavors]**：本站 MkDocs 文档就是一个例子，基于 [Python Markdown][]，还配置了一堆[拓展][Python Markdown Extensions]
+3. **缺乏真正的可拓展性**：没办法在不破坏解析方式的情况下拓展语法
+4. ……
+
+[Markdown Flavors]: https://github.com/commonmark/commonmark-spec/wiki/Markdown-Flavors
+[Python Markdown]: https://python-markdown.github.io/
+[Python Markdown Extensions]: https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/
+
+我的日常使用中，除了 MkDocs 用的 Python Markdown，还会经常用到 CommonMark 和 GitHub-Flavored Markdown，甚至还有 Obsidian 的特殊语法。
+
+如果你问我：「什么是 Markdown？」我很难描述，甚至很难给出一个链接告诉你：「这就是 Markdown」。
+
+我只能说：「如果它以一个或多个 `#` 开头，它就是一个标题行……大概这样的标记语言。但你想在哪里使用 Markdown 呢？因为处处都不一样」。
+
+我没法在此一一列举 Markdown 的所有问题，这里有一篇更好的文章：[Markdown Is a Disaster: Why and What to Do Instead][]。
+
+文章作者 Karl Voit 在其中还提到 LML 最重要的四个特征：
+
+1. *易于人类阅读*
+2. *易于人类学习*
+3. *格式易于人工输入 （或由工具生成）*
+4. *易于通过工具处理*
+
+他认为 Markdown 只满足了第一点，这也与我在团队里收到的反馈相同：
+
+1. 大家都觉得看着很舒服，因为以前他们更多用 Word，而 Word 想要写好可不简单——干得好，微软
+2. 团队成员时不时会抱怨，Markdown 语法很难学，准确来说是很难记，我有时也会记混
+3. 有人反馈过写起来麻烦，但编辑器的补全和快捷键缓解了这个问题
+4. [Markdown 的解析器很难编写](https://mtirado.com/blog/writing-a-markdown-parser-is-hard/)，*非 常 难*。
+
+---
+
+好吧，真正让我难过的是第四点。
+
+前段时间我尝试用 [nom](https://github.com/rust-bakery/nom/) 编写一个剧本解析器。由于团队在用 Obsidian 写文档，剧本的格式就打算基于 Obsidian 的 Markdown 语法做简单扩展。
+
+结果我发现，这个“简单扩展”迫使我几乎从头实现 CommonMark 解析器。因为：
+
+1. Obsidian 的语法已经是某种 Markdown 方言
+2. 没有任何现成 Parser 能处理「Obsidian 语法」+「Obsidian 插件语法」这个语法组合
+3. 我的扩展也进一步破坏了标准 Markdown 结构（因为原版 Markdown 没有给出合适的拓展方案）
+
+手写 Parser 的过程中，我必须仔细确定使用了哪些元素及其变体，嵌套情况下应该有什么行为，边界情况该怎么解析，什么时候该转义，如何识别 HTML 代码……
+
+最终我意识到，「Markdown 易于重用」是个错觉。每个项目都有自己的方言，迁移文本远比想象中困难。这让我开始担心，我的博客和笔记本将来迁移会有多麻烦。
+
+### 为什么不是其他标记语言
+
+当然还有很多 LML 可选：[reStructuredText][]、[MediaWiki][]、[AsciiDoc][]、[Org-mode][]……
+
+语法和工具上的对比可以看这个表格：[Lightweight Markup][]
+
+[reStructuredText]: https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
+[MediaWiki]: https://www.mediawiki.org/wiki/MediaWiki
+[AsciiDoc]: https://docs.asciidoctor.org/asciidoc/latest/
+[Org-mode]: https://orgmode.org/
+
+我只简单说明不用它们的理由，不详细展开：
+
+- reStructuredText：学习曲线陡峭，手写繁琐，对缩进要求严格
+- MediaWiki：语法不一致，复杂嵌套时可读性差
+- AsciiDoc：语法不一致，并且为了某些功能设计了相当复杂的语法（对我来说是过度设计）
+
+Org-mode 比较特殊，理由只有一个：当初我选择了 Vim 而非 Emacs，因此错过了 Emacs 生态，而每次试图学习 Org-mode 时我都认为应该先将我的编辑器习惯迁移到 Emacs 去。
+
+Karl Voit 让我知道[不需要在 Emacs 中也可以很好地编写 Org-mode 标记语言](https://karl-voit.at/2021/11/27/orgdown/)，你绝对要看一下他提出的 [Orgdown][] 项目。
+
+既然 Org-mode 变成还不错的选择了，是不是意味着这篇文章……到此结束？
+
+### 为什么是 Djot 而不是 Org-mode
+
+并不，我的理由是：Djot 更接近 Markdown，迁移成本更低。
+
+如果我想复用 Python Markdown 或其他 Markdown 变体中特殊语法的渲染效果，Djot 只需要给文档块添加属性就可以了。而 Org-mode 可能需要编写导出过滤器，并且更难融合进 MkDocs。
+
+至于生态，目前 Djot 生态还不如 Org-mode 在 Emacs 外的生态呢，但追逐新鲜事物总是很有趣不是吗？
+
+选择权永远在自己手中，而我选择了 Djot。所以，不要再纠结[为什么圣经能挡子弹](https://tvtropes.org/pmwiki/pmwiki.php/Main/PocketProtector)了，让电影继续吧 :)
+
+## 编写 MkDocs 插件
+
+太好了，终于开始做一些实事了。
+
+要将 Djot 文件渲染到 [MkDocs](https://www.mkdocs.org/) 页面上，最好的方式是编写一个 MkDocs 插件，在构建过程中“拦截”文档处理流程。
+
+### MkDocs 插件的工作原理
+
+在构建网站时，MkDocs 会在不同阶段触发特定的事件，插件可以注册这些事件的处理函数，在恰当的时机介入构建流程。
+
+根据[官方文档](https://www.mkdocs.org/dev-guide/plugins/#developing-plugins)，这些事件分为两类：
+
+*全局事件*（每次构建发生一次）：
+
+1. `on_startup`：MkDocs 启动时触发
+2. `on_config`：配置加载完成后触发，可以修改配置
+3. `on_pre_build`：构建前准备，可以进行预处理
+4. `on_files`：文件集合构建完成，可以添加/删除/修改文件列表
+5. `on_nav`：导航结构构建完成，可以修改导航
+6. `on_env`：Jinja2 环境配置完成
+
+*页面事件*（每个页面都会执行）：
+
+对于 `files` 中的每个页面，依次触发：
+
+1. `on_pre_page`：页面处理前的准备工作
+2. `on_page_read_source`：读取源文件内容（已弃用）
+3. `on_page_markdown`：Markdown 代码从文件加载完毕，可用于修改 Markdown 源文本
+4. `on_page_content`：HTML 生成后，可以修改 HTML 内容
+5. `on_page_context`：模板上下文准备完成
+6. `on_post_page`：模板渲染完成，即将写入磁盘
+
+``` =html
+<details class="note">
+<summary>MkDocs Plugin Events 关系图</summary>
+<p>
+    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/mkdocs/mkdocs/raw/refs/heads/master/docs/img/plugin-events.svg" data-desc-position="bottom">
+        <img alt="plugin-events.svg" src="https://github.com/mkdocs/mkdocs/raw/refs/heads/master/docs/img/plugin-events.svg">
+    </a>
+</p>
+</details>
+```
+
+### 插件 Python 代码
+
+项目用 [uv](https://github.com/astral-sh/uv) 创建，结构如下：
+
+```
+mkdocs-djot/
+├── pyproject.toml
+└── src
+    └── mkdocs_djot
+        ├── __init__.py
+        └── plugin.py
+```
+
+MkDocs 默认不会将拓展名为 `.dj` 和 `.djot` 的文件视为文档文件，也就不会在后续步骤中处理它们：
+
+``` python
+class File:
+    def is_documentation_page(self) -> bool:
+        """Return True if file is a Markdown page."""
+        return utils.is_markdown_file(self.src_uri)
+
+def is_markdown_file(path: str) -> bool:
+    """
+    Return True if the given file path is a Markdown file.
+
+    https://superuser.com/questions/249436/file-extension-for-markdown-files
+    """
+    return path.endswith(markdown_extensions)
+```
+
+我的做法是在 `on_files` 事件发生时，覆盖 Djot 对应 [`File`](https://www.mkdocs.org/dev-guide/api/#mkdocs.structure.files.File) 对象的 `is_documentation_page` 方法，使其返回 `True`。
+
+``` python
+class DjotPlugin(BasePlugin):
+    config_scheme = (
+        (
+            "extensions",
+            config_options.ListOfItems(
+                config_options.Type(str), default=[".dj", ".djot"]
+            ),
+        ),
+    )
+
+    def should_include(self, file: File) -> bool:
+        return file.src_path.endswith(tuple(self.config["extensions"]))
+
+    def on_files(self, files: Files, /, *, config: MkDocsConfig) -> Files | None:
+        for file in files:
+            if self.should_include(file):
+                file.is_documentation_page = lambda: True
+
+                # Clear cached properties so they get recalculated
+                for attr in ("dest_uri", "url", "abs_dest_path", "name"):
+                    file.__dict__.pop(attr, None)
+
+        return files
+```
+
+需要注意的就是 `dest_uri` 等属性是 [`cached_property`](https://docs.python.org/3/library/functools.html#functools.cached_property) 的，需要手动清除，使其基于 `is_documentation_page = lambda: True` 重新计算，不然页面没法通过 `.html` 结尾的 URL 访问。
+
+再之后需要劫持渲染，从原本的 Markdown -> HTML 渲染逻辑替换为 Djot -> HTML 。
+
+这一步可以在很多时机进行，比如在 `on_page_markdown` 时渲染 Djot 文本，将渲染结果的 HTML 代码视为 Markdown 文本返回。（HTML 代码是合法的 Markdown 元素，所以之后再次经过 Markdown 渲染还是会生成一样的 HTML 代码）
+
+更好的做法是在 `on_pre_page` 时修改 [`Page`](https://www.mkdocs.org/dev-guide/themes/#mkdocs.structure.pages.Page) 的 `render` 方法。
+
+`render` 方法会转换 Markdown 文本为 HTML，赋值给 `content` 属性：
+
+``` python
+class Page(StructureItem):
+    def render(self, config: MkDocsConfig, files: Files) -> None:
+        """Convert the Markdown source file to HTML as per the config."""
+        if self.markdown is None:
+            raise RuntimeError("`markdown` field hasn't been set (via `read_source`)")
+        # ...
+        self.content = md.convert(self.markdown)
+        # ...
+```
+
+我定义了 `djot_render` 函数覆盖 `page.render`，与原版 `render` 逻辑一致，只是使用了 `render_to_html` 函数来渲染 Djot：
+
+``` python
+class DjotPlugin(BasePlugin):
+    def on_pre_page(
+        self, page: Page, /, *, config: MkDocsConfig, files: Files
+    ) -> Page | None:
+        if not self.should_include(page.file):
+            return page
+
+        def djot_render(config: MkDocsConfig, files: Files) -> None:
+            if page.markdown is None:
+                raise RuntimeError("`markdown` field hasn't been set")
+            # ...
+            page.content = render_to_html(page.markdown)
+
+        page.render = djot_render
+
+        return page
+```
+
+它最终会在 `on_page_markdown` 和 `on_page_content` 之间被调用。
+
+### 使用 Rust 渲染 Djot
+
+很可惜截至目前（2025-11-06）还没有任何 Python 版本的 Djot 解析器，`render_to_html` 函数的实现会很麻烦。先写个 Python 版本的解析器？还是算了吧。
+
+最终我决定使用 [jotdown][] 和 [Pyo3](https://pyo3.rs/)，希望我们不用再经历一次“为什么是 xxx”。
+
+jotdown 是 Rust 编写的 Djot 解析器。而 PyO3 是一个能够将 Rust 代码编译为 Python 原生扩展模块（`.so` 或 `.pyd` 文件）的 Rust 库。
+
+项目由 PyO3 的辅助工具 [Maturin](https://www.maturin.rs/) 创建，它会帮忙设置必要的 `Cargo.toml` 和 `pyproject.toml` 信息，也可以更快捷地构建和发布。
+
+项目结构：
+
+```
+jotdown_py/
+├── Cargo.toml
+├── pyproject.toml
+└── src
+    └── lib.rs
+```
+
+实现很直接，用 PyO3 包装 jotdown 的渲染函数：
+
+``` rust
+#[pyfunction]
+fn render_to_html(djot_text: &str) -> PyResult<String> {
+    let mut html = String::new();
+    let events = jotdown::Parser::new(djot_text);
+    jotdown::html::Renderer::default()
+        .push(events, &mut html)
+        .map_err(|e| PyErr::new::<PyRuntimeError, _>(format!("HTML rendering failed: {e}")))?;
+
+    Ok(html)
+}
+
+#[pymodule]
+fn jotdown_py(m: &Bound<'_, PyModule>) -> PyResult<()> {
+    m.add_function(wrap_pyfunction!(render_to_html, m)?)?;
+
+    Ok(())
+}
+```
+
+编译后，Python 可以像普通 Python 模块一样导入和使用它：
+
+``` python
+from jotdown_py import render_to_html
+
+html = render_to_html("# Hello, Djot!")
+```
+
+### Rust/Python 混合项目
+
+目前，`jotdown_py`（jotdown 的包装）和 `mkdocs-djot`（MkDocs 插件）是分离的两个项目，我需要将 `jotdown_py` 发布为一个 Python 包，在 `mkdocs-djot` 中导入 `jotdown_py`，最后再把 `mkdocs-djot` 发布出去。
+
+太分散了，需要维护两个项目，只有将前者制作成完整的 Rust-Python binding package 时才有必要，而我没这个想法。
+
+我从 [Maturin User Guide](https://www.maturin.rs/project_layout.html#mixed-rustpython-project) 找到了混合项目的设置方法，只需在 `pyproject.toml` 添加：
+
+``` toml
+[tool.maturin]
+python-source = "mkdocs_djot"
+```
+
+将 MkDocs 插件代码放在 `mkdocs_djot/` 下，两个 `pyproject.toml` 内容也可以合并在一起。
+
+最终项目结构是这样：
+
+```
+mkdocs-djot/
+├── Cargo.toml
+├── mkdocs_djot
+│   ├── __init__.py
+│   └── plugin.py
+├── pyproject.toml
+└── src
+    └── lib.rs
+```
+
+Python 中导入的命名空间需要略微修改：
+
+``` python
+from mkdocs_djot.jotdown_py import render_to_html
+```
+
+### 在 MkDocs 中使用
+
+在 MkDocs 项目中安装 `mkdocs-djot`，添加到插件列表：
+
+``` yaml
+plugins:
+  - djot
+```
+
+此时任何 `.dj` 或 `.djot` 结尾的文档都会被渲染成 HTML 页面。
+
+名称可以用 `djot` 是因为在 `pyproject.toml` 中设置了：
+
+``` toml
+[project.entry-points."mkdocs.plugins"]
+djot = "mkdocs_djot.plugin:DjotPlugin"
+```
+
+## 处理元信息
+
+呼，阶段性胜利。但……页面上好像少了什么？
+
+哦，是右侧的目录（TOC），还有标题锚点也不见了。
+
+因为[刚刚][插件 Python 代码]在覆盖方法时略过了原版 `render` 还会做的其他事情：
+
+``` python
+def render(self, config: MkDocsConfig, files: Files) -> None:
+    """Convert the Markdown source file to HTML as per the config."""
+    if self.markdown is None:
+        raise RuntimeError("`markdown` field hasn't been set (via `read_source`)")
+
+    md = markdown.Markdown(
+        extensions=config['markdown_extensions'],
+        extension_configs=config['mdx_configs'] or {},
+    )
+
+    raw_html_ext = _RawHTMLPreprocessor()
+    raw_html_ext._register(md)
+
+    extract_anchors_ext = _ExtractAnchorsTreeprocessor(self.file, files, config)
+    extract_anchors_ext._register(md)
+
+    relative_path_ext = _RelativePathTreeprocessor(self.file, files, config)
+    relative_path_ext._register(md)
+
+    extract_title_ext = _ExtractTitleTreeprocessor()
+    extract_title_ext._register(md)
+
+    self.content = md.convert(self.markdown)
+    self.toc = get_toc(getattr(md, 'toc_tokens', []))
+    self._title_from_render = extract_title_ext.title
+    self.present_anchor_ids = (
+        extract_anchors_ext.present_anchor_ids | raw_html_ext.present_anchor_ids
+    )
+    if log.getEffectiveLevel() > logging.DEBUG:
+        self.links_to_anchors = relative_path_ext.links_to_anchors
+```
+
+MkDocs 使用 [Treeprocessor](https://python-markdown.github.io/reference/markdown/treeprocessors/) 分析 Markdown AST，从中提取锚点、标题、TOC 这些页面元信息。
+
+我肯定是没法获得与 Markdown 相同的 AST 来复用逻辑了，现在有两条路：
+
+1. *绑定完整的 jotdown 实现*，向 Python 暴露 Djot event，在 Python 里分析 Event 流获得元信息
+2. *在 Rust 里提取信息返回给 Python*
+
+我一直在思考，jotdown_py 是否有必要作为一个完整的绑定库进行维护，它该是 Python 解析 Djot 的良好方式吗？Djot 不成熟，jotdown 也[不成熟](https://github.com/hellux/jotdown/issues/53)，未来还是交给纯 Python 实现吧。
+
+所以，我选 2。
+
+### 从 Event 流里提取信息
+
+jotdown 将 Djot 文档解析为一系列 [Event](https://docs.rs/jotdown/latest/jotdown/enum.Event.html)（事件）。
+
+每个元素可能由一个或多个事件组成：容器元素（如标题、段落、列表）用 `Event::Start` 开始，包含其内部内容的事件，最后用 `Event::End` 结束；而原子元素（如文本、换行）则由单个事件表示。
+
+比如这段 Djot：
+
+``` djot
+# Hello, World!
+
+A paragraph.
+```
+
+会被解析为以下事件流：
+
+``` rust
+Start(Section { id: "Hello-World" }, {})
+Start(Heading { level: 1, has_section: true, id: "Hello-World" }, {})
+Str("Hello, World!")
+End(Heading { level: 1, has_section: true, id: "Hello-World" })
+Blankline
+Start(Paragraph, {})
+Str("A paragraph.")
+End(Paragraph)
+End(Section { id: "Hello-World" })
+```
+
+要提取页面元信息（标题、TOC、锚点），我们只需要遍历这个事件流，在遇到 `Heading` 容器时记录信息：
+
+``` rust
+#[pyfunction]
+fn extract_metadata<'py>(py: Python<'py>, djot_text: &str) -> PyResult<Bound<'py, PyDict>> {
+    let mut metadata = PageMetadata::new();
+    let mut heading_ctx = HeadingContext::new();
+
+    for event in jotdown::Parser::new(djot_text) {
+        match event {
+            // 标题开始：记录层级和 ID
+            jotdown::Event::Start(jotdown::Container::Heading { level, id, .. }, _) => {
+                heading_ctx.start_heading(&mut metadata, level, &id);
+            }
+            // 标题内的文本：累积标题内容
+            jotdown::Event::Str(text) if heading_ctx.active_heading_level.is_some() => {
+                heading_ctx.append_text(&text);
+            }
+            // 标题结束：保存标题文本
+            jotdown::Event::End(jotdown::Container::Heading { .. })
+                if heading_ctx.active_heading_level.is_some() =>
+            {
+                if let Some(title) = heading_ctx.end_heading(&mut metadata) {
+                    metadata.title = Some(title);
+                }
+            }
+
+            _ => {}
+        }
+    }
+
+    metadata.to_py_dict(py)
+}
+```
+
+`HeadingContext` 是个辅助结构，用来追踪当前是否在标题内部、标题层级、以及累积的标题文本。这样写是为了避免在函数里定义一堆临时变量，让代码好看一些。
+
+这个函数最终返回一个 Python 字典，包含：
+
+- `title`：页面标题（第一个 H1）
+- `toc_tokens`：TOC 树
+- `anchors`：所有标题的锚点 ID 集合
+
+其中 `toc_tokens` 和 `anchors` 的内容是都是在标题开始时构建的，让我们看看 `start_heading` 做了什么：
+
+``` rust
+impl HeadingContext {
+    fn start_heading(&mut self, metadata: &mut PageMetadata, level: u16, id: &str) {
+        if !id.is_empty() {
+            metadata.anchors.push(id.to_lowercase()); // 添加到锚点列表
+        }
+
+        let idx = metadata.toc_builder.add_token(id.to_string(), level); // 添加到 TOC 树
+        self.active_heading_level = Some(level);
+        self.active_token_idx = Some(idx);
+        self.heading_text.clear();
+    }
+```
+
+### 从扁平序列到树形结构
+
+现在，TOC 需要一个嵌套的树形结构，例如：
+
+```
+H1: Introduction
+  H2: Background
+  H2: Motivation
+H1: Implementation
+  H2: Algorithm
+    H3: Complexity
+  H2: Optimization
+```
+
+但从 Event 流中得到的标题序列是扁平的：
+
+```
+H1 (level=1, id="Introduction")
+H2 (level=2, id="Background")
+H2 (level=2, id="Motivation")
+H1 (level=1, id="Implementation")
+H2 (level=2, id="Algorithm")
+H3 (level=3, id="Complexity")
+H2 (level=2, id="Optimization")
+```
+
+这个问题本质上是：*如何从线性序列构建树形结构？*
+
+*关键是找到每个节点的父节点*，我用了一个[单调栈](https://oi-wiki.org/ds/monotonous-stack/)来解决：
+
+- 栈底到栈顶：层级严格递增
+- 遇到新节点时，弹出所有 层级 >= 当前层级 的节点
+- 栈顶就是最近的父节点
+
+相关数据结构如下：
+
+``` rust
+struct TocToken {
+    id: String,
+    name: String,
+    level: u16,
+    child_indices: Vec<usize>, // 子节点索引
+}
+
+struct TocBuilder {
+    arena: Vec<TocToken>, // 节点数据
+    stack: Vec<usize>,  // 用于维护祖先链的单调栈
+    root_indices: Vec<usize>, // 根节点索引
+}
+```
+
+我把 `TocToken` 分配在 `arena` 里，栈中只存储元素索引，`TocToken` 的子节点也只存储索引。这样可以不重复存储 `TocToken` 数据，同时也避免了某些 Rust 所有权问题。
+
+由于最后需要输出根节点（可能有多个 H1），我把它们的索引缓存在 `root_indices`。
+
+当遇到标题 `Event` 时，调用 `add_token`，向树中插入一个节点：
+
+```rust
+impl TocBuilder {
+    fn add_token(&mut self, id: String, level: u16) -> usize {
+        let idx = self.arena.len();
+        let token = TocToken::new(id, level);
+        self.arena.push(token);
+
+        // 清理栈：移除所有层级 >= 当前层级的节点
+        self.stack
+            .retain(|&parent_idx| self.arena[parent_idx].level < level);
+
+        // 栈顶是父节点，将本节点设为子节点（如果栈为空，则当前节点是根节点）
+        if let Some(&parent_idx) = self.stack.last() {
+            self.arena[parent_idx].child_indices.push(idx);
+        } else {
+            self.root_indices.push(idx);
+        }
+
+        // 当前节点入栈，成为后续节点的潜在父节点
+        self.stack.push(idx);
+        idx
+    }
+}
+```
+
+算法的时间复杂度是 `O(n)` （n 为标题数量）。虽然有 `retain` 操作，但每个节点最多入栈和出栈各一次，总体仍是线性时间。空间复杂度也是 `O(n)`，用于存储所有节点。
+
+返回的时候手动转换为 Python 字典和列表（`PyDict` 和 `PyList`）：
+
+``` rust
+impl TocToken {
+    fn to_py_dict<'py>(&self, py: Python<'py>, arena: &[TocToken]) -> PyResult<Bound<'py, PyDict>> {
+        let dict = PyDict::new(py);
+        dict.set_item("id", &self.id)?;
+        dict.set_item("name", &self.name)?;
+        dict.set_item("level", self.level)?;
+
+        let children = PyList::empty(py);
+        for &child_idx in &self.child_indices {
+            children.append(arena[child_idx].to_py_dict(py, arena)?)?;
+        }
+        dict.set_item("children", children)?;
+
+        Ok(dict)
+    }
+}
+
+impl TocBuilder {
+    fn to_py_list<'py>(&self, py: Python<'py>) -> PyResult<Bound<'py, PyList>> {
+        let list = PyList::empty(py);
+        for &idx in &self.root_indices {
+            list.append(self.arena[idx].to_py_dict(py, &self.arena)?)?;
+        }
+        Ok(list)
+    }
+}
+```
+
+### 与 MkDocs 集成
+
+可能你会好奇：为什么选择返回这样的 `toc_tokens`？
+
+其实是因为我想要复用 `mkdocs.structure.toc` 里 `get_toc` 函数的逻辑：
+
+``` python
+def get_toc(toc_tokens: list[_TocToken]) -> TableOfContents:
+    toc = [_parse_toc_token(i) for i in toc_tokens]
+    # For the table of contents, always mark the first element as active
+    if len(toc):
+        toc[0].active = True  # type: ignore[attr-defined]
+    return TableOfContents(toc)
+
+def _parse_toc_token(token: _TocToken) -> AnchorLink:
+    anchor = AnchorLink(token['name'], token['id'], token['level'])
+    for i in token['children']:
+        anchor.children.append(_parse_toc_token(i))
+    return anchor
+```
+
+它能帮我更简单地构造 `TableOfContents`，我只需要传递和 `_TocToken` 一样有 `name`、`id`、`level`、`children` 字段的字典就可以了。
+
+最终，我的 `djot_render` 长这样：
+
+``` python
+def djot_render(config: MkDocsConfig, files: Files) -> None:
+    if page.markdown is None:
+        raise RuntimeError("`markdown` field hasn't been set")
+
+    metadata = extract_metadata(page.markdown)
+
+    page._title_from_render = metadata["title"]
+    page.toc = get_toc(metadata["toc_tokens"])
+    page.present_anchor_ids = metadata["anchors"]
+
+    page.content = render_to_html(page.markdown)
+
+    page.links_to_anchors = {}
+```
+
+## 使用 Djot 写博客
+
+实际上，*这篇文章就完全是用 Djot 写的*，如果你好奇它的内容：[writing\_djot\_in_mkdocs.dj](https://raw.githubusercontent.com/13m0n4de/notebook/refs/heads/main/docs/blog/posts/writing_djot_in_mkdocs.dj)
+
+其中有一些有趣的地方值得一提。
+
+### 复用样式
+
+比如我可以写下：
+
+``` djot
+{.admonition .quote}
+:::
+{.admonition-title}
+作者 John MacFarlane 的介绍
+
+Djot (/dʒɑt/) 是一种轻量级的标记语法。
+:::
+```
+
+以此获得 [Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/) 效果，也就是文章最开头的引用块。
+
+原本 Markdown 会这么写：
+
+```markdown
+!!! quote "作者 John MacFarlane 的介绍"
+    
+    Djot (/dʒɑt/) 是一种轻量级的标记语法。
+```
+
+它们都生成一模一样的 HTML：
+
+``` html
+<div class="admonition quote">
+    <p class="admonition-title">作者 John MacFarlane 的介绍</p>
+    <p>Djot (/dʒɑt/) 是一种轻量级的标记语法。</p>
+</div>
+```
+
+### 代码高亮
+
+失去了 [Pygments](https://pygments.org/) 的处理，代码块没法高亮了。
+
+我的解决方案是使用 [Hightlight.js](https://highlightjs.org/)，在页面加载外部 JavaScript 和 CSS。
+
+比如本文就在开头插入了：
+
+```` djot
+``` =html
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+```
+````
+
+当然也可以在 MkDocs 中设置，这样就不用每个文档都写一份了：
+
+``` yaml
+extra_css:
+  - https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js
+  - javascripts/init.js  # Contains: hljs.highlightAll();
+
+markdown_extensions:
+  - pymdownx.highlight:
+      use_pygments: false
+```
+
+### 已知的问题
+
+与 [Material for MkDocs 的 blog 插件](https://squidfunk.github.io/mkdocs-material/plugins/blog/) 一起使用时，索引页面仍会将文档视为 Markdown 格式处理。
+
+解决方法：
+
+1. 摘要部分尽量使用与 Markdown 兼容的 Djot 语法
+2. 修改 blog 插件的摘要分隔符配置，使用 Djot 注释语法
+
+```yaml
+plugins:
+  - blog:
+      post_excerpt_separator: {% more %}
+```
+
+注意：blog 插件不支持多个分隔符。混用 Markdown 和 Djot 文件时，只能接受插入不合自身语法的“注释标记”了。
+
+本文唯一的 Markdown 含量就是这么来的，注意到开头的 `<!-- more -->` 了吗。
+
+## 总结
+
+Djot 很好用，但我应该只会用它在 MkDocs 写这一篇文章了。想要将 Djot 融入 MkDocs 生态，一个简单的渲染插件做不到，长期来看 MkDocs 也不会从根本上支持 Markdown 以外的 LML，要做的工作太多。
+
+Djot 不适合 MkDocs，或者换句话说 MkDocs 限制了 Djot。
+
+我该用它去写自己的静态网站生成器，或者用它作为文章开头提到的剧本语法。
+
+还有 Org-mode，这次之后我也该去试试它，说不准以后是从 Org-mode 生成，而不是任何 Markdown 或 Better Markdown 呢。
+
+## 参考
+
+- [Djot](https://djot.net/)
+- [Markdown Is a Disaster: Why and What to Do Instead](https://www.karl-voit.at/2025/08/17/Markdown-disaster/)
+- [Lightweight Markup](https://hyperpolyglot.org/lightweight-markup)
+- [Orgdown](https://gitlab.com/publicvoit/orgdown)
+- [Blogging in Djot instead of Markdown](https://www.jonashietala.se/blog/2024/02/02/blogging_in_djot_instead_of_markdown/)
+- [jotdown](https://github.com/hellux/jotdown)
