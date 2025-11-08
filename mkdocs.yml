@@ -87,6 +87,7 @@ plugins:
     - nav_path_prefix
 - tags
 - blog
+- djot
 
 markdown_extensions:
 - abbr

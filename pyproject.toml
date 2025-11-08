@@ -7,9 +7,13 @@ requires-python = ">=3.12"
 dependencies = [
     "gitpython>=3.1.45",
     "mkdocs-changelog-plugin>=0.1.3",
+    "mkdocs-djot",
     "mkdocs-git-revision-date-localized-plugin>=1.4.7",
     "mkdocs-glightbox>=0.5.2",
     "mkdocs-material>=9.6.22",
     "mkdocs-rss-plugin>=1.17.4",
     "rich>=14.2.0",
 ]
+
+[tool.uv.sources]
+mkdocs-djot = { git = "https://github.com/13m0n4de/mkdocs-djot" }
