@@ -137,6 +137,10 @@ input.md-search__input::placeholder {
     text-decoration: none;
 }
 
+[data-md-color-scheme="catppuccin-macchiato"] .md-typeset mark {
+    color: var(--ctp-base)
+}
+
 [data-md-color-scheme="catppuccin-macchiato"] strong,
 [data-md-color-scheme="catppuccin-macchiato"] b {
     color: var(--ctp-teal);

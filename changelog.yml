@@ -1,4 +1,20 @@
 - "2025":
+  - "2025-11-06":
+    - newpage:
+        text: "Blog > Replacing Markdown with Djot in MkDocs"
+        href: blog/2025/11/06/replacing-markdown-with-djot-in-mkdocs.html
+  - "2025-11-06":
+    - function: 添加 Djot 语言支持
+  - "2025-10-23":
+    - newpage:
+        text: "Blog > Functional Pipeline Programming in Python"
+        href: blog/2025/10/23/functional-pipeline-programming-in-python.html
+  - "2025-10-23":
+    - function: 使用 Hooks 替代插件实现 TOC，更新依赖版本
+  - "2025-07-20":
+    - newpage:
+        text: "Blog > Markdown to PDF with Pandoc and Typst"
+        href: blog/2025/07/20/markdown-to-pdf-with-pandoc-and-typst.html
   - "2025-04-01":
     - newpage:
         text: "Security > Incidents > PowerGhost"

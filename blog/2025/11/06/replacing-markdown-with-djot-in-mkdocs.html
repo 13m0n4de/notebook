@@ -5,11 +5,11 @@
       
       
       
-        <link rel="canonical" href="https://13m0n4de.vercel.app/blog/2024/02/17/including-c-file-over-https.html">
+        <link rel="canonical" href="https://13m0n4de.vercel.app/blog/2025/11/06/replacing-markdown-with-djot-in-mkdocs.html">
       
       
+        <link rel="prev" href="../../10/23/functional-pipeline-programming-in-python.html">
       
-        <link rel="next" href="../18/exploring-the-hare-programming-language-part-1.html">
       
       
         <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../../../feed_rss_created.xml">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Including C File Over HTTPS - 13m0n4de's notebook</title>
+        <title>Replacing Markdown with Djot in MkDocs - 13m0n4de's notebook</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#including-c-file-over-https" class="md-skip">
+        <a href="#Replacing-Markdown-with-Djot-in-MkDocs" class="md-skip">
           跳转至
         </a>
       
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Including C File Over HTTPS
+              Replacing Markdown with Djot in MkDocs
             
           </span>
         </div>
@@ -2838,7 +2838,281 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-    <a href="#_1" class="md-nav__link">
+    <a href="#使用-Djot-替换-Markdown" class="md-nav__link">
+        <span class="md-ellipsis">
+            使用 Djot 替换 Markdown
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="使用 Djot 替换 Markdown">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#什么是-Djot" class="md-nav__link">
+        <span class="md-ellipsis">
+            什么是 Djot
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#为什么不是-Markdown" class="md-nav__link">
+        <span class="md-ellipsis">
+            为什么不是 Markdown
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#为什么不是其他标记语言" class="md-nav__link">
+        <span class="md-ellipsis">
+            为什么不是其他标记语言
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#为什么是-Djot-而不是-Org-mode" class="md-nav__link">
+        <span class="md-ellipsis">
+            为什么是 Djot 而不是 Org-mode
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#编写-MkDocs-插件" class="md-nav__link">
+        <span class="md-ellipsis">
+            编写 MkDocs 插件
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="编写 MkDocs 插件">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#MkDocs-插件的工作原理" class="md-nav__link">
+        <span class="md-ellipsis">
+            MkDocs 插件的工作原理
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#插件-Python-代码" class="md-nav__link">
+        <span class="md-ellipsis">
+            插件 Python 代码
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#使用-Rust-渲染-Djot" class="md-nav__link">
+        <span class="md-ellipsis">
+            使用 Rust 渲染 Djot
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#RustPython-混合项目" class="md-nav__link">
+        <span class="md-ellipsis">
+            Rust/Python 混合项目
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#在-MkDocs-中使用" class="md-nav__link">
+        <span class="md-ellipsis">
+            在 MkDocs 中使用
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#处理元信息" class="md-nav__link">
+        <span class="md-ellipsis">
+            处理元信息
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="处理元信息">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#从-Event-流里提取信息" class="md-nav__link">
+        <span class="md-ellipsis">
+            从 Event 流里提取信息
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#从扁平序列到树形结构" class="md-nav__link">
+        <span class="md-ellipsis">
+            从扁平序列到树形结构
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#与-MkDocs-集成" class="md-nav__link">
+        <span class="md-ellipsis">
+            与 MkDocs 集成
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#使用-Djot-写博客" class="md-nav__link">
+        <span class="md-ellipsis">
+            使用 Djot 写博客
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="使用 Djot 写博客">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#复用样式" class="md-nav__link">
+        <span class="md-ellipsis">
+            复用样式
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#代码高亮" class="md-nav__link">
+        <span class="md-ellipsis">
+            代码高亮
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#已知的问题" class="md-nav__link">
+        <span class="md-ellipsis">
+            已知的问题
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#总结" class="md-nav__link">
+        <span class="md-ellipsis">
+            总结
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#参考" class="md-nav__link">
         <span class="md-ellipsis">
             参考
         </span>
@@ -2885,7 +3159,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"></path></svg>
-                        <time datetime="2024-02-17 00:00:00+00:00" class="md-ellipsis">2024年2月17日</time>
+                        <time datetime="2025-11-06 00:00:00+00:00" class="md-ellipsis">2025年11月6日</time>
                       </div>
                     </li>
                     
@@ -2907,7 +3181,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"></path></svg>
                           <span class="md-ellipsis">
                             
-                              需要 1 分钟阅读时间
+                              需要 9 分钟阅读时间
                             
                           </span>
                         </div>
@@ -2934,13 +3208,31 @@
       
       
       
-        <a href="../../../tags.html#tag:c" class="md-tag">C</a>
+        <a href="../../../tags.html#tag:djot" class="md-tag">Djot</a>
       
     
       
       
       
-        <a href="../../../tags.html#tag:compiler" class="md-tag">Compiler</a>
+        <a href="../../../tags.html#tag:mkdocs" class="md-tag">Mkdocs</a>
+      
+    
+      
+      
+      
+        <a href="../../../tags.html#tag:pyo3" class="md-tag">PyO3</a>
+      
+    
+      
+      
+      
+        <a href="../../../tags.html#tag:python" class="md-tag">Python</a>
+      
+    
+      
+      
+      
+        <a href="../../../tags.html#tag:rust" class="md-tag">Rust</a>
       
     
   </nav>
@@ -2950,55 +3242,713 @@
   
 
 
-<h1 id="including-c-file-over-https">Including C File Over HTTPS<a class="headerlink" href="#including-c-file-over-https" title="Permanent link">¶</a></h1>
-<p>实现了一个有意思的效果，让 C 语言可以从互联网上 <code class="highlight"><span class="cp">#include</span></code> 头文件。</p>
-<div class="highlight"><span class="filename">include_files_from_internet.c</span><pre><span></span><code><span class="cp">#define STB_SPRINTF_IMPLEMENTATION</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;https://raw.githubusercontent.com/nothings/stb/master/stb_sprintf.h&gt;</span><span class="c1"> // &lt;- look at this </span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<section id="Replacing-Markdown-with-Djot-in-MkDocs">
+<h1>Replacing Markdown with Djot in MkDocs</h1>
+<p>本文 Markdown 含量为 0.59 ‰，消耗咖啡液和温水共 2000 ml，合计咖啡因约 310 mg。</p>
+<p>仓库：<a href="https://github.com/13m0n4de/mkdocs-djot">github.com/13m0n4de/mkdocs-djot</a></p>
+<p>&lt;!– more –&gt;</p>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
-
-<span class="w">    </span><span class="c1">// Using functions defined by stb_sprintf.h</span>
-<span class="w">    </span><span class="n">stbsp_sprintf</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="s">"Hello %s"</span><span class="p">,</span><span class="w"> </span><span class="s">"NAVI"</span><span class="p">);</span>
-<span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>你知道的，4202 年，Everything Over HTTPS（笑）。</p>
+<script>hljs.highlightAll();</script>
+<section id="使用-Djot-替换-Markdown">
+<h2>使用 Djot 替换 Markdown</h2>
+<section id="什么是-Djot">
+<h3>什么是 Djot</h3>
+<div class="admonition quote">
+<p class="admonition-title">作者 John MacFarlane 的介绍</p>
+<p>Djot (/dʒɑt/) 是一种轻量级的标记语法。它的大部分特性源自 CommonMark，但修复了 CommonMark 语法中一些复杂且难以高效解析的问题。Djot 的功能也比 CommonMark 更加全面，支持定义列表、脚注、表格、多种新型行内格式（插入、删除、高亮、上标、下标）、数学公式、智能标点、可应用于任何元素的属性，以及用于块级、行内和原始内容的通用容器。该项目最初是为了实现我在 <a href="https://johnmacfarlane.net/beyond-markdown.html">Beyond Markdown</a> 一书中提出的一些想法而发起的。</p>
+</div>
+<p>John MacFarlane 同时也是 <a href="https://pandoc.org/">Pandoc</a> 和 <a href="https://commonmark.org/">CommonMark</a> 的作者。很显然他在试图推进 Markdown 标准化的过程中遭遇了不少阻力，最终决定创造 Djot。</p>
+<p>你可以在 <a href="https://djot.net/">Djot</a> 查看更多介绍和语法说明，它在保持简洁的同时解决了许多 Markdown 的问题，功能也更加全面。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://imgs.xkcd.com/comics/standards_2x.png" data-desc-position="bottom"><img alt="standards_2x.png" src="https://imgs.xkcd.com/comics/standards_2x.png"></a></p>
+</section>
+<section id="为什么不是-Markdown">
+<h3>为什么不是 Markdown</h3>
+<p>Markdown 作为最流行的<a href="https://en.wikipedia.org/wiki/Lightweight_markup_language">轻量级标记语言（Lightweight markup language, LML）</a>，并没有看上去那么 Simple：</p>
+<ol>
+<li>
+<strong><strong>缺乏真正的规范</strong></strong>：<a href="https://daringfireball.net/projects/markdown/">John Gruber 本人最初的规范</a>也包含着歧义，不同的项目有自己的解析规则
+</li>
+<li>
+<strong><strong>标准散乱，<a href="https://github.com/commonmark/commonmark-spec/wiki/Markdown-Flavors">变体太多</a></strong></strong>：本站 MkDocs 文档就是一个例子，基于 <a href="https://python-markdown.github.io/">Python Markdown</a>，还配置了一堆<a href="https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/">拓展</a>
+</li>
+<li>
+<strong><strong>缺乏真正的可拓展性</strong></strong>：没办法在不破坏解析方式的情况下拓展语法
+</li>
+<li>
+……
+</li>
+</ol>
+<p>我的日常使用中，除了 MkDocs 用的 Python Markdown，还会经常用到 CommonMark 和 GitHub-Flavored Markdown，甚至还有 Obsidian 的特殊语法。</p>
+<p>如果你问我：「什么是 Markdown？」我很难描述，甚至很难给出一个链接告诉你：「这就是 Markdown」。</p>
+<p>我只能说：「如果它以一个或多个 <code>#</code> 开头，它就是一个标题行……大概这样的标记语言。但你想在哪里使用 Markdown 呢？因为处处都不一样」。</p>
+<p>我没法在此一一列举 Markdown 的所有问题，这里有一篇更好的文章：<a>Markdown Is a Disaster: Why and What to Do Instead</a>。</p>
+<p>文章作者 Karl Voit 在其中还提到 LML 最重要的四个特征：</p>
+<ol>
+<li>
+<strong>易于人类阅读</strong>
+</li>
+<li>
+<strong>易于人类学习</strong>
+</li>
+<li>
+<strong>格式易于人工输入 （或由工具生成）</strong>
+</li>
+<li>
+<strong>易于通过工具处理</strong>
+</li>
+</ol>
+<p>他认为 Markdown 只满足了第一点，这也与我在团队里收到的反馈相同：</p>
+<ol>
+<li>
+大家都觉得看着很舒服，因为以前他们更多用 Word，而 Word 想要写好可不简单——干得好，微软
+</li>
+<li>
+团队成员时不时会抱怨，Markdown 语法很难学，准确来说是很难记，我有时也会记混
+</li>
+<li>
+有人反馈过写起来麻烦，但编辑器的补全和快捷键缓解了这个问题
+</li>
+<li>
+<a href="https://mtirado.com/blog/writing-a-markdown-parser-is-hard/">Markdown 的解析器很难编写</a>，<strong>非 常 难</strong>。
+</li>
+</ol>
+<hr>
+<p>好吧，真正让我难过的是第四点。</p>
+<p>前段时间我尝试用 <a href="https://github.com/rust-bakery/nom/">nom</a> 编写一个剧本解析器。由于团队在用 Obsidian 写文档，剧本的格式就打算基于 Obsidian 的 Markdown 语法做简单扩展。</p>
+<p>结果我发现，这个“简单扩展”迫使我几乎从头实现 CommonMark 解析器。因为：</p>
+<ol>
+<li>
+Obsidian 的语法已经是某种 Markdown 方言
+</li>
+<li>
+没有任何现成 Parser 能处理「Obsidian 语法」+「Obsidian 插件语法」这个语法组合
+</li>
+<li>
+我的扩展也进一步破坏了标准 Markdown 结构（因为原版 Markdown 没有给出合适的拓展方案）
+</li>
+</ol>
+<p>手写 Parser 的过程中，我必须仔细确定使用了哪些元素及其变体，嵌套情况下应该有什么行为，边界情况该怎么解析，什么时候该转义，如何识别 HTML 代码……</p>
+<p>最终我意识到，「Markdown 易于重用」是个错觉。每个项目都有自己的方言，迁移文本远比想象中困难。这让我开始担心，我的博客和笔记本将来迁移会有多麻烦。</p>
+</section>
+<section id="为什么不是其他标记语言">
+<h3>为什么不是其他标记语言</h3>
+<p>当然还有很多 LML 可选：<a href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html">reStructuredText</a>、<a href="https://www.mediawiki.org/wiki/MediaWiki">MediaWiki</a>、<a href="https://docs.asciidoctor.org/asciidoc/latest/">AsciiDoc</a>、<a href="https://orgmode.org/">Org-mode</a>……</p>
+<p>语法和工具上的对比可以看这个表格：<a>Lightweight Markup</a></p>
+<p>我只简单说明不用它们的理由，不详细展开：</p>
 <ul>
-<li>My TinyCC Patch: <a href="https://gist.github.com/13m0n4de/84912522cce6db31da069baf1add04f8">https://gist.github.com/13m0n4de/84912522cce6db31da069baf1add04f8</a></li>
-<li>My Chibicc Patch: <a href="https://gist.github.com/13m0n4de/f2b4b8e71ce6a93530cbe9e4e45cbe71">https://gist.github.com/13m0n4de/f2b4b8e71ce6a93530cbe9e4e45cbe71</a></li>
+<li>
+reStructuredText：学习曲线陡峭，手写繁琐，对缩进要求严格
+</li>
+<li>
+MediaWiki：语法不一致，复杂嵌套时可读性差
+</li>
+<li>
+AsciiDoc：语法不一致，并且为了某些功能设计了相当复杂的语法（对我来说是过度设计）
+</li>
 </ul>
-<!-- more -->
+<p>Org-mode 比较特殊，理由只有一个：当初我选择了 Vim 而非 Emacs，因此错过了 Emacs 生态，而每次试图学习 Org-mode 时我都认为应该先将我的编辑器习惯迁移到 Emacs 去。</p>
+<p>Karl Voit 让我知道<a href="https://karl-voit.at/2021/11/27/orgdown/">不需要在 Emacs 中也可以很好地编写 Org-mode 标记语言</a>，你绝对要看一下他提出的 <a>Orgdown</a> 项目。</p>
+<p>既然 Org-mode 变成还不错的选择了，是不是意味着这篇文章……到此结束？</p>
+</section>
+<section id="为什么是-Djot-而不是-Org-mode">
+<h3>为什么是 Djot 而不是 Org-mode</h3>
+<p>并不，我的理由是：Djot 更接近 Markdown，迁移成本更低。</p>
+<p>如果我想复用 Python Markdown 或其他 Markdown 变体中特殊语法的渲染效果，Djot 只需要给文档块添加属性就可以了。而 Org-mode 可能需要编写导出过滤器，并且更难融合进 MkDocs。</p>
+<p>至于生态，目前 Djot 生态还不如 Org-mode 在 Emacs 外的生态呢，但追逐新鲜事物总是很有趣不是吗？</p>
+<p>选择权永远在自己手中，而我选择了 Djot。所以，不要再纠结<a href="https://tvtropes.org/pmwiki/pmwiki.php/Main/PocketProtector">为什么圣经能挡子弹</a>了，让电影继续吧 :)</p>
+</section>
+</section>
+<section id="编写-MkDocs-插件">
+<h2>编写 MkDocs 插件</h2>
+<p>太好了，终于开始做一些实事了。</p>
+<p>要将 Djot 文件渲染到 <a href="https://www.mkdocs.org/">MkDocs</a> 页面上，最好的方式是编写一个 MkDocs 插件，在构建过程中“拦截”文档处理流程。</p>
+<section id="MkDocs-插件的工作原理">
+<h3>MkDocs 插件的工作原理</h3>
+<p>在构建网站时，MkDocs 会在不同阶段触发特定的事件，插件可以注册这些事件的处理函数，在恰当的时机介入构建流程。</p>
+<p>根据<a href="https://www.mkdocs.org/dev-guide/plugins/#developing-plugins">官方文档</a>，这些事件分为两类：</p>
+<p><strong>全局事件</strong>（每次构建发生一次）：</p>
+<ol>
+<li>
+<code>on_startup</code>：MkDocs 启动时触发
+</li>
+<li>
+<code>on_config</code>：配置加载完成后触发，可以修改配置
+</li>
+<li>
+<code>on_pre_build</code>：构建前准备，可以进行预处理
+</li>
+<li>
+<code>on_files</code>：文件集合构建完成，可以添加/删除/修改文件列表
+</li>
+<li>
+<code>on_nav</code>：导航结构构建完成，可以修改导航
+</li>
+<li>
+<code>on_env</code>：Jinja2 环境配置完成
+</li>
+</ol>
+<p><strong>页面事件</strong>（每个页面都会执行）：</p>
+<p>对于 <code>files</code> 中的每个页面，依次触发：</p>
+<ol>
+<li>
+<code>on_pre_page</code>：页面处理前的准备工作
+</li>
+<li>
+<code>on_page_read_source</code>：读取源文件内容（已弃用）
+</li>
+<li>
+<code>on_page_markdown</code>：Markdown 代码从文件加载完毕，可用于修改 Markdown 源文本
+</li>
+<li>
+<code>on_page_content</code>：HTML 生成后，可以修改 HTML 内容
+</li>
+<li>
+<code>on_page_context</code>：模板上下文准备完成
+</li>
+<li>
+<code>on_post_page</code>：模板渲染完成，即将写入磁盘
+</li>
+</ol>
+<details class="note">
+<summary>MkDocs Plugin Events 关系图</summary>
+<p>
+    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/mkdocs/mkdocs/raw/refs/heads/master/docs/img/plugin-events.svg" data-desc-position="bottom">
+        <img alt="plugin-events.svg" src="https://github.com/mkdocs/mkdocs/raw/refs/heads/master/docs/img/plugin-events.svg">
+    </a>
+</p>
+</details>
+</section>
+<section id="插件-Python-代码">
+<h3>插件 Python 代码</h3>
+<p>项目用 <a href="https://github.com/astral-sh/uv">uv</a> 创建，结构如下：</p>
+<pre><code>mkdocs-djot/
+├── pyproject.toml
+└── src
+    └── mkdocs_djot
+        ├── __init__.py
+        └── plugin.py
+</code></pre>
+<p>MkDocs 默认不会将拓展名为 <code>.dj</code> 和 <code>.djot</code> 的文件视为文档文件，也就不会在后续步骤中处理它们：</p>
+<pre><code class="language-python">class File:
+    def is_documentation_page(self) -&gt; bool:
+        """Return True if file is a Markdown page."""
+        return utils.is_markdown_file(self.src_uri)
 
-<p>起因是 <a href="https://github.com/rexim">@rexim</a> 2021 年的时候发了一个视频：<a href="https://www.youtube.com/watch?v=4vSyqK3SK-0">Including C File Over HTTPS</a> ，他通过修改 TinyCC 编译器完成了上述效果。但是现在 TCC 有一些变化，他的补丁不能用了。</p>
-<p>我试着重新分析了 TCC 的源码，写了份新的 Patch。</p>
-<p>本想着记录分析过程，想了想也没什么值得记的，放在笔记本里不合适，就挪到这儿来了。</p>
-<p>而且还顺带给 chibicc 也写了份。</p>
-<p>不过 chibicc tokenize 的时候会把 <code>//</code> 之后的内容全部视为注释忽略掉，包括 <code>&lt;&gt;</code> 之间的内容，要改动的东西会比较多，就设计为把 HTTPS 链接放在双引号里：</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"https://raw.githubusercontent.com/nothings/stb/master/stb_sprintf.h"</span>
-</code></pre></div>
-<p>比起视频中的补丁，还额外添加了个一厢情愿的功能：让头文件下载到源码目录下，而不是当前目录（执行命令时的目录）下。</p>
-<div class="highlight"><pre><span></span><code>$ tcc /path/to/source/include_files_from_internet.c
-$ chibicc /path/to/source/include_files_from_internet.c
-</code></pre></div>
-<p>文件将被下载到 <code>/path/to/source/stb_sprintf.h</code></p>
-<p>结束后的感想，chibicc 比 TCC 的代码直观得多，注释也更全，感觉就像「我写大概也会是这样吧」，有种默契感。</p>
-<h2 id="_1">参考<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+def is_markdown_file(path: str) -&gt; bool:
+    """
+    Return True if the given file path is a Markdown file.
+
+    https://superuser.com/questions/249436/file-extension-for-markdown-files
+    """
+    return path.endswith(markdown_extensions)
+</code></pre>
+<p>我的做法是在 <code>on_files</code> 事件发生时，覆盖 Djot 对应 <a href="https://www.mkdocs.org/dev-guide/api/#mkdocs.structure.files.File"><code>File</code></a> 对象的 <code>is_documentation_page</code> 方法，使其返回 <code>True</code>。</p>
+<pre><code class="language-python">class DjotPlugin(BasePlugin):
+    config_scheme = (
+        (
+            "extensions",
+            config_options.ListOfItems(
+                config_options.Type(str), default=[".dj", ".djot"]
+            ),
+        ),
+    )
+
+    def should_include(self, file: File) -&gt; bool:
+        return file.src_path.endswith(tuple(self.config["extensions"]))
+
+    def on_files(self, files: Files, /, *, config: MkDocsConfig) -&gt; Files | None:
+        for file in files:
+            if self.should_include(file):
+                file.is_documentation_page = lambda: True
+
+                # Clear cached properties so they get recalculated
+                for attr in ("dest_uri", "url", "abs_dest_path", "name"):
+                    file.__dict__.pop(attr, None)
+
+        return files
+</code></pre>
+<p>需要注意的就是 <code>dest_uri</code> 等属性是 <a href="https://docs.python.org/3/library/functools.html#functools.cached_property"><code>cached_property</code></a> 的，需要手动清除，使其基于 <code>is_documentation_page = lambda: True</code> 重新计算，不然页面没法通过 <code>.html</code> 结尾的 URL 访问。</p>
+<p>再之后需要劫持渲染，从原本的 Markdown -&gt; HTML 渲染逻辑替换为 Djot -&gt; HTML 。</p>
+<p>这一步可以在很多时机进行，比如在 <code>on_page_markdown</code> 时渲染 Djot 文本，将渲染结果的 HTML 代码视为 Markdown 文本返回。（HTML 代码是合法的 Markdown 元素，所以之后再次经过 Markdown 渲染还是会生成一样的 HTML 代码）</p>
+<p>更好的做法是在 <code>on_pre_page</code> 时修改 <a href="https://www.mkdocs.org/dev-guide/themes/#mkdocs.structure.pages.Page"><code>Page</code></a> 的 <code>render</code> 方法。</p>
+<p><code>render</code> 方法会转换 Markdown 文本为 HTML，赋值给 <code>content</code> 属性：</p>
+<pre><code class="language-python">class Page(StructureItem):
+    def render(self, config: MkDocsConfig, files: Files) -&gt; None:
+        """Convert the Markdown source file to HTML as per the config."""
+        if self.markdown is None:
+            raise RuntimeError("`markdown` field hasn't been set (via `read_source`)")
+        # ...
+        self.content = md.convert(self.markdown)
+        # ...
+</code></pre>
+<p>我定义了 <code>djot_render</code> 函数覆盖 <code>page.render</code>，与原版 <code>render</code> 逻辑一致，只是使用了 <code>render_to_html</code> 函数来渲染 Djot：</p>
+<pre><code class="language-python">class DjotPlugin(BasePlugin):
+    def on_pre_page(
+        self, page: Page, /, *, config: MkDocsConfig, files: Files
+    ) -&gt; Page | None:
+        if not self.should_include(page.file):
+            return page
+
+        def djot_render(config: MkDocsConfig, files: Files) -&gt; None:
+            if page.markdown is None:
+                raise RuntimeError("`markdown` field hasn't been set")
+            # ...
+            page.content = render_to_html(page.markdown)
+
+        page.render = djot_render
+
+        return page
+</code></pre>
+<p>它最终会在 <code>on_page_markdown</code> 和 <code>on_page_content</code> 之间被调用。</p>
+</section>
+<section id="使用-Rust-渲染-Djot">
+<h3>使用 Rust 渲染 Djot</h3>
+<p>很可惜截至目前（2025-11-06）还没有任何 Python 版本的 Djot 解析器，<code>render_to_html</code> 函数的实现会很麻烦。先写个 Python 版本的解析器？还是算了吧。</p>
+<p>最终我决定使用 <a>jotdown</a> 和 <a href="https://pyo3.rs/">Pyo3</a>，希望我们不用再经历一次“为什么是 xxx”。</p>
+<p>jotdown 是 Rust 编写的 Djot 解析器。而 PyO3 是一个能够将 Rust 代码编译为 Python 原生扩展模块（<code>.so</code> 或 <code>.pyd</code> 文件）的 Rust 库。</p>
+<p>项目由 PyO3 的辅助工具 <a href="https://www.maturin.rs/">Maturin</a> 创建，它会帮忙设置必要的 <code>Cargo.toml</code> 和 <code>pyproject.toml</code> 信息，也可以更快捷地构建和发布。</p>
+<p>项目结构：</p>
+<pre><code>jotdown_py/
+├── Cargo.toml
+├── pyproject.toml
+└── src
+    └── lib.rs
+</code></pre>
+<p>实现很直接，用 PyO3 包装 jotdown 的渲染函数：</p>
+<pre><code class="language-rust">#[pyfunction]
+fn render_to_html(djot_text: &amp;str) -&gt; PyResult&lt;String&gt; {
+    let mut html = String::new();
+    let events = jotdown::Parser::new(djot_text);
+    jotdown::html::Renderer::default()
+        .push(events, &amp;mut html)
+        .map_err(|e| PyErr::new::&lt;PyRuntimeError, _&gt;(format!("HTML rendering failed: {e}")))?;
+
+    Ok(html)
+}
+
+#[pymodule]
+fn jotdown_py(m: &amp;Bound&lt;'_, PyModule&gt;) -&gt; PyResult&lt;()&gt; {
+    m.add_function(wrap_pyfunction!(render_to_html, m)?)?;
+
+    Ok(())
+}
+</code></pre>
+<p>编译后，Python 可以像普通 Python 模块一样导入和使用它：</p>
+<pre><code class="language-python">from jotdown_py import render_to_html
+
+html = render_to_html("# Hello, Djot!")
+</code></pre>
+</section>
+<section id="RustPython-混合项目">
+<h3>Rust/Python 混合项目</h3>
+<p>目前，<code>jotdown_py</code>（jotdown 的包装）和 <code>mkdocs-djot</code>（MkDocs 插件）是分离的两个项目，我需要将 <code>jotdown_py</code> 发布为一个 Python 包，在 <code>mkdocs-djot</code> 中导入 <code>jotdown_py</code>，最后再把 <code>mkdocs-djot</code> 发布出去。</p>
+<p>太分散了，需要维护两个项目，只有将前者制作成完整的 Rust-Python binding package 时才有必要，而我没这个想法。</p>
+<p>我从 <a href="https://www.maturin.rs/project_layout.html#mixed-rustpython-project">Maturin User Guide</a> 找到了混合项目的设置方法，只需在 <code>pyproject.toml</code> 添加：</p>
+<pre><code class="language-toml">[tool.maturin]
+python-source = "mkdocs_djot"
+</code></pre>
+<p>将 MkDocs 插件代码放在 <code>mkdocs_djot/</code> 下，两个 <code>pyproject.toml</code> 内容也可以合并在一起。</p>
+<p>最终项目结构是这样：</p>
+<pre><code>mkdocs-djot/
+├── Cargo.toml
+├── mkdocs_djot
+│&nbsp;&nbsp; ├── __init__.py
+│&nbsp;&nbsp; └── plugin.py
+├── pyproject.toml
+└── src
+ &nbsp;&nbsp; └── lib.rs
+</code></pre>
+<p>Python 中导入的命名空间需要略微修改：</p>
+<pre><code class="language-python">from mkdocs_djot.jotdown_py import render_to_html
+</code></pre>
+</section>
+<section id="在-MkDocs-中使用">
+<h3>在 MkDocs 中使用</h3>
+<p>在 MkDocs 项目中安装 <code>mkdocs-djot</code>，添加到插件列表：</p>
+<pre><code class="language-yaml">plugins:
+  - djot
+</code></pre>
+<p>此时任何 <code>.dj</code> 或 <code>.djot</code> 结尾的文档都会被渲染成 HTML 页面。</p>
+<p>名称可以用 <code>djot</code> 是因为在 <code>pyproject.toml</code> 中设置了：</p>
+<pre><code class="language-toml">[project.entry-points."mkdocs.plugins"]
+djot = "mkdocs_djot.plugin:DjotPlugin"
+</code></pre>
+</section>
+</section>
+<section id="处理元信息">
+<h2>处理元信息</h2>
+<p>呼，阶段性胜利。但……页面上好像少了什么？</p>
+<p>哦，是右侧的目录（TOC），还有标题锚点也不见了。</p>
+<p>因为<a href="#插件-Python-代码">刚刚</a>在覆盖方法时略过了原版 <code>render</code> 还会做的其他事情：</p>
+<pre><code class="language-python">def render(self, config: MkDocsConfig, files: Files) -&gt; None:
+    """Convert the Markdown source file to HTML as per the config."""
+    if self.markdown is None:
+        raise RuntimeError("`markdown` field hasn't been set (via `read_source`)")
+
+    md = markdown.Markdown(
+        extensions=config['markdown_extensions'],
+        extension_configs=config['mdx_configs'] or {},
+    )
+
+    raw_html_ext = _RawHTMLPreprocessor()
+    raw_html_ext._register(md)
+
+    extract_anchors_ext = _ExtractAnchorsTreeprocessor(self.file, files, config)
+    extract_anchors_ext._register(md)
+
+    relative_path_ext = _RelativePathTreeprocessor(self.file, files, config)
+    relative_path_ext._register(md)
+
+    extract_title_ext = _ExtractTitleTreeprocessor()
+    extract_title_ext._register(md)
+
+    self.content = md.convert(self.markdown)
+    self.toc = get_toc(getattr(md, 'toc_tokens', []))
+    self._title_from_render = extract_title_ext.title
+    self.present_anchor_ids = (
+        extract_anchors_ext.present_anchor_ids | raw_html_ext.present_anchor_ids
+    )
+    if log.getEffectiveLevel() &gt; logging.DEBUG:
+        self.links_to_anchors = relative_path_ext.links_to_anchors
+</code></pre>
+<p>MkDocs 使用 <a href="https://python-markdown.github.io/reference/markdown/treeprocessors/">Treeprocessor</a> 分析 Markdown AST，从中提取锚点、标题、TOC 这些页面元信息。</p>
+<p>我肯定是没法获得与 Markdown 相同的 AST 来复用逻辑了，现在有两条路：</p>
+<ol>
+<li>
+<strong>绑定完整的 jotdown 实现</strong>，向 Python 暴露 Djot event，在 Python 里分析 Event 流获得元信息
+</li>
+<li>
+<strong>在 Rust 里提取信息返回给 Python</strong>
+</li>
+</ol>
+<p>我一直在思考，jotdown_py 是否有必要作为一个完整的绑定库进行维护，它该是 Python 解析 Djot 的良好方式吗？Djot 不成熟，jotdown 也<a href="https://github.com/hellux/jotdown/issues/53">不成熟</a>，未来还是交给纯 Python 实现吧。</p>
+<p>所以，我选 2。</p>
+<section id="从-Event-流里提取信息">
+<h3>从 Event 流里提取信息</h3>
+<p>jotdown 将 Djot 文档解析为一系列 <a href="https://docs.rs/jotdown/latest/jotdown/enum.Event.html">Event</a>（事件）。</p>
+<p>每个元素可能由一个或多个事件组成：容器元素（如标题、段落、列表）用 <code>Event::Start</code> 开始，包含其内部内容的事件，最后用 <code>Event::End</code> 结束；而原子元素（如文本、换行）则由单个事件表示。</p>
+<p>比如这段 Djot：</p>
+<pre><code class="language-djot"># Hello, World!
+
+A paragraph.
+</code></pre>
+<p>会被解析为以下事件流：</p>
+<pre><code class="language-rust">Start(Section { id: "Hello-World" }, {})
+Start(Heading { level: 1, has_section: true, id: "Hello-World" }, {})
+Str("Hello, World!")
+End(Heading { level: 1, has_section: true, id: "Hello-World" })
+Blankline
+Start(Paragraph, {})
+Str("A paragraph.")
+End(Paragraph)
+End(Section { id: "Hello-World" })
+</code></pre>
+<p>要提取页面元信息（标题、TOC、锚点），我们只需要遍历这个事件流，在遇到 <code>Heading</code> 容器时记录信息：</p>
+<pre><code class="language-rust">#[pyfunction]
+fn extract_metadata&lt;'py&gt;(py: Python&lt;'py&gt;, djot_text: &amp;str) -&gt; PyResult&lt;Bound&lt;'py, PyDict&gt;&gt; {
+    let mut metadata = PageMetadata::new();
+    let mut heading_ctx = HeadingContext::new();
+
+    for event in jotdown::Parser::new(djot_text) {
+        match event {
+            // 标题开始：记录层级和 ID
+            jotdown::Event::Start(jotdown::Container::Heading { level, id, .. }, _) =&gt; {
+                heading_ctx.start_heading(&amp;mut metadata, level, &amp;id);
+            }
+            // 标题内的文本：累积标题内容
+            jotdown::Event::Str(text) if heading_ctx.active_heading_level.is_some() =&gt; {
+                heading_ctx.append_text(&amp;text);
+            }
+            // 标题结束：保存标题文本
+            jotdown::Event::End(jotdown::Container::Heading { .. })
+                if heading_ctx.active_heading_level.is_some() =&gt;
+            {
+                if let Some(title) = heading_ctx.end_heading(&amp;mut metadata) {
+                    metadata.title = Some(title);
+                }
+            }
+
+            _ =&gt; {}
+        }
+    }
+
+    metadata.to_py_dict(py)
+}
+</code></pre>
+<p><code>HeadingContext</code> 是个辅助结构，用来追踪当前是否在标题内部、标题层级、以及累积的标题文本。这样写是为了避免在函数里定义一堆临时变量，让代码好看一些。</p>
+<p>这个函数最终返回一个 Python 字典，包含：</p>
 <ul>
-<li>TinyCC: <a href="https://bellard.org/tcc/">https://bellard.org/tcc/</a></li>
-<li>TinyCC git repo: <a href="https://repo.or.cz/tinycc.git">https://repo.or.cz/tinycc.git</a></li>
-<li>chibicc git repo: <a href="https://github.com/rui314/chibicc">https://github.com/rui314/chibicc</a></li>
-<li>STB libs: <a href="https://github.com/nothings/stb">https://github.com/nothings/stb</a></li>
-<li>libcurl HTTPS example: <a href="https://curl.se/libcurl/c/https.html">https://curl.se/libcurl/c/https.html</a></li>
-<li>libcurl URL parseing example: <a href="https://curl.se/libcurl/c/parseurl.html">https://curl.se/libcurl/c/parseurl.html</a></li>
-<li>@rexim's Patch: <a href="https://gist.github.com/rexim/a6636976d12f67ea530ece118a700317">https://gist.github.com/rexim/a6636976d12f67ea530ece118a700317</a></li>
-<li>@rexim's Video: <a href="https://www.youtube.com/watch?v=4vSyqK3SK-0">https://www.youtube.com/watch?v=4vSyqK3SK-0</a></li>
-<li>My TinyCC Patch: <a href="https://gist.github.com/13m0n4de/84912522cce6db31da069baf1add04f8">https://gist.github.com/13m0n4de/84912522cce6db31da069baf1add04f8</a></li>
-<li>My Chibicc Patch: <a href="https://gist.github.com/13m0n4de/f2b4b8e71ce6a93530cbe9e4e45cbe71">https://gist.github.com/13m0n4de/f2b4b8e71ce6a93530cbe9e4e45cbe71</a></li>
+<li>
+<code>title</code>：页面标题（第一个 H1）
+</li>
+<li>
+<code>toc_tokens</code>：TOC 树
+</li>
+<li>
+<code>anchors</code>：所有标题的锚点 ID 集合
+</li>
 </ul>
+<p>其中 <code>toc_tokens</code> 和 <code>anchors</code> 的内容是都是在标题开始时构建的，让我们看看 <code>start_heading</code> 做了什么：</p>
+<pre><code class="language-rust">impl HeadingContext {
+    fn start_heading(&amp;mut self, metadata: &amp;mut PageMetadata, level: u16, id: &amp;str) {
+        if !id.is_empty() {
+            metadata.anchors.push(id.to_lowercase()); // 添加到锚点列表
+        }
+
+        let idx = metadata.toc_builder.add_token(id.to_string(), level); // 添加到 TOC 树
+        self.active_heading_level = Some(level);
+        self.active_token_idx = Some(idx);
+        self.heading_text.clear();
+    }
+</code></pre>
+</section>
+<section id="从扁平序列到树形结构">
+<h3>从扁平序列到树形结构</h3>
+<p>现在，TOC 需要一个嵌套的树形结构，例如：</p>
+<pre><code>H1: Introduction
+  H2: Background
+  H2: Motivation
+H1: Implementation
+  H2: Algorithm
+    H3: Complexity
+  H2: Optimization
+</code></pre>
+<p>但从 Event 流中得到的标题序列是扁平的：</p>
+<pre><code>H1 (level=1, id="Introduction")
+H2 (level=2, id="Background")
+H2 (level=2, id="Motivation")
+H1 (level=1, id="Implementation")
+H2 (level=2, id="Algorithm")
+H3 (level=3, id="Complexity")
+H2 (level=2, id="Optimization")
+</code></pre>
+<p>这个问题本质上是：<strong>如何从线性序列构建树形结构？</strong></p>
+<p><strong>关键是找到每个节点的父节点</strong>，我用了一个<a href="https://oi-wiki.org/ds/monotonous-stack/">单调栈</a>来解决：</p>
+<ul>
+<li>
+栈底到栈顶：层级严格递增
+</li>
+<li>
+遇到新节点时，弹出所有 层级 &gt;= 当前层级 的节点
+</li>
+<li>
+栈顶就是最近的父节点
+</li>
+</ul>
+<p>相关数据结构如下：</p>
+<pre><code class="language-rust">struct TocToken {
+    id: String,
+    name: String,
+    level: u16,
+    child_indices: Vec&lt;usize&gt;, // 子节点索引
+}
+
+struct TocBuilder {
+    arena: Vec&lt;TocToken&gt;, // 节点数据
+    stack: Vec&lt;usize&gt;,  // 用于维护祖先链的单调栈
+    root_indices: Vec&lt;usize&gt;, // 根节点索引
+}
+</code></pre>
+<p>我把 <code>TocToken</code> 分配在 <code>arena</code> 里，栈中只存储元素索引，<code>TocToken</code> 的子节点也只存储索引。这样可以不重复存储 <code>TocToken</code> 数据，同时也避免了某些 Rust 所有权问题。</p>
+<p>由于最后需要输出根节点（可能有多个 H1），我把它们的索引缓存在 <code>root_indices</code>。</p>
+<p>当遇到标题 <code>Event</code> 时，调用 <code>add_token</code>，向树中插入一个节点：</p>
+<pre><code class="language-rust">impl TocBuilder {
+    fn add_token(&amp;mut self, id: String, level: u16) -&gt; usize {
+        let idx = self.arena.len();
+        let token = TocToken::new(id, level);
+        self.arena.push(token);
+
+        // 清理栈：移除所有层级 &gt;= 当前层级的节点
+        self.stack
+            .retain(|&amp;parent_idx| self.arena[parent_idx].level &lt; level);
+
+        // 栈顶是父节点，将本节点设为子节点（如果栈为空，则当前节点是根节点）
+        if let Some(&amp;parent_idx) = self.stack.last() {
+            self.arena[parent_idx].child_indices.push(idx);
+        } else {
+            self.root_indices.push(idx);
+        }
+
+        // 当前节点入栈，成为后续节点的潜在父节点
+        self.stack.push(idx);
+        idx
+    }
+}
+</code></pre>
+<p>算法的时间复杂度是 <code>O(n)</code> （n 为标题数量）。虽然有 <code>retain</code> 操作，但每个节点最多入栈和出栈各一次，总体仍是线性时间。空间复杂度也是 <code>O(n)</code>，用于存储所有节点。</p>
+<p>返回的时候手动转换为 Python 字典和列表（<code>PyDict</code> 和 <code>PyList</code>）：</p>
+<pre><code class="language-rust">impl TocToken {
+    fn to_py_dict&lt;'py&gt;(&amp;self, py: Python&lt;'py&gt;, arena: &amp;[TocToken]) -&gt; PyResult&lt;Bound&lt;'py, PyDict&gt;&gt; {
+        let dict = PyDict::new(py);
+        dict.set_item("id", &amp;self.id)?;
+        dict.set_item("name", &amp;self.name)?;
+        dict.set_item("level", self.level)?;
+
+        let children = PyList::empty(py);
+        for &amp;child_idx in &amp;self.child_indices {
+            children.append(arena[child_idx].to_py_dict(py, arena)?)?;
+        }
+        dict.set_item("children", children)?;
+
+        Ok(dict)
+    }
+}
+
+impl TocBuilder {
+    fn to_py_list&lt;'py&gt;(&amp;self, py: Python&lt;'py&gt;) -&gt; PyResult&lt;Bound&lt;'py, PyList&gt;&gt; {
+        let list = PyList::empty(py);
+        for &amp;idx in &amp;self.root_indices {
+            list.append(self.arena[idx].to_py_dict(py, &amp;self.arena)?)?;
+        }
+        Ok(list)
+    }
+}
+</code></pre>
+</section>
+<section id="与-MkDocs-集成">
+<h3>与 MkDocs 集成</h3>
+<p>可能你会好奇：为什么选择返回这样的 <code>toc_tokens</code>？</p>
+<p>其实是因为我想要复用 <code>mkdocs.structure.toc</code> 里 <code>get_toc</code> 函数的逻辑：</p>
+<pre><code class="language-python">def get_toc(toc_tokens: list[_TocToken]) -&gt; TableOfContents:
+    toc = [_parse_toc_token(i) for i in toc_tokens]
+    # For the table of contents, always mark the first element as active
+    if len(toc):
+        toc[0].active = True  # type: ignore[attr-defined]
+    return TableOfContents(toc)
+
+def _parse_toc_token(token: _TocToken) -&gt; AnchorLink:
+    anchor = AnchorLink(token['name'], token['id'], token['level'])
+    for i in token['children']:
+        anchor.children.append(_parse_toc_token(i))
+    return anchor
+</code></pre>
+<p>它能帮我更简单地构造 <code>TableOfContents</code>，我只需要传递和 <code>_TocToken</code> 一样有 <code>name</code>、<code>id</code>、<code>level</code>、<code>children</code> 字段的字典就可以了。</p>
+<p>最终，我的 <code>djot_render</code> 长这样：</p>
+<pre><code class="language-python">def djot_render(config: MkDocsConfig, files: Files) -&gt; None:
+    if page.markdown is None:
+        raise RuntimeError("`markdown` field hasn't been set")
+
+    metadata = extract_metadata(page.markdown)
+
+    page._title_from_render = metadata["title"]
+    page.toc = get_toc(metadata["toc_tokens"])
+    page.present_anchor_ids = metadata["anchors"]
+
+    page.content = render_to_html(page.markdown)
+
+    page.links_to_anchors = {}
+</code></pre>
+</section>
+</section>
+<section id="使用-Djot-写博客">
+<h2>使用 Djot 写博客</h2>
+<p>实际上，<strong>这篇文章就完全是用 Djot 写的</strong>，如果你好奇它的内容：<a href="https://raw.githubusercontent.com/13m0n4de/notebook/refs/heads/main/docs/blog/posts/replacing_markdown_with_djot_in_mkdocs.dj">replacing_markdown_with_djot_in_mkdocs.dj</a></p>
+<p>其中有一些有趣的地方值得一提。</p>
+<section id="复用样式">
+<h3>复用样式</h3>
+<p>比如我可以写下：</p>
+<pre><code class="language-djot">{.admonition .quote}
+:::
+{.admonition-title}
+作者 John MacFarlane 的介绍
+
+Djot (/dʒɑt/) 是一种轻量级的标记语法。
+:::
+</code></pre>
+<p>以此获得 <a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/">Admonitions</a> 效果，也就是文章最开头的引用块。</p>
+<p>原本 Markdown 会这么写：</p>
+<pre><code class="language-markdown">!!! quote "作者 John MacFarlane 的介绍"
+    
+    Djot (/dʒɑt/) 是一种轻量级的标记语法。
+</code></pre>
+<p>它们都生成一模一样的 HTML：</p>
+<pre><code class="language-html">&lt;div class="admonition quote"&gt;
+    &lt;p class="admonition-title"&gt;作者 John MacFarlane 的介绍&lt;/p&gt;
+    &lt;p&gt;Djot (/dʒɑt/) 是一种轻量级的标记语法。&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+<section id="代码高亮">
+<h3>代码高亮</h3>
+<p>失去了 <a href="https://pygments.org/">Pygments</a> 的处理，代码块没法高亮了。</p>
+<p>我的解决方案是使用 <a href="https://highlightjs.org/">Hightlight.js</a>，在页面加载外部 JavaScript 和 CSS。</p>
+<p>比如本文就在开头插入了：</p>
+<pre><code class="language-djot">``` =html
+&lt;link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css"&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css"&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+```
+</code></pre>
+<p>当然也可以在 MkDocs 中设置，这样就不用每个文档都写一份了：</p>
+<pre><code class="language-yaml">extra_css:
+  - https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js
+  - javascripts/init.js  # Contains: hljs.highlightAll();
+
+markdown_extensions:
+  - pymdownx.highlight:
+      use_pygments: false
+</code></pre>
+</section>
+<section id="已知的问题">
+<h3>已知的问题</h3>
+<p>与 <a href="https://squidfunk.github.io/mkdocs-material/plugins/blog/">Material for MkDocs 的 blog 插件</a> 一起使用时，索引页面仍会将文档视为 Markdown 格式处理。</p>
+<p>解决方法：</p>
+<ol>
+<li>
+摘要部分尽量使用与 Markdown 兼容的 Djot 语法
+</li>
+<li>
+修改 blog 插件的摘要分隔符配置，使用 Djot 注释语法
+</li>
+</ol>
+<pre><code class="language-yaml">plugins:
+  - blog:
+      post_excerpt_separator: {% more %}
+</code></pre>
+<p>注意：blog 插件不支持多个分隔符。混用 Markdown 和 Djot 文件时，只能接受插入不合自身语法的“注释标记”了。</p>
+<p>本文唯一的 Markdown 含量就是这么来的，注意到开头的 <code>&lt;!-- more --&gt;</code> 了吗。</p>
+</section>
+</section>
+<section id="总结">
+<h2>总结</h2>
+<p>Djot 很好用，但我应该只会用它在 MkDocs 写这一篇文章了。想要将 Djot 融入 MkDocs 生态，一个简单的渲染插件做不到，长期来看 MkDocs 也不会从根本上支持 Markdown 以外的 LML，要做的工作太多。</p>
+<p>Djot 不适合 MkDocs，或者换句话说 MkDocs 限制了 Djot。</p>
+<p>我该用它去写自己的静态网站生成器，或者用它作为文章开头提到的剧本语法。</p>
+<p>还有 Org-mode，这次之后我也该去试试它，说不准以后博客是从 Org-mode 生成，而不是任何 Markdown 或 Better Markdown 呢。</p>
+</section>
+<section id="参考">
+<h2>参考</h2>
+<ul>
+<li>
+<a href="https://djot.net/">Djot</a>
+</li>
+<li>
+<a href="https://gitlab.com/publicvoit/orgdown">Orgdown</a>
+</li>
+<li>
+<a href="https://hyperpolyglot.org/lightweight-markup">Lightweight Markup</a>
+</li>
+<li>
+<a href="https://www.karl-voit.at/2025/08/17/Markdown-disaster/">Markdown Is a Disaster: Why and What to Do Instead</a>
+</li>
+<li>
+<a href="https://www.jonashietala.se/blog/2024/02/02/blogging_in_djot_instead_of_markdown/">Blogging in Djot instead of Markdown</a>
+</li>
+<li>
+<a href="https://github.com/hellux/jotdown">jotdown</a>
+</li>
+</ul>
+</section>
+</section>
+
 
 
 
@@ -3021,7 +3971,7 @@ $ chibicc /path/to/source/include_files_from_internet.c
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2024年6月15日 10:08:56 CST">2024年6月15日 10:08:56</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年11月8日 13:58:12 CST">2025年11月8日 13:58:12</span>
   </span>
 
     
@@ -3031,7 +3981,7 @@ $ chibicc /path/to/source/include_files_from_internet.c
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2024年2月17日 23:16:14 CST">2024年2月17日 23:16:14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年11月8日 13:51:02 CST">2025年11月8日 13:51:02</span>
   </span>
 
     
@@ -3069,22 +4019,22 @@ $ chibicc /path/to/source/include_files_from_internet.c
       
       <nav class="md-footer__inner md-grid" aria-label="页脚">
         
-        
           
-          <a href="../18/exploring-the-hare-programming-language-part-1.html" class="md-footer__link md-footer__link--next" aria-label="下一页: Exploring the Hare Programming Language: Part 1">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                Exploring the Hare Programming Language: Part 1
-              </div>
-            </div>
+          <a href="../../10/23/functional-pipeline-programming-in-python.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: Functional Pipeline Programming in Python">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Functional Pipeline Programming in Python
+              </div>
             </div>
           </a>
+        
         
       </nav>
     
