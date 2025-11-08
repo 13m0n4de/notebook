@@ -5,7 +5,7 @@ categories:
 tags: [Djot, Mkdocs, PyO3, Rust, Python]
 ---
 
-# Writing Djot in MkDocs
+# Replacing Markdown with Djot in MkDocs
 
 本文 Markdown 含量为 0.59 ‰，消耗咖啡液和温水共 2000 ml，合计咖啡因约 310 mg。
 
@@ -667,7 +667,7 @@ def djot_render(config: MkDocsConfig, files: Files) -> None:
 
 ## 使用 Djot 写博客
 
-实际上，*这篇文章就完全是用 Djot 写的*，如果你好奇它的内容：[writing\_djot\_in_mkdocs.dj](https://raw.githubusercontent.com/13m0n4de/notebook/refs/heads/main/docs/blog/posts/writing_djot_in_mkdocs.dj)
+实际上，*这篇文章就完全是用 Djot 写的*，如果你好奇它的内容：[replacing\_markdown\_with\_djot\_in\_mkdocs.dj](https://raw.githubusercontent.com/13m0n4de/notebook/refs/heads/main/docs/blog/posts/replacing_markdown_with_djot_in_mkdocs.dj)
 
 其中有一些有趣的地方值得一提。
 
@@ -764,13 +764,13 @@ Djot 不适合 MkDocs，或者换句话说 MkDocs 限制了 Djot。
 
 我该用它去写自己的静态网站生成器，或者用它作为文章开头提到的剧本语法。
 
-还有 Org-mode，这次之后我也该去试试它，说不准以后是从 Org-mode 生成，而不是任何 Markdown 或 Better Markdown 呢。
+还有 Org-mode，这次之后我也该去试试它，说不准以后博客是从 Org-mode 生成，而不是任何 Markdown 或 Better Markdown 呢。
 
 ## 参考
 
 - [Djot](https://djot.net/)
-- [Markdown Is a Disaster: Why and What to Do Instead](https://www.karl-voit.at/2025/08/17/Markdown-disaster/)
-- [Lightweight Markup](https://hyperpolyglot.org/lightweight-markup)
 - [Orgdown](https://gitlab.com/publicvoit/orgdown)
+- [Lightweight Markup](https://hyperpolyglot.org/lightweight-markup)
+- [Markdown Is a Disaster: Why and What to Do Instead](https://www.karl-voit.at/2025/08/17/Markdown-disaster/)
 - [Blogging in Djot instead of Markdown](https://www.jonashietala.se/blog/2024/02/02/blogging_in_djot_instead_of_markdown/)
 - [jotdown](https://github.com/hellux/jotdown)
