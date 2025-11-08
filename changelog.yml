@@ -1,8 +1,8 @@
 - "2025":
   - "2025-11-06":
     - newpage:
-        text: "Blog > Replacing Markdown with Djot in MkDocs"
-        href: blog/2025/11/06/replacing-markdown-with-djot-in-mkdocs.html
+        text: "Blog > Using Djot instead of Markdown in MkDocs"
+        href: blog/2025/11/06/using-djot-instead-of-markdown-in-mkdocs.html
   - "2025-11-06":
     - function: 添加 Djot 语言支持
   - "2025-10-23":
