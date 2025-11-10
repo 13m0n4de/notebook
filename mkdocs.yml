@@ -74,7 +74,7 @@ plugins:
     feeds_filenames:
       rss_created: blog_feed.xml
 - rss:
-    match_path: "cs|gamedev|sec|ctf|writeups"
+    match_path: "cs|gamedev|sec|ctf|writeups|drama"
     date_from_meta:
       as_creation: "date"
       as_update: "git"
