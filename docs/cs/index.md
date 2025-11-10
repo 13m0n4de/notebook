@@ -4,13 +4,6 @@
 
 {{ BEGIN_TOC }}
 
-- Programming Language & ISA:
-    - index: pl/
-    - C: pl/c/
-    - Python: pl/python/
-    - Racket: pl/racket/
-    - RISC-V ISA: pl/riscv/
-    - Rust: pl/rust/
 - Operating System:
     - index: os/
     - OSTEP <!-- note -->: os/ostep/
