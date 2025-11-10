@@ -13,6 +13,13 @@ nav_path_prefix: Drama > Screenwriting >
 - 剧本格式指南：[screenplay.pdf](https://www.bbc.co.uk/writers/documents/screenplay.pdf)
 - 案例剧本：[doctor-who-4-episode-1-partners-in-crime-yellow-revisions-16102007.pdf](https://www.bbc.co.uk/writers/documents/doctor-who-4-episode-1-partners-in-crime-yellow-revisions-16102007.pdf)
 
+## 概览
+
+<figure markdown="span">
+    ![howtowriteascreenplay.gif](https://web.archive.org/web/20210513075152im_/https://cdn2.hubspot.net/hubfs/5084659/howtowriteascreenplay.gif)
+    <figcaption>[writersstore.com - How to Write a Screenplay: Script Writing Example & Screenwriting Tips](https://web.archive.org/web/20210514020009/https://writersstore.com/blogs/news/how-to-write-a-screenplay-a-guide-to-scriptwriting)</figcaption>
+</figure>
+
 ## 场景标题（Scene Heading）
 
 场景标题需要 **全大写**，并且必须包含三要素：**内/外景**、**地点**、**时间**。
