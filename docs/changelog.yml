@@ -1,4 +1,8 @@
 - "2025":
+  - "2025-11-10":
+    - newpage:
+        text: "Drama > Screenwriting > 英美影视行业电影标准剧本格式"
+        href: drama/screenwriting/format_hollywood.html
   - "2025-11-06":
     - newpage:
         text: "Blog > Using Djot instead of Markdown in MkDocs"
