@@ -64,7 +64,7 @@ plugins:
     - index.md
 - changelog # changelog 时间轴
 - rss:
-    match_path: "blog/posts"
+    match_path: "blog/posts/(?!index\\.md$).*"
     date_from_meta:
       as_creation: "date"
       as_update: "git"
@@ -74,7 +74,7 @@ plugins:
     feeds_filenames:
       rss_created: blog_feed.xml
 - rss:
-    match_path: "cs|gamedev|sec|ctf|writeups|drama"
+    match_path: "(cs|gamedev|sec|ctf|writeups|drama)/(?!.*/index\\.md$).*"
     date_from_meta:
       as_creation: "date"
       as_update: "git"
@@ -190,6 +190,6 @@ nav:
   - drama/index.md
   - Screenwriting:
     - drama/screenwriting/index.md
-    - 好莱坞剧本格式: drama/screenwriting/format_hollywood.md
+    - 英美影视行业电影标准剧本格式: drama/screenwriting/format_hollywood.md
 - Blog:
   - blog/index.md
