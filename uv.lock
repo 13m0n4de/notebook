@@ -338,7 +338,7 @@ wheels = [
 [[package]]
 name = "mkdocs-djot"
 version = "0.1.0"
-source = { git = "https://github.com/13m0n4de/mkdocs-djot#ce2c4f2cbb6227055709de586cf08af74701b0f6" }
+source = { git = "https://github.com/13m0n4de/mkdocs-djot#1f028bfb12ed09ae2c49b3d6ff3135d30a816737" }
 dependencies = [
     { name = "mkdocs" },
 ]
