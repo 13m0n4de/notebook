@@ -5,13 +5,11 @@
       
       
       
-        <link rel="canonical" href="https://13m0n4de.vercel.app/blog/2025/11/06/using-djot-instead-of-markdown-in-mkdocs.html">
+        <link rel="canonical" href="https://13m0n4de.vercel.app/blog/2026/02/04/versu-agents-and-utility-ai.html">
       
       
-        <link rel="prev" href="../../10/23/functional-pipeline-programming-in-python.html">
+        <link rel="prev" href="../../../2025/11/06/using-djot-instead-of-markdown-in-mkdocs.html">
       
-      
-        <link rel="next" href="../../../2026/02/04/versu-agents-and-utility-ai.html">
       
       
         <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../../../feed_rss_created.xml">
@@ -22,7 +20,7 @@
     
     
       
-        <title>Using Djot instead of Markdown in MkDocs - 13m0n4de's notebook</title>
+        <title>Versu: Agents and Utility AI - 13m0n4de's notebook</title>
       
     
     
@@ -90,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#Using-Djot-instead-of-Markdown-in-MkDocs" class="md-skip">
+        <a href="#versu-agents-and-utility-ai" class="md-skip">
           跳转至
         </a>
       
@@ -124,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Using Djot instead of Markdown in MkDocs
+              Versu: Agents and Utility AI
             
           </span>
         </div>
@@ -2711,22 +2709,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-    <a href="#使用-Djot-替换-Markdown" class="md-nav__link">
+    <a href="#_1" class="md-nav__link">
         <span class="md-ellipsis">
-            使用 Djot 替换 Markdown
+            前言
         </span>
     </a>
 
     <!-- Table of contents list -->
     
-    <nav class="md-nav" aria-label="使用 Djot 替换 Markdown">
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#_2" class="md-nav__link">
+        <span class="md-ellipsis">
+            核心概念
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="核心概念">
         <ul class="md-nav__list">
             
                 
                     <li class="md-nav__item">
-    <a href="#什么是-Djot" class="md-nav__link">
+    <a href="#_3" class="md-nav__link">
         <span class="md-ellipsis">
-            什么是 Djot
+            设计目标
         </span>
     </a>
 
@@ -2737,9 +2746,9 @@
             
                 
                     <li class="md-nav__item">
-    <a href="#为什么不是-Markdown" class="md-nav__link">
+    <a href="#_4" class="md-nav__link">
         <span class="md-ellipsis">
-            为什么不是 Markdown
+            世界状态：事实数据库
         </span>
     </a>
 
@@ -2750,9 +2759,9 @@
             
                 
                     <li class="md-nav__item">
-    <a href="#为什么不是其他标记语言" class="md-nav__link">
+    <a href="#_5" class="md-nav__link">
         <span class="md-ellipsis">
-            为什么不是其他标记语言
+            角色模型
         </span>
     </a>
 
@@ -2763,9 +2772,22 @@
             
                 
                     <li class="md-nav__item">
-    <a href="#为什么是-Djot-而不是-Org-mode" class="md-nav__link">
+    <a href="#social-practice-affordance" class="md-nav__link">
         <span class="md-ellipsis">
-            为什么是 Djot 而不是 Org-mode
+            情境与行动：Social Practice 和 Affordance
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#_6" class="md-nav__link">
+        <span class="md-ellipsis">
+            效用计算（决策机制）
         </span>
     </a>
 
@@ -2780,22 +2802,22 @@
 </li>
       
         <li class="md-nav__item">
-    <a href="#编写-MkDocs-插件" class="md-nav__link">
+    <a href="#_7" class="md-nav__link">
         <span class="md-ellipsis">
-            编写 MkDocs 插件
+            案例：三顾茅庐
         </span>
     </a>
 
     <!-- Table of contents list -->
     
-    <nav class="md-nav" aria-label="编写 MkDocs 插件">
+    <nav class="md-nav" aria-label="案例：三顾茅庐">
         <ul class="md-nav__list">
             
                 
                     <li class="md-nav__item">
-    <a href="#MkDocs-插件的工作原理" class="md-nav__link">
+    <a href="#_8" class="md-nav__link">
         <span class="md-ellipsis">
-            MkDocs 插件的工作原理
+            角色定义
         </span>
     </a>
 
@@ -2806,9 +2828,9 @@
             
                 
                     <li class="md-nav__item">
-    <a href="#插件-Python-代码" class="md-nav__link">
+    <a href="#_9" class="md-nav__link">
         <span class="md-ellipsis">
-            插件 Python 代码
+            场景设定
         </span>
     </a>
 
@@ -2819,9 +2841,22 @@
             
                 
                     <li class="md-nav__item">
-    <a href="#使用-Rust-渲染-Djot" class="md-nav__link">
+    <a href="#1" class="md-nav__link">
         <span class="md-ellipsis">
-            使用 Rust 渲染 Djot
+            回合 1：张飞决策
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="回合 1：张飞决策">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#a" class="md-nav__link">
+        <span class="md-ellipsis">
+            选项 A：发怒咆哮
         </span>
     </a>
 
@@ -2832,9 +2867,9 @@
             
                 
                     <li class="md-nav__item">
-    <a href="#RustPython-混合项目" class="md-nav__link">
+    <a href="#b" class="md-nav__link">
         <span class="md-ellipsis">
-            Rust/Python 混合项目
+            选项 B：忍耐等待
         </span>
     </a>
 
@@ -2845,9 +2880,22 @@
             
                 
                     <li class="md-nav__item">
-    <a href="#在-MkDocs-中使用" class="md-nav__link">
+    <a href="#c" class="md-nav__link">
         <span class="md-ellipsis">
-            在 MkDocs 中使用
+            选项 C：小声抱怨
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#_10" class="md-nav__link">
+        <span class="md-ellipsis">
+            决策结果
         </span>
     </a>
 
@@ -2860,24 +2908,26 @@
     </nav>
     
 </li>
-      
-        <li class="md-nav__item">
-    <a href="#处理元信息" class="md-nav__link">
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#2" class="md-nav__link">
         <span class="md-ellipsis">
-            处理元信息
+            回合 2：刘备决策（响应张飞咆哮）
         </span>
     </a>
 
     <!-- Table of contents list -->
     
-    <nav class="md-nav" aria-label="处理元信息">
+    <nav class="md-nav" aria-label="回合 2：刘备决策（响应张飞咆哮）">
         <ul class="md-nav__list">
             
                 
                     <li class="md-nav__item">
-    <a href="#从-Event-流里提取信息" class="md-nav__link">
+    <a href="#a_1" class="md-nav__link">
         <span class="md-ellipsis">
-            从 Event 流里提取信息
+            选项 A：严厉呵斥
         </span>
     </a>
 
@@ -2888,9 +2938,9 @@
             
                 
                     <li class="md-nav__item">
-    <a href="#从扁平序列到树形结构" class="md-nav__link">
+    <a href="#b_1" class="md-nav__link">
         <span class="md-ellipsis">
-            从扁平序列到树形结构
+            选项 B：温和劝阻
         </span>
     </a>
 
@@ -2901,9 +2951,22 @@
             
                 
                     <li class="md-nav__item">
-    <a href="#与-MkDocs-集成" class="md-nav__link">
+    <a href="#c_1" class="md-nav__link">
         <span class="md-ellipsis">
-            与 MkDocs 集成
+            选项 C：放任不管
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#_11" class="md-nav__link">
+        <span class="md-ellipsis">
+            决策结果
         </span>
     </a>
 
@@ -2916,24 +2979,26 @@
     </nav>
     
 </li>
-      
-        <li class="md-nav__item">
-    <a href="#使用-Djot-写博客" class="md-nav__link">
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#3" class="md-nav__link">
         <span class="md-ellipsis">
-            使用 Djot 写博客
+            回合 3：张飞决策（响应刘备劝阻）
         </span>
     </a>
 
     <!-- Table of contents list -->
     
-    <nav class="md-nav" aria-label="使用 Djot 写博客">
+    <nav class="md-nav" aria-label="回合 3：张飞决策（响应刘备劝阻）">
         <ul class="md-nav__list">
             
                 
                     <li class="md-nav__item">
-    <a href="#复用样式" class="md-nav__link">
+    <a href="#a_2" class="md-nav__link">
         <span class="md-ellipsis">
-            复用样式
+            选项 A：继续发怒
         </span>
     </a>
 
@@ -2944,9 +3009,9 @@
             
                 
                     <li class="md-nav__item">
-    <a href="#代码高亮" class="md-nav__link">
+    <a href="#b_2" class="md-nav__link">
         <span class="md-ellipsis">
-            代码高亮
+            选项 B：不情愿地闭嘴
         </span>
     </a>
 
@@ -2957,9 +3022,9 @@
             
                 
                     <li class="md-nav__item">
-    <a href="#已知的问题" class="md-nav__link">
+    <a href="#_12" class="md-nav__link">
         <span class="md-ellipsis">
-            已知的问题
+            决策结果
         </span>
     </a>
 
@@ -2972,9 +3037,172 @@
     </nav>
     
 </li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#4" class="md-nav__link">
+        <span class="md-ellipsis">
+            回合 4：诸葛亮决策
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="回合 4：诸葛亮决策">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#a_3" class="md-nav__link">
+        <span class="md-ellipsis">
+            选项 A：继续装睡
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#b_3" class="md-nav__link">
+        <span class="md-ellipsis">
+            选项 B：醒来相见
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#c_2" class="md-nav__link">
+        <span class="md-ellipsis">
+            选项 C：让童子再打发
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#_13" class="md-nav__link">
+        <span class="md-ellipsis">
+            决策结果
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
       
         <li class="md-nav__item">
-    <a href="#总结" class="md-nav__link">
+    <a href="#_14" class="md-nav__link">
+        <span class="md-ellipsis">
+            涌现
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#_15" class="md-nav__link">
+        <span class="md-ellipsis">
+            变体：改变初始条件
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="变体：改变初始条件">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#1_1" class="md-nav__link">
+        <span class="md-ellipsis">
+            回合 1 重算：张飞决策
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="回合 1 重算：张飞决策">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#a_4" class="md-nav__link">
+        <span class="md-ellipsis">
+            选项 A：发怒咆哮
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#b_4" class="md-nav__link">
+        <span class="md-ellipsis">
+            选项 B：忍耐等待
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#_16" class="md-nav__link">
+        <span class="md-ellipsis">
+            决策结果
+        </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#_17" class="md-nav__link">
         <span class="md-ellipsis">
             总结
         </span>
@@ -2985,9 +3213,9 @@
 </li>
       
         <li class="md-nav__item">
-    <a href="#参考" class="md-nav__link">
+    <a href="#_18" class="md-nav__link">
         <span class="md-ellipsis">
-            参考
+            相关资料
         </span>
     </a>
 
@@ -3032,7 +3260,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"></path></svg>
-                        <time datetime="2025-11-06 00:00:00+00:00" class="md-ellipsis">2025年11月6日</time>
+                        <time datetime="2026-02-04 00:00:00+00:00" class="md-ellipsis">2026年2月4日</time>
                       </div>
                     </li>
                     
@@ -3043,7 +3271,7 @@
                           <span class="md-ellipsis">
                             分类于
                             
-                              <a href="../../../category/scientific-witchery.html">Scientific Witchery</a></span>
+                              <a href="../../../category/game-design.html">Game Design</a></span>
                         </div>
                       </li>
                     
@@ -3054,7 +3282,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"></path></svg>
                           <span class="md-ellipsis">
                             
-                              需要 9 分钟阅读时间
+                              需要 5 分钟阅读时间
                             
                           </span>
                         </div>
@@ -3081,31 +3309,31 @@
       
       
       
-        <a href="../../../tags.html#tag:djot" class="md-tag">Djot</a>
+        <a href="../../../tags.html#tag:character-ai" class="md-tag">Character AI</a>
       
     
       
       
       
-        <a href="../../../tags.html#tag:mkdocs" class="md-tag">MkDocs</a>
+        <a href="../../../tags.html#tag:game" class="md-tag">Game</a>
       
     
       
       
       
-        <a href="../../../tags.html#tag:pyo3" class="md-tag">PyO3</a>
+        <a href="../../../tags.html#tag:game-narrative" class="md-tag">Game Narrative</a>
       
     
       
       
       
-        <a href="../../../tags.html#tag:python" class="md-tag">Python</a>
+        <a href="../../../tags.html#tag:interactive-fiction" class="md-tag">Interactive Fiction</a>
       
     
       
       
       
-        <a href="../../../tags.html#tag:rust" class="md-tag">Rust</a>
+        <a href="../../../tags.html#tag:utility-ai" class="md-tag">Utility AI</a>
       
     
   </nav>
@@ -3115,724 +3343,1035 @@
   
 
 
-<section id="Using-Djot-instead-of-Markdown-in-MkDocs">
-<h1>Using Djot instead of Markdown in MkDocs</h1>
-<p>本文 Markdown 含量为 0.59 ‰，消耗咖啡液和温水共 2000 ml，合计咖啡因约 310 mg。</p>
-<p>仓库：<a href="https://github.com/13m0n4de/mkdocs-djot">github.com/13m0n4de/mkdocs-djot</a></p>
-<p>&lt;!– more –&gt;</p>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css">
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
-<section id="使用-Djot-替换-Markdown">
-<h2>使用 Djot 替换 Markdown</h2>
-<section id="什么是-Djot">
-<h3>什么是 Djot</h3>
-<div class="admonition quote">
-<p class="admonition-title">作者 John MacFarlane 的介绍</p>
-<p>Djot (/dʒɑt/) 是一种轻量级的标记语法。它的大部分特性源自 CommonMark，但修复了 CommonMark 语法中一些复杂且难以高效解析的问题。Djot 的功能也比 CommonMark 更加全面，支持定义列表、脚注、表格、多种新型行内格式（插入、删除、高亮、上标、下标）、数学公式、智能标点、可应用于任何元素的属性，以及用于块级、行内和原始内容的通用容器。该项目最初是为了实现我在 <a href="https://johnmacfarlane.net/beyond-markdown.html">Beyond Markdown</a> 一书中提出的一些想法而发起的。</p>
-</div>
-<p>John MacFarlane 同时也是 <a href="https://pandoc.org/">Pandoc</a> 和 <a href="https://commonmark.org/">CommonMark</a> 的作者。很显然他在试图推进 Markdown 标准化的过程中遭遇了不少阻力，最终决定创造 Djot。</p>
-<p>你可以在 <a href="https://djot.net/">Djot</a> 查看更多介绍和语法说明，它在保持简洁的同时解决了许多 Markdown 的问题，功能也更加全面。</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://imgs.xkcd.com/comics/standards_2x.png" data-desc-position="bottom"><img alt="standards_2x.png" src="https://imgs.xkcd.com/comics/standards_2x.png"></a></p>
-</section>
-<section id="为什么不是-Markdown">
-<h3>为什么不是 Markdown</h3>
-<p>Markdown 作为最流行的<a href="https://en.wikipedia.org/wiki/Lightweight_markup_language">轻量级标记语言（Lightweight markup language, LML）</a>，并没有看上去那么 Simple：</p>
-<ol>
-<li>
-<strong><strong>缺乏真正的规范</strong></strong>：<a href="https://daringfireball.net/projects/markdown/">John Gruber 本人最初的规范</a>也包含着歧义，不同的项目有自己的解析规则
+<h1 id="versu-agents-and-utility-ai">Versu: Agents and Utility AI<a class="headerlink" href="#versu-agents-and-utility-ai" title="Permanent link">¶</a></h1>
+<p>这是对交互式故事角色 AI 引擎 <a href="https://versu.com/">Versu</a> 工作原理的简要介绍，主要是 <strong>代理/角色（Agents）</strong> 和 <strong>基于效用的决策系统（Utility-Based Decision-Making）</strong> 部分。</p>
+<p>内容从小组讨论会的会议材料修改而来，材料被 LLM 润色过（修改了分段和措辞，为了“更快更方便阅读”），与以往的博客语气会不太一样。</p>
+<p>Versu 没有公开过具体实现，我所有的分析均来自 Richard Evans 和 Emily Short 的论文以及 Emily Short 博客上的零散文章，可能有不少错误。</p>
+<!-- more -->
+
+<h2 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>Versu 是 Richard Evans（《模拟人生》AI 架构师）、Graham Nelson（<a href="https://github.com/ganelson/inform/">Inform</a> 语言设计者）和 <a href="https://en.wikipedia.org/wiki/Emily_Short">Emily Short</a>（交互式小说领域最具影响力的设计师之一）于 2013 年开发的社交模拟系统，用于作品<a href="https://ifdb.org/viewgame?id=ivtfrko6hxfr13b6">《Blood &amp; Laurels》</a>。</p>
+<p>Emily Short 的作品获得过交互式小说等领域的许多奖，总之是偷谱榜榜首。她还以顾问身份参与了 Failbetter Games 的 Storylet/QBN 架构（《Fallen London》《Sunless Sea》）。</p>
+<p>这两套系统解决不同层面的问题：Storylet 处理内容选择，Versu 处理角色行为。两者可独立使用，也可结合。</p>
+<p>本文就只专注于 Versu 的核心机制。</p>
+<h2 id="_2">核心概念<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>展示概念需要一个示例故事，下面用了大家熟悉的《三顾茅庐》。由于我对剧情印象没有非常深刻，同时示例需要一些微小的改编，要是觉得和原著差别太大，就当“新新三国”来看吧。</p>
+<h3 id="_3">设计目标<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<p>让角色 <strong>自主决策</strong>，而非按剧本行动。</p>
+<p>传统做法：为每种情况编写反应</p>
+<div class="highlight"><pre><span></span><code>如果 张飞等待超过1小时 且 诸葛亮在睡觉:
+    张飞.发怒()
+    如果 刘备在场:
+        刘备.劝阻()
+</code></pre></div>
+<p>Versu 做法：定义角色的欲望和性格，行为从中<a href="https://en.wikipedia.org/wiki/Emergent_gameplay">涌现</a></p>
+<div class="highlight"><pre><span></span><code>张飞 = { 欲望: [快速解决问题, 服从大哥], 性格: 暴躁 }
+刘备 = { 欲望: [请出诸葛亮, 安抚兄弟], 性格: 隐忍 }
+</code></pre></div>
+<h3 id="_4">世界状态：事实数据库<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
+<p>Versu 用 <strong>逻辑事实</strong> 表示世界状态。</p>
+<div class="highlight"><pre><span></span><code>zhang_fei.location!longzhong                    // 张飞在隆中
+zhang_fei.emotional_state!irritated             // 张飞烦躁
+liu_bei.relationship.zhuge_liang.respect!high   // 刘备敬重诸葛亮
+zhuge_liang.status!sleeping                     // 诸葛亮在睡觉
+</code></pre></div>
+<p><code>!</code> 表示排他性：设置 <code>zhang_fei.location!garden</code> 会自动移除 <code>zhang_fei.location!longzhong</code>。</p>
+<h3 id="_5">角色模型<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
+<p>每个角色由以下属性构成（全部存储为事实）：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wants（欲望）</strong></td>
+<td>想达成的目标 + 效用值</td>
+<td>「请出诸葛亮」-&gt; +40</td>
+</tr>
+<tr>
+<td><strong>Traits（性格）</strong></td>
+<td>稳定特质，影响欲望的效用值</td>
+<td>暴躁、隐忍、谨慎</td>
+</tr>
+<tr>
+<td><strong>Relationships（关系）</strong></td>
+<td>对他人的多维评价</td>
+<td>对诸葛亮：作为谋士 -20，作为学者 +10</td>
+</tr>
+<tr>
+<td><strong>Emotional State（情绪）</strong></td>
+<td>短期状态</td>
+<td>烦躁、平静、愤怒</td>
+</tr>
+<tr>
+<td><strong>Beliefs（信念）</strong></td>
+<td>角色相信的事（可能为假）</td>
+<td>「诸葛亮在装睡」</td>
+</tr>
+</tbody>
+</table>
+<h3 id="social-practice-affordance">情境与行动：Social Practice 和 Affordance<a class="headerlink" href="#social-practice-affordance" title="Permanent link">¶</a></h3>
+<p><strong>Social Practice（社会实践）</strong>：角色所处的社交场景容器</p>
+<ul>
+<li><strong>提供行动选项的来源</strong></li>
+<li>多个 Practice <strong>并发运行</strong>（拜访 + 等待 + 观察同时进行）</li>
+<li>定义了什么行为在此情境下可用</li>
+</ul>
+<p><strong>Affordance（可用行动）</strong>：Practice 提供给参与者的具体行为选项</p>
+<ul>
+<li>Practice「正式拜访」提供 affordances:<ul>
+<li>耐心等待</li>
+<li>小声抱怨</li>
+<li>发怒咆哮</li>
+<li>告辞离开</li>
+</ul>
 </li>
-<li>
-<strong><strong>标准散乱，<a href="https://github.com/commonmark/commonmark-spec/wiki/Markdown-Flavors">变体太多</a></strong></strong>：本站 MkDocs 文档就是一个例子，基于 <a href="https://python-markdown.github.io/">Python Markdown</a>，还配置了一堆<a href="https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/">拓展</a>
+<li>Practice「观察试探」提供 affordances:<ul>
+<li>继续装睡</li>
+<li>醒来相见</li>
+<li>让童子打发客人</li>
+</ul>
 </li>
-<li>
-<strong><strong>缺乏真正的可拓展性</strong></strong>：没办法在不破坏解析方式的情况下拓展语法
-</li>
-<li>
-……
-</li>
-</ol>
-<p>我的日常使用中，除了 MkDocs 用的 Python Markdown，还会经常用到 CommonMark 和 GitHub-Flavored Markdown，甚至还有 Obsidian 的特殊语法。</p>
-<p>如果你问我：「什么是 Markdown？」我很难描述，甚至很难给出一个链接告诉你：「这就是 Markdown」。</p>
-<p>我只能说：「如果它以一个或多个 <code>#</code> 开头，它就是一个标题行……大概这样的标记语言。但你想在哪里使用 Markdown 呢？因为处处都不一样」。</p>
-<p>我没法在此一一列举 Markdown 的所有问题，这里有一篇更好的文章：<a>Markdown Is a Disaster: Why and What to Do Instead</a>。</p>
-<p>文章作者 Karl Voit 在其中还提到 LML 最重要的四个特征：</p>
-<ol>
-<li>
-<strong>易于人类阅读</strong>
-</li>
-<li>
-<strong>易于人类学习</strong>
-</li>
-<li>
-<strong>格式易于人工输入 （或由工具生成）</strong>
-</li>
-<li>
-<strong>易于通过工具处理</strong>
-</li>
-</ol>
-<p>他认为 Markdown 只满足了第一点，这也与我在团队里收到的反馈相同：</p>
-<ol>
-<li>
-大家都觉得看着很舒服，因为以前他们更多用 Word，而 Word 想要写好可不简单——干得好，微软
-</li>
-<li>
-团队成员时不时会抱怨，Markdown 语法很难学，准确来说是很难记，我有时也会记混
-</li>
-<li>
-有人反馈过写起来麻烦，但编辑器的补全和快捷键缓解了这个问题
-</li>
-<li>
-<a href="https://mtirado.com/blog/writing-a-markdown-parser-is-hard/">Markdown 的解析器很难编写</a>，<strong>非 常 难</strong>。
-</li>
-</ol>
+</ul>
 <hr>
-<p>好吧，真正让我难过的是第四点。</p>
-<p>前段时间我尝试用 <a href="https://github.com/rust-bakery/nom/">nom</a> 编写一个剧本解析器。由于团队在用 Obsidian 写文档，剧本的格式就打算基于 Obsidian 的 Markdown 语法做简单扩展。</p>
-<p>结果我发现，这个“简单扩展”迫使我几乎从头实现 CommonMark 解析器。因为：</p>
+<h3 id="_6">效用计算（决策机制）<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
+<p><strong>核心原则：一切归于 Want 检查。</strong></p>
+<p>性格、关系、社交压力 <strong>不是</strong> 独立评分系统，它们通过影响 Want 来参与决策。</p>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>如何影响决策</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>性格</td>
+<td>修饰 want 的效用值（如：「暴躁」性格让「发泄情绪」的 want 权重更高）</td>
+</tr>
+<tr>
+<td>关系</td>
+<td>作为 want 的触发条件（如：只对喜欢的人才想「留下好印象」）</td>
+</tr>
+<tr>
+<td>社交规范</td>
+<td>通过「不想违规」的 want 实现（行动后果标记违规 -&gt; 触发惩罚）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>计算流程：</strong></p>
+<p>对于每个可用行动:</p>
 <ol>
-<li>
-Obsidian 的语法已经是某种 Markdown 方言
-</li>
-<li>
-没有任何现成 Parser 能处理「Obsidian 语法」+「Obsidian 插件语法」这个语法组合
-</li>
-<li>
-我的扩展也进一步破坏了标准 Markdown 结构（因为原版 Markdown 没有给出合适的拓展方案）
-</li>
+<li>执行该行动的后果（真的修改数据库）</li>
+<li>检查：哪些 want 被满足了？</li>
+<li>累加被满足的 want 的效用值 -&gt; 该行动的得分</li>
+<li>撤销修改（恢复数据库）</li>
 </ol>
-<p>手写 Parser 的过程中，我必须仔细确定使用了哪些元素及其变体，嵌套情况下应该有什么行为，边界情况该怎么解析，什么时候该转义，如何识别 HTML 代码……</p>
-<p>最终我意识到，「Markdown 易于重用」是个错觉。每个项目都有自己的方言，迁移文本远比想象中困难。这让我开始担心，我的博客和笔记本将来迁移会有多麻烦。</p>
-</section>
-<section id="为什么不是其他标记语言">
-<h3>为什么不是其他标记语言</h3>
-<p>当然还有很多 LML 可选：<a href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html">reStructuredText</a>、<a href="https://www.mediawiki.org/wiki/MediaWiki">MediaWiki</a>、<a href="https://docs.asciidoctor.org/asciidoc/latest/">AsciiDoc</a>、<a href="https://orgmode.org/">Org-mode</a>……</p>
-<p>语法和工具上的对比可以看这个表格：<a>Lightweight Markup</a></p>
-<p>我只简单说明不用它们的理由，不详细展开：</p>
-<ul>
-<li>
-reStructuredText：学习曲线陡峭，手写繁琐，对缩进要求严格
-</li>
-<li>
-MediaWiki：语法不一致，复杂嵌套时可读性差
-</li>
-<li>
-AsciiDoc：语法不一致，并且为了某些功能设计了相当复杂的语法（对我来说是过度设计）
-</li>
-</ul>
-<p>Org-mode 比较特殊，理由只有一个：当初我选择了 Vim 而非 Emacs，因此错过了 Emacs 生态，而每次试图学习 Org-mode 时我都认为应该先将我的编辑器习惯迁移到 Emacs 去。</p>
-<p>Karl Voit 让我知道<a href="https://karl-voit.at/2021/11/27/orgdown/">不需要在 Emacs 中也可以很好地编写 Org-mode 标记语言</a>，你绝对要看一下他提出的 <a>Orgdown</a> 项目。</p>
-<p>既然 Org-mode 变成还不错的选择了，是不是意味着这篇文章……到此结束？</p>
-</section>
-<section id="为什么是-Djot-而不是-Org-mode">
-<h3>为什么是 Djot 而不是 Org-mode</h3>
-<p>并不，我的理由是：Djot 更接近 Markdown，迁移成本更低。</p>
-<p>如果我想复用 Python Markdown 或其他 Markdown 变体中特殊语法的渲染效果，Djot 只需要给文档块添加属性就可以了。而 Org-mode 可能需要编写导出过滤器，并且更难融合进 MkDocs。</p>
-<p>至于生态，目前 Djot 生态还不如 Org-mode 在 Emacs 外的生态呢，但追逐新鲜事物总是很有趣不是吗？</p>
-<p>选择权永远在自己手中，而我选择了 Djot。所以，不要再纠结<a href="https://tvtropes.org/pmwiki/pmwiki.php/Main/PocketProtector">为什么圣经能挡子弹</a>了，让电影继续吧 :)</p>
-</section>
-</section>
-<section id="编写-MkDocs-插件">
-<h2>编写 MkDocs 插件</h2>
-<p>太好了，终于开始做一些实事了。</p>
-<p>要将 Djot 文件渲染到 <a href="https://www.mkdocs.org/">MkDocs</a> 页面上，最好的方式是编写一个 MkDocs 插件，在构建过程中“拦截”文档处理流程。</p>
-<section id="MkDocs-插件的工作原理">
-<h3>MkDocs 插件的工作原理</h3>
-<p>在构建网站时，MkDocs 会在不同阶段触发特定的事件，插件可以注册这些事件的处理函数，在恰当的时机介入构建流程。</p>
-<p>根据<a href="https://www.mkdocs.org/dev-guide/plugins/#developing-plugins">官方文档</a>，这些事件分为两类：</p>
-<p><strong>全局事件</strong>（每次构建发生一次）：</p>
-<ol>
-<li>
-<code>on_startup</code>：MkDocs 启动时触发
-</li>
-<li>
-<code>on_config</code>：配置加载完成后触发，可以修改配置
-</li>
-<li>
-<code>on_pre_build</code>：构建前准备，可以进行预处理
-</li>
-<li>
-<code>on_files</code>：文件集合构建完成，可以添加/删除/修改文件列表
-</li>
-<li>
-<code>on_nav</code>：导航结构构建完成，可以修改导航
-</li>
-<li>
-<code>on_env</code>：Jinja2 环境配置完成
-</li>
-</ol>
-<p><strong>页面事件</strong>（每个页面都会执行）：</p>
-<p>对于 <code>files</code> 中的每个页面，依次触发：</p>
-<ol>
-<li>
-<code>on_pre_page</code>：页面处理前的准备工作
-</li>
-<li>
-<code>on_page_read_source</code>：读取源文件内容（已弃用）
-</li>
-<li>
-<code>on_page_markdown</code>：Markdown 代码从文件加载完毕，可用于修改 Markdown 源文本
-</li>
-<li>
-<code>on_page_content</code>：HTML 生成后，可以修改 HTML 内容
-</li>
-<li>
-<code>on_page_context</code>：模板上下文准备完成
-</li>
-<li>
-<code>on_post_page</code>：模板渲染完成，即将写入磁盘
-</li>
-</ol>
-<details class="note">
-<summary>MkDocs Plugin Events 关系图</summary>
-<p>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/mkdocs/mkdocs/raw/refs/heads/master/docs/img/plugin-events.svg" data-desc-position="bottom">
-        <img alt="plugin-events.svg" src="https://github.com/mkdocs/mkdocs/raw/refs/heads/master/docs/img/plugin-events.svg">
-    </a>
-</p>
-</details>
-</section>
-<section id="插件-Python-代码">
-<h3>插件 Python 代码</h3>
-<p>项目用 <a href="https://github.com/astral-sh/uv">uv</a> 创建，结构如下：</p>
-<pre><code>mkdocs-djot/
-├── pyproject.toml
-└── src
-    └── mkdocs_djot
-        ├── __init__.py
-        └── plugin.py
-</code></pre>
-<p>MkDocs 默认不会将拓展名为 <code>.dj</code> 和 <code>.djot</code> 的文件视为文档文件，也就不会在后续步骤中处理它们：</p>
-<pre><code class="language-python">class File:
-    def is_documentation_page(self) -&gt; bool:
-        """Return True if file is a Markdown page."""
-        return utils.is_markdown_file(self.src_uri)
-
-def is_markdown_file(path: str) -&gt; bool:
-    """
-    Return True if the given file path is a Markdown file.
-
-    https://superuser.com/questions/249436/file-extension-for-markdown-files
-    """
-    return path.endswith(markdown_extensions)
-</code></pre>
-<p>我的做法是在 <code>on_files</code> 事件发生时，覆盖 Djot 对应 <a href="https://www.mkdocs.org/dev-guide/api/#mkdocs.structure.files.File"><code>File</code></a> 对象的 <code>is_documentation_page</code> 方法，使其返回 <code>True</code>。</p>
-<pre><code class="language-python">class DjotPlugin(BasePlugin):
-    config_scheme = (
-        (
-            "extensions",
-            config_options.ListOfItems(
-                config_options.Type(str), default=[".dj", ".djot"]
-            ),
-        ),
-    )
-
-    def should_include(self, file: File) -&gt; bool:
-        return file.src_path.endswith(tuple(self.config["extensions"]))
-
-    def on_files(self, files: Files, /, *, config: MkDocsConfig) -&gt; Files | None:
-        for file in files:
-            if self.should_include(file):
-                file.is_documentation_page = lambda: True
-
-                # Clear cached properties so they get recalculated
-                for attr in ("dest_uri", "url", "abs_dest_path", "name"):
-                    file.__dict__.pop(attr, None)
-
-        return files
-</code></pre>
-<p>需要注意的就是 <code>dest_uri</code> 等属性是 <a href="https://docs.python.org/3/library/functools.html#functools.cached_property"><code>cached_property</code></a> 的，需要手动清除，使其基于 <code>is_documentation_page = lambda: True</code> 重新计算，不然页面没法通过 <code>.html</code> 结尾的 URL 访问。</p>
-<p>再之后需要劫持渲染，从原本的 Markdown -&gt; HTML 渲染逻辑替换为 Djot -&gt; HTML 。</p>
-<p>这一步可以在很多时机进行，比如在 <code>on_page_markdown</code> 时渲染 Djot 文本，将渲染结果的 HTML 代码视为 Markdown 文本返回。（HTML 代码是合法的 Markdown 元素，所以之后再次经过 Markdown 渲染还是会生成一样的 HTML 代码）</p>
-<p>更好的做法是在 <code>on_pre_page</code> 时修改 <a href="https://www.mkdocs.org/dev-guide/themes/#mkdocs.structure.pages.Page"><code>Page</code></a> 的 <code>render</code> 方法。</p>
-<p><code>render</code> 方法会转换 Markdown 文本为 HTML，赋值给 <code>content</code> 属性：</p>
-<pre><code class="language-python">class Page(StructureItem):
-    def render(self, config: MkDocsConfig, files: Files) -&gt; None:
-        """Convert the Markdown source file to HTML as per the config."""
-        if self.markdown is None:
-            raise RuntimeError("`markdown` field hasn't been set (via `read_source`)")
-        # ...
-        self.content = md.convert(self.markdown)
-        # ...
-</code></pre>
-<p>我定义了 <code>djot_render</code> 函数覆盖 <code>page.render</code>，与原版 <code>render</code> 逻辑一致，只是使用了 <code>render_to_html</code> 函数来渲染 Djot：</p>
-<pre><code class="language-python">class DjotPlugin(BasePlugin):
-    def on_pre_page(
-        self, page: Page, /, *, config: MkDocsConfig, files: Files
-    ) -&gt; Page | None:
-        if not self.should_include(page.file):
-            return page
-
-        def djot_render(config: MkDocsConfig, files: Files) -&gt; None:
-            if page.markdown is None:
-                raise RuntimeError("`markdown` field hasn't been set")
-            # ...
-            page.content = render_to_html(page.markdown)
-
-        page.render = djot_render
-
-        return page
-</code></pre>
-<p>它最终会在 <code>on_page_markdown</code> 和 <code>on_page_content</code> 之间被调用。</p>
-</section>
-<section id="使用-Rust-渲染-Djot">
-<h3>使用 Rust 渲染 Djot</h3>
-<p>很可惜截至目前（2025-11-06）还没有任何 Python 版本的 Djot 解析器，<code>render_to_html</code> 函数的实现会很麻烦。先写个 Python 版本的解析器？还是算了吧。</p>
-<p>最终我决定使用 <a>jotdown</a> 和 <a href="https://pyo3.rs/">Pyo3</a>，希望我们不用再经历一次“为什么是 xxx”。</p>
-<p>jotdown 是 Rust 编写的 Djot 解析器。而 PyO3 是一个能够将 Rust 代码编译为 Python 原生扩展模块（<code>.so</code> 或 <code>.pyd</code> 文件）的 Rust 库。</p>
-<p>项目由 PyO3 的辅助工具 <a href="https://www.maturin.rs/">Maturin</a> 创建，它会帮忙设置必要的 <code>Cargo.toml</code> 和 <code>pyproject.toml</code> 信息，也可以更快捷地构建和发布。</p>
-<p>项目结构：</p>
-<pre><code>jotdown_py/
-├── Cargo.toml
-├── pyproject.toml
-└── src
-    └── lib.rs
-</code></pre>
-<p>实现很直接，用 PyO3 包装 jotdown 的渲染函数：</p>
-<pre><code class="language-rust">#[pyfunction]
-fn render_to_html(djot_text: &amp;str) -&gt; PyResult&lt;String&gt; {
-    let mut html = String::new();
-    let events = jotdown::Parser::new(djot_text);
-    jotdown::html::Renderer::default()
-        .push(events, &amp;mut html)
-        .map_err(|e| PyErr::new::&lt;PyRuntimeError, _&gt;(format!("HTML rendering failed: {e}")))?;
-
-    Ok(html)
-}
-
-#[pymodule]
-fn jotdown_py(m: &amp;Bound&lt;'_, PyModule&gt;) -&gt; PyResult&lt;()&gt; {
-    m.add_function(wrap_pyfunction!(render_to_html, m)?)?;
-
-    Ok(())
-}
-</code></pre>
-<p>编译后，Python 可以像普通 Python 模块一样导入和使用它：</p>
-<pre><code class="language-python">from jotdown_py import render_to_html
-
-html = render_to_html("# Hello, Djot!")
-</code></pre>
-</section>
-<section id="RustPython-混合项目">
-<h3>Rust/Python 混合项目</h3>
-<p>目前，<code>jotdown_py</code>（jotdown 的包装）和 <code>mkdocs-djot</code>（MkDocs 插件）是分离的两个项目，我需要将 <code>jotdown_py</code> 发布为一个 Python 包，在 <code>mkdocs-djot</code> 中导入 <code>jotdown_py</code>，最后再把 <code>mkdocs-djot</code> 发布出去。</p>
-<p>太分散了，需要维护两个项目，只有将前者制作成完整的 Rust-Python binding package 时才有必要，而我没这个想法。</p>
-<p>我从 <a href="https://www.maturin.rs/project_layout.html#mixed-rustpython-project">Maturin User Guide</a> 找到了混合项目的设置方法，只需在 <code>pyproject.toml</code> 添加：</p>
-<pre><code class="language-toml">[tool.maturin]
-python-source = "mkdocs_djot"
-</code></pre>
-<p>将 MkDocs 插件代码放在 <code>mkdocs_djot/</code> 下，两个 <code>pyproject.toml</code> 内容也可以合并在一起。</p>
-<p>最终项目结构是这样：</p>
-<pre><code>mkdocs-djot/
-├── Cargo.toml
-├── mkdocs_djot
-│&nbsp;&nbsp; ├── __init__.py
-│&nbsp;&nbsp; └── plugin.py
-├── pyproject.toml
-└── src
- &nbsp;&nbsp; └── lib.rs
-</code></pre>
-<p>Python 中导入的命名空间需要略微修改：</p>
-<pre><code class="language-python">from mkdocs_djot.jotdown_py import render_to_html
-</code></pre>
-</section>
-<section id="在-MkDocs-中使用">
-<h3>在 MkDocs 中使用</h3>
-<p>在 MkDocs 项目中安装 <code>mkdocs-djot</code>，添加到插件列表：</p>
-<pre><code class="language-yaml">plugins:
-  - djot
-</code></pre>
-<p>此时任何 <code>.dj</code> 或 <code>.djot</code> 结尾的文档都会被渲染成 HTML 页面。</p>
-<p>名称可以用 <code>djot</code> 是因为在 <code>pyproject.toml</code> 中设置了：</p>
-<pre><code class="language-toml">[project.entry-points."mkdocs.plugins"]
-djot = "mkdocs_djot.plugin:DjotPlugin"
-</code></pre>
-</section>
-</section>
-<section id="处理元信息">
-<h2>处理元信息</h2>
-<p>呼，阶段性胜利。但……页面上好像少了什么？</p>
-<p>哦，是右侧的目录（TOC），还有标题锚点也不见了。</p>
-<p>因为<a href="#插件-Python-代码">刚刚</a>在覆盖方法时略过了原版 <code>render</code> 还会做的其他事情：</p>
-<pre><code class="language-python">def render(self, config: MkDocsConfig, files: Files) -&gt; None:
-    """Convert the Markdown source file to HTML as per the config."""
-    if self.markdown is None:
-        raise RuntimeError("`markdown` field hasn't been set (via `read_source`)")
-
-    md = markdown.Markdown(
-        extensions=config['markdown_extensions'],
-        extension_configs=config['mdx_configs'] or {},
-    )
-
-    raw_html_ext = _RawHTMLPreprocessor()
-    raw_html_ext._register(md)
-
-    extract_anchors_ext = _ExtractAnchorsTreeprocessor(self.file, files, config)
-    extract_anchors_ext._register(md)
-
-    relative_path_ext = _RelativePathTreeprocessor(self.file, files, config)
-    relative_path_ext._register(md)
-
-    extract_title_ext = _ExtractTitleTreeprocessor()
-    extract_title_ext._register(md)
-
-    self.content = md.convert(self.markdown)
-    self.toc = get_toc(getattr(md, 'toc_tokens', []))
-    self._title_from_render = extract_title_ext.title
-    self.present_anchor_ids = (
-        extract_anchors_ext.present_anchor_ids | raw_html_ext.present_anchor_ids
-    )
-    if log.getEffectiveLevel() &gt; logging.DEBUG:
-        self.links_to_anchors = relative_path_ext.links_to_anchors
-</code></pre>
-<p>MkDocs 使用 <a href="https://python-markdown.github.io/reference/markdown/treeprocessors/">Treeprocessor</a> 分析 Markdown AST，从中提取锚点、标题、TOC 这些页面元信息。</p>
-<p>我肯定是没法获得与 Markdown 相同的 AST 来复用逻辑了，现在有两条路：</p>
-<ol>
-<li>
-<strong>绑定完整的 jotdown 实现</strong>，向 Python 暴露 Djot event，在 Python 里分析 Event 流获得元信息
-</li>
-<li>
-<strong>在 Rust 里提取信息返回给 Python</strong>
-</li>
-</ol>
-<p>我一直在思考，jotdown_py 是否有必要作为一个完整的绑定库进行维护，它该是 Python 解析 Djot 的良好方式吗？Djot 不成熟，jotdown 也<a href="https://github.com/hellux/jotdown/issues/53">不成熟</a>，未来还是交给纯 Python 实现吧。</p>
-<p>所以，我选 2。</p>
-<section id="从-Event-流里提取信息">
-<h3>从 Event 流里提取信息</h3>
-<p>jotdown 将 Djot 文档解析为一系列 <a href="https://docs.rs/jotdown/latest/jotdown/enum.Event.html">Event</a>（事件）。</p>
-<p>每个元素可能由一个或多个事件组成：容器元素（如标题、段落、列表）用 <code>Event::Start</code> 开始，包含其内部内容的事件，最后用 <code>Event::End</code> 结束；而原子元素（如文本、换行）则由单个事件表示。</p>
-<p>比如这段 Djot：</p>
-<pre><code class="language-djot"># Hello, World!
-
-A paragraph.
-</code></pre>
-<p>会被解析为以下事件流：</p>
-<pre><code class="language-rust">Start(Section { id: "Hello-World" }, {})
-Start(Heading { level: 1, has_section: true, id: "Hello-World" }, {})
-Str("Hello, World!")
-End(Heading { level: 1, has_section: true, id: "Hello-World" })
-Blankline
-Start(Paragraph, {})
-Str("A paragraph.")
-End(Paragraph)
-End(Section { id: "Hello-World" })
-</code></pre>
-<p>要提取页面元信息（标题、TOC、锚点），我们只需要遍历这个事件流，在遇到 <code>Heading</code> 容器时记录信息：</p>
-<pre><code class="language-rust">#[pyfunction]
-fn extract_metadata&lt;'py&gt;(py: Python&lt;'py&gt;, djot_text: &amp;str) -&gt; PyResult&lt;Bound&lt;'py, PyDict&gt;&gt; {
-    let mut metadata = PageMetadata::new();
-    let mut heading_ctx = HeadingContext::new();
-
-    for event in jotdown::Parser::new(djot_text) {
-        match event {
-            // 标题开始：记录层级和 ID
-            jotdown::Event::Start(jotdown::Container::Heading { level, id, .. }, _) =&gt; {
-                heading_ctx.start_heading(&amp;mut metadata, level, &amp;id);
-            }
-            // 标题内的文本：累积标题内容
-            jotdown::Event::Str(text) if heading_ctx.active_heading_level.is_some() =&gt; {
-                heading_ctx.append_text(&amp;text);
-            }
-            // 标题结束：保存标题文本
-            jotdown::Event::End(jotdown::Container::Heading { .. })
-                if heading_ctx.active_heading_level.is_some() =&gt;
-            {
-                if let Some(title) = heading_ctx.end_heading(&amp;mut metadata) {
-                    metadata.title = Some(title);
-                }
-            }
-
-            _ =&gt; {}
-        }
-    }
-
-    metadata.to_py_dict(py)
-}
-</code></pre>
-<p><code>HeadingContext</code> 是个辅助结构，用来追踪当前是否在标题内部、标题层级、以及累积的标题文本。这样写是为了避免在函数里定义一堆临时变量，让代码好看一些。</p>
-<p>这个函数最终返回一个 Python 字典，包含：</p>
-<ul>
-<li>
-<code>title</code>：页面标题（第一个 H1）
-</li>
-<li>
-<code>toc_tokens</code>：TOC 树
-</li>
-<li>
-<code>anchors</code>：所有标题的锚点 ID 集合
-</li>
-</ul>
-<p>其中 <code>toc_tokens</code> 和 <code>anchors</code> 的内容是都是在标题开始时构建的，让我们看看 <code>start_heading</code> 做了什么：</p>
-<pre><code class="language-rust">impl HeadingContext {
-    fn start_heading(&amp;mut self, metadata: &amp;mut PageMetadata, level: u16, id: &amp;str) {
-        if !id.is_empty() {
-            metadata.anchors.push(id.to_lowercase()); // 添加到锚点列表
-        }
-
-        let idx = metadata.toc_builder.add_token(id.to_string(), level); // 添加到 TOC 树
-        self.active_heading_level = Some(level);
-        self.active_token_idx = Some(idx);
-        self.heading_text.clear();
-    }
-</code></pre>
-</section>
-<section id="从扁平序列到树形结构">
-<h3>从扁平序列到树形结构</h3>
-<p>现在，TOC 需要一个嵌套的树形结构，例如：</p>
-<pre><code>H1: Introduction
-  H2: Background
-  H2: Motivation
-H1: Implementation
-  H2: Algorithm
-    H3: Complexity
-  H2: Optimization
-</code></pre>
-<p>但从 Event 流中得到的标题序列是扁平的：</p>
-<pre><code>H1 (level=1, id="Introduction")
-H2 (level=2, id="Background")
-H2 (level=2, id="Motivation")
-H1 (level=1, id="Implementation")
-H2 (level=2, id="Algorithm")
-H3 (level=3, id="Complexity")
-H2 (level=2, id="Optimization")
-</code></pre>
-<p>这个问题本质上是：<strong>如何从线性序列构建树形结构？</strong></p>
-<p><strong>关键是找到每个节点的父节点</strong>，我用了一个<a href="https://oi-wiki.org/ds/monotonous-stack/">单调栈</a>来解决：</p>
-<ul>
-<li>
-栈底到栈顶：层级严格递增
-</li>
-<li>
-遇到新节点时，弹出所有 层级 &gt;= 当前层级 的节点
-</li>
-<li>
-栈顶就是最近的父节点
-</li>
-</ul>
-<p>相关数据结构如下：</p>
-<pre><code class="language-rust">struct TocToken {
-    id: String,
-    name: String,
-    level: u16,
-    child_indices: Vec&lt;usize&gt;, // 子节点索引
-}
-
-struct TocBuilder {
-    arena: Vec&lt;TocToken&gt;, // 节点数据
-    stack: Vec&lt;usize&gt;,  // 用于维护祖先链的单调栈
-    root_indices: Vec&lt;usize&gt;, // 根节点索引
-}
-</code></pre>
-<p>我把 <code>TocToken</code> 分配在 <code>arena</code> 里，栈中只存储元素索引，<code>TocToken</code> 的子节点也只存储索引。这样可以不重复存储 <code>TocToken</code> 数据，同时也避免了某些 Rust 所有权问题。</p>
-<p>由于最后需要输出根节点（可能有多个 H1），我把它们的索引缓存在 <code>root_indices</code>。</p>
-<p>当遇到标题 <code>Event</code> 时，调用 <code>add_token</code>，向树中插入一个节点：</p>
-<pre><code class="language-rust">impl TocBuilder {
-    fn add_token(&amp;mut self, id: String, level: u16) -&gt; usize {
-        let idx = self.arena.len();
-        let token = TocToken::new(id, level);
-        self.arena.push(token);
-
-        // 清理栈：移除所有层级 &gt;= 当前层级的节点
-        self.stack
-            .retain(|&amp;parent_idx| self.arena[parent_idx].level &lt; level);
-
-        // 栈顶是父节点，将本节点设为子节点（如果栈为空，则当前节点是根节点）
-        if let Some(&amp;parent_idx) = self.stack.last() {
-            self.arena[parent_idx].child_indices.push(idx);
-        } else {
-            self.root_indices.push(idx);
-        }
-
-        // 当前节点入栈，成为后续节点的潜在父节点
-        self.stack.push(idx);
-        idx
-    }
-}
-</code></pre>
-<p>算法的时间复杂度是 <code>O(n)</code> （n 为标题数量）。虽然有 <code>retain</code> 操作，但每个节点最多入栈和出栈各一次，总体仍是线性时间。空间复杂度也是 <code>O(n)</code>，用于存储所有节点。</p>
-<p>返回的时候手动转换为 Python 字典和列表（<code>PyDict</code> 和 <code>PyList</code>）：</p>
-<pre><code class="language-rust">impl TocToken {
-    fn to_py_dict&lt;'py&gt;(&amp;self, py: Python&lt;'py&gt;, arena: &amp;[TocToken]) -&gt; PyResult&lt;Bound&lt;'py, PyDict&gt;&gt; {
-        let dict = PyDict::new(py);
-        dict.set_item("id", &amp;self.id)?;
-        dict.set_item("name", &amp;self.name)?;
-        dict.set_item("level", self.level)?;
-
-        let children = PyList::empty(py);
-        for &amp;child_idx in &amp;self.child_indices {
-            children.append(arena[child_idx].to_py_dict(py, arena)?)?;
-        }
-        dict.set_item("children", children)?;
-
-        Ok(dict)
-    }
-}
-
-impl TocBuilder {
-    fn to_py_list&lt;'py&gt;(&amp;self, py: Python&lt;'py&gt;) -&gt; PyResult&lt;Bound&lt;'py, PyList&gt;&gt; {
-        let list = PyList::empty(py);
-        for &amp;idx in &amp;self.root_indices {
-            list.append(self.arena[idx].to_py_dict(py, &amp;self.arena)?)?;
-        }
-        Ok(list)
-    }
-}
-</code></pre>
-</section>
-<section id="与-MkDocs-集成">
-<h3>与 MkDocs 集成</h3>
-<p>可能你会好奇：为什么选择返回这样的 <code>toc_tokens</code>？</p>
-<p>其实是因为我想要复用 <code>mkdocs.structure.toc</code> 里 <code>get_toc</code> 函数的逻辑：</p>
-<pre><code class="language-python">def get_toc(toc_tokens: list[_TocToken]) -&gt; TableOfContents:
-    toc = [_parse_toc_token(i) for i in toc_tokens]
-    # For the table of contents, always mark the first element as active
-    if len(toc):
-        toc[0].active = True  # type: ignore[attr-defined]
-    return TableOfContents(toc)
-
-def _parse_toc_token(token: _TocToken) -&gt; AnchorLink:
-    anchor = AnchorLink(token['name'], token['id'], token['level'])
-    for i in token['children']:
-        anchor.children.append(_parse_toc_token(i))
-    return anchor
-</code></pre>
-<p>它能帮我更简单地构造 <code>TableOfContents</code>，我只需要传递和 <code>_TocToken</code> 一样有 <code>name</code>、<code>id</code>、<code>level</code>、<code>children</code> 字段的字典就可以了。</p>
-<p>最终，我的 <code>djot_render</code> 长这样：</p>
-<pre><code class="language-python">def djot_render(config: MkDocsConfig, files: Files) -&gt; None:
-    if page.markdown is None:
-        raise RuntimeError("`markdown` field hasn't been set")
-
-    metadata = extract_metadata(page.markdown)
-
-    page._title_from_render = metadata["title"]
-    page.toc = get_toc(metadata["toc_tokens"])
-    page.present_anchor_ids = metadata["anchors"]
-
-    page.content = render_to_html(page.markdown)
-
-    page.links_to_anchors = {}
-</code></pre>
-</section>
-</section>
-<section id="使用-Djot-写博客">
-<h2>使用 Djot 写博客</h2>
-<p>实际上，<strong>这篇文章就完全是用 Djot 写的</strong>，如果你好奇它的内容：<a href="https://raw.githubusercontent.com/13m0n4de/notebook/refs/heads/main/docs/blog/posts/replacing_markdown_with_djot_in_mkdocs.dj">replacing_markdown_with_djot_in_mkdocs.dj</a></p>
-<p>其中有一些有趣的地方值得一提。</p>
-<section id="复用样式">
-<h3>复用样式</h3>
-<p>比如我可以写下：</p>
-<pre><code class="language-djot">{.admonition .quote}
-:::
-{.admonition-title}
-作者 John MacFarlane 的介绍
-
-Djot (/dʒɑt/) 是一种轻量级的标记语法。
-:::
-</code></pre>
-<p>以此获得 <a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/">Admonitions</a> 效果，也就是文章最开头的引用块。</p>
-<p>原本 Markdown 会这么写：</p>
-<pre><code class="language-markdown">!!! quote "作者 John MacFarlane 的介绍"
-    
-    Djot (/dʒɑt/) 是一种轻量级的标记语法。
-</code></pre>
-<p>它们都生成一模一样的 HTML：</p>
-<pre><code class="language-html">&lt;div class="admonition quote"&gt;
-    &lt;p class="admonition-title"&gt;作者 John MacFarlane 的介绍&lt;/p&gt;
-    &lt;p&gt;Djot (/dʒɑt/) 是一种轻量级的标记语法。&lt;/p&gt;
-&lt;/div&gt;
-</code></pre>
-</section>
-<section id="代码高亮">
-<h3>代码高亮</h3>
-<p>失去了 <a href="https://pygments.org/">Pygments</a> 的处理，代码块没法高亮了。</p>
-<p>我的解决方案是使用 <a href="https://highlightjs.org/">Hightlight.js</a>，在页面加载外部 JavaScript 和 CSS。</p>
-<p>比如本文在开头插入了：</p>
-<pre><code class="language-djot">``` =html
-&lt;link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css"&gt;
-&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css"&gt;
-&lt;script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"&gt;&lt;/script&gt;
-```
-</code></pre>
-<p>在末尾插入了：</p>
-<pre><code class="language-djot">``` =html
-&lt;script&gt;
-    hljs.highlightAll();
-    document$.subscribe(() =&gt; hljs.highlightAll());
-&lt;/script&gt;
-```
-</code></pre>
-<p><code>document$.subscribe</code> 是 <a href="https://squidfunk.github.io/mkdocs-material/customization/#additional-javascript">Material For MkDocs 提供的 RxJS Observable</a>，会在每次页面内容更新时触发。这样能避免启用即时加载功能时，页面不完全刷新，导致高亮没有开启的问题。</p>
-<p>这是比较 Hacky 的做法，适合只愿意在单个文档中启用 Highlight.js 的情况，我的其他 Markdown 文档还是要用 Pygments。</p>
+<p>选择得分最高的行动。</p>
+<p>Versu 看的是真实后果，不是简化估计，避免了《模拟人生》中「角色反复尝试被占用的厕所」之类的问题。</p>
 <hr>
-<p>当然也可以在 MkDocs 中设置，这样更好：</p>
-<pre><code class="language-yaml">extra_css:
-  - https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css
-
-extra_javascript:
-  - https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js
-  - javascripts/init.js  # Contains: hljs.highlightAll();
-
-markdown_extensions:
-  - pymdownx.highlight:
-      use_pygments: false
-</code></pre>
-</section>
-<section id="已知的问题">
-<h3>已知的问题</h3>
-<p>与 <a href="https://squidfunk.github.io/mkdocs-material/plugins/blog/">Material for MkDocs 的 blog 插件</a> 一起使用时，索引页面仍会将文档视为 Markdown 格式处理。</p>
-<p>解决方法：</p>
-<ol>
-<li>
-摘要部分尽量使用与 Markdown 兼容的 Djot 语法
-</li>
-<li>
-修改 blog 插件的摘要分隔符配置，使用 Djot 注释语法
-</li>
-</ol>
-<pre><code class="language-yaml">plugins:
-  - blog:
-      post_excerpt_separator: {% more %}
-</code></pre>
-<p>注意：blog 插件不支持多个分隔符。混用 Markdown 和 Djot 文件时，只能接受插入不合自身语法的“注释标记”了。</p>
-<p>本文唯一的 Markdown 含量就是这么来的，注意到开头的 <code>&lt;!-- more --&gt;</code> 了吗。</p>
-</section>
-</section>
-<section id="总结">
-<h2>总结</h2>
-<p>Djot 很好用，但我应该只会用它在 MkDocs 写这一篇文章了。想要将 Djot 融入 MkDocs 生态，一个简单的渲染插件做不到，长期来看 MkDocs 也不会从根本上支持 Markdown 以外的 LML，要做的工作太多。</p>
-<p>Djot 不适合 MkDocs，或者换句话说 MkDocs 限制了 Djot。</p>
-<p>我该用它去写自己的静态网站生成器，或者用它作为文章开头提到的剧本语法。</p>
-<p>还有 Org-mode，这次之后我也该去试试它，说不准以后博客是从 Org-mode 生成，而不是任何 Markdown 或 Better Markdown 呢。</p>
-</section>
-<section id="参考">
-<h2>参考</h2>
+<h2 id="_7">案例：三顾茅庐<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
+<h3 id="_8">角色定义<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
+<p><strong>刘备</strong></p>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>效用值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>请出诸葛亮</td>
+<td>+40</td>
+<td>最重要的目标</td>
+</tr>
+<tr>
+<td>维护仁义形象</td>
+<td>+30</td>
+<td>不能失礼于贤者</td>
+</tr>
+<tr>
+<td>安抚兄弟情绪</td>
+<td>+20</td>
+<td>关心手足</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>+25</td>
+<td>礼贤下士的体现</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>性格特质</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>隐忍</td>
+<td>忍耐类行动效用 ×1.3</td>
+</tr>
+<tr>
+<td>重情义</td>
+<td>涉及兄弟的 want 效用 ×1.2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>张飞</strong></p>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>效用值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保护大哥尊严</td>
+<td>+35</td>
+<td>不能让大哥受辱</td>
+</tr>
+<tr>
+<td>快速解决问题</td>
+<td>+25</td>
+<td>不喜欢拖延</td>
+</tr>
+<tr>
+<td>服从大哥命令</td>
+<td>+30</td>
+<td>听大哥的话</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>+10</td>
+<td>不太在乎</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>性格特质</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>暴躁</td>
+<td>「发泄情绪」类行动效用 ×1.4</td>
+</tr>
+<tr>
+<td>忠诚</td>
+<td>「服从大哥」的 want 效用 ×1.2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>关系</th>
+<th>评价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对诸葛亮</td>
+<td>作为谋士：-20（不耐烦，摆什么架子）</td>
+</tr>
+<tr>
+<td>对刘备</td>
+<td>作为兄长：+50（绝对忠诚）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>诸葛亮</strong></p>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>效用值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>试探来者是否明主</td>
+<td>+35</td>
+<td>需要验证</td>
+</tr>
+<tr>
+<td>不轻易出山</td>
+<td>+25</td>
+<td>保持身价</td>
+</tr>
+<tr>
+<td>展示才华</td>
+<td>+20</td>
+<td>有机会就想表现</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>+20</td>
+<td>有分寸</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>性格特质</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>谨慎</td>
+<td>「观察等待」类行动效用 ×1.3</td>
+</tr>
+<tr>
+<td>傲气</td>
+<td>「不轻易出山」的 want 效用 ×1.2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">场景设定<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
 <ul>
-<li>
-<a href="https://djot.net/">Djot</a>
-</li>
-<li>
-<a href="https://gitlab.com/publicvoit/orgdown">Orgdown</a>
-</li>
-<li>
-<a href="https://hyperpolyglot.org/lightweight-markup">Lightweight Markup</a>
-</li>
-<li>
-<a href="https://www.karl-voit.at/2025/08/17/Markdown-disaster/">Markdown Is a Disaster: Why and What to Do Instead</a>
-</li>
-<li>
-<a href="https://www.jonashietala.se/blog/2024/02/02/blogging_in_djot_instead_of_markdown/">Blogging in Djot instead of Markdown</a>
-</li>
-<li>
-<a href="https://github.com/hellux/jotdown">jotdown</a>
-</li>
+<li>地点: 隆中草庐</li>
+<li>时间: 第三次拜访</li>
+<li>状态: 诸葛亮午睡（实际在暗中观察），刘备张飞已等待两个时辰</li>
 </ul>
-<script>
-    hljs.highlightAll();
-    document$.subscribe(() => hljs.highlightAll());
-</script>
-</section>
-</section>
-
+<p>当前活跃的 Practices：</p>
+<ul>
+<li>「正式拜访」（刘备、张飞参与）</li>
+<li>「观察试探」（诸葛亮参与）</li>
+</ul>
+<hr>
+<h3 id="1">回合 1：张飞决策<a class="headerlink" href="#1" title="Permanent link">¶</a></h3>
+<p><strong>情境</strong>：等待两个时辰，诸葛亮仍在「午睡」</p>
+<p><strong>可用 Affordances</strong>（来自「正式拜访」 Practice）：</p>
+<h4 id="a">选项 A：发怒咆哮<a class="headerlink" href="#a" title="Permanent link">¶</a></h4>
+<p>行动后果（Postconditions）：</p>
+<div class="highlight"><pre><span></span><code>add zhang_fei.venting_anger!true
+add zhang_fei.voice_volume!loud
+add norm_violated.respect_guest_etiquette.zhang_fei
+add might_wake.zhuge_liang
+</code></pre></div>
+<p>Want 检查：</p>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>是否满足</th>
+<th>得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保护大哥尊严（大哥被怠慢，要出头）</td>
+<td>满足</td>
+<td>+35</td>
+</tr>
+<tr>
+<td>快速解决问题（能把人吵醒）</td>
+<td>满足</td>
+<td>+25</td>
+</tr>
+<tr>
+<td>服从大哥命令（大哥说要等）</td>
+<td>违背</td>
+<td>0</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>违背</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>性格修正：「暴躁」×1.4 应用于发泄情绪相关得分</p>
+<p><strong>总分：(35 + 25) × 1.4 = 84</strong></p>
+<hr>
+<h4 id="b">选项 B：忍耐等待<a class="headerlink" href="#b" title="Permanent link">¶</a></h4>
+<p>行动后果：</p>
+<div class="highlight"><pre><span></span><code>add zhang_fei.waiting!true
+add zhang_fei.emotional_state!suppressed
+</code></pre></div>
+<p>Want 检查：</p>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>是否满足</th>
+<th>得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保护大哥尊严</td>
+<td>无关</td>
+<td>0</td>
+</tr>
+<tr>
+<td>快速解决问题</td>
+<td>违背</td>
+<td>0</td>
+</tr>
+<tr>
+<td>服从大哥命令</td>
+<td>满足</td>
+<td>+30</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>满足</td>
+<td>+10</td>
+</tr>
+</tbody>
+</table>
+<p>性格修正：「暴躁」对压抑类行动无加成</p>
+<p><strong>总分：30 + 10 = 40</strong></p>
+<hr>
+<h4 id="c">选项 C：小声抱怨<a class="headerlink" href="#c" title="Permanent link">¶</a></h4>
+<p>行动后果：</p>
+<div class="highlight"><pre><span></span><code>add zhang_fei.mumbling!true
+add zhang_fei.emotional_state!slightly_venting
+</code></pre></div>
+<p>Want 检查：</p>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>是否满足</th>
+<th>得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保护大哥尊严</td>
+<td>部分（表达不满但不激烈）</td>
+<td>+15</td>
+</tr>
+<tr>
+<td>快速解决问题</td>
+<td>无关</td>
+<td>0</td>
+</tr>
+<tr>
+<td>服从大哥命令</td>
+<td>部分违背</td>
+<td>+10</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>基本满足</td>
+<td>+10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分：15 + 10 + 10 = 35</strong></p>
+<hr>
+<h4 id="_10">决策结果<a class="headerlink" href="#_10" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>总分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. 发怒咆哮</td>
+<td><strong>84</strong></td>
+</tr>
+<tr>
+<td>B. 忍耐等待</td>
+<td>40</td>
+</tr>
+<tr>
+<td>C. 小声抱怨</td>
+<td>35</td>
+</tr>
+</tbody>
+</table>
+<p><strong>张飞选择：发怒咆哮</strong></p>
+<blockquote>
+<p>“这村夫好大的架子！待俺去屋后放一把火，看他起是不起！”</p>
+</blockquote>
+<hr>
+<h3 id="2">回合 2：刘备决策（响应张飞咆哮）<a class="headerlink" href="#2" title="Permanent link">¶</a></h3>
+<p><strong>情境</strong>：张飞爆发，可能破坏求贤大计</p>
+<p><strong>可用 Affordances</strong>：</p>
+<h4 id="a_1">选项 A：严厉呵斥<a class="headerlink" href="#a_1" title="Permanent link">¶</a></h4>
+<p>行动后果：</p>
+<div class="highlight"><pre><span></span><code>add liu_bei.reprimanding.zhang_fei!harshly
+add zhang_fei.emotional_state!chastened
+add norm_violated.brotherly_bond.liu_bei
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>是否满足</th>
+<th>得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>请出诸葛亮（控制局面）</td>
+<td>满足</td>
+<td>+40</td>
+</tr>
+<tr>
+<td>维护仁义形象</td>
+<td>满足</td>
+<td>+30</td>
+</tr>
+<tr>
+<td>安抚兄弟情绪</td>
+<td>违背（伤了张飞面子）</td>
+<td>0</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>违背（兄弟失和）</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>性格修正：「重情义」×1.2 但此行动伤害兄弟关系，无加成</p>
+<p><strong>总分：40 + 30 = 70</strong></p>
+<hr>
+<h4 id="b_1">选项 B：温和劝阻<a class="headerlink" href="#b_1" title="Permanent link">¶</a></h4>
+<p>行动后果：</p>
+<div class="highlight"><pre><span></span><code>add liu_bei.persuading.zhang_fei!gently
+add zhang_fei.emotional_state!calming
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>是否满足</th>
+<th>得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>请出诸葛亮</td>
+<td>满足（稳住局面）</td>
+<td>+40</td>
+</tr>
+<tr>
+<td>维护仁义形象</td>
+<td>满足</td>
+<td>+30</td>
+</tr>
+<tr>
+<td>安抚兄弟情绪</td>
+<td>满足</td>
+<td>+20</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>满足</td>
+<td>+25</td>
+</tr>
+</tbody>
+</table>
+<p>性格修正：「隐忍」×1.3 应用于温和处理，「重情义」×1.2 应用于安抚兄弟</p>
+<p><strong>总分：40 + 30 + (20 × 1.2) + 25 = 119</strong></p>
+<hr>
+<h4 id="c_1">选项 C：放任不管<a class="headerlink" href="#c_1" title="Permanent link">¶</a></h4>
+<p>行动后果：</p>
+<div class="highlight"><pre><span></span><code>add liu_bei.ignoring.zhang_fei_outburst
+add zhuge_liang.impression.liu_bei!negative
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>是否满足</th>
+<th>得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>请出诸葛亮</td>
+<td>违背（印象变差）</td>
+<td>0</td>
+</tr>
+<tr>
+<td>维护仁义形象</td>
+<td>违背</td>
+<td>0</td>
+</tr>
+<tr>
+<td>安抚兄弟情绪</td>
+<td>无关</td>
+<td>0</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>违背</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分：0</strong></p>
+<hr>
+<h4 id="_11">决策结果<a class="headerlink" href="#_11" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>总分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. 严厉呵斥</td>
+<td>70</td>
+</tr>
+<tr>
+<td>B. 温和劝阻</td>
+<td><strong>119</strong></td>
+</tr>
+<tr>
+<td>C. 放任不管</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>刘备选择：温和劝阻</strong></p>
+<blockquote>
+<p>“三弟不可无礼。孔明先生乃当世大贤，我等理当诚心等候。”</p>
+</blockquote>
+<hr>
+<h3 id="3">回合 3：张飞决策（响应刘备劝阻）<a class="headerlink" href="#3" title="Permanent link">¶</a></h3>
+<p><strong>情境变化</strong>：刘备已开口劝阻</p>
+<p>新增事实：</p>
+<div class="highlight"><pre><span></span><code>liu_bei.gave_direct_order.zhang_fei!calm_down
+</code></pre></div>
+<p>这改变了 want 检查的结果：</p>
+<h4 id="a_2">选项 A：继续发怒<a class="headerlink" href="#a_2" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>是否满足</th>
+<th>得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保护大哥尊严</td>
+<td>大哥已表态，继续闹反而让大哥难堪</td>
+<td>0</td>
+</tr>
+<tr>
+<td>服从大哥命令</td>
+<td><strong>直接违背</strong>（大哥刚下令）</td>
+<td>0</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>违背</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>性格修正：「忠诚」×1.2 对违背大哥有惩罚效果</p>
+<p><strong>总分：接近 0，甚至为负</strong></p>
+<hr>
+<h4 id="b_2">选项 B：不情愿地闭嘴<a class="headerlink" href="#b_2" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>是否满足</th>
+<th>得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>服从大哥命令</td>
+<td>满足</td>
+<td>+30</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>满足</td>
+<td>+10</td>
+</tr>
+</tbody>
+</table>
+<p>性格修正：「忠诚」×1.2</p>
+<p><strong>总分：(30 × 1.2) + 10 = 46</strong></p>
+<hr>
+<h4 id="_12">决策结果<a class="headerlink" href="#_12" title="Permanent link">¶</a></h4>
+<p><strong>张飞选择：不情愿地闭嘴</strong></p>
+<blockquote>
+<p>张飞虽然不情愿，但还是退到一旁，脸色铁青。</p>
+</blockquote>
+<hr>
+<h3 id="4">回合 4：诸葛亮决策<a class="headerlink" href="#4" title="Permanent link">¶</a></h3>
+<p><strong>情境</strong>：诸葛亮暗中观察到——</p>
+<ul>
+<li>刘备等待两个时辰不失态</li>
+<li>张飞爆发时刘备温和但坚定地控制住局面</li>
+<li>三顾之诚已充分体现</li>
+</ul>
+<p><strong>可用 Affordances</strong>（来自「观察试探」Practice）：</p>
+<h4 id="a_3">选项 A：继续装睡<a class="headerlink" href="#a_3" title="Permanent link">¶</a></h4>
+<p>行动后果：</p>
+<div class="highlight"><pre><span></span><code>add zhuge_liang.still_testing!true
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>是否满足</th>
+<th>得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>试探明主</td>
+<td>已完成，继续无额外收益</td>
+<td>0</td>
+</tr>
+<tr>
+<td>不轻易出山</td>
+<td>满足</td>
+<td>+25</td>
+</tr>
+<tr>
+<td>展示才华</td>
+<td>无法展示</td>
+<td>0</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>继续装下去开始显得失礼</td>
+<td>+10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分：25 + 10 = 35</strong></p>
+<hr>
+<h4 id="b_3">选项 B：醒来相见<a class="headerlink" href="#b_3" title="Permanent link">¶</a></h4>
+<p>行动后果：</p>
+<div class="highlight"><pre><span></span><code>add zhuge_liang.meeting.liu_bei
+add conversation_started!true
+add opportunity_to_discuss_tianxia!true
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>是否满足</th>
+<th>得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>试探明主</td>
+<td>已满足，可进入下一阶段</td>
+<td>+35</td>
+</tr>
+<tr>
+<td>不轻易出山</td>
+<td>三顾已足够体面</td>
+<td>+15</td>
+</tr>
+<tr>
+<td>展示才华</td>
+<td>可以开始谈天下大势</td>
+<td>+20</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>满足</td>
+<td>+20</td>
+</tr>
+</tbody>
+</table>
+<p>性格修正：「谨慎」已满足（观察够了）</p>
+<p><strong>总分：35 + 15 + 20 + 20 = 90</strong></p>
+<hr>
+<h4 id="c_2">选项 C：让童子再打发<a class="headerlink" href="#c_2" title="Permanent link">¶</a></h4>
+<p>行动后果：</p>
+<div class="highlight"><pre><span></span><code>add zhuge_liang.dismissing_again!true
+add risk_losing_opportunity!true
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>是否满足</th>
+<th>得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>试探明主</td>
+<td>已完成，继续无意义</td>
+<td>0</td>
+</tr>
+<tr>
+<td>不轻易出山</td>
+<td>满足</td>
+<td>+25</td>
+</tr>
+<tr>
+<td>展示才华</td>
+<td>无法展示</td>
+<td>0</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>四次拒绝过分了</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分：25</strong></p>
+<hr>
+<h4 id="_13">决策结果<a class="headerlink" href="#_13" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>总分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. 继续装睡</td>
+<td>35</td>
+</tr>
+<tr>
+<td>B. 醒来相见</td>
+<td><strong>90</strong></td>
+</tr>
+<tr>
+<td>C. 让童子打发</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<p><strong>诸葛亮选择：醒来相见</strong></p>
+<blockquote>
+<p>诸葛亮翻身而起：“有客来此，何不早报？”（早就报了，诸葛标志）</p>
+</blockquote>
+<hr>
+<h2 id="_14">涌现<a class="headerlink" href="#_14" title="Permanent link">¶</a></h2>
+<p>这段剧情中，以下行为是涌现的，没有显式编程：</p>
+<table>
+<thead>
+<tr>
+<th>涌现行为</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>张飞先爆发</td>
+<td>暴躁性格 + 低社交规范权重</td>
+</tr>
+<tr>
+<td>刘备选温和而非严厉</td>
+<td>重情义性格 + 安抚兄弟的 want</td>
+</tr>
+<tr>
+<td>张飞被刘备压住</td>
+<td>忠诚性格 + 服从大哥的 want 在直接命令后激活</td>
+</tr>
+<tr>
+<td>诸葛亮此刻出山</td>
+<td>试探明主 want 已满足 + 继续拖延的收益递减</td>
+</tr>
+</tbody>
+</table>
+<p>如果把张飞换成关羽（性格：沉稳、傲气），关羽可能根本不会爆发，诸葛亮需要等更久才能观察到“明主如何驾驭部下”。</p>
+<hr>
+<h2 id="_15">变体：改变初始条件<a class="headerlink" href="#_15" title="Permanent link">¶</a></h2>
+<p>假设出发前发生了以下事件：</p>
+<table>
+<thead>
+<tr>
+<th>改变</th>
+<th>原值</th>
+<th>新值</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>张飞对诸葛亮的评价</td>
+<td>-20</td>
+<td>+10</td>
+<td>路遇司马徽，闻“卧龙之才十倍于我”</td>
+</tr>
+<tr>
+<td>服从大哥的 want</td>
+<td>+30</td>
+<td>+45</td>
+<td>刘备出发前叮嘱“此行万万不可失礼”</td>
+</tr>
+<tr>
+<td>新增 want</td>
+<td></td>
+<td>「不在二哥面前丢人」 +20</td>
+<td>关羽也在场</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1_1">回合 1 重算：张飞决策<a class="headerlink" href="#1_1" title="Permanent link">¶</a></h3>
+<h4 id="a_4">选项 A：发怒咆哮<a class="headerlink" href="#a_4" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>是否满足</th>
+<th>得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保护大哥尊严</td>
+<td>满足</td>
+<td>+35</td>
+</tr>
+<tr>
+<td>快速解决问题</td>
+<td>满足</td>
+<td>+25</td>
+</tr>
+<tr>
+<td>服从大哥命令</td>
+<td>违背</td>
+<td>0</td>
+</tr>
+<tr>
+<td>不在二哥面前丢人</td>
+<td>违背（失态）</td>
+<td>0</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>违背</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>关系修正：对诸葛亮评价变正，减少攻击冲动</p>
+<p><strong>总分：\&lt;= 60</strong>（比原来的 84 低很多）</p>
+<hr>
+<h4 id="b_4">选项 B：忍耐等待<a class="headerlink" href="#b_4" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>是否满足</th>
+<th>得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>服从大哥命令</td>
+<td>满足</td>
+<td>+45（提高了）</td>
+</tr>
+<tr>
+<td>不在二哥面前丢人</td>
+<td>满足</td>
+<td>+20</td>
+</tr>
+<tr>
+<td>遵守社交规范</td>
+<td>满足</td>
+<td>+10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分：45 + 20 + 10 = 75</strong></p>
+<hr>
+<h4 id="_16">决策结果<a class="headerlink" href="#_16" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>原版得分</th>
+<th>变体得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. 发怒咆哮</td>
+<td>84</td>
+<td>50</td>
+</tr>
+<tr>
+<td>B. 忍耐等待</td>
+<td>40</td>
+<td><strong>75</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>变体中张飞选择：忍耐等待</strong></p>
+<p>同一个角色，因为初始条件不同，做出完全相反的选择。</p>
+<hr>
+<h2 id="_17">总结<a class="headerlink" href="#_17" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>传统状态机</th>
+<th>Versu Utility AI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>枚举所有情况</td>
+<td>定义角色属性</td>
+</tr>
+<tr>
+<td>添加新情况需要新代码</td>
+<td>改变属性即可产生新行为</td>
+</tr>
+<tr>
+<td>角色行为可预测</td>
+<td>角色行为会涌现</td>
+</tr>
+<tr>
+<td>复杂度随情况数爆炸，呈指数级增长</td>
+<td>复杂度随角色数线性增长</td>
+</tr>
+</tbody>
+</table>
+<p>类似将 Utility AI 应用于叙事对话的游戏还有：《矮人要塞》、《十字军之王 3》等。</p>
+<h2 id="_18">相关资料<a class="headerlink" href="#_18" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://versu.com/">Versu | Character AI for Interactive Stories</a></li>
+<li><a href="https://versu.com/wp-content/uploads/2014/05/versu.pdf">versu.pdf</a></li>
+<li><a href="https://versu.com/wp-content/uploads/2014/05/praxis.pdf">praxis.pdf</a></li>
+<li><a href="https://versu.com/about/how-versu-works/">How Versu works | Versu</a></li>
+<li><a href="https://emshort.blog/2013/02/14/introducing-versu/">Introducing Versu</a></li>
+<li><a href="https://emshort.blog/2014/11/16/icids-the-future-of-interactive-storytelling-plus-some-versu-thoughts/">ICIDS: The future of interactive storytelling, plus some Versu thoughts</a></li>
+<li><a href="https://emshort.blog/2017/05/18/mailbag-writing-for-versu/">Mailbag: Writing for Versu</a></li>
+<li><a href="https://emshort.blog/2013/02/26/versu-conversation-implementation/">Versu: Conversation Implementation</a></li>
+<li><a href="https://ifdb.org/viewgame?id=ivtfrko6hxfr13b6">Blood &amp; Laurels</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Utility_system">Utility system</a></li>
+</ul>
 
 
 
@@ -3855,7 +4394,7 @@ markdown_extensions:
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年11月8日 15:25:01 CST">2025年11月8日 15:25:01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年2月5日 04:26:18 CST">2026年2月5日 04:26:18</span>
   </span>
 
     
@@ -3865,7 +4404,7 @@ markdown_extensions:
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年11月8日 13:51:02 CST">2025年11月8日 13:51:02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年2月5日 04:26:18 CST">2026年2月5日 04:26:18</span>
   </span>
 
     
@@ -3904,7 +4443,7 @@ markdown_extensions:
       <nav class="md-footer__inner md-grid" aria-label="页脚">
         
           
-          <a href="../../10/23/functional-pipeline-programming-in-python.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: Functional Pipeline Programming in Python">
+          <a href="../../../2025/11/06/using-djot-instead-of-markdown-in-mkdocs.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: Using Djot instead of Markdown in MkDocs">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -3914,27 +4453,11 @@ markdown_extensions:
                 上一页
               </span>
               <div class="md-ellipsis">
-                Functional Pipeline Programming in Python
+                Using Djot instead of Markdown in MkDocs
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../../../2026/02/04/versu-agents-and-utility-ai.html" class="md-footer__link md-footer__link--next" aria-label="下一页: Versu: Agents and Utility AI">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                Versu: Agents and Utility AI
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
-            </div>
-          </a>
         
       </nav>
     
