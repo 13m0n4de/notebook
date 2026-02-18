@@ -297,7 +297,7 @@ Hare 做了一个构建工具来简化和加速模块编译过程，但我想参
 
 完成了，或者说很早就完成了，用 [Raylib](https://github.com/raysan5/raylib) 写了个贪吃蛇：[github.com/13m0n4de/snake-saya](https://github.com/13m0n4de/snake-saya)。
 
-实际上，Saya 参考 [北大编译实践在线文档](https://pku-minic.github.io/online-doc/) 的目录顺序实现了前期的功能，之后就一直以运行 Raylib 为目标。
+实际上，Saya 参考 [北大编译实践在线文档](https://pku-minic.github.io/online-doc/) 的目录顺序实现了前期的功能，之后就一直以运行 Raylib 为目标，可以说整个 Saya 都是 Raylib Speedrun。
 
 ## 哦……
 
