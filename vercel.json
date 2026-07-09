@@ -1,0 +1,100 @@
+{
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "redirects": [
+        {
+            "source": "/blog/2024/12/06/ricing-my-arch-linux.html",
+            "destination": "https://13m0n4de.pages.dev/posts/ricing_my_arch_linux",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2024/11/09/coffee-and-random-thoughts-hackergame-2024-.html",
+            "destination": "https://13m0n4de.pages.dev/posts/hackergame2024",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2024/06/16/hackerrank-in-racket-part-3.html",
+            "destination": "https://13m0n4de.pages.dev/posts/hackerrank_in_racket_part3",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2024/06/13/hackerrank-in-racket-part-2.html",
+            "destination": "https://13m0n4de.pages.dev/posts/hackerrank_in_racket_part2",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2024/06/11/hackerrank-in-racket-part-1.html",
+            "destination": "https://13m0n4de.pages.dev/posts/hackerrank_in_racket_part1",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2024/05/23/wireworld-simulator-using-the-raylib-part2.html",
+            "destination": "https://13m0n4de.pages.dev/posts/wireworld_simulator_using_the_raylib_part2",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2024/05/20/wireworld-simulator-using-the-raylib-part1.html",
+            "destination": "https://13m0n4de.pages.dev/posts/wireworld_simulator_using_the_raylib_part1",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2024/05/12/bad-apple-on-lemoncore.html",
+            "destination": "https://13m0n4de.pages.dev/posts/bad_apple_on_lemon_core",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2024/04/07/search-engines-in-2024-will-spaces-still-matter.html",
+            "destination": "https://13m0n4de.pages.dev/posts/search_engines_in_2024_will_spaces_still_matter",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2024/02/25/i-need-a-done-list-not-a-todo-list.html",
+            "destination": "https://13m0n4de.pages.dev/posts/i_need_a_done_list_not_a_todo_list",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2025/11/06/using-djot-instead-of-markdown-in-mkdocs.html",
+            "destination": "https://13m0n4de.pages.dev/posts/replacing_markdown_with_djot_in_mkdocs",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2025/10/23/functional-pipeline-programming-in-python.html",
+            "destination": "https://13m0n4de.pages.dev/posts/functional_pipeline_programming_in_python",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2025/07/20/markdown-to-pdf-with-pandoc-and-typst.html",
+            "destination": "https://13m0n4de.pages.dev/posts/markdown_to_pdf_with_pandoc_and_typst",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2025/05/28/refactor-my-quiz-app.html",
+            "destination": "https://13m0n4de.pages.dev/posts/refactor_my_quiz_app",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2025/04/01/malware-analysis-powerghost.html",
+            "destination": "https://13m0n4de.pages.dev/posts/malware_analysis_powerghost",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2025/01/30/cve-roulette-1-pngcheck.html",
+            "destination": "https://13m0n4de.pages.dev/posts/cve_roulette_pngcheck",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2026/02/28/saya-lang-loop-break-value.html",
+            "destination": "https://13m0n4de.pages.dev/posts/saya_lang_loop_break_value",
+            "permanent": true
+        },
+        {
+            "source": "/blog/2026/01/23/hello-saya-lang.html",
+            "destination": "https://13m0n4de.pages.dev/posts/hello_saya_lang",
+            "permanent": true
+        },
+        {
+            "source": "/(.*)",
+            "destination": "https://13m0n4de.pages.dev/",
+            "permanent": true
+        }
+    ]
+}
