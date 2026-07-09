@@ -2,6 +2,10 @@
 
 [![CC BY-NC 4.0][cc-by-nc-shield]][cc-by-nc]
 
+> [!IMPORTANT]
+>
+> MOVED: https://codeberg.org/13m0n4de/blog
+
 ## License
 
 This work is licensed under a
